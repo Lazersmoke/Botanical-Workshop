@@ -1,5 +1,5 @@
 package lazersmoke.botanical.common.block.mana;
-
+//This class is mostly Vazkii
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +8,7 @@ import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.wand.IWandHUD;
 import vazkii.botania.api.wand.IWandable;
+import vazkii.botania.client.core.helper.IconHelper;
 import vazkii.botania.common.block.BlockModContainer;
 import vazkii.botania.common.lexicon.LexiconData;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -33,6 +34,7 @@ import lazersmoke.botanical.item.block.ItemBlockElvenPool;
 public class BlockElvenPool extends BlockModContainer implements IWandHUD, IWandable, ILexiconable{
 
 	boolean lastFragile = false;
+	IIcon icon;
 	
 	public BlockElvenPool(){
 		super(Material.rock);
@@ -60,8 +62,8 @@ public class BlockElvenPool extends BlockModContainer implements IWandHUD, IWand
 	}
 	
 	@Override
-	public void registerBlockIcons(IIconRegister par1IconRegister) {
-		// NO-OP
+	public void registerBlockIcons(IIconRegister IconRegister) {
+		icon = IconHelper.forBlock(IconRegister, this);
 	}
 
 	@Override
@@ -88,9 +90,7 @@ public class BlockElvenPool extends BlockModContainer implements IWandHUD, IWand
 
 	@Override
 	public void getSubBlocks(Item par1, CreativeTabs par2, List par3) {
-		par3.add(new ItemStack(par1, 1, 2));
 		par3.add(new ItemStack(par1, 1, 0));
-		par3.add(new ItemStack(par1, 1, 1));
 	}
 
 	@Override
@@ -111,10 +111,10 @@ public class BlockElvenPool extends BlockModContainer implements IWandHUD, IWand
 	public boolean renderAsNormalBlock() {
 		return false;
 	}
-
+	
 	@Override
 	public IIcon getIcon(int par1, int par2) {
-		return vazkii.botania.common.block.ModBlocks.livingrock.getIcon(par1, 0);
+		return this.icon;
 	}
 
 	@Override
