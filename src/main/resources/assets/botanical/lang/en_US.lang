@@ -7,3 +7,7 @@ botanicalmisc.noloc=botanicalmisc.noloc
 botanicalmisc.elvenPool0=Line1
 botanicalmisc.elvenPool1=Line2
 botanicalmisc.elvenPool2=Line3
+
+
+
+tile.botanical:elvenPool0.name=Elven Mana Pool

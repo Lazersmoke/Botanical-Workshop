@@ -6,7 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
-import vazkii.botania.common.item.block.ItemBlockWithMetadataAndName;
+import lazersmoke.botanical.common.item.block.ItemBlockWithMetadataAndName;
 
 public class ItemBlockElvenPool extends ItemBlockWithMetadataAndName{
 

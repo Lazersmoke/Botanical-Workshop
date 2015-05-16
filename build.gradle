@@ -32,7 +32,7 @@ ext.config = parseConfig(configFile)
 ext.priv = parseConfig(file('private.properties'))
 
 version = "${config.version}-${config.build_number}"
-group = "vazkii.botania" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+group = "lazersmoke.botanical" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = config.mod_name
 
 minecraft {

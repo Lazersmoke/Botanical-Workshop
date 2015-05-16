@@ -63,7 +63,7 @@ public class BlockElvenPool extends BlockModContainer implements IWandHUD, IWand
 	
 	@Override
 	public void registerBlockIcons(IIconRegister IconRegister) {
-		icon = IconHelper.forName(IconRegister, "BlockElfQuartz0");
+		//NO-OP
 	}
 
 	@Override
@@ -114,7 +114,7 @@ public class BlockElvenPool extends BlockModContainer implements IWandHUD, IWand
 	
 	@Override
 	public IIcon getIcon(int par1, int par2) {
-		return this.icon;
+		return vazkii.botania.common.block.ModFluffBlocks.elfQuartz.getIcon(par1, 0);
 	}
 
 	@Override
