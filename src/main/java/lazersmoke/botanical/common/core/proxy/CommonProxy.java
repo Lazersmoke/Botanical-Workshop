@@ -1,5 +1,7 @@
 package lazersmoke.botanical.common.core.proxy;
 
+import net.minecraft.world.World;
+
 import org.apache.logging.log4j.Level;
 
 import lazersmoke.botanical.common.core.handler.CommonTickHandler;
@@ -41,5 +43,13 @@ public class CommonProxy {
 	}	
 	public void serverStopping(FMLServerStoppingEvent event) {
 		//NO-OP
+	}
+
+	public void sparkleFX(World worldObj, double d, int i, double e, float red, float green, float blue, float random, int j) {
+		vazkii.botania.common.Botania.proxy.sparkleFX(worldObj, d, i, e, red, green, blue, random, j);
+	}
+
+	public void wispFX(World worldObj, double d, double e, double f, float g, float h, float i, float j, float k, float l) {
+		vazkii.botania.common.Botania.proxy.wispFX(worldObj, d, e, f, g, h, i, j, k, l);
 	}
 }

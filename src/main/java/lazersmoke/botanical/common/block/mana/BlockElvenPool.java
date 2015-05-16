@@ -63,7 +63,7 @@ public class BlockElvenPool extends BlockModContainer implements IWandHUD, IWand
 	
 	@Override
 	public void registerBlockIcons(IIconRegister IconRegister) {
-		icon = IconHelper.forBlock(IconRegister, this);
+		icon = IconHelper.forName(IconRegister, "BlockElfQuartz0");
 	}
 
 	@Override
