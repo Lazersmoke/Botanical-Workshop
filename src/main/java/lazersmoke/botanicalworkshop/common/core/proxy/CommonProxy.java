@@ -4,8 +4,10 @@ import net.minecraft.world.World;
 
 import org.apache.logging.log4j.Level;
 
+import lazersmoke.botanicalworkshop.common.BotanicalWorkshop;
 import lazersmoke.botanicalworkshop.common.core.handler.CommonTickHandler;
 import lazersmoke.botanicalworkshop.common.crafting.ModElvenTradeRecipes;
+import lazersmoke.botanicalworkshop.common.crafting.ModSuperGatewayRecipes;
 import lazersmoke.botanicalworkshop.common.core.handler.ConfigHandler;
 import lazersmoke.botanicalworkshop.common.crafting.ModCraftingRecipes;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -27,6 +29,7 @@ public class CommonProxy {
 		
 		ModCraftingRecipes.init();
 		ModElvenTradeRecipes.init();
+		ModSuperGatewayRecipes.init();
 	}
 	
 	public void init(FMLInitializationEvent event){
@@ -34,7 +37,7 @@ public class CommonProxy {
 	}
 	
 	public void postInit(FMLPostInitializationEvent event){
-		FMLLog.log(Level.INFO, "[BotanicalWorkshop] Botanical workshop dev Lazersmoke expresses his sincere gratitude to Vazkii");
+		BotanicalWorkshop.logger.info("Botanical workshop dev Lazersmoke expresses his sincere gratitude to Vazkii");
 	}
 	
 	public void serverStarting(FMLServerStartingEvent event) {

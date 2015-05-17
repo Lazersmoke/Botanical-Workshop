@@ -3,29 +3,38 @@ package lazersmoke.botanicalworkshop.common.block.tile;
 import java.util.ArrayList;
 import java.util.List;
 
+import lazersmoke.botanicalworkshop.api.BotanicalWorkshopAPI;
+import lazersmoke.botanicalworkshop.api.mana.ISuperGatewayCatalyst;
+import lazersmoke.botanicalworkshop.api.recipe.RecipeSuperGateway;
 import lazersmoke.botanicalworkshop.common.BotanicalWorkshop;
 import lazersmoke.botanicalworkshop.common.block.ModBlocks;
 import lazersmoke.botanicalworkshop.common.block.tile.mana.TileElvenPool;
+import lazersmoke.botanicalworkshop.common.lib.LibConfigs;
 import net.minecraft.block.Block;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import vazkii.botania.common.block.tile.TileMod;
 
 public class TileSuperGatewayCore extends TileMod{
-		//  EDE
-		// Q   Q
-		//E     E
-		//D     D
-		//E     E
-		// Q   Q 
-		//  ECE 
-	public static final int MAX_MANA = 10000;
-	public int mana = 0;
+		//  ZZZ
+		// X   X
+		//X/   \X
+		//X     X
+		//X\   /X
+		// X   X 
+		//  ZZZ 
+	public List<ItemStack> currentInventory = new ArrayList<ItemStack>();
+	public boolean open = false;
+	private static final String TAG_PORTAL_KEEP = "superPortalKeep";
 	private boolean hasUnloadedParts = false;
 	private int ticksOpen = 0;
+	private int ticksSinceLastItem = 0;
 	private boolean closeNow = false;
 	private static final int[][] LIVINGWOOD_POSITIONS = {
 		{ -1, 0, 0}, { 1, 0, 0}, { 0, 0, 1}, { 0, 0, -1},
@@ -69,26 +78,31 @@ public class TileSuperGatewayCore extends TileMod{
 			ticksOpen = 0;
 			return;
 		}
-		int updatedMeta = getValidMetadata();
+		int updatedMeta = getUpdatedMetadata();
 		
 		if(!hasUnloadedParts){
 			ticksOpen++;
 			AxisAlignedBB aabb = getPortalAABB();
-			boolean open = ticksOpen > 60;
+			open = ticksOpen > 60;
 
-			if(ticksOpen > 60) {
-				if(vazkii.botania.common.core.handler.ConfigHandler.elfPortalParticlesEnabled)
+			if(open) {
+				if(vazkii.botania.common.core.handler.ConfigHandler.elfPortalParticlesEnabled)//import configs
 					blockParticle(meta);
 			}
+			
+			List<EntityPlayer> players = worldObj.getEntitiesWithinAABB(EntityPlayer.class, aabb);
+			for(EntityPlayer player : players)
+				player.addPotionEffect(new PotionEffect(Potion.jump.id, 20, 1));//Allows player to jump out of pit
+			
 			List<EntityItem> items = worldObj.getEntitiesWithinAABB(EntityItem.class, aabb);
-			List<ItemStack> itemStacks = new ArrayList<ItemStack>();
-			if(!worldObj.isRemote){
-				for(EntityItem item : items){
-					if(item.isDead)
-						continue;
-					itemStacks.add(item.getEntityItem());
+			for(EntityItem item : items){
+				if(!(item.getEntityItem().getItem() instanceof ISuperGatewayCatalyst) && !(item.getEntityData().getBoolean(TAG_PORTAL_KEEP))){
+					currentInventory.add(item.getEntityItem());
+					item.setDead();
 				}
-				resolveRecipes(itemStacks);
+				if(item.getEntityItem() != null && item.getEntityItem().getItem() instanceof ISuperGatewayCatalyst){
+					resolveRecipes();
+				}
 			}
 		}else closeNow = false;
 		
@@ -115,10 +129,11 @@ public class TileSuperGatewayCore extends TileMod{
 				AIR_POSITIONS[i][0] + 0.5F, AIR_POSITIONS[i][1] + 0.5F, AIR_POSITIONS[i][2] + 0.5F
 		};
 		float motionMul = 0.2F;
+		for(i = 0; i < LibConfigs.PARTICLE_DENSITY; i++)
 		BotanicalWorkshop.proxy.wispFX(getWorldObj(), xCoord + pos[0], yCoord + pos[1], zCoord + pos[2], (float) (Math.random() * 0.25F), (float) (Math.random() * 0.5F + 0.5F), (float) (Math.random() * 0.25F), (float) (Math.random() * 0.15F + 0.1F), (float) (Math.random() - 0.5F) * motionMul, (float) (Math.random() - 0.5F) * motionMul, (float) (Math.random() - 0.5F) * motionMul);
 	}
 
-	private int getValidMetadata() {
+	private int getUpdatedMetadata() {
 		return checkConstructed() ? 1 : 0;
 	}
 	
@@ -154,7 +169,7 @@ public class TileSuperGatewayCore extends TileMod{
 	public boolean onWanded() {
 		int meta = getBlockMetadata();
 		if(meta == 0) {
-			int newMeta = getValidMetadata();
+			int newMeta = getUpdatedMetadata();
 			if(newMeta != 0) {
 				worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, newMeta, 1 | 2);
 				return true;
@@ -210,14 +225,39 @@ public class TileSuperGatewayCore extends TileMod{
 		}else closeNow = true;
 	}
 	
-	private boolean resolveRecipes(List<ItemStack> inputList){
-		
-		
-		return closeNow;
+	public void summonItem(ItemStack stack){
+		BotanicalWorkshop.logger.info("Summoning Item");
+		EntityItem item = new EntityItem(worldObj, xCoord + 0.5, yCoord + 1.5, zCoord + 0.5, stack);
+		item.getEntityData().setBoolean(TAG_PORTAL_KEEP, true);
+		worldObj.spawnEntityInWorld(item);
+	}
+	
+	/*public void sweepItems(AxisAlignedBB aabb){
+		List<EntityItem> items = worldObj.getEntitiesWithinAABB(EntityItem.class, aabb);
+		for(EntityItem item : items)
+			if(!item.getEntityData().getBoolean(TAG_PORTAL_KEEP) && !(item instanceof ISuperGatewayCatalyst))
+				item.setDead();
+	}*/
+	
+	private boolean resolveRecipes(){
+		List<EntityItem> items = worldObj.getEntitiesWithinAABB(EntityItem.class, getPortalAABB());
+		for(EntityItem item : items)
+			if(item.getEntityItem().getItem() instanceof ISuperGatewayCatalyst){
+				for(RecipeSuperGateway recipe : BotanicalWorkshopAPI.superGatewayRecipes)
+					if(recipe.getCatalyst().isItemEqual(item.getEntityItem()))
+						if(recipe.matches(currentInventory, false) && !worldObj.isRemote){
+							recipe.matches(currentInventory, true);						
+							summonItem(recipe.getOutput().copy());
+							return true;
+						}
+				//for(SuperGatewayType type : 
+			}
+		return false;
+
 	}
 	
 	AxisAlignedBB getPortalAABB() {
-		AxisAlignedBB aabb = AxisAlignedBB.getBoundingBox(xCoord - 1, yCoord + 1, zCoord - 1, xCoord + 1, yCoord + 6, zCoord + 1);
+		AxisAlignedBB aabb = AxisAlignedBB.getBoundingBox(xCoord - 1, yCoord + 1, zCoord - 1, xCoord + 2, yCoord + 6, zCoord + 2);
 		return aabb;
 	}
 	

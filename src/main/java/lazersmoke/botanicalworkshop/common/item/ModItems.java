@@ -4,11 +4,13 @@ import net.minecraft.item.Item;
 
 public final class ModItems {
 	
-	public static Item manaBindingCrystal;
+	public static Item bindingCrystal;
+	public static Item simpleCatalyst;
 	
 	public static void init(){
 		
-		manaBindingCrystal = new ItemManaBindingCrystal();
+		bindingCrystal = new ItemBindingCrystal();
+		simpleCatalyst = new ItemSimpleCatalyst();
 		
 	}
 }

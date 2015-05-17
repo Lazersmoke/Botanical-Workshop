@@ -16,8 +16,8 @@ public class BotanicalWorkshopAPI{
 	 * @param inputs The items required, must be List<ItemStack>
 	 * @return The recipe created.
 	 */
-	public static RecipeSuperGateway registerSuperGatewayRecipe(ItemStack output, List<ItemStack> inputs) {
-		RecipeSuperGateway recipe = new RecipeSuperGateway(output, inputs);
+	public static RecipeSuperGateway registerSuperGatewayRecipe(ItemStack output, ItemStack catalyst, ItemStack... inputs) {
+		RecipeSuperGateway recipe = new RecipeSuperGateway(output, catalyst, inputs);
 		superGatewayRecipes.add(recipe);
 		return recipe;
 	}
