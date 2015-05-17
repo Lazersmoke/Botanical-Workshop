@@ -1,0 +1,13 @@
+#MISC
+itemGroup.BotanicalWorkshop=BotanicalWorkshop
+
+#UNLOC
+botanicalworkshopmisc.noloc=botanicalworkshopmisc.noloc
+
+botanicalworkshopmisc.elvenPool0=Line1
+botanicalworkshopmisc.elvenPool1=Line2
+
+
+
+tile.botanicalworkshop:elvenPool0.name=Elven Mana Pool
+tile.botanicalworkshop:superGatewayCore0.name=Super Gateway Core
