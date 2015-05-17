@@ -1,0 +1,17 @@
+[
+{
+  "modid": "BotanicalWorkshop",
+  "name": "Botania Workshop",
+  "description": "Botanical Workshop is a Botania addon that adds random stuff that doesn't fit in Botania itself.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "logoFile": "assets/botanicalworkshop/textures/logo.png",
+  "url": "https://github.com/Lazersmoke/Botanical-Workshop",
+  "updateUrl": "",
+  "authorList": ["Lazersmoke"],
+  "credits": "Vazkii, wiiv, cazzar, ChickenBones, PowerCrystals, cpw",
+  "parent": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

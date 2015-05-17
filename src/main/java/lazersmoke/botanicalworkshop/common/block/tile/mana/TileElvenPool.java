@@ -8,7 +8,6 @@ import org.lwjgl.opengl.GL11;
 import lazersmoke.botanicalworkshop.client.lib.LibResources;
 import lazersmoke.botanicalworkshop.common.BotanicalWorkshop;
 import lazersmoke.botanicalworkshop.common.block.ModBlocks;
-import lazersmoke.botanicalworkshop.common.lib.LibMisc;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -300,7 +299,7 @@ public class TileElvenPool extends TileMod implements IManaPool, IDyablePool, IK
 			int color = 0x4444FF;
 			HUDHandler.drawSimpleManaHUD(color, knownMana, manaCap, name, res);
 
-			String power = StatCollector.translateToLocal(LibMisc.MOD_ID+"misc." + (outputting ? "outputtingPower" : "inputtingPower"));
+			String power = StatCollector.translateToLocal("botanicalworkshopmisc." + (outputting ? "outputtingPower" : "inputtingPower"));
 			int x = res.getScaledWidth() / 2 - mc.fontRenderer.getStringWidth(power) / 2;
 			int y = res.getScaledHeight() / 2 + 30;
 			GL11.glEnable(GL11.GL_BLEND);

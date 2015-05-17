@@ -1,13 +1,17 @@
 package lazersmoke.botanicalworkshop.common.block.tile;
 //This class is %50 Lazersmoke
+import java.util.ArrayList;
+import java.util.List;
+
 import lazersmoke.botanicalworkshop.common.BotanicalWorkshop;
 import lazersmoke.botanicalworkshop.common.block.ModBlocks;
 import lazersmoke.botanicalworkshop.common.block.tile.mana.TileElvenPool;
 import net.minecraft.block.Block;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
-
 import vazkii.botania.common.block.tile.TileMod;
 
 public class TileSuperGatewayCore extends TileMod{
@@ -76,7 +80,19 @@ public class TileSuperGatewayCore extends TileMod{
 				if(vazkii.botania.common.core.handler.ConfigHandler.elfPortalParticlesEnabled)
 					blockParticle(meta);
 			}
+			List<EntityItem> items = worldObj.getEntitiesWithinAABB(EntityItem.class, aabb);
+			List<ItemStack> itemStacks = new ArrayList<ItemStack>();
+			if(!worldObj.isRemote){
+				for(EntityItem item : items){
+					if(item.isDead)
+						continue;
+					itemStacks.add(item.getEntityItem());
+				}
+				resolveRecipes(itemStacks);
+			}
 		}else closeNow = false;
+		
+
 		
 		if(closeNow) {
 			worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, 0, 1 | 2);
@@ -187,10 +203,17 @@ public class TileSuperGatewayCore extends TileMod{
 				if(tile instanceof TileElvenPool) {
 					TileElvenPool pool = (TileElvenPool) tile;
 					double costRatio = (double) pool.getCurrentMana() / (double) totalMana;
-					pool.recieveMana((int)Math.round(-cost * costRatio));
+					if(!worldObj.isRemote)
+						pool.recieveMana((int)Math.round(-cost * costRatio));
 				}
 			}
 		}else closeNow = true;
+	}
+	
+	private boolean resolveRecipes(List<ItemStack> inputList){
+		
+		
+		return closeNow;
 	}
 	
 	AxisAlignedBB getPortalAABB() {

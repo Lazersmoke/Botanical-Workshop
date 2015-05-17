@@ -3,18 +3,24 @@ package lazersmoke.botanicalworkshop.common.block;
 import cpw.mods.fml.common.registry.GameRegistry;
 import vazkii.botania.api.wand.IWandable;
 import vazkii.botania.common.block.BlockModContainer;
+import lazersmoke.botanicalworkshop.client.core.helper.IconHelper;
 import lazersmoke.botanicalworkshop.common.block.tile.TileSuperGatewayCore;
 import lazersmoke.botanicalworkshop.common.item.block.ItemBlockSuperGatewayCore;
 import lazersmoke.botanicalworkshop.common.lib.LibBlockNames;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
 //This class is all Lazersmoke
 public class BlockSuperGatewayCore extends BlockModContainer implements IWandable{
+	
+	IIcon iconOff, iconOn;
+	
 	public BlockSuperGatewayCore() {
 		super(Material.rock);
 		setHardness(2.0F);
@@ -33,6 +39,17 @@ public class BlockSuperGatewayCore extends BlockModContainer implements IWandabl
 	@Override
 	protected boolean shouldRegisterInNameSet() {
 		return false;
+	}
+	
+	@Override
+	public void registerBlockIcons(IIconRegister register) {
+		iconOff = IconHelper.forBlock(register, this, 0);
+		iconOn = IconHelper.forBlock(register, this, 1);
+	}
+
+	@Override
+	public IIcon getIcon(int side, int meta) {
+		return meta == 0 ? iconOff : iconOn;
 	}
 	
 	@Override
