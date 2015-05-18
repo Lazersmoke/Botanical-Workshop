@@ -31,18 +31,15 @@ public final class ConfigHandler {
 		desc = "Set this to false to disable the crafting of Elven Mana Pools using alfheim portals.";
 		LibConfigs.PORTAL_CRAFT_ELVEN_POOL = loadPropBool("crafting.portal.elvenPool", desc, true);
 		
-		desc = "Set this to false to disable the crafting of Mana Binding Crystals using the Super Gateway.";
-		LibConfigs.SUPER_CRAFT_MANA_BINDING_CRYSTAL = loadPropBool("crafting.superGateway.manaBindingCrystal", desc, true);
+		desc = "Set this to false to disable the crafting of Mana Binding Crystals using the Gateway.";
+		LibConfigs.GATEWAY_CRAFT_MANA_BINDING_CRYSTAL = loadPropBool("crafting.gateway.manaBindingCrystal", desc, true);
 		
-		desc = "Set this to false to disable the crafting of Blood Binding Crystals using the Super Gateway.";
-		LibConfigs.SUPER_CRAFT_BLOOD_BINDING_CRYSTAL = loadPropBool("crafting.superGateway.manaBindingCrystal", desc, true);
+		desc = "Set this to false to disable the crafting of Blood Binding Crystals using the Gateway.";
+		LibConfigs.GATEWAY_CRAFT_BLOOD_BINDING_CRYSTAL = loadPropBool("crafting.gateway.manaBindingCrystal", desc, true);
 		
-		desc = "Set this to false to disable the crafting of Mind Binding Crystals using the Super Gateway.";
-		LibConfigs.SUPER_CRAFT_MIND_BINDING_CRYSTAL = loadPropBool("crafting.superGateway.manaBindingCrystal", desc, true);
-		
-		desc = "Set this to false to disable the crafting of Mana Binding Crystals using the Super Gateway.";
-		LibConfigs.SUPER_CRAFT_MANA_BINDING_CRYSTAL = loadPropBool("crafting.superGateway.manaBindingCrystal", desc, true);
-		
+		desc = "Set this to false to disable the crafting of Thaumic Binding Crystals using the Gateway.";
+		LibConfigs.GATEWAY_CRAFT_THAUMIC_BINDING_CRYSTAL = loadPropBool("crafting.gateway.manaBindingCrystal", desc, true);
+				
 		desc = "Set this to change the particle density of Botanical Workshop effects. Default is 1";
 		LibConfigs.PARTICLE_DENSITY = loadPropInt("performance.particles.density", desc, 1);
 

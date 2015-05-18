@@ -7,10 +7,12 @@ botanicalworkshopmisc.noloc=botanicalworkshopmisc.noloc
 botanicalworkshopmisc.elvenPool0=Line1
 botanicalworkshopmisc.elvenPool1=Line2
 
-itembotanicalworkshop:manaBindingCrystal0=Mana Binding Crystal
-itembotanicalworkshop:manaBindingCrystal1=Blood Binding Crystal
-itembotanicalworkshop:manaBindingCrystal2=Mind Binding Crystal
-itembotanicalworkshop:manaBindingCrystal3=Elven Binding Crystal
+item.botanicalworkshop:simpleCatalyst.name=Simple Catalyst
+item.botanicalworkshop:emptyCatalyst.name=Empty Catalyst
+item.botanicalworkshop:bindingCrystal0.name=Mana Binding Crystal
+item.botanicalworkshop:bindingCrystal1.name=Blood Binding Crystal
+item.botanicalworkshop:bindingCrystal2.name=Thaumic Binding Crystal
+item.botanicalworkshop:bindingCrystal3.name=Mechanical Binding Crystal
 
 tile.botanicalworkshop:elvenPool0.name=Elven Mana Pool
-tile.botanicalworkshop:superGatewayCore0.name=Super Gateway Core
+tile.botanicalworkshop:gatewayCore0.name=Gateway Core

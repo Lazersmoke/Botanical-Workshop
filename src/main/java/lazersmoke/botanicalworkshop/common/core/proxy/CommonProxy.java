@@ -7,7 +7,7 @@ import org.apache.logging.log4j.Level;
 import lazersmoke.botanicalworkshop.common.BotanicalWorkshop;
 import lazersmoke.botanicalworkshop.common.core.handler.CommonTickHandler;
 import lazersmoke.botanicalworkshop.common.crafting.ModElvenTradeRecipes;
-import lazersmoke.botanicalworkshop.common.crafting.ModSuperGatewayRecipes;
+import lazersmoke.botanicalworkshop.common.crafting.ModGatewayRecipes;
 import lazersmoke.botanicalworkshop.common.core.handler.ConfigHandler;
 import lazersmoke.botanicalworkshop.common.crafting.ModCraftingRecipes;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -29,7 +29,7 @@ public class CommonProxy {
 		
 		ModCraftingRecipes.init();
 		ModElvenTradeRecipes.init();
-		ModSuperGatewayRecipes.init();
+		ModGatewayRecipes.init();
 	}
 	
 	public void init(FMLInitializationEvent event){
