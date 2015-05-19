@@ -2,16 +2,20 @@ package lazersmoke.botanicalworkshop.common.block.tile;
 //This class is %50 Lazersmoke
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import lazersmoke.botanicalworkshop.api.BotanicalWorkshopAPI;
 import lazersmoke.botanicalworkshop.api.mana.IGatewayCatalyst;
 import lazersmoke.botanicalworkshop.api.mana.IGatewayMod;
 import lazersmoke.botanicalworkshop.api.recipe.RecipeGateway;
+import lazersmoke.botanicalworkshop.client.lib.LibResources;
 import lazersmoke.botanicalworkshop.common.BotanicalWorkshop;
 import lazersmoke.botanicalworkshop.common.block.ModBlocks;
 import lazersmoke.botanicalworkshop.common.block.tile.mana.TileElvenPool;
 import lazersmoke.botanicalworkshop.common.lib.LibConfigs;
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -20,19 +24,33 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.StatCollector;
+
+import org.lwjgl.opengl.GL11;
+
+import vazkii.botania.client.core.handler.HUDHandler;
 import vazkii.botania.common.block.tile.TileMod;
 
 public class TileGatewayCore extends TileMod{
-		//  ZZZ
-		// X   X
-		//X/   \X
-		//X     X
-		//X\   /X
-		// X   X 
-		//  ZZZ 
+		//  W W
+		// W   W
+		//WS   SW
+		//W     G
+		//WS   SW
+		// W   W 
+		//  WCW 
 	public List<ItemStack> currentInventory = new ArrayList<ItemStack>();
 	public boolean open = false;
+	public UUID uuid;
+	
+	public TileGatewayCore(){
+		super();
+		uuid = UUID.randomUUID();
+	}
+	
 	private static final String TAG_PORTAL_KEEP = "gatewayKeep";
+	private static final int OPENING_MANA_COST = LibConfigs.GATEWAY_OPENING_MANA_COST;
+	private static final int COST_PER_TICK = LibConfigs.GATEWAY_TICK_MANA_COST;
 	private boolean hasUnloadedParts = false;
 	private int ticksOpen = 0;
 	private boolean closeNow = false;
@@ -202,31 +220,12 @@ public class TileGatewayCore extends TileMod{
 		if(ticksOpen < 50)//Opening
 			return;
 
-		int cost = ticksOpen == 50 ? 1000000 : 1000;//one time cost (one pool, 1/8 from each) : every tick afterward
-		int totalMana = 0;
-		
-		for(int[] pos : ELVEN_POOL_POSITIONS) {
-			TileEntity tile = worldObj.getTileEntity(xCoord + pos[0], yCoord + pos[1], zCoord + pos[2]);
-			if(tile instanceof TileElvenPool) {
-				TileElvenPool pool = (TileElvenPool) tile;
-				totalMana+=pool.getCurrentMana();
-			}
-		}
-		if(cost < (totalMana - 64)){
-			for(int[] pos : ELVEN_POOL_POSITIONS) {
-				TileEntity tile = worldObj.getTileEntity(xCoord + pos[0], yCoord + pos[1], zCoord + pos[2]);
-				if(tile instanceof TileElvenPool) {
-					TileElvenPool pool = (TileElvenPool) tile;
-					double costRatio = (double) pool.getCurrentMana() / (double) totalMana;
-					if(!worldObj.isRemote)
-						pool.recieveMana((int)Math.round(-cost * costRatio));
-				}
-			}
-		}else closeNow = true;
+		int cost = ticksOpen == 50 ? OPENING_MANA_COST : COST_PER_TICK;//one time cost (one pool, 1/8 from each) : every tick afterward
+		if(!addMana(-cost))
+			closeNow = true;
 	}
 	
 	public void summonItem(ItemStack stack){
-		BotanicalWorkshop.logger.info("Summoning Item");
 		EntityItem item = new EntityItem(worldObj, xCoord + 0.5, yCoord + 1.5, zCoord + 0.5, stack);
 		item.getEntityData().setBoolean(TAG_PORTAL_KEEP, true);
 		worldObj.spawnEntityInWorld(item);
@@ -244,11 +243,64 @@ public class TileGatewayCore extends TileMod{
 							return true;
 						}
 				if(item.getEntityItem().getItem() instanceof IGatewayMod){
-					((IGatewayMod) item.getEntityItem().getItem()).onGatewayUpdate(this);
+					((IGatewayMod) item.getEntityItem().getItem()).onGatewayUpdate(this, item);
 				}
 			}
 		return false;
 
+	}
+	
+	public boolean addMana(int amount){
+		int totalMana = getCurrentMana();
+		if(-amount < (totalMana - 64)){
+			for(int[] pos : ELVEN_POOL_POSITIONS) {
+				TileEntity tile = worldObj.getTileEntity(xCoord + pos[0], yCoord + pos[1], zCoord + pos[2]);
+				if(tile instanceof TileElvenPool) {
+					TileElvenPool pool = (TileElvenPool) tile;
+					double costRatio = Math.abs(amount) == amount ? ((double) pool.getCurrentMana() * TileElvenPool.MAX_MANA)/ ((double) totalMana * TileElvenPool.MAX_MANA * ELVEN_POOL_POSITIONS.length) : (double) pool.getCurrentMana() / (double) totalMana ; //What percent does a small pool get when adding mana?
+					//If cost ratio is positive give small pools more; If negative, take more from large pools
+					if(!worldObj.isRemote)
+						pool.recieveMana((int)Math.round(amount * costRatio));
+				}
+			}
+			return true;
+		}
+		return false;
+	}
+	
+	public int getCurrentMana(){
+		int totalMana = 0;
+		for(int[] pos : ELVEN_POOL_POSITIONS) {
+			TileEntity tile = worldObj.getTileEntity(xCoord + pos[0], yCoord + pos[1], zCoord + pos[2]);
+			if(tile instanceof TileElvenPool) {
+				TileElvenPool pool = (TileElvenPool) tile;
+				totalMana+=pool.getCurrentMana();
+			}
+		}
+		return totalMana;
+	}
+	
+	public void renderHUD(Minecraft mc, ScaledResolution res) {
+		String name = StatCollector.translateToLocal(new ItemStack(ModBlocks.gatewayCore, 1, getBlockMetadata()).getUnlocalizedName().replaceAll("tile.", "tile." + LibResources.PREFIX_MOD) + ".name");
+		int color = 0xB6F2B7; //Offical color of the elves
+		HUDHandler.drawSimpleManaHUD(color, getCurrentMana(), TileElvenPool.MAX_MANA * 8, name, res);
+
+		String catalysts = "";
+		
+		List<EntityItem> items = worldObj.getEntitiesWithinAABB(EntityItem.class, getPortalAABB());
+		for(EntityItem item : items)
+			if(item.getEntityItem().getItem() instanceof IGatewayCatalyst)
+				catalysts = catalysts + ", " + StatCollector.translateToLocal(item.getEntityItem().getUnlocalizedName().replaceAll("item.", "item." + LibResources.PREFIX_MOD) + ".name");
+		
+		if(catalysts.length() >= 2) //Avoid index out of range on no catalysts
+			catalysts = catalysts.substring(2); //Skip Initial ", "
+		
+		int x = res.getScaledWidth() / 2 - mc.fontRenderer.getStringWidth(catalysts) / 2;
+		int y = res.getScaledHeight() / 2 + 30;
+		GL11.glEnable(GL11.GL_BLEND);
+		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+		mc.fontRenderer.drawStringWithShadow(catalysts, x, y, color);
+		GL11.glDisable(GL11.GL_BLEND);
 	}
 	
 	AxisAlignedBB getPortalAABB() {

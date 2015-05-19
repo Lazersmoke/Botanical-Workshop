@@ -299,7 +299,7 @@ public class TileElvenPool extends TileMod implements IManaPool, IDyablePool, IK
 			int color = 0x4444FF;
 			HUDHandler.drawSimpleManaHUD(color, knownMana, manaCap, name, res);
 
-			String power = StatCollector.translateToLocal("botanicalworkshopmisc." + (outputting ? "outputtingPower" : "inputtingPower"));
+			String power = StatCollector.translateToLocal("botanicamisc." + (outputting ? "outputtingPower" : "inputtingPower"));
 			int x = res.getScaledWidth() / 2 - mc.fontRenderer.getStringWidth(power) / 2;
 			int y = res.getScaledHeight() / 2 + 30;
 			GL11.glEnable(GL11.GL_BLEND);

@@ -7,8 +7,15 @@ botanicalworkshopmisc.noloc=botanicalworkshopmisc.noloc
 botanicalworkshopmisc.elvenPool0=Line1
 botanicalworkshopmisc.elvenPool1=Line2
 
+botanicalworkshopmisc.emptyCatalyst0=Adding this catalyst to a
+botanicalworkshopmisc.emptyCatalyst0=Gateway will force it to
+botanicalworkshopmisc.emptyCatalyst0=drop all of its items
+
 item.botanicalworkshop:simpleCatalyst.name=Simple Catalyst
 item.botanicalworkshop:emptyCatalyst.name=Empty Catalyst
+item.botanicalworkshop:manaCatalyst.name=Mana Catalyst
+item.botanicalworkshop:thaumicCatalyst.name=Thaumic Catalyst
+
 item.botanicalworkshop:bindingCrystal0.name=Mana Binding Crystal
 item.botanicalworkshop:bindingCrystal1.name=Blood Binding Crystal
 item.botanicalworkshop:bindingCrystal2.name=Thaumic Binding Crystal
@@ -16,3 +23,4 @@ item.botanicalworkshop:bindingCrystal3.name=Mechanical Binding Crystal
 
 tile.botanicalworkshop:elvenPool0.name=Elven Mana Pool
 tile.botanicalworkshop:gatewayCore0.name=Gateway Core
+tile.botanicalworkshop:gatewayCore1.name=Active Gateway Core

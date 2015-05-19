@@ -1,7 +1,7 @@
 [
 {
   "modid": "BotanicalWorkshop",
-  "name": "Botania Workshop",
+  "name": "Botanical Workshop",
   "description": "Botanical Workshop is a Botania addon that adds random stuff that doesn't fit in Botania itself.",
   "version": "${version}",
   "mcversion": "${mcversion}",

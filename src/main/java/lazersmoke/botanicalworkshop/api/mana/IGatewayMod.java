@@ -1,5 +1,6 @@
 package lazersmoke.botanicalworkshop.api.mana;
 
+import net.minecraft.entity.item.EntityItem;
 import lazersmoke.botanicalworkshop.common.block.tile.TileGatewayCore;
 
 /**Any class implementing the interface will be considered a
@@ -12,5 +13,5 @@ public interface IGatewayMod extends IGatewayCatalyst{
 	 * is inside of it.
 	 * @param gateway The Gateway the mod is attached to
 	 */
-	public void onGatewayUpdate(TileGatewayCore gateway);
+	public void onGatewayUpdate(TileGatewayCore gateway, EntityItem catalyst);
 }

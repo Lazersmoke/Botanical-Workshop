@@ -1,23 +1,27 @@
 package lazersmoke.botanicalworkshop.common.block;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-import vazkii.botania.api.wand.IWandable;
-import vazkii.botania.common.block.BlockModContainer;
 import lazersmoke.botanicalworkshop.client.core.helper.IconHelper;
 import lazersmoke.botanicalworkshop.common.block.tile.TileGatewayCore;
+import lazersmoke.botanicalworkshop.common.block.tile.mana.TileElvenPool;
 import lazersmoke.botanicalworkshop.common.item.block.ItemBlockGatewayCore;
 import lazersmoke.botanicalworkshop.common.lib.LibBlockNames;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+import vazkii.botania.api.wand.IWandHUD;
+import vazkii.botania.api.wand.IWandable;
+import vazkii.botania.common.block.BlockModContainer;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 //This class is all Lazersmoke
-public class BlockGatewayCore extends BlockModContainer implements IWandable{
+public class BlockGatewayCore extends BlockModContainer implements IWandable, IWandHUD{
 	
 	IIcon iconOff, iconOn;
 	
@@ -55,6 +59,11 @@ public class BlockGatewayCore extends BlockModContainer implements IWandable{
 	@Override
 	public TileEntity createNewTileEntity(World arg0, int arg1) {
 		return new TileGatewayCore();
+	}
+	
+	@Override
+	public void renderHUD(Minecraft mc, ScaledResolution res, World world, int x, int y, int z) {
+		((TileGatewayCore) world.getTileEntity(x, y, z)).renderHUD(mc, res);
 	}
 
 	@Override

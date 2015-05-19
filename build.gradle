@@ -57,7 +57,7 @@ configurations {
 //End of the FTP config
 dependencies {
     compile files(
-            'Botania-deobf.jar','Baubles-deobf.jar'
+            'Botania-deobf.jar','Baubles-deobf.jar','Thaumcraft-deobf.jar'
     )
     compile "codechicken:CodeChickenLib:1.7.10-1.1.1.95:dev"
     compile "codechicken:CodeChickenCore:1.7.10-1.0.2.9:dev"

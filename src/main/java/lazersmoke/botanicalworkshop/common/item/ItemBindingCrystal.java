@@ -4,6 +4,7 @@ import java.util.List;
 
 import lazersmoke.botanicalworkshop.api.mana.IGatewayCatalyst;
 import lazersmoke.botanicalworkshop.client.core.helper.IconHelper;
+import lazersmoke.botanicalworkshop.common.item.catalyst.ItemCatalyst;
 import lazersmoke.botanicalworkshop.common.lib.LibItemNames;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;

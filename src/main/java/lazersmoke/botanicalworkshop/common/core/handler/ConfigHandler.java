@@ -24,22 +24,42 @@ public final class ConfigHandler {
 
 	public static void load() {
 		String desc;
-
+		
+		//Table Crafting
 		desc = "Set this to false to disable the crafting of Elven Mana Pools.";
 		LibConfigs.CRAFT_ELVEN_POOL = loadPropBool("crafting.table.elvenPool", desc, true);
 		
+		desc = "Set this to false to disable the crafting of Simple Catalysts.";
+		LibConfigs.CRAFT_SIMPLE_CATALYST = loadPropBool("crafting.table.simpleCatalyst", desc, true);
+		
+		desc = "Set this to false to disable the crafting of Empty Catalysts. Not reccommended";
+		LibConfigs.CRAFT_EMPTY_CATALYST = loadPropBool("crafting.table.emptyCatalyst", desc, true);
+		
+		//Elven Portal Crafting
 		desc = "Set this to false to disable the crafting of Elven Mana Pools using alfheim portals.";
 		LibConfigs.PORTAL_CRAFT_ELVEN_POOL = loadPropBool("crafting.portal.elvenPool", desc, true);
 		
+		//Gateway Crafting
 		desc = "Set this to false to disable the crafting of Mana Binding Crystals using the Gateway.";
 		LibConfigs.GATEWAY_CRAFT_MANA_BINDING_CRYSTAL = loadPropBool("crafting.gateway.manaBindingCrystal", desc, true);
 		
 		desc = "Set this to false to disable the crafting of Blood Binding Crystals using the Gateway.";
-		LibConfigs.GATEWAY_CRAFT_BLOOD_BINDING_CRYSTAL = loadPropBool("crafting.gateway.manaBindingCrystal", desc, true);
+		LibConfigs.GATEWAY_CRAFT_BLOOD_BINDING_CRYSTAL = loadPropBool("crafting.gateway.bloodBindingCrystal", desc, true);
 		
 		desc = "Set this to false to disable the crafting of Thaumic Binding Crystals using the Gateway.";
-		LibConfigs.GATEWAY_CRAFT_THAUMIC_BINDING_CRYSTAL = loadPropBool("crafting.gateway.manaBindingCrystal", desc, true);
-				
+		LibConfigs.GATEWAY_CRAFT_THAUMIC_BINDING_CRYSTAL = loadPropBool("crafting.gateway.thaumicBindingCrystal", desc, true);
+		
+		desc = "Set this to false to disable the crafting of Mechanical Binding Crystals using the Gateway.";
+		LibConfigs.GATEWAY_CRAFT_MECHANICAL_BINDING_CRYSTAL = loadPropBool("crafting.gateway.mechanicalBindingCrystal", desc, true);
+		
+		//Gameplay Settings
+		desc = "Set this to change the mana cost of opening a Gateway. More than 8 million will disable opening gateways, but open gateways will remain open.";
+		LibConfigs.GATEWAY_OPENING_MANA_COST = loadPropInt("gameplay.gateway.openingManaCost", desc, 1000000);
+		
+		desc = "Set this to change the mana cost of keeping a gateway open per tick.";
+		LibConfigs.GATEWAY_TICK_MANA_COST = loadPropInt("gameplay.gateway.perTickManaCost", desc, 1000);
+		
+		//Performance Settings
 		desc = "Set this to change the particle density of Botanical Workshop effects. Default is 1";
 		LibConfigs.PARTICLE_DENSITY = loadPropInt("performance.particles.density", desc, 1);
 
