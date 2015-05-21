@@ -35,9 +35,21 @@ public final class ConfigHandler {
 		desc = "Set this to false to disable the crafting of Empty Catalysts. Not reccommended";
 		LibConfigs.CRAFT_EMPTY_CATALYST = loadPropBool("crafting.table.emptyCatalyst", desc, true);
 		
+		desc = "Set this to false to disable the crafting of Elven Crystals";
+		LibConfigs.CRAFT_EMPTY_CATALYST = loadPropBool("crafting.table.elvenCrystal", desc, true);
+		
+		desc = "Set this to false to disable the crafting of Weak Gateway Cores";
+		LibConfigs.CRAFT_WEAK_GATEWAY_CORE = loadPropBool("crafting.table.weakGatewayCore", desc, true);
+		
 		//Elven Portal Crafting
 		desc = "Set this to false to disable the crafting of Elven Mana Pools using alfheim portals.";
 		LibConfigs.PORTAL_CRAFT_ELVEN_POOL = loadPropBool("crafting.portal.elvenPool", desc, true);
+		
+		desc = "Set this to false to disable the crafting of Elven Crystals using alfheim portals.";
+		LibConfigs.PORTAL_CRAFT_ELVEN_POOL = loadPropBool("crafting.portal.elvenCrystal", desc, true);
+		
+		desc = "Set this to false to disable the crafting of Gateway Cores using alfheim portals.";
+		LibConfigs.PORTAL_CRAFT_GATEWAY_CORE = loadPropBool("crafting.portal.gatewayCore", desc, true);
 		
 		//Gateway Crafting
 		desc = "Set this to false to disable the crafting of Mana Binding Crystals using the Gateway.";

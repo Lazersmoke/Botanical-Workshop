@@ -15,6 +15,7 @@ public class ModCraftingRecipes {
 	public static IRecipe recipeElvenPool;
 	public static IRecipe recipeEmptyCatalyst;
 	public static IRecipe recipeSimpleCatalyst;
+	public static IRecipe recipeWeakGatewayCore;
 	
 	public static void init() {
 		
@@ -35,6 +36,16 @@ public class ModCraftingRecipes {
 			addShapelessOreDictRecipe(new ItemStack(ModItems.emptyCatalyst),
 				new ItemStack(ModItems.simpleCatalyst), new ItemStack(Items.bowl));
 			recipeEmptyCatalyst = BotaniaAPI.getLatestAddedRecipe();
+		}
+		
+		if(LibConfigs.CRAFT_WEAK_GATEWAY_CORE){
+			addOreDictRecipe(new ItemStack(ModBlocks.weakGatewayCore),
+				"DGD", "LEL", "DGD",
+				'D', new ItemStack(Items.diamond),
+				'G', new ItemStack(Items.gold_ingot),
+				'L', new ItemStack(Items.dye, 1, 4), //Lapis
+				'E', new ItemStack(vazkii.botania.common.block.ModBlocks.alfPortal));
+			recipeWeakGatewayCore = BotaniaAPI.getLatestAddedRecipe();
 		}
 	}
 	

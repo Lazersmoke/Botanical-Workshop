@@ -6,9 +6,13 @@ public class LibConfigs{
 	public static boolean CRAFT_ELVEN_POOL;
 	public static boolean CRAFT_SIMPLE_CATALYST;
 	public static boolean CRAFT_EMPTY_CATALYST;	
+	public static boolean CRAFT_ELVEN_CRYSTAL;
+	public static boolean CRAFT_WEAK_GATEWAY_CORE;
 	
 	//Elven Portal Crafting
 	public static boolean PORTAL_CRAFT_ELVEN_POOL;	
+	public static boolean PORTAL_CRAFT_ELVEN_CRYSTAL;
+	public static boolean PORTAL_CRAFT_GATEWAY_CORE;
 	
 	//Gateway Crafting
 	public static boolean GATEWAY_CRAFT_MANA_BINDING_CRYSTAL;

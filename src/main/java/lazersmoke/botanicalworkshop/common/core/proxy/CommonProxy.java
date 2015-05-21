@@ -1,24 +1,22 @@
 package lazersmoke.botanicalworkshop.common.core.proxy;
 
-import net.minecraft.world.World;
-
-import org.apache.logging.log4j.Level;
-
 import lazersmoke.botanicalworkshop.common.BotanicalWorkshop;
+import lazersmoke.botanicalworkshop.common.block.ModBlocks;
 import lazersmoke.botanicalworkshop.common.core.handler.CommonTickHandler;
-import lazersmoke.botanicalworkshop.common.crafting.ModElvenTradeRecipes;
-import lazersmoke.botanicalworkshop.common.crafting.ModGatewayRecipes;
 import lazersmoke.botanicalworkshop.common.core.handler.ConfigHandler;
 import lazersmoke.botanicalworkshop.common.crafting.ModCraftingRecipes;
+import lazersmoke.botanicalworkshop.common.crafting.ModElvenTradeRecipes;
+import lazersmoke.botanicalworkshop.common.crafting.ModGatewayRecipes;
+import lazersmoke.botanicalworkshop.common.crafting.ModPetalRecipes;
+import lazersmoke.botanicalworkshop.common.item.ModItems;
+import lazersmoke.botanicalworkshop.common.lexicon.LexiconData;
+import net.minecraft.world.World;
 import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.event.FMLServerStoppingEvent;
-import lazersmoke.botanicalworkshop.common.block.ModBlocks;
-import lazersmoke.botanicalworkshop.common.item.ModItems;
 
 public class CommonProxy {
 	public void preInit(FMLPreInitializationEvent event){
@@ -30,6 +28,10 @@ public class CommonProxy {
 		ModCraftingRecipes.init();
 		ModElvenTradeRecipes.init();
 		ModGatewayRecipes.init();
+		ModPetalRecipes.init();
+		
+		
+		LexiconData.init();
 	}
 	
 	public void init(FMLInitializationEvent event){

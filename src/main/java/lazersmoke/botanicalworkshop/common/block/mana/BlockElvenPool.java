@@ -8,8 +8,8 @@ import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.wand.IWandHUD;
 import vazkii.botania.api.wand.IWandable;
-import vazkii.botania.common.block.BlockModContainer;
-import vazkii.botania.common.lexicon.LexiconData;
+import lazersmoke.botanicalworkshop.common.block.BlockModContainer;
+import lazersmoke.botanicalworkshop.common.lexicon.LexiconData;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -148,6 +148,6 @@ public class BlockElvenPool extends BlockModContainer implements IWandHUD, IWand
 
 	@Override
 	public LexiconEntry getEntry(World world, int x, int y, int z, EntityPlayer player, ItemStack lexicon) {
-		return LexiconData.pool;
+		return LexiconData.elvenPool;
 	}
 }

@@ -13,6 +13,8 @@ public final class ModItems {
 	public static Item emptyCatalyst;
 	public static Item manaCatalyst;
 	public static Item thaumicCatalyst;
+	public static Item botanicalResource;
+	public static Item thaumicResource;
 	
 	public static void init(){
 		
@@ -21,6 +23,8 @@ public final class ModItems {
 		emptyCatalyst = new ItemEmptyCatalyst();
 		manaCatalyst = new ItemManaCatalyst();
 		thaumicCatalyst = new ItemThaumicCatalyst();
+		botanicalResource = new ItemBotanicalResource();
+		thaumicResource = new ItemThaumicResource();
 		
 	}
 }

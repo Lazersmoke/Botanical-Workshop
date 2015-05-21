@@ -14,19 +14,34 @@ public class ModGatewayRecipes{
 	public static RecipeGateway manaBindingCrystal;
 	public static RecipeGateway bloodBindingCrystal;
 	public static RecipeGateway thaumicBindingCrystal;
+	public static RecipeGateway mechanicalBindingCrystal;
 	
 	public static void init(){
-		if(LibConfigs.GATEWAY_CRAFT_MANA_BINDING_CRYSTAL)//Mana Diamond, Mana Pearl, Nether Star (you only need one ever)
-			manaBindingCrystal = BotanicalWorkshopAPI.registerGatewayRecipe(new ItemStack(ModItems.bindingCrystal, 1, 0), new ItemStack(ModItems.simpleCatalyst), new ItemStack(vazkii.botania.common.item.ModItems.manaResource, 1, 1)/*mana diamond*/, new ItemStack(Items.nether_star), new ItemStack(vazkii.botania.common.item.ModItems.manaResource, 1, 2)/*mana pearl*/);
-		if(LibConfigs.GATEWAY_CRAFT_BLOOD_BINDING_CRYSTAL && BotanicalWorkshop.bloodMagicLoaded){
-			Item orb = (Item) Item.itemRegistry.getObject("AWWayofTime:apprenticeBloodOrb");
-			Item bucket = (Item) Item.itemRegistry.getObject("AWWayofTime:bucketLife");
-			bloodBindingCrystal = BotanicalWorkshopAPI.registerGatewayRecipe(new ItemStack(ModItems.bindingCrystal, 1, 1), new ItemStack(ModItems.simpleCatalyst), new ItemStack(orb), new ItemStack(bucket));
-		}
-		if(LibConfigs.GATEWAY_CRAFT_THAUMIC_BINDING_CRYSTAL && BotanicalWorkshop.thaumcraftLoaded){
-			Item thaummeter = (Item) Item.itemRegistry.getObject("Thaumcraft:ItemThaumometer");
-			Item resource = (Item) Item.itemRegistry.getObject("Thaumcraft:ItemResource");
-			thaumicBindingCrystal = BotanicalWorkshopAPI.registerGatewayRecipe(new ItemStack(ModItems.bindingCrystal, 1, 2), new ItemStack(ModItems.simpleCatalyst), new ItemStack(thaummeter), new ItemStack(resource, 1, 2)/*thaumium ingot*/, new ItemStack(resource, 1, 14)/*salis mundus*/);
-		}
+		if(LibConfigs.GATEWAY_CRAFT_MANA_BINDING_CRYSTAL)
+			manaBindingCrystal = BotanicalWorkshopAPI.registerGatewayRecipe(
+					new ItemStack(ModItems.bindingCrystal, 1, 0), //Mana Binding Crystal
+					new ItemStack(ModItems.simpleCatalyst), //Simple Catalyst
+					new ItemStack(vazkii.botania.common.item.ModItems.manaResource, 1, 1), //mana diamond
+					new ItemStack(Items.nether_star), //Nether Star
+					new ItemStack(vazkii.botania.common.item.ModItems.manaResource, 1, 2));//mana pearl
+		
+		if(LibConfigs.GATEWAY_CRAFT_BLOOD_BINDING_CRYSTAL && BotanicalWorkshop.bloodMagicLoaded)
+			bloodBindingCrystal = BotanicalWorkshopAPI.registerGatewayRecipe(
+					new ItemStack(ModItems.bindingCrystal, 1, 1), //Blood Binding Crystal
+					new ItemStack(ModItems.simpleCatalyst), 
+					new ItemStack((Item) Item.itemRegistry.getObject("AWWayofTime:apprenticeBloodOrb")), //Apprentice Blood Orb
+					new ItemStack((Item) Item.itemRegistry.getObject("AWWayofTime:bucketLife"))); //Bucket of Life Essence
+		if(LibConfigs.GATEWAY_CRAFT_THAUMIC_BINDING_CRYSTAL && BotanicalWorkshop.thaumcraftLoaded)
+			thaumicBindingCrystal = BotanicalWorkshopAPI.registerGatewayRecipe(
+					new ItemStack(ModItems.bindingCrystal, 1, 2), //Thaumic Binding Crystal
+					new ItemStack(ModItems.simpleCatalyst), 
+					new ItemStack((Item) Item.itemRegistry.getObject("Thaumcraft:ItemThaumometer")), //Thaumometer
+					new ItemStack((Item) Item.itemRegistry.getObject("Thaumcraft:ItemResource"), 1, 2), //Thaumium Ingot
+					new ItemStack((Item) Item.itemRegistry.getObject("Thaumcraft:ItemResource"), 1, 14)); //Salis Mundus
+		/*if(LibConfigs.GATEWAY_CRAFT_MECHANICAL_BINDING_CRYSTAL)
+			mechanicalBindingCrystal = BotanicalWorkshopAPI.registerGatewayRecipe(
+					new ItemStack(ModItems.bindingCrystal, 1, 3), //Mechanical Binding Crystal
+					new ItemStack(ModItems.simpleCatalyst), //Simple Catalyst
+					new ItemStack())*/
 	}
 }

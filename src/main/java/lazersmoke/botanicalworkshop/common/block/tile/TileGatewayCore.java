@@ -29,7 +29,6 @@ import net.minecraft.util.StatCollector;
 import org.lwjgl.opengl.GL11;
 
 import vazkii.botania.client.core.handler.HUDHandler;
-import vazkii.botania.common.block.tile.TileMod;
 
 public class TileGatewayCore extends TileMod{
 		//  W W
@@ -226,9 +225,11 @@ public class TileGatewayCore extends TileMod{
 	}
 	
 	public void summonItem(ItemStack stack){
-		EntityItem item = new EntityItem(worldObj, xCoord + 0.5, yCoord + 1.5, zCoord + 0.5, stack);
-		item.getEntityData().setBoolean(TAG_PORTAL_KEEP, true);
-		worldObj.spawnEntityInWorld(item);
+		if(!worldObj.isRemote){
+			EntityItem item = new EntityItem(worldObj, xCoord + 0.5, yCoord + 1.5, zCoord + 0.5, stack);
+			item.getEntityData().setBoolean(TAG_PORTAL_KEEP, true);
+			worldObj.spawnEntityInWorld(item);
+		}
 	}
 	
 	private boolean resolveRecipes(){
@@ -242,7 +243,7 @@ public class TileGatewayCore extends TileMod{
 							summonItem(recipe.getOutput().copy());
 							return true;
 						}
-				if(item.getEntityItem().getItem() instanceof IGatewayMod){
+				if(item.getEntityItem().getItem() instanceof IGatewayMod && !(item.getEntityData().getBoolean(TAG_PORTAL_KEEP))){
 					((IGatewayMod) item.getEntityItem().getItem()).onGatewayUpdate(this, item);
 				}
 			}
@@ -257,7 +258,7 @@ public class TileGatewayCore extends TileMod{
 				TileEntity tile = worldObj.getTileEntity(xCoord + pos[0], yCoord + pos[1], zCoord + pos[2]);
 				if(tile instanceof TileElvenPool) {
 					TileElvenPool pool = (TileElvenPool) tile;
-					double costRatio = Math.abs(amount) == amount ? ((double) pool.getCurrentMana() * TileElvenPool.MAX_MANA)/ ((double) totalMana * TileElvenPool.MAX_MANA * ELVEN_POOL_POSITIONS.length) : (double) pool.getCurrentMana() / (double) totalMana ; //What percent does a small pool get when adding mana?
+					double costRatio = Math.abs(amount) == amount ? ((double) TileElvenPool.MAX_MANA - (double) pool.getCurrentMana()) / ((double) totalMana) : (double) pool.getCurrentMana() / (double) totalMana ; //What percent does a small pool get when adding mana?
 					//If cost ratio is positive give small pools more; If negative, take more from large pools
 					if(!worldObj.isRemote)
 						pool.recieveMana((int)Math.round(amount * costRatio));

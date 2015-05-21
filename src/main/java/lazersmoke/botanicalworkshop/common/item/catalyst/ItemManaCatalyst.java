@@ -7,6 +7,9 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import lazersmoke.botanicalworkshop.common.block.tile.TileGatewayCore;
 import lazersmoke.botanicalworkshop.common.lib.LibItemNames;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.StatCollector;
 
 
 public class ItemManaCatalyst extends ItemModCatalyst{
@@ -32,11 +35,17 @@ public class ItemManaCatalyst extends ItemModCatalyst{
 		for(TileGatewayCore currManaMod : gatewayList){			
 			if(currManaMod.uuid == gateway.uuid)
 				continue;
-			else if(currManaMod.getCurrentMana() < gateway.getCurrentMana()){
-				currManaMod.addMana(1000);
-				gateway.addMana(-1000);
+			else if(currManaMod.getCurrentMana() < gateway.getCurrentMana() && gateway.getCurrentMana() > 10000){
+				currManaMod.addMana(10000);
+				gateway.addMana(-10000);
 			}
 		}
 		
+	}
+	
+	@Override
+	public void addInformation(ItemStack stack, EntityPlayer player, List loreLineList, boolean par4){
+		for(int i = 0; i < 4; i++)
+			loreLineList.add(StatCollector.translateToLocal("botanicalworkshopmisc.manaCatalyst" + i));
 	}
 }

@@ -4,12 +4,10 @@ import cpw.mods.fml.common.FMLLog;
 import net.minecraftforge.common.util.ForgeDirection;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.IEssentiaTransport;
-import vazkii.botania.common.block.tile.TileMod;
 
 public class TileThaumicCore extends TileMod implements IEssentiaTransport{
 
 	private int essentiaCount = 0;
-	private int suction = 64;
 	
 	@Override
 	public int addEssentia(Aspect aspect, int amount, ForgeDirection side) {
@@ -20,7 +18,7 @@ public class TileThaumicCore extends TileMod implements IEssentiaTransport{
 
 	@Override
 	public boolean canInputFrom(ForgeDirection side) {
-		return true;
+		return false;
 	}
 
 	@Override
@@ -45,7 +43,7 @@ public class TileThaumicCore extends TileMod implements IEssentiaTransport{
 
 	@Override
 	public int getSuctionAmount(ForgeDirection side) {
-		return suction;
+		return 0;
 	}
 
 	@Override
@@ -55,7 +53,7 @@ public class TileThaumicCore extends TileMod implements IEssentiaTransport{
 
 	@Override
 	public boolean isConnectable(ForgeDirection side) {
-		return true;
+		return false;
 	}
 
 	@Override
@@ -65,7 +63,7 @@ public class TileThaumicCore extends TileMod implements IEssentiaTransport{
 
 	@Override
 	public void setSuction(Aspect type, int amount) {
-		this.suction = amount;
+		return;
 	}
 
 	@Override
