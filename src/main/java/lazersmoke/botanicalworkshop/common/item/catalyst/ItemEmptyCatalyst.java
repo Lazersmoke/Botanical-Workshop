@@ -13,7 +13,7 @@ import net.minecraft.util.StatCollector;
 public class ItemEmptyCatalyst extends ItemModCatalyst{
 	
 	public ItemEmptyCatalyst(){
-		super();
+		super(LibItemNames.EMPTY_CATALYST);
 		setUnlocalizedName(LibItemNames.EMPTY_CATALYST);
 	}
 	

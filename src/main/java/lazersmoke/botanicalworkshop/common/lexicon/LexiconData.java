@@ -1,6 +1,5 @@
 package lazersmoke.botanicalworkshop.common.lexicon;
 
-import lazersmoke.botanicalworkshop.api.BotanicalWorkshopAPI;
 import lazersmoke.botanicalworkshop.common.crafting.ModCraftingRecipes;
 import lazersmoke.botanicalworkshop.common.crafting.ModElvenTradeRecipes;
 import lazersmoke.botanicalworkshop.common.crafting.ModPetalRecipes;
@@ -14,6 +13,9 @@ import vazkii.botania.common.lexicon.page.PagePetalRecipe;
 import vazkii.botania.common.lexicon.page.PageText;
 
 public final class LexiconData {
+	
+	public static LexiconCategory categoryWorkshop;	
+	public static LexiconCategory categoryThaumic;
 
 	public static LexiconEntry exAquainas;
 	public static LexiconEntry elvenPool;
@@ -24,11 +26,8 @@ public final class LexiconData {
 	
 	public static void init(){
 		
-		BotaniaAPI.addCategory(BotanicalWorkshopAPI.categoryWorkshop = new WLexiconCategory(LibLexicon.CATEGORY_WORKSHOP, 8));
-		BotaniaAPI.addCategory(BotanicalWorkshopAPI.categoryThaumic = new WLexiconCategory(LibLexicon.CATEGORY_THAUMIC, 7));
-		
-		LexiconCategory categoryWorkshop = BotanicalWorkshopAPI.categoryWorkshop;
-		LexiconCategory categoryThaumic = BotanicalWorkshopAPI.categoryThaumic;
+		BotaniaAPI.addCategory(categoryWorkshop = new WLexiconCategory(LibLexicon.CATEGORY_WORKSHOP, 8));
+		BotaniaAPI.addCategory(categoryThaumic = new WLexiconCategory(LibLexicon.CATEGORY_THAUMIC, 7));
 		
 		// MAIN WORKSHOP ENTRIES
 		elvenPool = new WLexiconEntry(LibLexicon.WORKSHOP_ELVENPOOL, categoryWorkshop);

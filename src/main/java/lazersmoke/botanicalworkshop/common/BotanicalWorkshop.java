@@ -2,6 +2,7 @@ package lazersmoke.botanicalworkshop.common;
 
 import lazersmoke.botanicalworkshop.common.core.proxy.CommonProxy;
 import lazersmoke.botanicalworkshop.common.lib.LibMisc;
+import net.minecraft.creativetab.CreativeTabs;
 
 import org.apache.logging.log4j.Logger;
 
@@ -30,6 +31,8 @@ public class BotanicalWorkshop{
 	
 	@SidedProxy(serverSide = LibMisc.PROXY_COMMON, clientSide = LibMisc.PROXY_CLIENT)
 	public static CommonProxy proxy;
+
+	public static CreativeTabs creativeTab;
 
 	
 	@EventHandler

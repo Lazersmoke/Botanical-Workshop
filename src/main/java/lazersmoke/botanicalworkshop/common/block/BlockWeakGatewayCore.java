@@ -14,7 +14,7 @@ import vazkii.botania.api.lexicon.LexiconEntry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 //This class is all Lazersmoke
-public class BlockWeakGatewayCore extends BlockMod implements ILexiconable{
+public class BlockWeakGatewayCore extends Block implements ILexiconable{
 	
 	IIcon iconOff, iconOn;
 	
@@ -31,11 +31,6 @@ public class BlockWeakGatewayCore extends BlockMod implements ILexiconable{
 	public Block setBlockName(String name){
 		GameRegistry.registerBlock(this, ItemBlockWeakGatewayCore.class, name);
 		return super.setBlockName(name);
-	}
-	
-	@Override
-	protected boolean shouldRegisterInNameSet() {
-		return false;
 	}
 	
 	@Override

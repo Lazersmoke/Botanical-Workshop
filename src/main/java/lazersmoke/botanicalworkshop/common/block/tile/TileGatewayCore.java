@@ -29,8 +29,9 @@ import net.minecraft.util.StatCollector;
 import org.lwjgl.opengl.GL11;
 
 import vazkii.botania.client.core.handler.HUDHandler;
+import vazkii.botania.common.Botania;
 
-public class TileGatewayCore extends TileMod{
+public class TileGatewayCore extends TileEntity{
 		//  W W
 		// W   W
 		//WS   SW
@@ -147,7 +148,7 @@ public class TileGatewayCore extends TileMod{
 		};
 		float motionMul = 0.2F;
 		for(i = 0; i < LibConfigs.PARTICLE_DENSITY; i++)
-		BotanicalWorkshop.proxy.wispFX(getWorldObj(), xCoord + pos[0], yCoord + pos[1], zCoord + pos[2], (float) (Math.random() * 0.25F), (float) (Math.random() * 0.5F + 0.5F), (float) (Math.random() * 0.25F), (float) (Math.random() * 0.15F + 0.1F), (float) (Math.random() - 0.5F) * motionMul, (float) (Math.random() - 0.5F) * motionMul, (float) (Math.random() - 0.5F) * motionMul);
+		Botania.proxy.wispFX(getWorldObj(), xCoord + pos[0], yCoord + pos[1], zCoord + pos[2], (float) (Math.random() * 0.25F), (float) (Math.random() * 0.5F + 0.5F), (float) (Math.random() * 0.25F), (float) (Math.random() * 0.15F + 0.1F), (float) (Math.random() - 0.5F) * motionMul, (float) (Math.random() - 0.5F) * motionMul, (float) (Math.random() - 0.5F) * motionMul);
 	}
 
 	private int getUpdatedMetadata() {

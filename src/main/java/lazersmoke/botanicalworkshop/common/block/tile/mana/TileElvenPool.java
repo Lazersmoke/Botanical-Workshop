@@ -34,6 +34,7 @@ import vazkii.botania.api.mana.spark.ISparkAttachable;
 import vazkii.botania.api.mana.spark.ISparkEntity;
 import vazkii.botania.api.recipe.RecipeManaInfusion;
 import vazkii.botania.client.core.handler.HUDHandler; //is final no subclassing allowed
+import vazkii.botania.common.Botania;
 import vazkii.botania.common.core.handler.ManaNetworkHandler;
 import vazkii.botania.common.block.tile.TileMod;
 import vazkii.botania.common.core.helper.Vector3;
@@ -158,7 +159,7 @@ public class TileElvenPool extends TileMod implements IManaPool, IDyablePool, IK
 				float red = (float) Math.random();
 				float green = (float) Math.random();
 				float blue = (float) Math.random();
-				BotanicalWorkshop.proxy.sparkleFX(worldObj, xCoord + 0.5 + Math.random() * 0.4 - 0.2, yCoord + 1, zCoord + 0.5 + Math.random() * 0.4 - 0.2, red, green, blue, (float) Math.random(), 10);
+				Botania.proxy.sparkleFX(worldObj, xCoord + 0.5 + Math.random() * 0.4 - 0.2, yCoord + 1, zCoord + 0.5 + Math.random() * 0.4 - 0.2, red, green, blue, (float) Math.random(), 10);
 			}
 		}
 
@@ -177,7 +178,7 @@ public class TileElvenPool extends TileMod implements IManaPool, IDyablePool, IK
 				double particleChance = 1F - (double) getCurrentMana() / (double) manaCap * 0.1;
 				Color color = new Color(0x00C6FF);
 				if(Math.random() > particleChance)
-					BotanicalWorkshop.proxy.wispFX(worldObj, xCoord + 0.3 + Math.random() * 0.5, yCoord + 0.6 + Math.random() * 0.25, zCoord + Math.random(), color.getRed() / 255F, color.getGreen() / 255F, color.getBlue() / 255F, (float) Math.random() / 3F, (float) -Math.random() / 25F, 2F);
+					Botania.proxy.wispFX(worldObj, xCoord + 0.3 + Math.random() * 0.5, yCoord + 0.6 + Math.random() * 0.25, zCoord + Math.random(), color.getRed() / 255F, color.getGreen() / 255F, color.getBlue() / 255F, (float) Math.random() / 3F, (float) -Math.random() / 25F, 2F);
 			}
 
 			if(sendPacket && ticks % 10 == 0) {

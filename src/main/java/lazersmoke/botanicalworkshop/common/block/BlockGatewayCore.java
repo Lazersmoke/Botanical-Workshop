@@ -1,11 +1,11 @@
 package lazersmoke.botanicalworkshop.common.block;
 
-import lazersmoke.botanicalworkshop.client.core.helper.IconHelper;
 import lazersmoke.botanicalworkshop.common.block.tile.TileGatewayCore;
 import lazersmoke.botanicalworkshop.common.item.block.ItemBlockGatewayCore;
 import lazersmoke.botanicalworkshop.common.lexicon.LexiconData;
 import lazersmoke.botanicalworkshop.common.lib.LibBlockNames;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -19,10 +19,11 @@ import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.wand.IWandHUD;
 import vazkii.botania.api.wand.IWandable;
+import vazkii.botania.client.core.helper.IconHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 //This class is all Lazersmoke
-public class BlockGatewayCore extends BlockModContainer implements IWandable, IWandHUD, ILexiconable{
+public class BlockGatewayCore extends BlockContainer implements IWandable, IWandHUD, ILexiconable{
 	
 	IIcon iconOff, iconOn;
 	
@@ -39,11 +40,6 @@ public class BlockGatewayCore extends BlockModContainer implements IWandable, IW
 	public Block setBlockName(String name){
 		GameRegistry.registerBlock(this, ItemBlockGatewayCore.class, name);
 		return super.setBlockName(name);
-	}
-	
-	@Override
-	protected boolean shouldRegisterInNameSet() {
-		return false;
 	}
 	
 	@Override

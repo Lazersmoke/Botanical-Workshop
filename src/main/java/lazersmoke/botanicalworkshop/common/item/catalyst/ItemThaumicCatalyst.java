@@ -16,7 +16,7 @@ import thaumcraft.api.aspects.AspectSourceHelper;
 public class ItemThaumicCatalyst extends ItemModCatalyst{
 	
 	public ItemThaumicCatalyst(){
-		super();
+		super(LibItemNames.THAUMIC_CATALYST);
 		setUnlocalizedName(LibItemNames.THAUMIC_CATALYST);
 	}
 	

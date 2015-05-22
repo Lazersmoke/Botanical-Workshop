@@ -1,12 +1,15 @@
-package lazersmoke.botanicalworkshop.api.subtile.signature;
+package lazersmoke.botanicalworkshop.common.block.subtile;
 
-import lazersmoke.botanicalworkshop.api.BotanicalWorkshopAPI;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import lazersmoke.botanicalworkshop.client.lib.LibResources;
+import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.subtile.signature.SubTileSignature;
+import vazkii.botania.common.block.BlockSpecialFlower;
 
-public class BotanicalWorkshopSignature extends SubTileSignature{
+public class BotanicalWorkshopSignature extends SubTileSignature {
+
 	final String name;
 
 	public BotanicalWorkshopSignature(String name) {
@@ -15,12 +18,13 @@ public class BotanicalWorkshopSignature extends SubTileSignature{
 
 	@Override
 	public void registerIcons(IIconRegister register) {
-		BotanicalWorkshopAPI.internalHandler.registerBasicSignatureIcons(name, register);
+		IIcon normal = register.registerIcon(LibResources.PREFIX_SUBTILE + name.replaceAll("tile\\.", "").replaceAll("subtile", ""));
+		BlockSpecialFlower.icons.put(name, normal);
 	}
 
 	@Override
 	public IIcon getIconForStack(ItemStack stack) {
-		return BotanicalWorkshopAPI.internalHandler.getSubTileIconForName(name);
+		return BotaniaAPI.internalHandler.getSubTileIconForName(name);
 	}
 
 	@Override
@@ -38,6 +42,6 @@ public class BotanicalWorkshopSignature extends SubTileSignature{
 	}
 
 	private String unlocalizedName(String end) {
-		return "tile.botania:" + SubTileSignature.SPECIAL_FLOWER_PREFIX + name + end;
+		return "tile.botanicalworkshop:" + SubTileSignature.SPECIAL_FLOWER_PREFIX + name + end;
 	}
 }

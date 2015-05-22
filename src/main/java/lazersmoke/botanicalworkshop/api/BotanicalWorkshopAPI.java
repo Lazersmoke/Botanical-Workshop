@@ -7,24 +7,12 @@ import java.util.Set;
 
 import lazersmoke.botanicalworkshop.api.recipe.RecipeGateway;
 import net.minecraft.item.ItemStack;
-import vazkii.botania.api.internal.DummyMethodHandler;
-import vazkii.botania.api.internal.IInternalMethodHandler;
-import vazkii.botania.api.lexicon.LexiconCategory;
 
 public class BotanicalWorkshopAPI{
 
 	public static List<RecipeGateway> gatewayRecipes = new ArrayList<RecipeGateway>();
 	public static Set<String> subtilesForCreativeMenu = new LinkedHashSet<String>();
-	
-	public static LexiconCategory categoryWorkshop;	
-	public static LexiconCategory categoryThaumic;
-	
-	/**
-	 * The internal method handler in use. Do not overwrite.
-	 * @see IInternalMethodHandler
-	 */
-	public static IInternalMethodHandler internalHandler = new DummyMethodHandler();
-	
+		
 	/**
 	 * Registers a Gateway recipe (throw some items in a Gateway).
 	 * @param output The ItemStack to return.
@@ -36,14 +24,4 @@ public class BotanicalWorkshopAPI{
 		gatewayRecipes.add(recipe);
 		return recipe;
 	}
-	
-	/**
-	 * Adds the key for a SubTileEntity into the creative menu. This goes into the
-	 * subtilesForCreativeMenu Set. This does not need to be called for mini flowers,
-	 * those will just use the mini flower map to add themselves next to the source.
-	 */
-	public static void addSubTileToCreativeMenu(String key) {
-		subtilesForCreativeMenu.add(key);
-	}
-	
 }

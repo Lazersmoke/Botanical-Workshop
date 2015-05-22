@@ -3,7 +3,6 @@ package lazersmoke.botanicalworkshop.common.item;
 import java.util.List;
 
 import lazersmoke.botanicalworkshop.api.mana.IGatewayCatalyst;
-import lazersmoke.botanicalworkshop.client.core.helper.IconHelper;
 import lazersmoke.botanicalworkshop.common.item.catalyst.ItemCatalyst;
 import lazersmoke.botanicalworkshop.common.lib.LibItemNames;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -11,12 +10,13 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import vazkii.botania.client.core.helper.IconHelper;
 
 public class ItemBindingCrystal extends ItemCatalyst implements IGatewayCatalyst{
 	IIcon[] icons;
 	
 	ItemBindingCrystal(){
-		super();
+		super(LibItemNames.BINDING_CRYSTAL);
 		setHasSubtypes(true);
 		setUnlocalizedName(LibItemNames.BINDING_CRYSTAL);
 	}

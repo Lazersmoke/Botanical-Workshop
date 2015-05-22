@@ -1,11 +1,12 @@
 package lazersmoke.botanicalworkshop.common.block.tile;
 
 import cpw.mods.fml.common.FMLLog;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.IEssentiaTransport;
 
-public class TileThaumicCore extends TileMod implements IEssentiaTransport{
+public class TileThaumicCore extends TileEntity implements IEssentiaTransport{
 
 	private int essentiaCount = 0;
 	

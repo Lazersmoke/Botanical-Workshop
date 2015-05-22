@@ -2,23 +2,23 @@ package lazersmoke.botanicalworkshop.common.item;
 
 import java.util.List;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import lazersmoke.botanicalworkshop.common.lib.LibItemNames;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraftforge.common.MinecraftForge;
-import lazersmoke.botanicalworkshop.client.core.helper.IconHelper;
-import lazersmoke.botanicalworkshop.common.lib.LibItemNames;
+import vazkii.botania.client.core.helper.IconHelper;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemThaumicResource extends ItemMod{
 	final int types = 1;
 	IIcon[] icons;
 
 	public ItemThaumicResource() {
-		super();
+		super(LibItemNames.THAUMIC_RESOURCE);
 		setUnlocalizedName(LibItemNames.THAUMIC_RESOURCE);
 		setHasSubtypes(true);
 		MinecraftForge.EVENT_BUS.register(this);

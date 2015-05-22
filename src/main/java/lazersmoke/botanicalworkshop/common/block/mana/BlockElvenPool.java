@@ -8,10 +8,10 @@ import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.wand.IWandHUD;
 import vazkii.botania.api.wand.IWandable;
-import lazersmoke.botanicalworkshop.common.block.BlockModContainer;
 import lazersmoke.botanicalworkshop.common.lexicon.LexiconData;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -30,7 +30,7 @@ import lazersmoke.botanicalworkshop.common.block.tile.mana.TileElvenPool;
 import lazersmoke.botanicalworkshop.common.item.block.ItemBlockElvenPool;
 import lazersmoke.botanicalworkshop.common.lib.LibBlockNames;
 
-public class BlockElvenPool extends BlockModContainer implements IWandHUD, IWandable, ILexiconable{
+public class BlockElvenPool extends BlockContainer implements IWandHUD, IWandable, ILexiconable{
 
 	boolean lastFragile = false;
 	
@@ -46,11 +46,6 @@ public class BlockElvenPool extends BlockModContainer implements IWandHUD, IWand
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
 		return new TileElvenPool();
-	}
-	
-	@Override
-	protected boolean shouldRegisterInNameSet() {
-		return false;
 	}
 	
 	@Override

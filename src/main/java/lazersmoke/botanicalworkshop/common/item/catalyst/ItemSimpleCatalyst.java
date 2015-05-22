@@ -9,7 +9,7 @@ import lazersmoke.botanicalworkshop.common.lib.LibItemNames;
 
 public class ItemSimpleCatalyst extends ItemCatalyst{
 	public ItemSimpleCatalyst(){
-		super();
+		super(LibItemNames.SIMPLE_CATALYST);
 		setUnlocalizedName(LibItemNames.SIMPLE_CATALYST);
 	}
 

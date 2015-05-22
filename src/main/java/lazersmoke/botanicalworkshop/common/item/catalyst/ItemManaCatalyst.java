@@ -18,7 +18,7 @@ public class ItemManaCatalyst extends ItemModCatalyst{
 	static List<TileGatewayCore> gatewayList = new CopyOnWriteArrayList<TileGatewayCore>();
 	
 	public ItemManaCatalyst(){
-		super();
+		super(LibItemNames.MANA_CATALYST);
 		setUnlocalizedName(LibItemNames.MANA_CATALYST);
 	}
 	
