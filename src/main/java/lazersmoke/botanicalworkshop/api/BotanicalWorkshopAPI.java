@@ -5,9 +5,11 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-import vazkii.botania.api.lexicon.LexiconCategory;
 import lazersmoke.botanicalworkshop.api.recipe.RecipeGateway;
 import net.minecraft.item.ItemStack;
+import vazkii.botania.api.internal.DummyMethodHandler;
+import vazkii.botania.api.internal.IInternalMethodHandler;
+import vazkii.botania.api.lexicon.LexiconCategory;
 
 public class BotanicalWorkshopAPI{
 
@@ -16,6 +18,12 @@ public class BotanicalWorkshopAPI{
 	
 	public static LexiconCategory categoryWorkshop;	
 	public static LexiconCategory categoryThaumic;
+	
+	/**
+	 * The internal method handler in use. Do not overwrite.
+	 * @see IInternalMethodHandler
+	 */
+	public static IInternalMethodHandler internalHandler = new DummyMethodHandler();
 	
 	/**
 	 * Registers a Gateway recipe (throw some items in a Gateway).

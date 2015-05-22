@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import lazersmoke.botanicalworkshop.client.core.helper.IconHelper;
+import lazersmoke.botanicalworkshop.common.BotanicalWorkshop;
 import lazersmoke.botanicalworkshop.common.core.BotanicalWorkshopCreativeTab;
 import lazersmoke.botanicalworkshop.common.item.block.ItemBlockWithMetadataAndName;
 import lazersmoke.botanicalworkshop.common.lib.LibConfigs;
@@ -72,8 +73,9 @@ public class BlockModFlower extends BlockFlower implements ILexiconable, IPickup
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister par1IconRegister) {
-		icons = new IIcon[17];
-		iconsAlt = new IIcon[17];
+		BotanicalWorkshop.logger.info("Registering block icons for Mod Flowers");
+		icons = new IIcon[1];
+		iconsAlt = new IIcon[1];
 
 		for(int i = 0; i < icons.length; i++) {
 			icons[i] = IconHelper.forBlock(par1IconRegister, this, i);

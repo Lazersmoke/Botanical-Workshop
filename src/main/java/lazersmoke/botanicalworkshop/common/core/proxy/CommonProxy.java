@@ -1,9 +1,11 @@
 package lazersmoke.botanicalworkshop.common.core.proxy;
 
+import lazersmoke.botanicalworkshop.api.BotanicalWorkshopAPI;
 import lazersmoke.botanicalworkshop.common.BotanicalWorkshop;
 import lazersmoke.botanicalworkshop.common.block.ModBlocks;
 import lazersmoke.botanicalworkshop.common.core.handler.CommonTickHandler;
 import lazersmoke.botanicalworkshop.common.core.handler.ConfigHandler;
+import lazersmoke.botanicalworkshop.common.core.handler.InternalMethodHandler;
 import lazersmoke.botanicalworkshop.common.crafting.ModCraftingRecipes;
 import lazersmoke.botanicalworkshop.common.crafting.ModElvenTradeRecipes;
 import lazersmoke.botanicalworkshop.common.crafting.ModGatewayRecipes;
@@ -20,6 +22,8 @@ import cpw.mods.fml.common.event.FMLServerStoppingEvent;
 
 public class CommonProxy {
 	public void preInit(FMLPreInitializationEvent event){
+		BotanicalWorkshopAPI.internalHandler = new InternalMethodHandler();
+		
 		ConfigHandler.loadConfig(event.getSuggestedConfigurationFile());
 		
 		ModBlocks.init();
