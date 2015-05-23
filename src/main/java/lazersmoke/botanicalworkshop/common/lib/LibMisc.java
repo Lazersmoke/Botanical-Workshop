@@ -17,7 +17,6 @@ public final class LibMisc {
 	// Proxy Constants
 	public static final String PROXY_COMMON = "lazersmoke.botanicalworkshop.common.core.proxy.CommonProxy";
 	public static final String PROXY_CLIENT = "lazersmoke.botanicalworkshop.client.core.proxy.ClientProxy";
-	public static final String GUI_FACTORY = "lazersmoke.botanicalworkshop.client.core.proxy.GuiFactory";
 	
 	//Misc Constants
 	public static final ForgeDirection[] CARDINAL_DIRECTIONS = new ForgeDirection[] {

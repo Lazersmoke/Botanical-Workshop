@@ -4,27 +4,29 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import lazersmoke.botanicalworkshop.common.BotanicalWorkshop;
 import lazersmoke.botanicalworkshop.common.lexicon.LexiconData;
 import lazersmoke.botanicalworkshop.common.lib.LibMisc;
+import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.IFluidBlock;
-import net.minecraftforge.fluids.IFluidTank;
+import vazkii.botania.api.item.IPetalApothecary;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.subtile.RadiusDescriptor;
 import vazkii.botania.api.subtile.SubTileFunctional;
 
 public class SubTileExAquainas extends SubTileFunctional{
 	private static final int COST = 35;
+	private static final int maxMana = 1000;
 	private static final int[][] OFFSETS = { { 0, 1 }, { 0, -1 }, { 1, 0 }, { -1, 0 }, { -1, 1 }, { -1, -1 }, { 1, 1 }, { 1, -1 } };
 
 	@Override
 	public void onUpdate(){
 		super.onUpdate();
+		Block blockAbove = supertile.getWorldObj().getBlock(supertile.xCoord, supertile.yCoord + 1, supertile.zCoord);
 		TileEntity tileAbove = supertile.getWorldObj().getTileEntity(supertile.xCoord, supertile.yCoord + 1, supertile.zCoord);
-		if(tileAbove instanceof IFluidTank && mana >= COST && !supertile.getWorldObj().isRemote) {
+		if((tileAbove instanceof IPetalApothecary && ((IPetalApothecary) tileAbove).hasWater() == false) && mana >= COST && !supertile.getWorldObj().isRemote && ticksExisted % 10 == 1 && redstoneSignal == 0) {
 			List<int[]> offsets = Arrays.asList(OFFSETS);
 			Collections.shuffle(offsets);
 
@@ -33,21 +35,21 @@ public class SubTileExAquainas extends SubTileFunctional{
 						supertile.xCoord + offsetArray[0],
 						supertile.zCoord + offsetArray[1]
 				};
-				if(
-					supertile.getWorldObj().getBlock(positions[0], supertile.yCoord, positions[1]) instanceof IFluidBlock && //Check if Fluid
-					(((IFluidBlock) supertile.getWorldObj().getBlock(positions[0], supertile.yCoord, positions[1])).getFluid().getID() == ((IFluidTank) tileAbove).getFluid().fluidID  || //Check if Fluid Matches...
-					((IFluidTank) tileAbove).getFluid().amount == 0) && //Or doesn't exist
-					supertile.getWorldObj().getBlockMetadata(positions[0], supertile.yCoord, positions[1]) == 0) {	//And still fluid
-					
-					((IFluidTank) tileAbove).fill(new FluidStack(((IFluidBlock) supertile.getWorldObj().getBlock(positions[0], supertile.yCoord, positions[1])).getFluid(), 1000), true);
+				Block search = Blocks.water;
+				if(supertile.getWorldObj().getBlock(positions[0], supertile.yCoord, positions[1]) == search && supertile.getWorldObj().getBlockMetadata(positions[0], supertile.yCoord, positions[1]) == 0) {
 					int waterAround = 0;
 					for(ForgeDirection dir : LibMisc.CARDINAL_DIRECTIONS)
-						if(supertile.getWorldObj().getBlock(positions[0] + dir.offsetX, supertile.yCoord, positions[1] + dir.offsetZ) == Blocks.water)
+						if(supertile.getWorldObj().getBlock(positions[0] + dir.offsetX, supertile.yCoord, positions[1] + dir.offsetZ) == search)
 							waterAround++;
 
 					if(waterAround < 2)
 						supertile.getWorldObj().setBlockToAir(positions[0], supertile.yCoord, positions[1]);
+					//Add Water
+					if(((IPetalApothecary) tileAbove).hasWater() == false)
+						((IPetalApothecary) tileAbove).setWater(true);
+					//End Add Water
 					sync();
+					playSound();
 					break;
 				}
 			}
@@ -57,6 +59,10 @@ public class SubTileExAquainas extends SubTileFunctional{
 	@Override
 	public boolean acceptsRedstone(){
 		return true;
+	}
+	
+	public void playSound() {
+		supertile.getWorldObj().playSoundEffect(supertile.xCoord, supertile.yCoord, supertile.zCoord, "random.drink", 0.02F, 0.5F + (float) Math.random() * 0.5F);
 	}
 	
 	@Override
@@ -71,7 +77,7 @@ public class SubTileExAquainas extends SubTileFunctional{
 
 	@Override
 	public int getMaxMana() {
-		return COST;
+		return maxMana;
 	}
 	
 	@Override

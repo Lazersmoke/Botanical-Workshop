@@ -1,5 +1,7 @@
 package lazersmoke.botanicalworkshop.common.crafting;
 
+import net.minecraft.item.ItemStack;
+import lazersmoke.botanicalworkshop.common.item.ModItems;
 import lazersmoke.botanicalworkshop.common.lib.LibBlockNames;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.recipe.RecipePetals;
@@ -14,10 +16,12 @@ public final class ModPetalRecipes {
 	public static final String redstoneRoot = LibOreDict.REDSTONE_ROOT;
 	public static final String pixieDust = LibOreDict.PIXIE_DUST;
 	
-	public static RecipePetals exAquainasRecipe;
+	public static RecipePetals defaultRecipe = new RecipePetals(new ItemStack(ModItems.botanicalResource, 1, 1), new ItemStack(ModItems.botanicalResource, 1, 1));
+	public static RecipePetals exAquainasRecipe = defaultRecipe;
+	public static RecipePetals logicalSoundRecipe = defaultRecipe;
 	
 	public static void init() {
 		exAquainasRecipe = BotaniaAPI.registerPetalRecipe(ItemBlockSpecialFlower.ofType(LibBlockNames.SUBTILE_EXAQUAINAS), blue, blueMana, yellow, orange, orangeMana);
-	
+		logicalSoundRecipe = BotaniaAPI.registerPetalRecipe(ItemBlockSpecialFlower.ofType(LibBlockNames.SUBTILE_LOGICALSOUND), blue, black, green, yellowMana, orange, orangeMana);
 	}
 }

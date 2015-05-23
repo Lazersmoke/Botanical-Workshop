@@ -1,16 +1,22 @@
 package lazersmoke.botanicalworkshop.common.lexicon;
 
 import vazkii.botania.api.BotaniaAPI;
+import vazkii.botania.api.lexicon.IAddonEntry;
 import vazkii.botania.api.lexicon.ITwoNamedPage;
+import vazkii.botania.api.lexicon.KnowledgeType;
 import vazkii.botania.api.lexicon.LexiconCategory;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.lexicon.LexiconPage;
 
-public class WLexiconEntry extends LexiconEntry {
+public class WLexiconEntry extends LexiconEntry implements IAddonEntry{
+
+	public KnowledgeType type;
 
 	public WLexiconEntry(String unlocalizedName, LexiconCategory category) {
 		super(unlocalizedName, category);
 		BotaniaAPI.addEntry(this, category);
+		if(type != null)
+			setKnowledgeType(LexiconData.workshopKnowledge);
 	}
 
 	@Override
@@ -38,6 +44,17 @@ public class WLexiconEntry extends LexiconEntry {
 	@Override
 	public String getWebLink() {
 		return null;//TODO Github Wiki!
+	}
+	
+	@Override
+	public LexiconEntry setKnowledgeType(KnowledgeType type) {
+		this.type = type;
+		return this;
+	}
+	
+	@Override
+	public String getSubtitle() {
+		return "botanicalworkshop.gui.lexicon.subtitle";
 	}
 
 }

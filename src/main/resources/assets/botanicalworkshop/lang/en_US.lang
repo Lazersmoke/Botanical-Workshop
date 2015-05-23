@@ -4,8 +4,7 @@ itemGroup.BotanicalWorkshop=BotanicalWorkshop
 #UNLOC
 botanicalworkshopmisc.noloc=botanicalworkshopmisc.noloc
 
-botanicalworkshopmisc.elvenPool0=Line1
-botanicalworkshopmisc.elvenPool1=Line2
+botanicalworkshopmisc.soundLogicChatSpam=QUACK
 
 #CATALYSTS
 item.botanicalworkshop:simpleCatalyst.name=Simple Catalyst
@@ -18,13 +17,14 @@ botanicalworkshopmisc.emptyCatalyst0=Adding this catalyst to a
 botanicalworkshopmisc.emptyCatalyst1=Gateway will force it to
 botanicalworkshopmisc.emptyCatalyst2=drop all of its items
 
-item.botanicalworkshop:manaCatalyst.name=Mana Catalyst
-botanicalworkshopmisc.manaCatalyst0=Adding this catalyst to a
-botanicalworkshopmisc.manaCatalyst1=Gateway will allow it to
-botanicalworkshopmisc.manaCatalyst2=share mana from other Gateways
-botanicalworkshopmisc.manaCatalyst3=containing this catalyst
+item.botanicalworkshop:manaTransferCatalyst.name=Mana Catalyst
+botanicalworkshopmisc.manaTransferCatalyst0=Adding this catalyst to a
+botanicalworkshopmisc.manaTransferCatalyst1=Gateway will allow it to
+botanicalworkshopmisc.manaTransferCatalyst2=share mana from other Gateways
+botanicalworkshopmisc.manaTransferCatalyst3=containing this catalyst
 
 item.botanicalworkshop:thaumicCatalyst.name=Thaumic Catalyst
+item.botanicalworkshop:manaEssentiaCrystal.name=Mana Essentia Crystal
 
 #BINDING CRYSTALS
 item.botanicalworkshop:bindingCrystal0.name=Mana Binding Crystal
@@ -33,42 +33,98 @@ item.botanicalworkshop:bindingCrystal2.name=Thaumic Binding Crystal
 item.botanicalworkshop:bindingCrystal3.name=Mechanical Binding Crystal
 
 #BOTANICAL RESOURCES
-item.botanicalworkshop:botanicalResource0.name=Elven Crystal
+item.botanicalworkshop:elvenCrystal.name=Elven Crystal
+item.botanicalworkshop:recipeDisabled.name=Recipe Disabled!
 
 #THAUMIC RESOURCES
 item.botanicalworkshop:thaumicResource0.name=Mana Essentia Crystal
 
 #TILE ENTITIES
 tile.botanicalworkshop:elvenPool0.name=Elven Mana Pool
+botanicalworkshopmisc.elvenPool0=Line1
+botanicalworkshopmisc.elvenPool1=Line2
+
 tile.botanicalworkshop:gatewayCore0.name=Gateway Core
+botanicalworkshopmisc.gatewayCore0=This core has been restored
+botanicalworkshopmisc.gatewayCore1=by the elves and is ready
+botanicalworkshopmisc.gatewayCore2=to be inserted into a gateway!
+
+tile.botanicalworkshop:weakGatewayCore0.name=Weak Gateway Core
+botanicalworkshopmisc.weakGatewayCore0=This core has been weakened
+botanicalworkshopmisc.weakGatewayCore1=by exposure to the world.
+botanicalworkshopmisc.weakGatewayCore2=Toss it in an Alfheim Portal
+botanicalworkshopmisc.weakGatewayCore3=to have the elves revive it.
+
 tile.botanicalworkshop:gatewayCore1.name=Active Gateway Core
+#Can't have lore on placed block
+
+tile.botanicalworkshop:thaumicCore0.name=Thaumic Core
+botanicalworkshopmisc.thaumicCore0=The thuamic core is
+botanicalworkshopmisc.thaumicCore1=ready for insertion into
+botanicalworkshopmisc.thaumicCore2=a gateway structure!
+
 tile.botanicalworkshop:flower.exAquainas.name=Ex Aquainas
+tile.botanicalworkshop:flower.logicalSound.name=Logical Sound
 
 #LEXICON
-botanicalworkshop.category.botanicalWorkshop=Botanical Workshop
+botanicalworkshop.gui.lexicon.subtitle=This entry is added by Lazersmoke's Botanical Workshop Addon.
+#BOTANICAL WORKSHOP
+botanicalworkshop.category.workshop=Botanical Workshop
 
 botanicalworkshop.entry.basicCatalyst=Basic Catalysts
-botanicalworkshop.page.basicCatalyst0=On its own, the Elven Gateway is not very useful, but if you throw a catalyst inside of one, it will augment its abilites beyond just looking fancy and allow you to enlist the elves to craft various blocks and items that could not be sent through the original Alfheim Portal.
-botanicalworkshop.page.basicCatalyst1=
-botanicalworkshop.page.basicCatalyst2=
+botanicalworkshop.page.basicCatalyst0=On its own, the &1Gateway&0 is not very useful, but if you throw a &4catalyst&0 inside of one, it will augment its abilites beyond just looking fancy and allow you to enlist the elves to craft various blocks and items that could not be sent through the original &2Alfheim Portal&0. Some &4catalysts&0 go beyond even that, and add entirely new functionality to the &1Gateway&0.
+botanicalworkshop.page.basicCatalyst1=The first catalyst you will make is the &1Simple Catalyst&0. It will allow you to create &1Binding Crystals&0, which will serve as more advanced catalysts for more advanced recipes. It is simple in nature, and so can be made on a normal crafting table.
+botanicalworkshop.page.basicCatalyst2=Divide by Pixie Dust
+botanicalworkshop.page.basicCatalyst3=Oftentimes you will find yourself accidentally depositing items in a &1Gateway&0 that you did not mean to deposit. For that reason, you have created the &1Empty Catalyst&0, which, when thrown into a &1Gateway&0, will cause it to drop all of the items it contains on top of the &1Gateway&0 Core.
+botanicalworkshop.page.basicCatalyst4=Accidents happen!
+botanicalworkshop.page.basicCatalyst5=&oNOTE: Gateway Catalysts, Binding Crystals, or other catalyst-like objects will not despawn when tossed on the floor. Therefore, it is safe to leave them in your Gateway without fear of loosing them.&r
 
 botanicalworkshop.entry.bindingCrystal=Binding Crystals
-botanicalworkshop.page.bindingCrystal0=Created using the Elven Gateway, Binding Crystals allow you to craft more complex and specialized Catalysts and other items than the simple catalyst ever could. There are four varietes that you have discovered, and each is attuned to a different type of magic or machinery.
-botanicalworkshop.page.bindingCrystal1=This will help craft mana-based items.
-botanicalworkshop.page.bindingCrystal2=This will help craft alchemo-blood-based items.
-botanicalworkshop.page.bindingCrystal3=This will help craft thaumaturgy-based items.
-botanicalworkshop.page.bindingCrystal4=This will help craft machine-based items.
+botanicalworkshop.page.bindingCrystal0=Created using the &1Gateway&0, &1Binding Crystals&0 allow you to craft more complex and specialized &4catalysts&0 and other items than the &1Simple Catalyst&0 ever could. There are four varietes that you have discovered, and each is attuned to a different type of magic or machinery.
+botanicalworkshop.page.bindingCrystal1=This will help craft &lmana&r items.
+botanicalworkshop.page.bindingCrystal2=This will help craft &lalchemo-bloody&r items.
+botanicalworkshop.page.bindingCrystal3=This will help craft &lthaumaturgical&r items.
+botanicalworkshop.page.bindingCrystal4=This will help craft &lmechanical&r items.
 
 botanicalworkshop.entry.elvenPool=Elven Mana Pool
-botanicalworkshop.page.elvenPool0=This advanced Mana Pool has been delicately crafted by elves (or shoddily assembled by you) so that it can channel elven energies much better than a normal pool. Although functionally identical to normal pools, you are sure you will find a use for the green basins.
+botanicalworkshop.page.elvenPool0=This advanced &1Mana Pool&0 has been delicately crafted by &2elves&0 (or shoddily assembled by you) so that it can channel &2elven&0 energies much better than a normal pool. Although functionally identical to normal pools, you are sure you will find a use for the green basins.
 botanicalworkshop.page.elvenPool1=Shoddy assembly manual included
 botanicalworkshop.page.elvenPool2=No returns, no refunds
 
-botanicalworkshop.entry.exAquainas=Ex Aquainas
-botanicalworkshop.page.exAquainas0=After finding yourself with a dire need to clean up some *cough* fluid, you invented the Ex Aquainas, a flower capable of extracting fluid around it, much like the Hydroangaes. Unlike the Hydoangaes, however, the Ex Aquainas keeps the liquid in its normal form and instead transfers it into a container above. The exact container specifications are unknown, but you suspect that they must use the Forge of the Gods to work.
-botanicalworkshop.page.exAquainas1=Error 0451 - Shades not included
-
 botanicalworkshop.entry.gatewayCore=Gateway
+botanicalworkshop.page.gatewayCore0=During your experimentation with the &2Alfheim Portal&0, you have discovered that is possible to build a type of "Super Portal", a &1Gateway&0 if you will, to facilitate more complicated transactions with the &2elves&0. It is a complicated and many-stepped procedure, but you think you can handle it.
+botanicalworkshop.page.gatewayCore1=TODO
+botanicalworkshop.page.gatewayCore2=TODO
+botanicalworkshop.page.gatewayCore3=First, build the frame out of &412&0 &1Livingwood&0.
+botanicalworkshop.page.gatewayCore4=Next, garnish with &44&0 &1Livingwood Stairs&0 and &42&0 &1Glimmering Livingwood&0.
+botanicalworkshop.page.gatewayCore5=Add &416&0 &2Chisled Elven Quartz&0 blocks to conduct the energy.
+botanicalworkshop.page.gatewayCore6=Now, repeat the previous steps, but rotated &490&0 around the center.
+botanicalworkshop.page.gatewayCore7=Finally, add the &1Gateway Core&0 to the hole in the base of the &1Gateway&0, and &2Elven Mana Pools&0 in the positions shown.
+botanicalworkshop.page.gatewayCore8=While the finished &1Gateway&0 looks pretty cool, it is not functional yet. By adding &4Mana&0 to the pools (sparks recommended) and right-clicking the &1Gateway Core&0 with your &1Wand of the Forest&0, you will activate the &1Gateway&0. Although this portal isn't stable enough to bring you into contact with the &2elves&0 directly, you can feel the &1Gateway&0 drawing you in.
+botanicalworkshop.page.gatewayCore9=Following some experimentation, you have found that you can lend the &2elves&0 several items at a time so that they can craft something for you by dropping them into the main chamber of the &1Gateway&0. Part of the crafting process, however, utilizes the &1Gateway&0 itself, so you will need to "tune" it to the correct recipe. You can do this by tossing an item into the &1Gateway&0 called a &1Catalyst&0. 
+botanicalworkshop.page.gatewayCore10=&1Catalysts&0 will not be sent to the &2elves&0; instead, they will stay in the &1Gateway&0 until all of the needed ingredients to create an item they are capable of crafting are added to the &1Gateway&0's internal inventory. You record these &4transmutation&0 recipes as follows: inputs along the top, &4catalyst&0 in the center, and the output on the right.
 
-botanicalworkshop.category.botanicalWorkshopThaumic=Thaumcraftery
+botanicalworkshop.entry.logicalSound=Logical Sound
+botanicalworkshop.page.logicalSound0=This flower is a tribute to everyone on irc (irc.esper.net:vazkii) for their contuinual help, support, and &5QUACK&0. Special thanks to &l&1SoundLogic&r for helping with technical problems and inspiring me to continue development, &l&1MyDeloreanWontStart&r for &5^O_O^ QUACK QUACK QUACK OR RIOT ^O_O^&0, and to &1&lVazkii&r for making such an amazing base mod.
+botanicalworkshop.page.logicalSound1=&5QUACKQUACKQUACKQUACKQUACKQUACKQUACKQUACKQUACKQUACKQUACKQUACKQUACKQUACKQUACKQUACK&0
+
+#BOTANICAL THAUMATURGY
+botanicalworkshop.category.thaumic=Botanical Thaumaturgy
+
 botanicalworkshop.entry.thaumicCore=Thaumic Gateway Core
+botanicalworkshop.page.thaumicCore0=Sometimes a botanist will find themselves in need of the aid of a &5different&0 field of magic. In order to fulfill that need, you have created the &1Thaumic Gateway Core&0! When placed in the hole in the top of a &1Gateway&0 with a &5Thaumic Catalyst&0 in it, this core will extract &5Precantatio&0 essentia from nearby jars and other containers. The essentia will then be crystallized by mana and added to the &1Gateway&0's crafting inventory.
+botanicalworkshop.page.thaumicCore1=It Sucks!
+
+botanicalworkshop.entry.thaumicCatalyst=Thaumic Catalyst
+botanicalworkshop.page.thaumicCatalyst0=Used with the &1Thaumic Gateway Core&0. See that entry for more details.
+botanicalworkshop.page.thaumicCatalyst1=It sees you!
+
+#BOTANICAL SACRIFICE
+botanicalworkshop.category.blood=Botanical Sacrifice
+
+#BOTANICAL MECHANICS
+botanicalworkshop.category.mechanical=Botanical Mechanics
+
+botanicalworkshop.entry.exAquainas=Ex Aquainas
+botanicalworkshop.page.exAquainas0=After finding yourself with a dire need to clean up some &l*cough*&r fluid, you invented the &1Ex Aquainas&0, a flower capable of extracting fluid around it, much like the &1Hydroangaes&0. Unlike the &1Hydoangaes&0, however, the &1Ex Aquainas&0 keeps the liquid in its normal form and instead transfers it into a container above. The exact container specifications are unknown, but you suspect that they must implement the Forge of the Gods to work.
+botanicalworkshop.page.exAquainas1=Error 0451 - Shades not included

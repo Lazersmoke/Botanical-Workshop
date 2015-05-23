@@ -10,11 +10,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 
-public class ItemEmptyCatalyst extends ItemModCatalyst{
+public class ItemEmptyCatalyst extends ItemActiveCatalyst{
 	
 	public ItemEmptyCatalyst(){
 		super(LibItemNames.EMPTY_CATALYST);
-		setUnlocalizedName(LibItemNames.EMPTY_CATALYST);
 	}
 	
 	@Override

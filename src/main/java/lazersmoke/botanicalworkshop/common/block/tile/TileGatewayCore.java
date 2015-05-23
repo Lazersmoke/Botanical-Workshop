@@ -7,11 +7,12 @@ import java.util.UUID;
 import lazersmoke.botanicalworkshop.api.BotanicalWorkshopAPI;
 import lazersmoke.botanicalworkshop.api.mana.IGatewayCatalyst;
 import lazersmoke.botanicalworkshop.api.mana.IGatewayMod;
-import lazersmoke.botanicalworkshop.api.recipe.RecipeGateway;
+import lazersmoke.botanicalworkshop.api.recipe.RecipeGatewayTransmutation;
 import lazersmoke.botanicalworkshop.client.lib.LibResources;
-import lazersmoke.botanicalworkshop.common.BotanicalWorkshop;
 import lazersmoke.botanicalworkshop.common.block.ModBlocks;
 import lazersmoke.botanicalworkshop.common.block.tile.mana.TileElvenPool;
+import lazersmoke.botanicalworkshop.common.item.ModItems;
+import lazersmoke.botanicalworkshop.common.lexicon.LexiconData;
 import lazersmoke.botanicalworkshop.common.lib.LibConfigs;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -26,8 +27,10 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.StatCollector;
 
+import org.apache.commons.lang3.ArrayUtils;
 import org.lwjgl.opengl.GL11;
 
+import vazkii.botania.api.lexicon.ILexicon;
 import vazkii.botania.client.core.handler.HUDHandler;
 import vazkii.botania.common.Botania;
 
@@ -52,6 +55,7 @@ public class TileGatewayCore extends TileEntity{
 	private static final int OPENING_MANA_COST = LibConfigs.GATEWAY_OPENING_MANA_COST;
 	private static final int COST_PER_TICK = LibConfigs.GATEWAY_TICK_MANA_COST;
 	private boolean hasUnloadedParts = false;
+	private boolean additionalPools = false;
 	private int ticksOpen = 0;
 	private boolean closeNow = false;
 	private static final int[][] LIVINGWOOD_POSITIONS = {
@@ -87,6 +91,16 @@ public class TileGatewayCore extends TileEntity{
 	private static final int[][] ELVEN_POOL_POSITIONS = {
 		{ -1, 2, -2}, { -1, 2, 2}, { 1, 2, -2}, { 1, 2, 2}, { -2, 2, -1}, { -2, 2, 1}, { 2, 2, -1}, { 2, 2, 1}
 	};
+	private static final int[][] ADDITIONAL_ELVEN_POOL_POSITIONS = {
+		{ 3, 3, 1}, { 3, 3, -1}, { -3, 3, 1}, { -3, 3, -1}, 
+		{ 1, 3, 3}, { -1, 3, 3}, { 1, 3, -3}, { -1, 3, -3},
+		{ 2, 3, 2}, { 2, 3, -2}, { -2, 3, 2}, { -2, 3, -2},		
+	};
+	private static final int[][] ADDITIONAL_CHISLED_ELVEN_QUARTZ_POSITIONS = {
+		{ 3, 2, 1}, { 3, 2, -1}, { -3, 2, 1}, { -3, 2, -1}, 
+		{ 1, 2, 3}, { -1, 2, 3}, { 1, 2, -3}, { -1, 2, -3},
+		{ 2, 2, 2}, { 2, 2, -2}, { -2, 2, 2}, { -2, 2, -2},		
+	};
 	@Override
 	public void updateEntity(){
 		
@@ -110,7 +124,7 @@ public class TileGatewayCore extends TileEntity{
 			
 			List<EntityPlayer> players = worldObj.getEntitiesWithinAABB(EntityPlayer.class, aabb);
 			for(EntityPlayer player : players)
-				player.addPotionEffect(new PotionEffect(Potion.jump.id, 20, 1));//Allows player to jump out of pit
+				player.addPotionEffect(new PotionEffect(Potion.jump.id, 1, 5));//Allows player to jump out of pit
 			
 			List<EntityItem> items = worldObj.getEntitiesWithinAABB(EntityItem.class, aabb);
 			for(EntityItem item : items){
@@ -212,6 +226,8 @@ public class TileGatewayCore extends TileEntity{
 			return false;
 		if(!checkPositions(AIR_POSITIONS, Blocks.air, -1))
 			return false;
+		if(checkPositions(ADDITIONAL_CHISLED_ELVEN_QUARTZ_POSITIONS, vazkii.botania.common.block.ModFluffBlocks.elfQuartz, 1) && checkPositions(ADDITIONAL_ELVEN_POOL_POSITIONS, ModBlocks.elvenPool, -1))
+			additionalPools = true;
 		activatePortal();
 		return true;
 	}
@@ -237,7 +253,7 @@ public class TileGatewayCore extends TileEntity{
 		List<EntityItem> items = worldObj.getEntitiesWithinAABB(EntityItem.class, getPortalAABB());
 		for(EntityItem item : items)
 			if(item.getEntityItem().getItem() instanceof IGatewayCatalyst){
-				for(RecipeGateway recipe : BotanicalWorkshopAPI.gatewayRecipes)
+				for(RecipeGatewayTransmutation recipe : BotanicalWorkshopAPI.gatewayRecipes)
 					if(recipe.getCatalyst().isItemEqual(item.getEntityItem()))
 						if(recipe.matches(currentInventory, false) && !worldObj.isRemote){
 							recipe.matches(currentInventory, true);						
@@ -247,6 +263,16 @@ public class TileGatewayCore extends TileEntity{
 				if(item.getEntityItem().getItem() instanceof IGatewayMod && !(item.getEntityData().getBoolean(TAG_PORTAL_KEEP))){
 					((IGatewayMod) item.getEntityItem().getItem()).onGatewayUpdate(this, item);
 				}
+				
+				for(ItemStack possibleLexicon : currentInventory)
+					if(possibleLexicon.getItem() instanceof ILexicon){
+						if(item.getEntityItem() == new ItemStack(ModItems.bindingCrystal, 1, 1))
+							((ILexicon) possibleLexicon.getItem()).unlockKnowledge(possibleLexicon, LexiconData.thaumicKnowledge);
+						if(item.getEntityItem() == new ItemStack(ModItems.bindingCrystal, 1, 2))
+							((ILexicon) possibleLexicon.getItem()).unlockKnowledge(possibleLexicon, LexiconData.bloodKnowledge);
+						if(item.getEntityItem() == new ItemStack(ModItems.bindingCrystal, 1, 3))
+							((ILexicon) possibleLexicon.getItem()).unlockKnowledge(possibleLexicon, LexiconData.mechanicalKnowledge);
+					}
 			}
 		return false;
 
@@ -254,8 +280,9 @@ public class TileGatewayCore extends TileEntity{
 	
 	public boolean addMana(int amount){
 		int totalMana = getCurrentMana();
+		int[][] positions = additionalPools ? ArrayUtils.addAll(ELVEN_POOL_POSITIONS, ADDITIONAL_ELVEN_POOL_POSITIONS) : ELVEN_POOL_POSITIONS;
 		if(-amount < (totalMana - 64)){
-			for(int[] pos : ELVEN_POOL_POSITIONS) {
+			for(int[] pos : positions) {
 				TileEntity tile = worldObj.getTileEntity(xCoord + pos[0], yCoord + pos[1], zCoord + pos[2]);
 				if(tile instanceof TileElvenPool) {
 					TileElvenPool pool = (TileElvenPool) tile;
@@ -272,7 +299,8 @@ public class TileGatewayCore extends TileEntity{
 	
 	public int getCurrentMana(){
 		int totalMana = 0;
-		for(int[] pos : ELVEN_POOL_POSITIONS) {
+		int[][] positions = additionalPools ? ArrayUtils.addAll(ELVEN_POOL_POSITIONS, ADDITIONAL_ELVEN_POOL_POSITIONS) : ELVEN_POOL_POSITIONS;
+		for(int[] pos : positions) {
 			TileEntity tile = worldObj.getTileEntity(xCoord + pos[0], yCoord + pos[1], zCoord + pos[2]);
 			if(tile instanceof TileElvenPool) {
 				TileElvenPool pool = (TileElvenPool) tile;
@@ -285,7 +313,7 @@ public class TileGatewayCore extends TileEntity{
 	public void renderHUD(Minecraft mc, ScaledResolution res) {
 		String name = StatCollector.translateToLocal(new ItemStack(ModBlocks.gatewayCore, 1, getBlockMetadata()).getUnlocalizedName().replaceAll("tile.", "tile." + LibResources.PREFIX_MOD) + ".name");
 		int color = 0xB6F2B7; //Offical color of the elves
-		HUDHandler.drawSimpleManaHUD(color, getCurrentMana(), TileElvenPool.MAX_MANA * 8, name, res);
+		HUDHandler.drawSimpleManaHUD(color, getCurrentMana(), TileElvenPool.MAX_MANA * (additionalPools ? ELVEN_POOL_POSITIONS.length + ADDITIONAL_ELVEN_POOL_POSITIONS.length : ELVEN_POOL_POSITIONS.length), name, res);
 
 		String catalysts = "";
 		

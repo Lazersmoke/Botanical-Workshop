@@ -8,6 +8,7 @@ import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.wand.IWandHUD;
 import vazkii.botania.api.wand.IWandable;
+import lazersmoke.botanicalworkshop.common.BotanicalWorkshop;
 import lazersmoke.botanicalworkshop.common.lexicon.LexiconData;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
@@ -40,6 +41,7 @@ public class BlockElvenPool extends BlockContainer implements IWandHUD, IWandabl
 		setResistance(10.0F);
 		setStepSound(soundTypeStone);
 		setBlockName(LibBlockNames.ELVEN_POOL);
+		setCreativeTab(BotanicalWorkshop.creativeTab);
 		setBlockBounds(0F, 0F, 0F, 1F, 0.5F, 1F);
 	}
 	

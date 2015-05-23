@@ -3,10 +3,7 @@ package lazersmoke.botanicalworkshop.common.block.tile.mana;
 import java.awt.Color;
 import java.util.List;
 
-import org.lwjgl.opengl.GL11;
-
 import lazersmoke.botanicalworkshop.client.lib.LibResources;
-import lazersmoke.botanicalworkshop.common.BotanicalWorkshop;
 import lazersmoke.botanicalworkshop.common.block.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -21,6 +18,9 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.StatCollector;
+
+import org.lwjgl.opengl.GL11;
+
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.internal.VanillaPacketDispatcher;
 import vazkii.botania.api.item.IDyablePool;
@@ -34,11 +34,11 @@ import vazkii.botania.api.mana.spark.ISparkAttachable;
 import vazkii.botania.api.mana.spark.ISparkEntity;
 import vazkii.botania.api.recipe.RecipeManaInfusion;
 import vazkii.botania.client.core.handler.HUDHandler; //is final no subclassing allowed
-import vazkii.botania.common.Botania;
-import vazkii.botania.common.core.handler.ManaNetworkHandler;
-import vazkii.botania.common.block.tile.TileMod;
-import vazkii.botania.common.core.helper.Vector3;
 import vazkii.botania.client.core.handler.LightningHandler;
+import vazkii.botania.common.Botania;
+import vazkii.botania.common.block.tile.TileMod;
+import vazkii.botania.common.core.handler.ManaNetworkHandler;
+import vazkii.botania.common.core.helper.Vector3;
 
 public class TileElvenPool extends TileMod implements IManaPool, IDyablePool, IKeyLocked, ISparkAttachable, IThrottledPacket {
 

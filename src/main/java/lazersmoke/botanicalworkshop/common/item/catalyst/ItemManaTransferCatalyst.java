@@ -12,14 +12,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 
 
-public class ItemManaCatalyst extends ItemModCatalyst{
+public class ItemManaTransferCatalyst extends ItemActiveCatalyst{
 	
 	static List<UUID> UUIDList = new CopyOnWriteArrayList<UUID>();
 	static List<TileGatewayCore> gatewayList = new CopyOnWriteArrayList<TileGatewayCore>();
 	
-	public ItemManaCatalyst(){
-		super(LibItemNames.MANA_CATALYST);
-		setUnlocalizedName(LibItemNames.MANA_CATALYST);
+	public ItemManaTransferCatalyst(){
+		super(LibItemNames.MANA_TRANSFER_CATALYST);
 	}
 	
 	@Override
@@ -46,6 +45,6 @@ public class ItemManaCatalyst extends ItemModCatalyst{
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List loreLineList, boolean par4){
 		for(int i = 0; i < 4; i++)
-			loreLineList.add(StatCollector.translateToLocal("botanicalworkshopmisc.manaCatalyst" + i));
+			loreLineList.add(StatCollector.translateToLocal("botanicalworkshopmisc.manaTransferCatalyst" + i));
 	}
 }

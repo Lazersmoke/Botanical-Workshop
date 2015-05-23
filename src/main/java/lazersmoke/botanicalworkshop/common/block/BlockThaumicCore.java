@@ -1,5 +1,6 @@
 package lazersmoke.botanicalworkshop.common.block;
 
+import lazersmoke.botanicalworkshop.common.BotanicalWorkshop;
 import lazersmoke.botanicalworkshop.common.block.tile.TileThaumicCore;
 import lazersmoke.botanicalworkshop.common.item.block.ItemBlockThaumicCore;
 import lazersmoke.botanicalworkshop.common.lexicon.LexiconData;
@@ -7,26 +8,27 @@ import lazersmoke.botanicalworkshop.common.lib.LibBlockNames;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 //This class is all Lazersmoke
 public class BlockThaumicCore extends BlockContainer implements ILexiconable{
-	
-	IIcon iconOff, iconOn;
-	
+		
 	public BlockThaumicCore() {
 		super(Material.wood);
 		setHardness(2.0F);
 		setResistance(10.0F);
 		setStepSound(soundTypeWood);
 		setBlockName(LibBlockNames.THAUMIC_CORE);
+		setCreativeTab(BotanicalWorkshop.creativeTab);
 		setBlockBounds(0F, 0F, 0F, 1F, 1F, 1F);
 	}
 
@@ -39,6 +41,12 @@ public class BlockThaumicCore extends BlockContainer implements ILexiconable{
 	@Override
 	public TileEntity createNewTileEntity(World arg0, int arg1) {
 		return new TileThaumicCore();
+	}
+	
+    @Override
+	@SideOnly(Side.CLIENT)
+	public void registerBlockIcons(IIconRegister register) {
+		//NO OP
 	}
 	
 	@Override

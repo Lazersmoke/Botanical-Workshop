@@ -12,10 +12,12 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
 import vazkii.botania.api.BotaniaAPI;
 
 public class ModCraftingRecipes {
-	public static IRecipe recipeElvenPool;
-	public static IRecipe recipeEmptyCatalyst;
-	public static IRecipe recipeSimpleCatalyst;
-	public static IRecipe recipeWeakGatewayCore;
+	
+	public static IRecipe defaultRecipe = new ShapelessOreRecipe(new ItemStack(ModItems.botanicalResource, 1, 1), new ItemStack(ModItems.botanicalResource, 1, 1));
+	public static IRecipe recipeElvenPool = defaultRecipe;
+	public static IRecipe recipeEmptyCatalyst = defaultRecipe;
+	public static IRecipe recipeSimpleCatalyst = defaultRecipe;
+	public static IRecipe recipeWeakGatewayCore = defaultRecipe;
 	
 	public static void init() {
 		

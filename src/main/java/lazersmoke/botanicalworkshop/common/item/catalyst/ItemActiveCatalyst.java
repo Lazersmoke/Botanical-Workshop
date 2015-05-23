@@ -4,9 +4,9 @@ import net.minecraft.entity.item.EntityItem;
 import lazersmoke.botanicalworkshop.api.mana.IGatewayMod;
 import lazersmoke.botanicalworkshop.common.block.tile.TileGatewayCore;
 
-public class ItemModCatalyst extends ItemCatalyst implements IGatewayMod{
+public class ItemActiveCatalyst extends ItemCatalyst implements IGatewayMod{
 
-	public ItemModCatalyst(String name) {
+	public ItemActiveCatalyst(String name) {
 		super(name);
 	}
 

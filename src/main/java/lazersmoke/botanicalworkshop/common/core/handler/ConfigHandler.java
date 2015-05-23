@@ -64,6 +64,15 @@ public final class ConfigHandler {
 		desc = "Set this to false to disable the crafting of Mechanical Binding Crystals using the Gateway.";
 		LibConfigs.GATEWAY_CRAFT_MECHANICAL_BINDING_CRYSTAL = loadPropBool("crafting.gateway.mechanicalBindingCrystal", desc, true);
 		
+		desc = "Set this to false to disable the crafting of Mana Catalysts using the Gateway.";
+		LibConfigs.GATEWAY_CRAFT_MANA_CATALYST = loadPropBool("crafting.gateway.manaCatalyst", desc, true);
+		
+		desc = "Set this to false to disable the crafting of Thaumic Cores using the Gateway.";
+		LibConfigs.GATEWAY_CRAFT_THAUMIC_CORE = loadPropBool("crafting.gateway.thaumicCore", desc, true);
+		
+		desc = "Set this to false to disable the crafting of Thaumic Catalyst using the Gateway.";
+		LibConfigs.GATEWAY_CRAFT_THAUMIC_CATALYST = loadPropBool("crafting.gateway.thaumicCatalyst", desc, true);
+		
 		//Gameplay Settings
 		desc = "Set this to change the mana cost of opening a Gateway. More than 8 million will disable opening gateways, but open gateways will remain open.";
 		LibConfigs.GATEWAY_OPENING_MANA_COST = loadPropInt("gameplay.gateway.openingManaCost", desc, 1000000);

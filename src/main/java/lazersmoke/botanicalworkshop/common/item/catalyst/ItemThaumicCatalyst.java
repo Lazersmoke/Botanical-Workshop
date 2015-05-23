@@ -13,11 +13,10 @@ import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectSourceHelper;
 
 
-public class ItemThaumicCatalyst extends ItemModCatalyst{
+public class ItemThaumicCatalyst extends ItemActiveCatalyst{
 	
 	public ItemThaumicCatalyst(){
 		super(LibItemNames.THAUMIC_CATALYST);
-		setUnlocalizedName(LibItemNames.THAUMIC_CATALYST);
 	}
 	
 	@Override

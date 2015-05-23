@@ -2,6 +2,7 @@ package lazersmoke.botanicalworkshop.common.item;
 
 import java.util.List;
 
+import lazersmoke.botanicalworkshop.client.lib.LibResources;
 import lazersmoke.botanicalworkshop.common.lib.LibItemNames;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -9,17 +10,15 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraftforge.common.MinecraftForge;
-import vazkii.botania.client.core.helper.IconHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemBotanicalResource extends ItemMod{
-	final int types = 1;
+	final int types = LibItemNames.BOTANICAL_RESOURCE_NAMES.length;
 	IIcon[] icons;
 
 	public ItemBotanicalResource() {
 		super(LibItemNames.BOTANICAL_RESOURCE);
-		setUnlocalizedName(LibItemNames.BOTANICAL_RESOURCE);
 		setHasSubtypes(true);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
@@ -36,7 +35,7 @@ public class ItemBotanicalResource extends ItemMod{
 	public void registerIcons(IIconRegister register) {
 		icons = new IIcon[types];
 		for(int i = 0; i < icons.length; i++)
-			icons[i] = IconHelper.forName(register, LibItemNames.BOTANICAL_RESOURCE_NAMES[i]);
+			icons[i] = register.registerIcon(LibResources.PREFIX_MOD + LibItemNames.BOTANICAL_RESOURCE_NAMES[i]);
 	}
 	
 	@Override

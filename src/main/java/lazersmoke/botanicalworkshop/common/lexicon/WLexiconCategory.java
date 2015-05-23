@@ -10,5 +10,5 @@ public class WLexiconCategory extends LexiconCategory{
 		super(LibLexicon.CATEGORY_PREFIX + unlocalizedName);
 		setIcon(new ResourceLocation(LibResources.PREFIX_CATEGORIES + unlocalizedName + ".png"));
 		setPriority(priority);
-	}
+	}	
 }

@@ -19,6 +19,9 @@ public class LibConfigs{
 	public static boolean GATEWAY_CRAFT_BLOOD_BINDING_CRYSTAL;
 	public static boolean GATEWAY_CRAFT_THAUMIC_BINDING_CRYSTAL;
 	public static boolean GATEWAY_CRAFT_MECHANICAL_BINDING_CRYSTAL;	
+	public static boolean GATEWAY_CRAFT_MANA_CATALYST;
+	public static boolean GATEWAY_CRAFT_THAUMIC_CORE;
+	public static boolean GATEWAY_CRAFT_THAUMIC_CATALYST;
 	
 	//Gameplay Settings
 	public static int GATEWAY_TICK_MANA_COST;
@@ -26,6 +29,9 @@ public class LibConfigs{
 	
 	//Performance Settings
 	public static int PARTICLE_DENSITY;
+
+
+
 
 
 

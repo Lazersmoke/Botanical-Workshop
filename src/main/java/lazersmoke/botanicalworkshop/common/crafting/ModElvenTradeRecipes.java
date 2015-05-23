@@ -8,10 +8,11 @@ import lazersmoke.botanicalworkshop.common.lib.LibConfigs;
 import vazkii.botania.api.BotaniaAPI;
 
 public class ModElvenTradeRecipes {
-
-	public static RecipeElvenTrade elvenPoolRecipe;
-	public static RecipeElvenTrade elvenCrystalRecipe;
-	public static RecipeElvenTrade gatewayCoreRecipe;
+	
+	public static RecipeElvenTrade defaultRecipe = new RecipeElvenTrade(new ItemStack(ModItems.botanicalResource, 1, 1), new ItemStack(ModItems.botanicalResource, 1, 1));
+	public static RecipeElvenTrade elvenPoolRecipe = defaultRecipe;
+	public static RecipeElvenTrade elvenCrystalRecipe = defaultRecipe;
+	public static RecipeElvenTrade gatewayCoreRecipe = defaultRecipe;
 	
 	public static void init() {
 		if(LibConfigs.PORTAL_CRAFT_ELVEN_POOL)

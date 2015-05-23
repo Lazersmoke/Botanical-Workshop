@@ -2,6 +2,7 @@ package lazersmoke.botanicalworkshop.common.item;
 
 import java.util.List;
 
+import lazersmoke.botanicalworkshop.client.lib.LibResources;
 import lazersmoke.botanicalworkshop.common.lib.LibItemNames;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -9,7 +10,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraftforge.common.MinecraftForge;
-import vazkii.botania.client.core.helper.IconHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -19,7 +19,6 @@ public class ItemThaumicResource extends ItemMod{
 
 	public ItemThaumicResource() {
 		super(LibItemNames.THAUMIC_RESOURCE);
-		setUnlocalizedName(LibItemNames.THAUMIC_RESOURCE);
 		setHasSubtypes(true);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
@@ -36,7 +35,7 @@ public class ItemThaumicResource extends ItemMod{
 	public void registerIcons(IIconRegister register) {
 		icons = new IIcon[types];
 		for(int i = 0; i < icons.length; i++)
-			icons[i] = IconHelper.forName(register, LibItemNames.THAUMIC_RESOURCE_NAMES[i]);
+			icons[i] = register.registerIcon(LibResources.PREFIX_MOD + LibItemNames.THAUMIC_RESOURCE_NAMES[i]);
 	}
 	
 	@Override

@@ -4,18 +4,27 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import lazersmoke.botanicalworkshop.common.item.ModItems;
 import net.minecraft.item.ItemStack;
 
-public class RecipeGateway {
+public class RecipeGatewayTransmutation {
 
 	ItemStack output;
 	List<ItemStack> inputs;
 	ItemStack catalyst;
 
-	public RecipeGateway(ItemStack output, ItemStack catalyst, ItemStack... inputs) {
+	public RecipeGatewayTransmutation(ItemStack output, ItemStack catalyst, ItemStack... inputs) {
 		this.output = output;
 		this.catalyst = catalyst;
 		this.inputs = Arrays.asList(inputs);
+	}
+	
+	public RecipeGatewayTransmutation(String defaultrecipe){
+		if(defaultrecipe == "default"){
+			this.output = new ItemStack(ModItems.botanicalResource, 1, 1);
+			this.catalyst = new ItemStack(ModItems.botanicalResource, 1, 1);
+			this.inputs = Arrays.asList(new ItemStack(ModItems.botanicalResource, 1, 1));
+		}
 	}
 
 	public boolean matches(List<ItemStack> stacks, boolean noGhost) {
@@ -43,11 +52,11 @@ public class RecipeGateway {
 	}
 
 	public ItemStack getOutput() {
-		return output;
+		return output == null ? new ItemStack(ModItems.botanicalResource, 1, 0) : output;
 	}
 
 	public ItemStack getCatalyst() {
-		return catalyst;
+		return catalyst == null ? new ItemStack(ModItems.botanicalResource, 1, 0) : catalyst;
 	}
 
 }

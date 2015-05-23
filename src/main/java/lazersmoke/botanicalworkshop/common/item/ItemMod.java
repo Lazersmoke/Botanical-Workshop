@@ -5,6 +5,7 @@ import java.util.List;
 
 import lazersmoke.botanicalworkshop.client.lib.LibResources;
 import lazersmoke.botanicalworkshop.common.BotanicalWorkshop;
+import lazersmoke.botanicalworkshop.common.lib.LibItemNames;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -16,7 +17,7 @@ public class ItemMod extends Item{
 
 	private boolean namedMetadata=false;
 	private static String[] creativelyHiddenNames=new String[]{
-		//LibItemNames.ITEM_PROXY, 
+		LibItemNames.BOTANICAL_RESOURCE_NAMES[1]//Recipe Missing 
 		};
 	
 	public ItemMod(String unLocalizedName) {
@@ -38,13 +39,12 @@ public class ItemMod extends Item{
 	}
 
 	@Override
-	public String getUnlocalizedNameInefficiently(ItemStack par1ItemStack) {
+	public String getUnlocalizedNameInefficiently(ItemStack stack) {
 		if(namedMetadata) {
-			return super.getUnlocalizedNameInefficiently(par1ItemStack).replaceAll("item\\.", "item." + LibResources.PREFIX_MOD)+"."+par1ItemStack.getItemDamage();
+			return super.getUnlocalizedNameInefficiently(stack).replaceAll("item\\.", "item." + LibResources.PREFIX_MOD) + "." + stack.getItemDamage();
 		}
-		return super.getUnlocalizedNameInefficiently(par1ItemStack).replaceAll("item\\.", "item." + LibResources.PREFIX_MOD);
+		return super.getUnlocalizedNameInefficiently(stack).replaceAll("item\\.", "item." + LibResources.PREFIX_MOD);
 	}
-
 
 	public void addStringToTooltip(String s, List<String> tooltip) {
 		tooltip.add(s.replaceAll("&", "\u00a7"));
@@ -52,8 +52,8 @@ public class ItemMod extends Item{
 	
     @Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister par1IconRegister) {
-    	String resourceName=LibResources.PREFIX_MOD+this.getUnlocalizedName().replaceAll("item\\.", "");
-		itemIcon = par1IconRegister.registerIcon(resourceName);
+	public void registerIcons(IIconRegister register) {
+    	String resourceName = LibResources.PREFIX_MOD + this.getUnlocalizedName().replaceAll("item\\.", "");
+		itemIcon = register.registerIcon(resourceName);
 	}
 }
