@@ -80,6 +80,9 @@ public final class ConfigHandler {
 		desc = "Set this to change the mana cost of keeping a gateway open per tick.";
 		LibConfigs.GATEWAY_TICK_MANA_COST = loadPropInt("gameplay.gateway.perTickManaCost", desc, 1000);
 		
+		desc = "Set this to false to disable the songs of the flowers.";
+		LibConfigs.TONAL_FLORA = loadPropBool("gameplay.flowers.tonalFlora", desc, true);
+		
 		//Performance Settings
 		desc = "Set this to change the particle density of Botanical Workshop effects. Default is 1";
 		LibConfigs.PARTICLE_DENSITY = loadPropInt("performance.particles.density", desc, 1);

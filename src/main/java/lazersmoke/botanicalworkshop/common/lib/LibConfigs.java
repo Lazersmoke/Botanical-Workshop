@@ -2,6 +2,7 @@ package lazersmoke.botanicalworkshop.common.lib;
 
 public class LibConfigs{
 
+
 	//Table Crafting
 	public static boolean CRAFT_ELVEN_POOL;
 	public static boolean CRAFT_SIMPLE_CATALYST;
@@ -26,6 +27,7 @@ public class LibConfigs{
 	//Gameplay Settings
 	public static int GATEWAY_TICK_MANA_COST;
 	public static int GATEWAY_OPENING_MANA_COST;
+	public static boolean TONAL_FLORA;
 	
 	//Performance Settings
 	public static int PARTICLE_DENSITY;

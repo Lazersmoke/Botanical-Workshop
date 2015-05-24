@@ -4,13 +4,19 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import lazersmoke.botanicalworkshop.common.BotanicalWorkshop;
 import lazersmoke.botanicalworkshop.common.lexicon.LexiconData;
+import lazersmoke.botanicalworkshop.common.lib.LibConfigs;
 import lazersmoke.botanicalworkshop.common.lib.LibMisc;
 import net.minecraft.block.Block;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.IFluidHandler;
 import vazkii.botania.api.item.IPetalApothecary;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.subtile.RadiusDescriptor;
@@ -20,13 +26,59 @@ public class SubTileExAquainas extends SubTileFunctional{
 	private static final int COST = 35;
 	private static final int maxMana = 1000;
 	private static final int[][] OFFSETS = { { 0, 1 }, { 0, -1 }, { 1, 0 }, { -1, 0 }, { -1, 1 }, { -1, -1 }, { 1, 1 }, { 1, -1 } };
+	
+	private static final float[] pitches = {
+		//0.67F, 0.6F, 0.67F, 0.7F, 0.67F, 0.56F, 0.45F, intro
+		0.9F, 1.2F, 1.4F, 1.32F, 1.2F, 0.95F, 
+		0.9F, 0.8F, 0.7F, 0.67F, 0.9F, 
+		0.9F, 1.2F, 1.4F, 1.32F, 1.2F, 0.95F, 
+		0.9F, 0.8F, 0.7F, 1.1F, 0.9F, 
+		0.9F, 0.8F, 0.7F, 1.05F, 0.7F, 
+		0.8F, 0.9F, 0.95F, 0.9F, 0.8F, 
+		0.7F, 0.67F, 0.6F, 0.67F, 0.7F, 0.95F, 0.9F, 
+		1.1F, 1.32F, 1.9F, 1.8F
+	};
+	private int note = 0;
+	private int lastTicks = 0;
+	private int tempo = 2;
+	private boolean firstTick = true;
+	private static final int[] times = {
+		4, //6, 1, 1, 2, 2, 2, 2, intro
+		6, 1, 1, 2, 4, 2, 
+		6, 1, 1, 4, 4, 
+		6, 1, 1, 2, 4, 2, 
+		6, 1, 1, 4, 4, 
+		6, 1, 1, 4, 4, 
+		6, 1, 1, 4, 4, 
+		1, 1, 1, 1, 4, 4, 4, 
+		4, 4, 4
+	};//last -> first
 
 	@Override
 	public void onUpdate(){
 		super.onUpdate();
-		Block blockAbove = supertile.getWorldObj().getBlock(supertile.xCoord, supertile.yCoord + 1, supertile.zCoord);
-		TileEntity tileAbove = supertile.getWorldObj().getTileEntity(supertile.xCoord, supertile.yCoord + 1, supertile.zCoord);
-		if((tileAbove instanceof IPetalApothecary && ((IPetalApothecary) tileAbove).hasWater() == false) && mana >= COST && !supertile.getWorldObj().isRemote && ticksExisted % 10 == 1 && redstoneSignal == 0) {
+		
+		if(ticksExisted-lastTicks == (firstTick ? ticksExisted-lastTicks : times[note] * tempo)){
+			lastTicks = ticksExisted;
+			if(redstoneSignal > 0 && LibConfigs.TONAL_FLORA)
+				playSound("note.harp", 0.3F, pitches[note]);
+			note++;
+			if(note > (times.length - 1))
+				note = 0;
+		}
+		firstTick = false;
+		
+		TileEntity activeTile = supertile.getWorldObj().getTileEntity(supertile.xCoord, supertile.yCoord + 1, supertile.zCoord);
+		if(supertile.getWorldObj().getTileEntity(supertile.xCoord, supertile.yCoord - 1, supertile.zCoord) instanceof IFluidHandler)
+			activeTile = supertile.getWorldObj().getTileEntity(supertile.xCoord, supertile.yCoord - 1, supertile.zCoord);
+		
+		boolean hasBucket = false;
+		List<EntityItem> items = supertile.getWorldObj().getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.getBoundingBox(supertile.xCoord - 1, supertile.yCoord, supertile.zCoord - 1, supertile.xCoord + 2, supertile.yCoord + 1, supertile.zCoord + 2));
+		for(EntityItem item : items)
+			if(item.getEntityItem().getItem() == Items.bucket)
+				hasBucket = true;
+		
+		if(((activeTile instanceof IPetalApothecary && ((IPetalApothecary) activeTile).hasWater() == false) || (activeTile instanceof IFluidHandler && (((IFluidHandler) activeTile)).canFill(ForgeDirection.DOWN, FluidRegistry.WATER)) || hasBucket || redstoneSignal > 0) && mana >= COST && !supertile.getWorldObj().isRemote && ticksExisted % 10 == 1) {
 			List<int[]> offsets = Arrays.asList(OFFSETS);
 			Collections.shuffle(offsets);
 
@@ -45,11 +97,12 @@ public class SubTileExAquainas extends SubTileFunctional{
 					if(waterAround < 2)
 						supertile.getWorldObj().setBlockToAir(positions[0], supertile.yCoord, positions[1]);
 					//Add Water
-					if(((IPetalApothecary) tileAbove).hasWater() == false)
-						((IPetalApothecary) tileAbove).setWater(true);
+					if(activeTile instanceof IPetalApothecary && ((IPetalApothecary) activeTile).hasWater() == false)
+						((IPetalApothecary) activeTile).setWater(true);
+					else if(activeTile instanceof IFluidHandler && ((IFluidHandler) activeTile).canFill(ForgeDirection.DOWN, FluidRegistry.WATER))
+						((IFluidHandler) activeTile).fill(ForgeDirection.DOWN, new FluidStack(FluidRegistry.WATER, 1000), true);
 					//End Add Water
 					sync();
-					playSound();
 					break;
 				}
 			}
@@ -61,8 +114,8 @@ public class SubTileExAquainas extends SubTileFunctional{
 		return true;
 	}
 	
-	public void playSound() {
-		supertile.getWorldObj().playSoundEffect(supertile.xCoord, supertile.yCoord, supertile.zCoord, "random.drink", 0.02F, 0.5F + (float) Math.random() * 0.5F);
+	private void playSound(String sound, float volume, float pitch) {
+		supertile.getWorldObj().playSoundEffect(supertile.xCoord, supertile.yCoord, supertile.zCoord, sound, volume, pitch);
 	}
 	
 	@Override

@@ -7,8 +7,8 @@ import vazkii.botania.api.lexicon.LexiconCategory;
 
 public class WLexiconCategory extends LexiconCategory{
 	public WLexiconCategory(String unlocalizedName, int priority) {
-		super(LibLexicon.CATEGORY_PREFIX + unlocalizedName);
-		setIcon(new ResourceLocation(LibResources.PREFIX_CATEGORIES + unlocalizedName + ".png"));
+		super(unlocalizedName);
+		setIcon(new ResourceLocation(unlocalizedName + ".png"));
 		setPriority(priority);
 	}	
 }

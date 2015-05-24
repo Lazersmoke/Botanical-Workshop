@@ -1,6 +1,7 @@
 package lazersmoke.botanicalworkshop.common.block.subtile.functional;
 
 import lazersmoke.botanicalworkshop.common.lexicon.LexiconData;
+import lazersmoke.botanicalworkshop.common.lib.LibConfigs;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.subtile.SubTileFunctional;
 
@@ -8,18 +9,18 @@ public class SubTileLogicalSound extends SubTileFunctional{
 	private static int maxMana = 1000;
 	
 	//Track A
-	private static float[] pitchesa = {
+	private static final float[] pitchesa = {
 		1.05F, 0.7F, 0.7F, 0.95F, 1.05F, 0.7F, 0.7F, 0.9F, 0.8F,
 		1.05F, 0.63F, 0.63F, 0.85F, 0.95F, 0.63F, 0.85F, 0.8F, 0.7F
 	};
-	private static int[] timesa = {
+	private static final int[] timesa = {
 		24, 6, 6, 1, 1, 4, 4, 1, 1, 24,
 		6, 6, 1, 1, 4, 4, 1, 1
 	};//last -> first
 	private short notea = 0;
 	private int lastTicksa = 0;
 	
-	private static float[] pitchesb = {
+	private static final float[] pitchesb = {
 		0.7F, 0.85F, 0.95F, 1.05F,
 		0.7F, 0.85F, 0.95F, 1.05F,
 		0.7F, 0.85F, 0.95F, 1.05F,
@@ -37,7 +38,7 @@ public class SubTileLogicalSound extends SubTileFunctional{
 		0.47F, 0.8F, 0.85F, 0.95F,
 		0.47F, 0.8F, 0.85F, 0.95F
 	};
-	private static int[] timesb = {
+	private static final int[] timesb = {
 		2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 
 		2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 
 		2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 
@@ -62,15 +63,17 @@ public class SubTileLogicalSound extends SubTileFunctional{
 		//Track A
 		if(ticksExisted-lastTicksa == (firstTick ? ticksExisted-lastTicksa : timesa[notea] * tempo)){
 			lastTicksa = ticksExisted;
-			playSound("botanicalworkshop:quack", 0.2F, pitchesa[notea]);
+			if(LibConfigs.TONAL_FLORA)
+				playSound("botanicalworkshop:quack", 0.2F, pitchesa[notea]);
 			notea++;
 			if(notea > (timesa.length - 1))
 				notea = 0;
 		}
 		//Track B
-		if(ticksExisted-lastTicksb == (firstTick ? ticksExisted-lastTicksa : timesb[noteb] * tempo)){
+		if(ticksExisted-lastTicksb == (firstTick ? ticksExisted-lastTicksb : timesb[noteb] * tempo)){
 			lastTicksb = ticksExisted;
-			playSound("note.harp", 0.15F, pitchesb[noteb]);
+			if(LibConfigs.TONAL_FLORA)
+				playSound("note.harp", 0.15F, pitchesb[noteb]);
 			noteb++;
 			if(noteb > (timesb.length - 1))
 				noteb = 0;

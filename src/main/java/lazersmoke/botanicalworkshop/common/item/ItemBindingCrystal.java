@@ -2,15 +2,22 @@ package lazersmoke.botanicalworkshop.common.item;
 
 import java.util.List;
 
+import cpw.mods.fml.common.registry.GameRegistry;
+import vazkii.botania.api.lexicon.KnowledgeType;
+import vazkii.botania.api.lexicon.LexiconEntry;
 import lazersmoke.botanicalworkshop.api.mana.IGatewayCatalyst;
 import lazersmoke.botanicalworkshop.client.lib.LibResources;
+import lazersmoke.botanicalworkshop.common.crafting.recipe.LexiconBindingRecipe;
 import lazersmoke.botanicalworkshop.common.item.catalyst.ItemCatalyst;
+import lazersmoke.botanicalworkshop.common.lexicon.LexiconData;
 import lazersmoke.botanicalworkshop.common.lib.LibItemNames;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import net.minecraftforge.oredict.RecipeSorter;
+import net.minecraftforge.oredict.RecipeSorter.Category;
 
 public class ItemBindingCrystal extends ItemCatalyst implements IGatewayCatalyst{
 	IIcon[] icons;
@@ -18,6 +25,7 @@ public class ItemBindingCrystal extends ItemCatalyst implements IGatewayCatalyst
 	ItemBindingCrystal(){
 		super(LibItemNames.BINDING_CRYSTAL);
 		setHasSubtypes(true);
+		GameRegistry.addRecipe(new LexiconBindingRecipe());
 	}
 	
 	@Override
@@ -45,5 +53,25 @@ public class ItemBindingCrystal extends ItemCatalyst implements IGatewayCatalyst
 
 	String getUnlocalizedNameLazy(ItemStack itemStack) {
 		return super.getUnlocalizedName(itemStack);
+	}
+
+	public static KnowledgeType getKnowledgeType(ItemStack bindingCrystal) {
+		switch(bindingCrystal.getItemDamage()){
+			case 0: return LexiconData.workshopKnowledge;
+			case 1: return LexiconData.bloodKnowledge;
+			case 2: return LexiconData.thaumicKnowledge;
+			case 3: return LexiconData.mechanicalKnowledge;
+		}
+		return LexiconData.workshopKnowledge;
+	}
+
+	public static LexiconEntry getOpeningEntry(ItemStack bindingCrystal) {
+		switch(bindingCrystal.getItemDamage()){
+			case 0: return LexiconData.workshopIntro;
+			case 1: return LexiconData.bloodIntro;
+			case 2: return LexiconData.thaumicIntro;
+			case 3: return LexiconData.mechanicalIntro;
+		}
+		return LexiconData.workshopIntro;
 	}
 }

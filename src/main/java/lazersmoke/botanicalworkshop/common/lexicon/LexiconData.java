@@ -31,14 +31,21 @@ public final class LexiconData {
 	public static KnowledgeType bloodKnowledge;
 	public static KnowledgeType mechanicalKnowledge;
 	
-	public static LexiconEntry exAquainas;
+	public static LexiconEntry workshopIntro;
 	public static LexiconEntry elvenPool;
-	public static LexiconEntry thaumicCore;
-	public static LexiconEntry thaumicCatalyst;
 	public static LexiconEntry gatewayCore;
 	public static LexiconEntry bindingCrystal;
 	public static LexiconEntry basicCatalyst;
 	public static LexiconEntry logicalSound;
+	
+	public static LexiconEntry thaumicIntro;
+	public static LexiconEntry thaumicCore;
+	public static LexiconEntry thaumicCatalyst;
+	
+	public static LexiconEntry bloodIntro;
+	
+	public static LexiconEntry mechanicalIntro;
+	public static LexiconEntry exAquainas;
 	
 	public static void init(){
 		
@@ -57,6 +64,11 @@ public final class LexiconData {
 		BotaniaAPI.addCategory(categoryMechanical);
 		
 		// MAIN WORKSHOP ENTRIES
+		workshopIntro = new WLexiconEntry(LibLexicon.WORKSHOP_INTRO, categoryWorkshop);
+		workshopIntro.setPriority().setLexiconPages(
+				new PageText("0"),
+				new PageText("1"));
+		
 		elvenPool = new WLexiconEntry(LibLexicon.WORKSHOP_ELVENPOOL, categoryWorkshop);
 		elvenPool.setLexiconPages(
 				new PageText("0"), 
@@ -99,6 +111,10 @@ public final class LexiconData {
 				new PageCraftingRecipe("4", ModCraftingRecipes.recipeEmptyCatalyst));
 		
 		// THAUMIC ENTRIES
+		thaumicIntro = new TLexiconEntry(LibLexicon.THAUMIC_INTRO, categoryThaumic);
+		thaumicIntro.setPriority().setLexiconPages(
+				new PageText("0"));
+		
 		thaumicCore = new TLexiconEntry(LibLexicon.THAUMIC_THAUMICCORE, categoryThaumic);
 		thaumicCore.setPriority().setLexiconPages(
 				new PageText("0"),
@@ -111,8 +127,15 @@ public final class LexiconData {
 				new PageGatewayTransmutationRecipe("1", ModGatewayTransmutationRecipes.thaumicCatalystRecipe));
 		
 		//BLOOD ENTRIES
+		bloodIntro = new BLexiconEntry(LibLexicon.BLOOD_INTRO, categoryBlood);
+		bloodIntro.setPriority().setLexiconPages(
+				new PageText("0"));
 		
 		//MECHANICAL ENTRIES
+		mechanicalIntro = new MLexiconEntry(LibLexicon.MECHANICAL_INTRO, categoryMechanical);
+		mechanicalIntro.setPriority().setLexiconPages(
+				new PageText("0"));
+		
 		exAquainas = new MLexiconEntry(LibLexicon.MECHANICAL_EXAQUAINAS, categoryMechanical);
 		exAquainas.setLexiconPages(
 				new PageText("0"), 
