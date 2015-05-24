@@ -7,7 +7,7 @@ public final class LibResources {
 	public static final String PREFIX_ENTRIES = PREFIX_GUI + "entries/";
 	public static final String PREFIX_CATEGORIES = PREFIX_GUI + "categories/";
 	public static final String PREFIX_MODEL = PREFIX_MOD + "textures/model/";
-	public static final String PREFIX_SUBTILE = "subtile/";	
+	public static final String PREFIX_SUBTILE = PREFIX_MOD + "subtile/";	
 	
 	public static final String MODEL_ELVEN_POOL = PREFIX_MODEL + "elvenPool.png";
 	
