@@ -13,8 +13,9 @@ public class ItemBlockThaumicCore extends ItemBlockWithMetadataAndName{
 		super(block);
 	}
 
+	
 	@Override
-	public void addInformation(ItemStack stack, EntityPlayer player, List loreLineList, boolean par4){
+	public void addInformation(ItemStack stack, EntityPlayer player,  List loreLineList, boolean par4){
 		for(int i = 0; i < 3; i++)
 			loreLineList.add(StatCollector.translateToLocal("botanicalworkshopmisc.thaumicCore" + i));
 	}

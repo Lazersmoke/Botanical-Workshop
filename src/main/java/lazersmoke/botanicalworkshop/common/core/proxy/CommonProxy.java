@@ -1,8 +1,5 @@
 package lazersmoke.botanicalworkshop.common.core.proxy;
 
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
-import net.minecraft.util.EnumChatFormatting;
 import lazersmoke.botanicalworkshop.common.BotanicalWorkshop;
 import lazersmoke.botanicalworkshop.common.block.ModBlocks;
 import lazersmoke.botanicalworkshop.common.core.handler.ConfigHandler;
@@ -12,6 +9,8 @@ import lazersmoke.botanicalworkshop.common.crafting.ModGatewayTransmutationRecip
 import lazersmoke.botanicalworkshop.common.crafting.ModPetalRecipes;
 import lazersmoke.botanicalworkshop.common.item.ModItems;
 import lazersmoke.botanicalworkshop.common.lexicon.LexiconData;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;

@@ -10,4 +10,9 @@ public final class LibItemNames{
 	public static final String[] BOTANICAL_RESOURCE_NAMES = {"elvenCrystal", "recipeDisabled"};
 	public static final String THAUMIC_RESOURCE = "thaumicResource";
 	public static final String[] THAUMIC_RESOURCE_NAMES = {"manaEssentiaCrystal"};
+	public static final String SHIFTED_BOOTS = "shiftedBoots";
+	public static final String SHIFTED_LEGGINGS = "shiftedLeggings";
+	public static final String SHIFTED_CHESTPLATE = "shiftedChestplate";
+	public static final String SHIFTED_HELMET = "shiftedHelmet";
+	public static final String ARMOR_CATALYST = "shiftedArmorCatalyst";
 }

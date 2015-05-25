@@ -1,6 +1,7 @@
 package lazersmoke.botanicalworkshop.common.block.tile;
 //This class is %50 Lazersmoke
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
@@ -45,10 +46,13 @@ public class TileGatewayCore extends TileEntity{
 	public List<ItemStack> currentInventory = new ArrayList<ItemStack>();
 	public boolean open = false;
 	public UUID uuid;
+	public static HashMap<UUID, TileGatewayCore> UUIDMap = new HashMap<UUID, TileGatewayCore>();
 	
 	public TileGatewayCore(){
 		super();
-		uuid = UUID.randomUUID();
+		UUID freshUuid = UUID.randomUUID();
+		UUIDMap.put(freshUuid, this);
+		this.uuid = freshUuid;
 	}
 	
 	private static final String TAG_PORTAL_KEEP = "gatewayKeep";
@@ -333,7 +337,7 @@ public class TileGatewayCore extends TileEntity{
 		GL11.glDisable(GL11.GL_BLEND);
 	}
 	
-	AxisAlignedBB getPortalAABB() {
+	public AxisAlignedBB getPortalAABB() {
 		AxisAlignedBB aabb = AxisAlignedBB.getBoundingBox(xCoord - 1, yCoord + 1, zCoord - 1, xCoord + 2, yCoord + 6, zCoord + 2);
 		return aabb;
 	}

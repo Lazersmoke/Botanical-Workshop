@@ -1,11 +1,15 @@
 package lazersmoke.botanicalworkshop.common.block.tile;
 
-import cpw.mods.fml.common.FMLLog;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.IEssentiaTransport;
+import cpw.mods.fml.common.FMLLog;
+import cpw.mods.fml.common.Optional;
 
+@Optional.InterfaceList({
+	@Optional.Interface(modid = "Thaumcraft", iface = "thaumcraft.api.aspects.IEssentiaTransport", striprefs = true),
+	@Optional.Interface(modid = "Thaumcraft", iface = "thaumcraft.api.aspects.Aspect", striprefs = true)})
 public class TileThaumicCore extends TileEntity implements IEssentiaTransport{
 
 	private int essentiaCount = 0;

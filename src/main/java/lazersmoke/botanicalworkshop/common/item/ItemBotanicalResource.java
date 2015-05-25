@@ -23,9 +23,10 @@ public class ItemBotanicalResource extends ItemMod{
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 	
+	
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubItems(Item item, CreativeTabs tabs, List subItemList) {
+	public void getSubItems(Item item, CreativeTabs tabs,  List subItemList) {
 		for(int i = 0; i < types; i++)
 			subItemList.add(new ItemStack(item, 1, i));
 	}

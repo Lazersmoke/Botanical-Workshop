@@ -1,7 +1,5 @@
 package lazersmoke.botanicalworkshop.common.crafting;
 
-import java.util.List;
-
 import lazersmoke.botanicalworkshop.api.BotanicalWorkshopAPI;
 import lazersmoke.botanicalworkshop.api.recipe.RecipeGatewayTransmutation;
 import lazersmoke.botanicalworkshop.common.BotanicalWorkshop;

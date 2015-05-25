@@ -13,6 +13,7 @@ import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.lexicon.KnowledgeType;
 import vazkii.botania.api.lexicon.LexiconCategory;
 import vazkii.botania.api.lexicon.LexiconEntry;
+import vazkii.botania.api.recipe.RecipePetals;
 import vazkii.botania.common.lexicon.page.PageCraftingRecipe;
 import vazkii.botania.common.lexicon.page.PageElvenRecipe;
 import vazkii.botania.common.lexicon.page.PageImage;
@@ -78,7 +79,7 @@ public final class LexiconData {
 		logicalSound = new WLexiconEntry(LibLexicon.WORKSHOP_LOGICALSOUND, categoryWorkshop);
 		logicalSound.setLexiconPages(
 				new PageText("0"), 
-				new PagePetalRecipe("1", ModPetalRecipes.logicalSoundRecipe));
+				new PagePetalRecipe<RecipePetals>("1", ModPetalRecipes.logicalSoundRecipe));
 		
 		gatewayCore = new WLexiconEntry(LibLexicon.WORKSHOP_GATEWAYCORE, categoryWorkshop);
 		gatewayCore.setPriority().setLexiconPages(
@@ -139,6 +140,6 @@ public final class LexiconData {
 		exAquainas = new MLexiconEntry(LibLexicon.MECHANICAL_EXAQUAINAS, categoryMechanical);
 		exAquainas.setLexiconPages(
 				new PageText("0"), 
-				new PagePetalRecipe("1", ModPetalRecipes.exAquainasRecipe));
+				new PagePetalRecipe<RecipePetals>("1", ModPetalRecipes.exAquainasRecipe));
 	}
 }

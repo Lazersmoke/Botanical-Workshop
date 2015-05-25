@@ -2,10 +2,6 @@ package lazersmoke.botanicalworkshop.common.item;
 
 import java.util.List;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-import vazkii.botania.api.lexicon.KnowledgeType;
-import vazkii.botania.api.lexicon.LexiconEntry;
-import lazersmoke.botanicalworkshop.api.mana.IGatewayCatalyst;
 import lazersmoke.botanicalworkshop.client.lib.LibResources;
 import lazersmoke.botanicalworkshop.common.crafting.recipe.LexiconBindingRecipe;
 import lazersmoke.botanicalworkshop.common.item.catalyst.ItemCatalyst;
@@ -16,10 +12,11 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import net.minecraftforge.oredict.RecipeSorter;
-import net.minecraftforge.oredict.RecipeSorter.Category;
+import vazkii.botania.api.lexicon.KnowledgeType;
+import vazkii.botania.api.lexicon.LexiconEntry;
+import cpw.mods.fml.common.registry.GameRegistry;
 
-public class ItemBindingCrystal extends ItemCatalyst implements IGatewayCatalyst{
+public class ItemBindingCrystal extends ItemCatalyst{
 	IIcon[] icons;
 	
 	ItemBindingCrystal(){
@@ -40,8 +37,9 @@ public class ItemBindingCrystal extends ItemCatalyst implements IGatewayCatalyst
 		return icons[Math.min(icons.length - 1, par1)];
 	}
 
+	
 	@Override
-	public void getSubItems(Item item, CreativeTabs creativeTab, List subItemList) {
+	public void getSubItems(Item item, CreativeTabs creativeTab,  List subItemList) {
 		for(int i = 0; i < icons.length; i++)
 			subItemList.add(new ItemStack(item, 1, i));
 	}
@@ -73,5 +71,20 @@ public class ItemBindingCrystal extends ItemCatalyst implements IGatewayCatalyst
 			case 3: return LexiconData.mechanicalIntro;
 		}
 		return LexiconData.workshopIntro;
+	}
+	
+	@Override
+	public boolean hasContainerItem() {
+		return true;
+	}
+
+	@Override
+	public ItemStack getContainerItem(ItemStack itemStack) {
+		return itemStack;
+	}
+
+	@Override
+	public boolean doesContainerItemLeaveCraftingGrid(ItemStack par1ItemStack) {
+		return false;
 	}
 }

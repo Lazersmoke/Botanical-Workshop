@@ -12,9 +12,7 @@ package lazersmoke.botanicalworkshop.common.core;
 
 import java.util.List;
 
-import lazersmoke.botanicalworkshop.common.item.ModItems;
 import lazersmoke.botanicalworkshop.common.lib.LibMisc;
-import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -23,6 +21,7 @@ import vazkii.botania.client.lib.LibResources;
 public final class BotanicalWorkshopCreativeTab extends CreativeTabs {
 
 	public static BotanicalWorkshopCreativeTab INSTANCE = new BotanicalWorkshopCreativeTab();
+	
 	List list;
 
 	public BotanicalWorkshopCreativeTab() {
@@ -47,18 +46,8 @@ public final class BotanicalWorkshopCreativeTab extends CreativeTabs {
 	}
 
 	@Override
-	public void displayAllReleventItems(List list) {
+	public void displayAllReleventItems( List list) {
 		this.list = list;
 
 	}
-
-	private void addItem(Item item) {
-		item.getSubItems(item, this, list);
-	}
-
-	private void addBlock(Block block) {
-		ItemStack stack = new ItemStack(block);
-		block.getSubBlocks(stack.getItem(), this, list);
-	}
-
 }
