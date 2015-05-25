@@ -21,7 +21,6 @@ import vazkii.botania.client.lib.LibResources;
 public final class BotanicalWorkshopCreativeTab extends CreativeTabs {
 
 	public static BotanicalWorkshopCreativeTab INSTANCE = new BotanicalWorkshopCreativeTab();
-	
 	List list;
 
 	public BotanicalWorkshopCreativeTab() {
@@ -46,7 +45,7 @@ public final class BotanicalWorkshopCreativeTab extends CreativeTabs {
 	}
 
 	@Override
-	public void displayAllReleventItems( List list) {
+	public void displayAllReleventItems(List list) {
 		this.list = list;
 
 	}
