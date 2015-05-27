@@ -1,11 +1,11 @@
 package lazersmoke.botanicalworkshop.common.item.equipment.armor.shifted;
 
-import java.util.UUID;
-
 import lazersmoke.botanicalworkshop.api.BotanicalWorkshopAPI;
+import lazersmoke.botanicalworkshop.api.shifted.IShiftedArmorUpgrade;
 import lazersmoke.botanicalworkshop.client.lib.LibResources;
 import lazersmoke.botanicalworkshop.common.BotanicalWorkshop;
 import lazersmoke.botanicalworkshop.common.block.tile.TileGatewayCore;
+import lazersmoke.botanicalworkshop.common.crafting.recipe.ShiftedArmorUpgradeRecipe;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -24,7 +24,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemShiftedArmor extends ItemArmor implements ISpecialArmor, IPhantomInkable{
 	
-	//Binds armor uuids to catalyst ItemStacks
 	public static int dmgRdc;	
 	public ItemShiftedArmor(int type, String name) {
 		this(type, name, BotanicalWorkshopAPI.shiftedArmorMaterial);
@@ -34,6 +33,7 @@ public class ItemShiftedArmor extends ItemArmor implements ISpecialArmor, IPhant
 		super(mat, 0, type);
 		setCreativeTab(BotanicalWorkshop.creativeTab);
 		this.setUnlocalizedName(name);
+		GameRegistry.addRecipe(new ShiftedArmorUpgradeRecipe());
 	}
 	
 	@Override
@@ -53,8 +53,17 @@ public class ItemShiftedArmor extends ItemArmor implements ISpecialArmor, IPhant
 		itemIcon = par1IconRegister.registerIcon(LibResources.PREFIX_MOD + getUnlocalizedName().replaceAll("item\\.", ""));
 	}
 	
+	@Override
+	public final String getArmorTexture(ItemStack stack, Entity entity, int slot, String type) {
+		return hasPhantomInk(stack) ? vazkii.botania.client.lib.LibResources.MODEL_INVISIBLE_ARMOR : getArmorTextureAfterInk(stack, slot);
+	}
+
+	public String getArmorTextureAfterInk(ItemStack stack, int slot) {
+		return slot == 2 ? LibResources.MODEL_SHIFTED_1 : LibResources.MODEL_SHIFTED_0;
+	}
+	
 	private static final String TAG_PHANTOM_INK = "phantomInk";
-	private static final String TAG_BOUND_UUID = "boundGatewayUUID";
+	public static final String TAG_UPGRADE_BASE = "shiftedUpgrade";
 	
 	@Override
 	public boolean hasPhantomInk(ItemStack stack) {
@@ -86,19 +95,25 @@ public class ItemShiftedArmor extends ItemArmor implements ISpecialArmor, IPhant
 
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack stack) {
-		TileGatewayCore.UUIDMap.get(getUUID(stack)).addMana(-1000);
+		if(getCore(stack, world) != null)
+			if(getCore(stack, world).addMana(-1000) && stack.getItemDamage() > 0){
+				stack.setItemDamage(stack.getItemDamage() - 1);
+				getCore(stack, world).addMana(-1000);
+			}
+		for(String key : BotanicalWorkshopAPI.shiftedUpgrades.keySet())
+			if(ItemNBTHelper.getBoolean(stack, TAG_UPGRADE_BASE + key, false))
+				((IShiftedArmorUpgrade) BotanicalWorkshopAPI.shiftedUpgrades.get(key)).onArmorTick(world, player, stack);
 	}
 
 	@Override
 	public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) {
-		TileGatewayCore.UUIDMap.get(getUUID(stack)).addMana(-1000 * damage);
+		stack.damageItem(damage, entity);
 	}
 	
-	public static void setUUID(ItemStack stack, UUID uuid){
-		ItemNBTHelper.setString(stack, TAG_BOUND_UUID, uuid.toString());
-	}
-	
-	public static UUID getUUID(ItemStack stack){
-		return UUID.fromString(ItemNBTHelper.getString(stack, TAG_BOUND_UUID, ""));
+	public static TileGatewayCore getCore(ItemStack stack, World worldObj){
+		return (TileGatewayCore) worldObj.getTileEntity(
+				ItemNBTHelper.getInt(stack, "boundGatewayX", 0), 
+				ItemNBTHelper.getInt(stack, "boundGatewayY", -1), 
+				ItemNBTHelper.getInt(stack, "boundGatewayZ", 0));
 	}
 }

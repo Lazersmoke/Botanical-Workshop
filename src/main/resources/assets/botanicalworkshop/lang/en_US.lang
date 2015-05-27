@@ -39,6 +39,13 @@ item.botanicalworkshop:recipeDisabled.name=Recipe Disabled!
 #THAUMIC RESOURCES
 item.botanicalworkshop:thaumicResource0.name=Mana Essentia Crystal
 
+
+item.botanicalworkshop:shiftedBoots.name=Shifted Boots
+item.botanicalworkshop:shiftedLeggings.name=Shifted Leggings
+item.botanicalworkshop:shiftedChestplate.name=Shifted Chestplate
+item.botanicalworkshop:shiftedHelmet.name=Shifted Helmet
+item.botanicalworkshop:shiftedPhaseUpgrade.name=Shifted Phase Upgrade
+
 #TILE ENTITIES
 tile.botanicalworkshop:elvenPool0.name=Elven Mana Pool
 botanicalworkshopmisc.elvenPool0=Line1

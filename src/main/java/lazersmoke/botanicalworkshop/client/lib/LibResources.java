@@ -10,6 +10,8 @@ public final class LibResources {
 	public static final String PREFIX_SUBTILE = PREFIX_MOD + "subtile/";	
 	
 	public static final String MODEL_ELVEN_POOL = PREFIX_MODEL + "elvenPool.png";
+	public static final String MODEL_SHIFTED_0 = PREFIX_MODEL + "shifted0.png";
+	public static final String MODEL_SHIFTED_1 = PREFIX_MODEL + "shifted1.png";
 	
 	public static final String GUI_GATEWAY_TRANSMUTATION_OVERLAY = PREFIX_GUI + "gatewayTransmutationOverlay.png";
 	public static final String WORKSHOP_ICON = PREFIX_CATEGORIES + "workshop";
@@ -19,6 +21,7 @@ public final class LibResources {
 	public static final String ENTRY_GATEWAY = PREFIX_ENTRIES + "gateway.png";
 	public static final String ENTRY_THAUMICCORE = PREFIX_ENTRIES + "thaumicCore.png";
 	public static final String[] ENTRIES_GATEWAY = {"gateway0.png", "gateway1.png", "gateway2.png", "gateway3.png", "gateway4.png", };
+
 
 
 

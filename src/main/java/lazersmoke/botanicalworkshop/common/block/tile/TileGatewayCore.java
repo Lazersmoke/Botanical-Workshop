@@ -34,6 +34,7 @@ import org.lwjgl.opengl.GL11;
 import vazkii.botania.api.lexicon.ILexicon;
 import vazkii.botania.client.core.handler.HUDHandler;
 import vazkii.botania.common.Botania;
+import vazkii.botania.common.core.helper.ItemNBTHelper;
 
 public class TileGatewayCore extends TileEntity{
 		//  W W
@@ -128,7 +129,7 @@ public class TileGatewayCore extends TileEntity{
 			
 			List<EntityPlayer> players = worldObj.getEntitiesWithinAABB(EntityPlayer.class, aabb);
 			for(EntityPlayer player : players)
-				player.addPotionEffect(new PotionEffect(Potion.jump.id, 1, 5));//Allows player to jump out of pit
+				player.addPotionEffect(new PotionEffect(Potion.jump.id, 10, 5));//Allows player to jump out of pit
 			
 			List<EntityItem> items = worldObj.getEntitiesWithinAABB(EntityItem.class, aabb);
 			for(EntityItem item : items){
@@ -249,6 +250,9 @@ public class TileGatewayCore extends TileEntity{
 		if(!worldObj.isRemote){
 			EntityItem item = new EntityItem(worldObj, xCoord + 0.5, yCoord + 1.5, zCoord + 0.5, stack);
 			item.getEntityData().setBoolean(TAG_PORTAL_KEEP, true);
+			ItemNBTHelper.setInt(item.getEntityItem(), "boundGatewayX", xCoord);
+			ItemNBTHelper.setInt(item.getEntityItem(), "boundGatewayY", yCoord);
+			ItemNBTHelper.setInt(item.getEntityItem(), "boundGatewayZ", zCoord);
 			worldObj.spawnEntityInWorld(item);
 		}
 	}

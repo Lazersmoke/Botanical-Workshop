@@ -1,5 +1,7 @@
 package lazersmoke.botanicalworkshop.common.item;
 
+import lazersmoke.botanicalworkshop.api.BotanicalWorkshopAPI;
+import lazersmoke.botanicalworkshop.api.shifted.IShiftedArmorUpgrade;
 import lazersmoke.botanicalworkshop.common.item.catalyst.ItemEmptyCatalyst;
 import lazersmoke.botanicalworkshop.common.item.catalyst.ItemManaTransferCatalyst;
 import lazersmoke.botanicalworkshop.common.item.catalyst.ItemSimpleCatalyst;
@@ -8,6 +10,7 @@ import lazersmoke.botanicalworkshop.common.item.equipment.armor.shifted.ItemShif
 import lazersmoke.botanicalworkshop.common.item.equipment.armor.shifted.ItemShiftedChestplate;
 import lazersmoke.botanicalworkshop.common.item.equipment.armor.shifted.ItemShiftedHelmet;
 import lazersmoke.botanicalworkshop.common.item.equipment.armor.shifted.ItemShiftedLeggings;
+import lazersmoke.botanicalworkshop.common.item.shifted.ItemShiftedPhaseUpgrade;
 import net.minecraft.item.Item;
 
 public final class ModItems {
@@ -23,6 +26,7 @@ public final class ModItems {
 	public static Item thaumicCatalyst;
 	public static Item botanicalResource;
 	public static Item thaumicResource;
+	public static Item shiftedPhaseUpgrade;
 	
 	public static void init(){
 		
@@ -37,6 +41,8 @@ public final class ModItems {
 		thaumicCatalyst = new ItemThaumicCatalyst();
 		botanicalResource = new ItemBotanicalResource();
 		thaumicResource = new ItemThaumicResource();
+		shiftedPhaseUpgrade = new ItemShiftedPhaseUpgrade();
 		
+		BotanicalWorkshopAPI.registerShiftedArmorUpgrade((IShiftedArmorUpgrade) shiftedPhaseUpgrade);
 	}
 }
