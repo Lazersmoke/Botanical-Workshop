@@ -57,6 +57,7 @@ $RECYCLE.BIN/
 Thumbs.db
 
 ## gradle
+build.properties
 /.gradle
 /build
 
