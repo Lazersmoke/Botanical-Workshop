@@ -25,12 +25,13 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-//This class is all Lazersmoke
-public class BlockGatewayCore extends BlockContainer implements IWandable, IWandHUD, ILexiconable{
-	
+// This class is all Lazersmoke
+public class BlockGatewayCore extends BlockContainer implements IWandable,
+        IWandHUD, ILexiconable{
+
 	public static IIcon iconOff, iconOn, portalTex;
-	
-	public BlockGatewayCore() {
+
+	public BlockGatewayCore(){
 		super(Material.rock);
 		setHardness(2.0F);
 		setResistance(10.0F);
@@ -45,39 +46,46 @@ public class BlockGatewayCore extends BlockContainer implements IWandable, IWand
 		GameRegistry.registerBlock(this, ItemBlockGatewayCore.class, name);
 		return super.setBlockName(name);
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister par1IconRegister) {
-		iconOff = par1IconRegister.registerIcon(LibResources.PREFIX_MOD+getUnlocalizedName().replaceAll("tile\\.", "") + "0");
-		iconOn = par1IconRegister.registerIcon(LibResources.PREFIX_MOD+getUnlocalizedName().replaceAll("tile\\.", "") + "1");
-		portalTex = par1IconRegister.registerIcon(LibResources.PREFIX_MOD+getUnlocalizedName().replaceAll("tile\\.", "") + "Portal");
+	public void registerBlockIcons(IIconRegister par1IconRegister){
+		iconOff = par1IconRegister.registerIcon(LibResources.PREFIX_MOD
+		        + getUnlocalizedName().replaceAll("tile\\.", "") + "0");
+		iconOn = par1IconRegister.registerIcon(LibResources.PREFIX_MOD
+		        + getUnlocalizedName().replaceAll("tile\\.", "") + "1");
+		portalTex = par1IconRegister.registerIcon(LibResources.PREFIX_MOD
+		        + getUnlocalizedName().replaceAll("tile\\.", "") + "Portal");
 	}
 
 	@Override
-	public IIcon getIcon(int side, int meta) {
+	public IIcon getIcon(int side, int meta){
 		return meta == 0 ? iconOff : iconOn;
 	}
-	
+
 	@Override
-	public TileEntity createNewTileEntity(World arg0, int arg1) {
+	public TileEntity createNewTileEntity(World arg0, int arg1){
 		return new TileGatewayCore();
-	}
-	
-	@Override
-	public void renderHUD(Minecraft mc, ScaledResolution res, World world, int x, int y, int z) {
-		((TileGatewayCore) world.getTileEntity(x, y, z)).renderHUD(mc, res);
 	}
 
 	@Override
-	public boolean onUsedByWand(EntityPlayer player, ItemStack stack, World world, int x, int y, int z, int side) {
-		boolean did = ((TileGatewayCore) world.getTileEntity(x, y, z)).onWanded();
+	public void renderHUD(Minecraft mc, ScaledResolution res, World world,
+	        int x, int y, int z){
+		( (TileGatewayCore) world.getTileEntity(x, y, z) ).renderHUD(mc, res);
+	}
+
+	@Override
+	public boolean onUsedByWand(EntityPlayer player, ItemStack stack,
+	        World world, int x, int y, int z, int side){
+		boolean did = ( (TileGatewayCore) world.getTileEntity(x, y, z) )
+		        .onWanded();
 		return did;
 	}
-	
+
 	@Override
-	public LexiconEntry getEntry(World world, int x, int y, int z, EntityPlayer player, ItemStack lexicon) {
+	public LexiconEntry getEntry(World world, int x, int y, int z,
+	        EntityPlayer player, ItemStack lexicon){
 		return LexiconData.gatewayCore;
 	}
-	
+
 }

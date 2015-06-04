@@ -18,26 +18,37 @@ public class BotanicalWorkshopAPI{
 	public static List<RecipeGatewayTransmutation> gatewayRecipes = new ArrayList<RecipeGatewayTransmutation>();
 	public static Map<String, IShiftedArmorUpgrade> shiftedUpgrades = new HashMap<String, IShiftedArmorUpgrade>();
 	public static Set<String> subtilesForCreativeMenu = new LinkedHashSet<String>();
-	public static ArmorMaterial shiftedArmorMaterial = EnumHelper.addArmorMaterial("SHIFTED", 16, new int[] { 2, 6, 5, 2 }, 18);
-		
+	public static ArmorMaterial shiftedArmorMaterial = EnumHelper
+	        .addArmorMaterial("SHIFTED", 16, new int[] {
+	                2, 6, 5, 2
+	        }, 18);
+
 	/**
 	 * Registers a Gateway recipe (throw some items in a Gateway).
-	 * @param output The ItemStack to return.
-	 * @param inputs The items required, must be List<ItemStack>
+	 * 
+	 * @param output
+	 *            The ItemStack to return.
+	 * @param inputs
+	 *            The items required, must be List<ItemStack>
 	 * @return The recipe created.
 	 */
-	public static RecipeGatewayTransmutation registerGatewayRecipe(ItemStack output, ItemStack catalyst, ItemStack... inputs) {
-		RecipeGatewayTransmutation recipe = new RecipeGatewayTransmutation(output, catalyst, inputs);
+	public static RecipeGatewayTransmutation registerGatewayRecipe(
+	        ItemStack output, ItemStack catalyst, ItemStack ... inputs){
+		RecipeGatewayTransmutation recipe = new RecipeGatewayTransmutation(
+		        output, catalyst, inputs);
 		gatewayRecipes.add(recipe);
 		return recipe;
 	}
-	
+
 	/**
 	 * Registers a shifted armor upgrade item.
-	 * @param upgrade The upgrade to register.
+	 * 
+	 * @param upgrade
+	 *            The upgrade to register.
 	 * @return The upgrade registered.
 	 */
-	public static IShiftedArmorUpgrade registerShiftedArmorUpgrade(IShiftedArmorUpgrade upgrade) {
+	public static IShiftedArmorUpgrade registerShiftedArmorUpgrade(
+	        IShiftedArmorUpgrade upgrade){
 		shiftedUpgrades.put(upgrade.getKey(), upgrade);
 		return upgrade;
 	}

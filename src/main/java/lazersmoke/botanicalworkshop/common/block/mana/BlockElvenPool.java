@@ -1,5 +1,6 @@
 package lazersmoke.botanicalworkshop.common.block.mana;
-//This class is mostly Vazkii
+
+// This class is mostly Vazkii
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,10 +32,11 @@ import lazersmoke.botanicalworkshop.common.block.tile.mana.TileElvenPool;
 import lazersmoke.botanicalworkshop.common.item.block.ItemBlockElvenPool;
 import lazersmoke.botanicalworkshop.common.lib.LibBlockNames;
 
-public class BlockElvenPool extends BlockContainer implements IWandHUD, IWandable, ILexiconable{
+public class BlockElvenPool extends BlockContainer implements IWandHUD,
+        IWandable, ILexiconable{
 
 	boolean lastFragile = false;
-	
+
 	public BlockElvenPool(){
 		super(Material.rock);
 		setHardness(2.0F);
@@ -44,37 +46,40 @@ public class BlockElvenPool extends BlockContainer implements IWandHUD, IWandabl
 		setCreativeTab(BotanicalWorkshop.creativeTab);
 		setBlockBounds(0F, 0F, 0F, 1F, 0.5F, 1F);
 	}
-	
+
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
+	public TileEntity createNewTileEntity(World world, int meta){
 		return new TileElvenPool();
 	}
-	
+
 	@Override
 	public Block setBlockName(String name){
 		GameRegistry.registerBlock(this, ItemBlockElvenPool.class, name);
 		return super.setBlockName(name);
 	}
-	
+
 	@Override
-	public void registerBlockIcons(IIconRegister IconRegister) {
-		//NO-OP
+	public void registerBlockIcons(IIconRegister IconRegister){
+		// NO-OP
 	}
 
 	@Override
-	public int damageDropped(int meta) {
+	public int damageDropped(int meta){
 		return meta;
 	}
 
 	@Override
-	public void breakBlock(World par1World, int par2, int par3, int par4, Block par5, int par6) {
-		TileElvenPool pool = (TileElvenPool) par1World.getTileEntity(par2, par3, par4);
+	public void breakBlock(World par1World, int par2, int par3, int par4,
+	        Block par5, int par6){
+		TileElvenPool pool = (TileElvenPool) par1World.getTileEntity(par2,
+		        par3, par4);
 		lastFragile = pool.fragile;
 		super.breakBlock(par1World, par2, par3, par4, par5, par6);
 	}
 
 	@Override
-	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
+	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z,
+	        int metadata, int fortune){
 		ArrayList<ItemStack> drops = new ArrayList<ItemStack>();
 
 		if(!lastFragile)
@@ -84,48 +89,55 @@ public class BlockElvenPool extends BlockContainer implements IWandHUD, IWandabl
 	}
 
 	@Override
-	public void getSubBlocks(Item par1, CreativeTabs par2, List par3) {
+	public void getSubBlocks(Item par1, CreativeTabs par2, List par3){
 		par3.add(new ItemStack(par1, 1, 0));
 	}
 
 	@Override
-	public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity) {
-		if(par5Entity instanceof EntityItem) {
-			TileElvenPool tile = (TileElvenPool) par1World.getTileEntity(par2, par3, par4);
+	public void onEntityCollidedWithBlock(World par1World, int par2, int par3,
+	        int par4, Entity par5Entity){
+		if(par5Entity instanceof EntityItem){
+			TileElvenPool tile = (TileElvenPool) par1World.getTileEntity(par2,
+			        par3, par4);
 			if(tile.collideEntityItem((EntityItem) par5Entity))
-				VanillaPacketDispatcher.dispatchTEToNearbyPlayers(par1World, par2, par3, par4);
+				VanillaPacketDispatcher.dispatchTEToNearbyPlayers(par1World,
+				        par2, par3, par4);
 		}
 	}
 
 	@Override
-	public boolean isOpaqueCube() {
+	public boolean isOpaqueCube(){
 		return false;
 	}
 
 	@Override
-	public boolean renderAsNormalBlock() {
+	public boolean renderAsNormalBlock(){
 		return false;
-	}
-	
-	@Override
-	public IIcon getIcon(int par1, int par2) {
-		return vazkii.botania.common.block.ModFluffBlocks.elfQuartz.getIcon(par1, 0);
 	}
 
 	@Override
-	public int getRenderType() {
+	public IIcon getIcon(int par1, int par2){
+		return vazkii.botania.common.block.ModFluffBlocks.elfQuartz.getIcon(
+		        par1, 0);
+	}
+
+	@Override
+	public int getRenderType(){
 		return LibRenderIDs.idPool;
 	}
 
 	@Override
-	public boolean hasComparatorInputOverride() {
+	public boolean hasComparatorInputOverride(){
 		return true;
 	}
 
 	@Override
-	public int getComparatorInputOverride(World par1World, int par2, int par3, int par4, int par5) {
-		TileElvenPool pool = (TileElvenPool) par1World.getTileEntity(par2, par3, par4);
-		int val = (int) ((double) pool.getCurrentMana() / (double) pool.manaCap * 15.0);
+	public int getComparatorInputOverride(World par1World, int par2, int par3,
+	        int par4, int par5){
+		TileElvenPool pool = (TileElvenPool) par1World.getTileEntity(par2,
+		        par3, par4);
+		int val = (int) ( (double) pool.getCurrentMana()
+		        / (double) pool.manaCap * 15.0 );
 		if(pool.getCurrentMana() > 0)
 			val = Math.max(val, 1);
 
@@ -133,18 +145,22 @@ public class BlockElvenPool extends BlockContainer implements IWandHUD, IWandabl
 	}
 
 	@Override
-	public void renderHUD(Minecraft mc, ScaledResolution res, World world, int x, int y, int z) {
-		((TileElvenPool) world.getTileEntity(x, y, z)).renderHUD(mc, res);
+	public void renderHUD(Minecraft mc, ScaledResolution res, World world,
+	        int x, int y, int z){
+		( (TileElvenPool) world.getTileEntity(x, y, z) ).renderHUD(mc, res);
 	}
 
 	@Override
-	public boolean onUsedByWand(EntityPlayer player, ItemStack stack, World world, int x, int y, int z, int side) {
-		((TileElvenPool) world.getTileEntity(x, y, z)).onWanded(player, stack);
+	public boolean onUsedByWand(EntityPlayer player, ItemStack stack,
+	        World world, int x, int y, int z, int side){
+		( (TileElvenPool) world.getTileEntity(x, y, z) )
+		        .onWanded(player, stack);
 		return true;
 	}
 
 	@Override
-	public LexiconEntry getEntry(World world, int x, int y, int z, EntityPlayer player, ItemStack lexicon) {
+	public LexiconEntry getEntry(World world, int x, int y, int z,
+	        EntityPlayer player, ItemStack lexicon){
 		return LexiconData.elvenPool;
 	}
 }

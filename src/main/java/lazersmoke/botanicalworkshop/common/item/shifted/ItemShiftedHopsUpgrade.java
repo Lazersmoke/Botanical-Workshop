@@ -10,25 +10,27 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
-public class ItemShiftedHopsUpgrade extends ItemMod implements IShiftedArmorUpgrade{
-	
-	public ItemShiftedHopsUpgrade() {
+public class ItemShiftedHopsUpgrade extends ItemMod implements
+        IShiftedArmorUpgrade{
+
+	public ItemShiftedHopsUpgrade(){
 		super(LibItemNames.HOPS_UPGRADE);
 	}
 
 	@Override
-	public String getKey() {
+	public String getKey(){
 		return "HopsUpgrade";
-	}
-	
-	@Override
-	public void onArmorTick(World world, EntityPlayer player, ItemStack stack){
-		if(ItemShiftedArmor.getCore(stack, world) != null && ItemShiftedArmor.getCore(stack, world).addMana(-1000))
-			player.addPotionEffect(new PotionEffect(Potion.jump.id, 10, 4, true));//true sets ambient; no or reduced particles
 	}
 
 	@Override
-	public String getDisplayName() {
+	public void onArmorTick(World world, EntityPlayer player, ItemStack stack){
+		if(ItemShiftedArmor.getCore(stack, world) != null
+		        && ItemShiftedArmor.getCore(stack, world).addMana(-1000))
+			player.addPotionEffect(new PotionEffect(Potion.jump.id, 10, 4, true));// true sets ambient; no or reduced particles
+	}
+
+	@Override
+	public String getDisplayName(){
 		return "Shifted Hops Upgrade";
 	}
 }

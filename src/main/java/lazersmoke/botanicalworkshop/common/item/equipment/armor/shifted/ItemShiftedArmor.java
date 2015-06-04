@@ -25,90 +25,104 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemShiftedArmor extends ItemArmor implements ISpecialArmor, IPhantomInkable{
-	
-	public static int dmgRdc;	
-	public ItemShiftedArmor(int type, String name) {
+public class ItemShiftedArmor extends ItemArmor implements ISpecialArmor,
+        IPhantomInkable{
+
+	public static int dmgRdc;
+
+	public ItemShiftedArmor(int type, String name){
 		this(type, name, BotanicalWorkshopAPI.shiftedArmorMaterial);
 	}
-	
-	public ItemShiftedArmor(int type, String name, ArmorMaterial mat) {
+
+	public ItemShiftedArmor(int type, String name, ArmorMaterial mat){
 		super(mat, 0, type);
 		setCreativeTab(BotanicalWorkshop.creativeTab);
 		this.setUnlocalizedName(name);
 		GameRegistry.addRecipe(new ShiftedArmorUpgradeRecipe());
 	}
-	
+
 	@Override
-	public Item setUnlocalizedName(String par1Str) {
+	public Item setUnlocalizedName(String par1Str){
 		GameRegistry.registerItem(this, par1Str);
 		return super.setUnlocalizedName(par1Str);
 	}
 
 	@Override
-	public String getUnlocalizedNameInefficiently(ItemStack par1ItemStack) {
-		return super.getUnlocalizedNameInefficiently(par1ItemStack).replaceAll("item.", "item." + LibResources.PREFIX_MOD);
+	public String getUnlocalizedNameInefficiently(ItemStack par1ItemStack){
+		return super.getUnlocalizedNameInefficiently(par1ItemStack).replaceAll(
+		        "item.", "item." + LibResources.PREFIX_MOD);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister par1IconRegister) {
-		itemIcon = par1IconRegister.registerIcon(LibResources.PREFIX_MOD + getUnlocalizedName().replaceAll("item\\.", ""));
-	}
-	
-	@Override
-	public final String getArmorTexture(ItemStack stack, Entity entity, int slot, String type) {
-		return hasPhantomInk(stack) ? vazkii.botania.client.lib.LibResources.MODEL_INVISIBLE_ARMOR : getArmorTextureAfterInk(stack, slot);
+	public void registerIcons(IIconRegister par1IconRegister){
+		itemIcon = par1IconRegister.registerIcon(LibResources.PREFIX_MOD
+		        + getUnlocalizedName().replaceAll("item\\.", ""));
 	}
 
-	public String getArmorTextureAfterInk(ItemStack stack, int slot) {
-		return slot == 2 ? LibResources.MODEL_SHIFTED_1 : LibResources.MODEL_SHIFTED_0;
+	@Override
+	public final String getArmorTexture(ItemStack stack, Entity entity,
+	        int slot, String type){
+		return hasPhantomInk(stack) ? vazkii.botania.client.lib.LibResources.MODEL_INVISIBLE_ARMOR
+		        : getArmorTextureAfterInk(stack, slot);
 	}
-	
+
+	public String getArmorTextureAfterInk(ItemStack stack, int slot){
+		return slot == 2 ? LibResources.MODEL_SHIFTED_1
+		        : LibResources.MODEL_SHIFTED_0;
+	}
+
 	private static final String TAG_PHANTOM_INK = "phantomInk";
 	public static final String TAG_UPGRADE_BASE = "shiftedUpgrade";
-	
+
 	@Override
-	public boolean hasPhantomInk(ItemStack stack) {
+	public boolean hasPhantomInk(ItemStack stack){
 		return ItemNBTHelper.getBoolean(stack, TAG_PHANTOM_INK, false);
 	}
 
 	@Override
-	public void setPhantomInk(ItemStack stack, boolean ink) {
+	public void setPhantomInk(ItemStack stack, boolean ink){
 		ItemNBTHelper.setBoolean(stack, TAG_PHANTOM_INK, true);
-	}
-	
-	@Override
-	public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
-		if(source.isUnblockable())
-			return new ArmorProperties(0, 0, 0);
-		return new ArmorProperties(0, damageReduceAmount / 25D, armor.getMaxDamage() + 1 - armor.getItemDamage());
 	}
 
 	@Override
-	public int getArmorDisplay(EntityPlayer player, ItemStack armor, int slot) {
+	public ArmorProperties getProperties(EntityLivingBase player,
+	        ItemStack armor, DamageSource source, double damage, int slot){
+		if(source.isUnblockable())
+			return new ArmorProperties(0, 0, 0);
+		return new ArmorProperties(0, damageReduceAmount / 25D,
+		        armor.getMaxDamage() + 1 - armor.getItemDamage());
+	}
+
+	@Override
+	public int getArmorDisplay(EntityPlayer player, ItemStack armor, int slot){
 		return damageReduceAmount;
 	}
 
 	@Override
-	public void onUpdate(ItemStack stack, World world, Entity player, int par4, boolean par5) {
+	public void onUpdate(ItemStack stack, World world, Entity player, int par4,
+	        boolean par5){
 		if(player instanceof EntityPlayer)
 			onArmorTick(world, (EntityPlayer) player, stack);
 	}
 
 	@Override
-	public void onArmorTick(World world, EntityPlayer player, ItemStack stack) {
+	public void onArmorTick(World world, EntityPlayer player, ItemStack stack){
 		boolean isInArmorSlot = false;
 		for(ItemStack testStack : player.inventory.armorInventory)
 			if(testStack != null && testStack.equals(stack))
 				isInArmorSlot = true;
 		if(isInArmorSlot){
 			for(String key : BotanicalWorkshopAPI.shiftedUpgrades.keySet())
-				if(ItemNBTHelper.getBoolean(stack, TAG_UPGRADE_BASE + key, false) && !ItemTemperanceStone.hasTemperanceActive(player))
-					((IShiftedArmorUpgrade) BotanicalWorkshopAPI.shiftedUpgrades.get(key)).onArmorTick(world, player, stack);
-			
+				if(ItemNBTHelper.getBoolean(stack, TAG_UPGRADE_BASE + key,
+				        false)
+				        && !ItemTemperanceStone.hasTemperanceActive(player))
+					( (IShiftedArmorUpgrade) BotanicalWorkshopAPI.shiftedUpgrades
+					        .get(key) ).onArmorTick(world, player, stack);
+
 			if(getCore(stack, world) != null)
-				if(getCore(stack, world).addMana(-1000) && stack.getItemDamage() > 0){
+				if(getCore(stack, world).addMana(-1000)
+				        && stack.getItemDamage() > 0){
 					stack.setItemDamage(stack.getItemDamage() - 1);
 					getCore(stack, world).addMana(-1000);
 				}
@@ -116,27 +130,34 @@ public class ItemShiftedArmor extends ItemArmor implements ISpecialArmor, IPhant
 	}
 
 	@Override
-	public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) {
+	public void damageArmor(EntityLivingBase entity, ItemStack stack,
+	        DamageSource source, int damage, int slot){
 		stack.damageItem(damage, entity);
 	}
-	
+
 	public static TileGatewayCore getCore(ItemStack stack, World worldObj){
 		return (TileGatewayCore) worldObj.getTileEntity(
-				ItemNBTHelper.getInt(stack, "boundGatewayX", 0), 
-				ItemNBTHelper.getInt(stack, "boundGatewayY", -1), 
-				ItemNBTHelper.getInt(stack, "boundGatewayZ", 0));
+		        ItemNBTHelper.getInt(stack, "boundGatewayX", 0),
+		        ItemNBTHelper.getInt(stack, "boundGatewayY", -1),
+		        ItemNBTHelper.getInt(stack, "boundGatewayZ", 0));
 	}
-	
+
 	@Override
-	public void addInformation(ItemStack stack, EntityPlayer player, List loreLineList, boolean par4){
+	public void addInformation(ItemStack stack, EntityPlayer player,
+	        List loreLineList, boolean par4){
 		if(ItemTemperanceStone.hasTemperanceActive(player))
 			loreLineList.add("Temperance Stone Active!");
-			
+
 		if(ItemNBTHelper.getInt(stack, "boundGatewayY", -1) != -1)
-			loreLineList.add("Gateway: [" + ItemNBTHelper.getInt(stack, "boundGatewayX", -1) + ", " + ItemNBTHelper.getInt(stack, "boundGatewayY", -1) + ", " + ItemNBTHelper.getInt(stack, "boundGatewayZ", -1) + "]");
-		
+			loreLineList.add("Gateway: ["
+			        + ItemNBTHelper.getInt(stack, "boundGatewayX", -1) + ", "
+			        + ItemNBTHelper.getInt(stack, "boundGatewayY", -1) + ", "
+			        + ItemNBTHelper.getInt(stack, "boundGatewayZ", -1) + "]");
+
 		for(String key : BotanicalWorkshopAPI.shiftedUpgrades.keySet())
 			if(ItemNBTHelper.getBoolean(stack, TAG_UPGRADE_BASE + key, false))
-				loreLineList.add(((IShiftedArmorUpgrade) BotanicalWorkshopAPI.shiftedUpgrades.get(key)).getDisplayName());
+				loreLineList
+				        .add( ( (IShiftedArmorUpgrade) BotanicalWorkshopAPI.shiftedUpgrades
+				                .get(key) ).getDisplayName());
 	}
 }

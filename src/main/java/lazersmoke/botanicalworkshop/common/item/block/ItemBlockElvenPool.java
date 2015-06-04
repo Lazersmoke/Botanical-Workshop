@@ -9,14 +9,16 @@ import net.minecraft.util.StatCollector;
 
 public class ItemBlockElvenPool extends ItemBlockWithMetadataAndName{
 
-	public ItemBlockElvenPool(Block par2Block) {
+	public ItemBlockElvenPool(Block par2Block){
 		super(par2Block);
 	}
-	
+
 	@Override
-	public void addInformation(ItemStack stack, EntityPlayer player, List loreLineList, boolean par4){
+	public void addInformation(ItemStack stack, EntityPlayer player,
+	        List loreLineList, boolean par4){
 		for(int i = 0; i < 2; i++)
-			loreLineList.add(StatCollector.translateToLocal("botanicalworkshopmisc.elvenPool" + i));
+			loreLineList.add(StatCollector
+			        .translateToLocal("botanicalworkshopmisc.elvenPool" + i));
 	}
-	
+
 }

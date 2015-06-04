@@ -9,15 +9,16 @@ import net.minecraft.util.StatCollector;
 
 public class ItemBlockGatewayCore extends ItemBlockWithMetadataAndName{
 
-	public ItemBlockGatewayCore(Block par2Block) {
+	public ItemBlockGatewayCore(Block par2Block){
 		super(par2Block);
 	}
-	
-	
+
 	@Override
-	public void addInformation(ItemStack stack, EntityPlayer player, List loreLineList, boolean par4){
+	public void addInformation(ItemStack stack, EntityPlayer player,
+	        List loreLineList, boolean par4){
 		for(int i = 0; i < 3; i++)
-			loreLineList.add(StatCollector.translateToLocal("botanicalworkshopmisc.gatewayCore" + i));
+			loreLineList.add(StatCollector
+			        .translateToLocal("botanicalworkshopmisc.gatewayCore" + i));
 	}
-	
+
 }
