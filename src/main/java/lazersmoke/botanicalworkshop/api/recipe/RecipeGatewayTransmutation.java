@@ -14,7 +14,7 @@ public class RecipeGatewayTransmutation{
 	ItemStack catalyst;
 
 	public RecipeGatewayTransmutation(ItemStack output, ItemStack catalyst,
-	        ItemStack ... inputs){
+			ItemStack ... inputs){
 		this.output = output;
 		this.catalyst = catalyst;
 		this.inputs = Arrays.asList(inputs);
@@ -25,7 +25,7 @@ public class RecipeGatewayTransmutation{
 			this.output = new ItemStack(ModItems.botanicalResource, 1, 1);
 			this.catalyst = new ItemStack(ModItems.botanicalResource, 1, 1);
 			this.inputs = Arrays.asList(new ItemStack(
-			        ModItems.botanicalResource, 1, 1));
+					ModItems.botanicalResource, 1, 1));
 		}
 	}
 
@@ -47,7 +47,7 @@ public class RecipeGatewayTransmutation{
 
 	boolean simpleAreStacksEqual(ItemStack stack, ItemStack stack2){
 		return stack.getItem() == stack2.getItem()
-		        && stack.getItemDamage() == stack2.getItemDamage();
+				&& stack.getItemDamage() == stack2.getItemDamage();
 	}
 
 	public List<ItemStack> getInputs(){
@@ -56,12 +56,12 @@ public class RecipeGatewayTransmutation{
 
 	public ItemStack getOutput(){
 		return output == null ? new ItemStack(ModItems.botanicalResource, 1, 0)
-		        : output;
+				: output;
 	}
 
 	public ItemStack getCatalyst(){
 		return catalyst == null ? new ItemStack(ModItems.botanicalResource, 1,
-		        0) : catalyst;
+				0) : catalyst;
 	}
 
 }

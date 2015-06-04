@@ -27,15 +27,15 @@ public class QuakeClientPlayer extends ClientPlayerBase{
 		try{
 			if(Loader.isModLoaded("Squeedometer")){
 				hudSpeedometer = Class
-				        .forName("squeek.speedometer.HudSpeedometer");
+						.forName("squeek.speedometer.HudSpeedometer");
 				setDidJumpThisTick = hudSpeedometer.getDeclaredMethod(
-				        "setDidJumpThisTick", new Class<?>[] {
-					        boolean.class
-				        });
+						"setDidJumpThisTick", new Class<?>[] {
+							boolean.class
+						});
 				setIsJumping = hudSpeedometer.getDeclaredMethod("setIsJumping",
-				        new Class<?>[] {
-					        boolean.class
-				        });
+						new Class<?>[] {
+							boolean.class
+						});
 			}
 		}catch(Exception e){
 			e.printStackTrace();
@@ -50,20 +50,20 @@ public class QuakeClientPlayer extends ClientPlayerBase{
 	public void moveEntityWithHeading(float sidemove, float forwardmove){
 		BotanicalWorkshop.logger.info("Moving Entity With Heading");
 		if(ItemNBTHelper.getBoolean(this.player.getEquipmentInSlot(1),
-		        "shiftedUpgradeHopsUpgrade", false)){
+				"shiftedUpgradeHopsUpgrade", false)){
 			BotanicalWorkshop.logger.info("Entity Has Hops!");
 			double d0 = this.player.posX;
 			double d1 = this.player.posY;
 			double d2 = this.player.posZ;
 
 			if(this.player.capabilities.isFlying
-			        && this.player.ridingEntity == null)
+					&& this.player.ridingEntity == null)
 				super.moveEntityWithHeading(sidemove, forwardmove);
 			else
 				this.quake_moveEntityWithHeading(sidemove, forwardmove);
 
 			this.player.addMovementStat(this.player.posX - d0, this.player.posY
-			        - d1, this.player.posZ - d2);
+					- d1, this.player.posZ - d2);
 		}else
 			super.moveEntityWithHeading(sidemove, forwardmove);
 	}
@@ -71,7 +71,7 @@ public class QuakeClientPlayer extends ClientPlayerBase{
 	@Override
 	public void beforeOnLivingUpdate(){
 		if(ItemNBTHelper.getBoolean(this.player.getEquipmentInSlot(1),
-		        "shiftedUpgradeHopsUpgrade", false)){
+				"shiftedUpgradeHopsUpgrade", false)){
 			this.didJumpThisTick = false;
 			if(setDidJumpThisTick != null){
 				try{
@@ -89,11 +89,11 @@ public class QuakeClientPlayer extends ClientPlayerBase{
 	@Override
 	public void onLivingUpdate(){
 		if(ItemNBTHelper.getBoolean(this.player.getEquipmentInSlot(1),
-		        "shiftedUpgradeHopsUpgrade", false)){
+				"shiftedUpgradeHopsUpgrade", false)){
 			if(setIsJumping != null){
 				try{
 					setIsJumping.invoke(null,
-					        this.playerAPI.getIsJumpingField());
+							this.playerAPI.getIsJumpingField());
 				}catch(Exception e){}
 			}
 		}
@@ -103,9 +103,9 @@ public class QuakeClientPlayer extends ClientPlayerBase{
 	@Override
 	public void moveFlying(float sidemove, float forwardmove, float wishspeed){
 		if(ItemNBTHelper.getBoolean(this.player.getEquipmentInSlot(1),
-		        "shiftedUpgradeHopsUpgrade", false)){
+				"shiftedUpgradeHopsUpgrade", false)){
 			if( ( this.player.capabilities.isFlying && this.player.ridingEntity == null )
-			        || this.player.isInWater()){
+					|| this.player.isInWater()){
 				super.moveFlying(sidemove, forwardmove, wishspeed);
 				return;
 			}
@@ -113,7 +113,7 @@ public class QuakeClientPlayer extends ClientPlayerBase{
 			wishspeed *= 2.15f;
 			float[] wishdir = getMovementDirection(sidemove, forwardmove);
 			float[] wishvel = new float[] {
-			        wishdir[0] * wishspeed, wishdir[1] * wishspeed
+					wishdir[0] * wishspeed, wishdir[1] * wishspeed
 			};
 			baseVelocities.add(wishvel);
 		}else
@@ -123,7 +123,7 @@ public class QuakeClientPlayer extends ClientPlayerBase{
 	@Override
 	public void jump(){
 		if(ItemNBTHelper.getBoolean(this.player.getEquipmentInSlot(1),
-		        "shiftedUpgradeHopsUpgrade", false)){
+				"shiftedUpgradeHopsUpgrade", false)){
 			super.jump();
 
 			// undo this dumb thing
@@ -150,7 +150,7 @@ public class QuakeClientPlayer extends ClientPlayerBase{
 
 	public double getSpeed(){
 		return MathHelper.sqrt_double(this.player.motionX * this.player.motionX
-		        + this.player.motionZ * this.player.motionZ);
+				+ this.player.motionZ * this.player.motionZ);
 	}
 
 	public float getSurfaceFriction(){
@@ -158,9 +158,9 @@ public class QuakeClientPlayer extends ClientPlayerBase{
 
 		if(this.player.onGround){
 			Block ground = this.player.worldObj.getBlock(
-			        MathHelper.floor_double(this.player.posX),
-			        MathHelper.floor_double(this.player.boundingBox.minY) - 1,
-			        MathHelper.floor_double(this.player.posZ));
+					MathHelper.floor_double(this.player.posX),
+					MathHelper.floor_double(this.player.boundingBox.minY) - 1,
+					MathHelper.floor_double(this.player.posZ));
 
 			f2 = 1.0F - ground.slipperiness;
 		}
@@ -173,9 +173,9 @@ public class QuakeClientPlayer extends ClientPlayerBase{
 		if(this.player.onGround){
 			f2 = 0.54600006F;
 			Block ground = this.player.worldObj.getBlock(
-			        MathHelper.floor_double(this.player.posX),
-			        MathHelper.floor_double(this.player.boundingBox.minY) - 1,
-			        MathHelper.floor_double(this.player.posZ));
+					MathHelper.floor_double(this.player.posX),
+					MathHelper.floor_double(this.player.boundingBox.minY) - 1,
+					MathHelper.floor_double(this.player.posZ));
 
 			if(ground != null)
 				f2 = ground.slipperiness * 0.91F;
@@ -194,7 +194,7 @@ public class QuakeClientPlayer extends ClientPlayerBase{
 	public float[] getMovementDirection(float sidemove, float forwardmove){
 		float f3 = sidemove * sidemove + forwardmove * forwardmove;
 		float[] dir = {
-		        0.0F, 0.0F
+				0.0F, 0.0F
 		};
 
 		if(f3 >= 1.0E-4F){
@@ -208,9 +208,9 @@ public class QuakeClientPlayer extends ClientPlayerBase{
 			sidemove *= f3;
 			forwardmove *= f3;
 			float f4 = MathHelper.sin(this.player.rotationYaw * (float) Math.PI
-			        / 180.0F);
+					/ 180.0F);
 			float f5 = MathHelper.cos(this.player.rotationYaw * (float) Math.PI
-			        / 180.0F);
+					/ 180.0F);
 			dir[0] = ( sidemove * f5 - forwardmove * f4 );
 			dir[1] = ( forwardmove * f5 + sidemove * f4 );
 		}
@@ -221,7 +221,7 @@ public class QuakeClientPlayer extends ClientPlayerBase{
 	public float quake_getMoveSpeed(){
 		float baseSpeed = this.player.getAIMoveSpeed();
 		return !this.player.isSneaking() ? baseSpeed * 2.15F
-		        : baseSpeed * 1.11F;
+				: baseSpeed * 1.11F;
 	}
 
 	public float quake_getMaxMoveSpeed(){
@@ -233,30 +233,30 @@ public class QuakeClientPlayer extends ClientPlayerBase{
 		// taken from sprint
 		int j = MathHelper.floor_double(this.player.posX);
 		int i = MathHelper.floor_double(this.player.posY - 0.20000000298023224D
-		        - this.player.yOffset);
+				- this.player.yOffset);
 		int k = MathHelper.floor_double(this.player.posZ);
 		Block ground = this.player.worldObj.getBlock(j, i, k);
 
 		if(ground != null && ground.getMaterial() != Material.air){
 			for(int iParticle = 0; iParticle < numParticles; iParticle++){
 				this.player.worldObj
-				        .spawnParticle(
-				                "blockcrack_"
-				                        + Block.getIdFromBlock(ground)
-				                        + "_"
-				                        + this.player.worldObj
-				                                .getBlockMetadata(j, i, k),
-				                this.player.posX
-				                        + ( this.playerAPI.getRandField()
-				                                .nextFloat() - 0.5D )
-				                        * this.player.width,
-				                this.player.boundingBox.minY + 0.1D,
-				                this.player.posZ
-				                        + ( this.playerAPI.getRandField()
-				                                .nextFloat() - 0.5D )
-				                        * this.player.width,
-				                -this.player.motionX * 4.0D, 1.5D,
-				                -this.player.motionZ * 4.0D);
+						.spawnParticle(
+								"blockcrack_"
+										+ Block.getIdFromBlock(ground)
+										+ "_"
+										+ this.player.worldObj
+												.getBlockMetadata(j, i, k),
+								this.player.posX
+										+ ( this.playerAPI.getRandField()
+												.nextFloat() - 0.5D )
+										* this.player.width,
+								this.player.boundingBox.minY + 0.1D,
+								this.player.posZ
+										+ ( this.playerAPI.getRandField()
+												.nextFloat() - 0.5D )
+										* this.player.width,
+								-this.player.motionX * 4.0D, 1.5D,
+								-this.player.motionZ * 4.0D);
 			}
 		}
 	}
@@ -275,10 +275,10 @@ public class QuakeClientPlayer extends ClientPlayerBase{
 
 	private void minecraft_ApplyGravity(){
 		if(this.player.worldObj.isRemote
-		        && ( !this.player.worldObj.blockExists((int) this.player.posX,
-		                0, (int) this.player.posZ) || !this.player.worldObj
-		                .getChunkFromBlockCoords((int) this.player.posX,
-		                        (int) this.player.posZ).isChunkLoaded )){
+				&& ( !this.player.worldObj.blockExists((int) this.player.posX,
+						0, (int) this.player.posZ) || !this.player.worldObj
+						.getChunkFromBlockCoords((int) this.player.posX,
+								(int) this.player.posZ).isChunkLoaded )){
 			if(this.player.posY > 0.0D){
 				this.player.motionY = -0.1D;
 			}else{
@@ -356,25 +356,25 @@ public class QuakeClientPlayer extends ClientPlayerBase{
 		double d0 = this.player.posY;
 		this.player.moveFlying(sidemove, forwardmove, 0.04F);
 		this.player.moveEntity(this.player.motionX, this.player.motionY,
-		        this.player.motionZ);
+				this.player.motionZ);
 		this.player.motionX *= 0.800000011920929D;
 		this.player.motionY *= 0.800000011920929D;
 		this.player.motionZ *= 0.800000011920929D;
 		this.player.motionY -= 0.02D;
 
 		if(this.player.isCollidedHorizontally
-		        && this.player.isOffsetPositionInLiquid(this.player.motionX,
-		                this.player.motionY + 0.6000000238418579D
-		                        - this.player.posY + d0, this.player.motionZ)){
+				&& this.player.isOffsetPositionInLiquid(this.player.motionX,
+						this.player.motionY + 0.6000000238418579D
+								- this.player.posY + d0, this.player.motionZ)){
 			this.player.motionY = 0.30000001192092896D;
 		}
 	}
 
 	public void minecraft_moveEntityWithHeading(float sidemove,
-	        float forwardmove){
+			float forwardmove){
 		// take care of water and lava movement using default code
 		if( ( this.player.isInWater() && !this.player.capabilities.isFlying )
-		        || ( this.player.handleLavaMovement() && !this.player.capabilities.isFlying )){
+				|| ( this.player.handleLavaMovement() && !this.player.capabilities.isFlying )){
 			super.moveEntityWithHeading(sidemove, forwardmove);
 		}else{
 			// get friction
@@ -382,14 +382,14 @@ public class QuakeClientPlayer extends ClientPlayerBase{
 
 			// alter motionX/motionZ based on desired movement
 			this.player.moveFlying(sidemove, forwardmove,
-			        this.minecraft_getMoveSpeed());
+					this.minecraft_getMoveSpeed());
 
 			// make adjustments for ladder interaction
 			minecraft_ApplyLadderPhysics();
 
 			// do the movement
 			this.player.moveEntity(this.player.motionX, this.player.motionY,
-			        this.player.motionZ);
+					this.player.motionZ);
 
 			// climb ladder here for some reason
 			minecraft_ClimbLadder();
@@ -429,7 +429,7 @@ public class QuakeClientPlayer extends ClientPlayerBase{
 		}else{
 			// get all relevant movement values
 			float wishspeed = ( sidemove != 0.0F || forwardmove != 0.0F ) ? this
-			        .quake_getMoveSpeed() : 0.0F;
+					.quake_getMoveSpeed() : 0.0F;
 			float[] wishdir = this.getMovementDirection(sidemove, forwardmove);
 			boolean onGroundForReal = this.player.onGround && !this.isJumping();
 			float momentumRetention = this.getSlipperiness();
@@ -445,10 +445,10 @@ public class QuakeClientPlayer extends ClientPlayerBase{
 				if(wishspeed != 0.0F){
 					// alter based on the surface friction
 					sv_accelerate *= this.minecraft_getMoveSpeed() * 2.15F
-					        / wishspeed;
+							/ wishspeed;
 
 					quake_Accelerate(wishspeed, wishdir[0], wishdir[1],
-					        sv_accelerate);
+							sv_accelerate);
 				}
 
 				if(!baseVelocities.isEmpty()){
@@ -464,17 +464,17 @@ public class QuakeClientPlayer extends ClientPlayerBase{
 			else{
 				double sv_airaccelerate = QuakeConfig.AIR_ACCELERATE;
 				quake_AirAccelerate(wishspeed, wishdir[0], wishdir[1],
-				        sv_airaccelerate);
+						sv_airaccelerate);
 
 				if(QuakeConfig.SHARKING_ENABLED
-				        && QuakeConfig.SHARKING_SURFACE_TENSION > 0.0D
-				        && this.playerAPI.getIsJumpingField()
-				        && this.player.motionY < 0.0F){
+						&& QuakeConfig.SHARKING_SURFACE_TENSION > 0.0D
+						&& this.playerAPI.getIsJumpingField()
+						&& this.player.motionY < 0.0F){
 					AxisAlignedBB axisalignedbb = this.player.boundingBox
-					        .getOffsetBoundingBox(this.player.motionX,
-					                this.player.motionY, this.player.motionZ);
+							.getOffsetBoundingBox(this.player.motionX,
+									this.player.motionY, this.player.motionZ);
 					boolean isFallingIntoWater = this.player.worldObj
-					        .isAnyLiquid(axisalignedbb);
+							.isAnyLiquid(axisalignedbb);
 
 					if(isFallingIntoWater)
 						this.player.motionY *= QuakeConfig.SHARKING_SURFACE_TENSION;
@@ -486,7 +486,7 @@ public class QuakeClientPlayer extends ClientPlayerBase{
 
 			// apply velocity
 			this.player.moveEntity(this.player.motionX, this.player.motionY,
-			        this.player.motionZ);
+					this.player.motionZ);
 
 			// climb ladder here for some reason
 			minecraft_ClimbLadder();
@@ -519,7 +519,7 @@ public class QuakeClientPlayer extends ClientPlayerBase{
 					speedbonus = 1.0F;
 
 				this.player.motionY += speedbonus * curspeed
-				        * QuakeConfig.TRIMP_MULTIPLIER;
+						* QuakeConfig.TRIMP_MULTIPLIER;
 
 				if(QuakeConfig.TRIMP_MULTIPLIER > 0){
 					float mult = 1.0f / QuakeConfig.TRIMP_MULTIPLIER;
@@ -554,7 +554,7 @@ public class QuakeClientPlayer extends ClientPlayerBase{
 
 	@SuppressWarnings("unused")
 	private void quake_WaterAccelerate(float wishspeed, float speed,
-	        double wishX, double wishZ, double accel){
+			double wishX, double wishZ, double accel){
 		float addspeed = wishspeed - speed;
 		if(addspeed > 0){
 			float accelspeed = (float) ( accel * wishspeed * 0.05F );
@@ -572,10 +572,10 @@ public class QuakeClientPlayer extends ClientPlayerBase{
 
 		// get all relevant movement values
 		float wishspeed = ( sidemove != 0.0F || forwardmove != 0.0F ) ? this
-		        .quake_getMaxMoveSpeed() : 0.0F;
+				.quake_getMaxMoveSpeed() : 0.0F;
 		float[] wishdir = this.getMovementDirection(sidemove, forwardmove);
 		boolean isSharking = this.isJumping()
-		        && this.player.isOffsetPositionInLiquid(0.0D, 1.0D, 0.0D);
+				&& this.player.isOffsetPositionInLiquid(0.0D, 1.0D, 0.0D);
 		double curspeed = this.getSpeed();
 
 		if(!isSharking || curspeed < 0.078F){
@@ -586,23 +586,23 @@ public class QuakeClientPlayer extends ClientPlayerBase{
 
 			if(curspeed > 0.098)
 				quake_AirAccelerate(wishspeed, wishdir[0], wishdir[1],
-				        QuakeConfig.ACCELERATE);
+						QuakeConfig.ACCELERATE);
 			else
 				quake_Accelerate(.0980F, wishdir[0], wishdir[1],
-				        QuakeConfig.ACCELERATE);
+						QuakeConfig.ACCELERATE);
 
 			this.player.moveEntity(this.player.motionX, this.player.motionY,
-			        this.player.motionZ);
+					this.player.motionZ);
 
 			this.player.motionY = 0.0D;
 		}
 
 		// water jump
 		if(this.player.isCollidedHorizontally
-		        && this.player.isOffsetPositionInLiquid(this.player.motionX,
-		                this.player.motionY + 0.6000000238418579D
-		                        - this.player.posY + lastPosY,
-		                this.player.motionZ)){
+				&& this.player.isOffsetPositionInLiquid(this.player.motionX,
+						this.player.motionY + 0.6000000238418579D
+								- this.player.posY + lastPosY,
+						this.player.motionZ)){
 			this.player.motionY = 0.30000001192092896D;
 		}
 
@@ -617,13 +617,13 @@ public class QuakeClientPlayer extends ClientPlayerBase{
 	}
 
 	private void quake_Accelerate(float wishspeed, double wishX, double wishZ,
-	        double accel){
+			double accel){
 		double addspeed, accelspeed, currentspeed;
 
 		// Determine veer amount
 		// this is a dot product
 		currentspeed = this.player.motionX * wishX + this.player.motionZ
-		        * wishZ;
+				* wishZ;
 
 		// See how much to add
 		addspeed = wishspeed - currentspeed;
@@ -645,7 +645,7 @@ public class QuakeClientPlayer extends ClientPlayerBase{
 	}
 
 	private void quake_AirAccelerate(float wishspeed, double wishX,
-	        double wishZ, double accel){
+			double wishZ, double accel){
 		double addspeed, accelspeed, currentspeed;
 
 		float wishspd = wishspeed;
@@ -657,7 +657,7 @@ public class QuakeClientPlayer extends ClientPlayerBase{
 		// Determine veer amount
 		// this is a dot product
 		currentspeed = this.player.motionX * wishX + this.player.motionZ
-		        * wishZ;
+				* wishZ;
 
 		// See how much to add
 		addspeed = wishspd - currentspeed;
@@ -738,7 +738,7 @@ public class QuakeClientPlayer extends ClientPlayerBase{
 		if(speed > softCap){
 			if(softCapDegen != 1.0F){
 				float applied_cap = ( speed - softCap ) * softCapDegen
-				        + softCap;
+						+ softCap;
 				float multi = applied_cap / speed;
 				this.player.motionX *= multi;
 				this.player.motionZ *= multi;

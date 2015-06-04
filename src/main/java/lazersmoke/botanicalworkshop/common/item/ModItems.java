@@ -50,10 +50,10 @@ public final class ModItems{
 		shiftedHopsUpgrade = new ItemShiftedHopsUpgrade();
 
 		BotanicalWorkshopAPI
-		        .registerShiftedArmorUpgrade((IShiftedArmorUpgrade) shiftedPhaseUpgrade);
+				.registerShiftedArmorUpgrade((IShiftedArmorUpgrade) shiftedPhaseUpgrade);
 		BotanicalWorkshopAPI
-		        .registerShiftedArmorUpgrade((IShiftedArmorUpgrade) shiftedRevealingUpgrade);
+				.registerShiftedArmorUpgrade((IShiftedArmorUpgrade) shiftedRevealingUpgrade);
 		BotanicalWorkshopAPI
-		        .registerShiftedArmorUpgrade((IShiftedArmorUpgrade) shiftedHopsUpgrade);
+				.registerShiftedArmorUpgrade((IShiftedArmorUpgrade) shiftedHopsUpgrade);
 	}
 }

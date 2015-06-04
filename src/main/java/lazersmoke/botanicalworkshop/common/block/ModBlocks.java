@@ -38,21 +38,21 @@ public final class ModBlocks{
 		registerTile(TileThaumicCore.class, LibBlockNames.THAUMIC_CORE);
 
 		registerSubTile(SubTileExAquainas.class,
-		        LibBlockNames.SUBTILE_EXAQUAINAS);
+				LibBlockNames.SUBTILE_EXAQUAINAS);
 		registerSubTile(SubTileLogicalSound.class,
-		        LibBlockNames.SUBTILE_LOGICALSOUND);
+				LibBlockNames.SUBTILE_LOGICALSOUND);
 	}
 
 	private static void registerTile(Class<? extends TileEntity> clazz,
-	        String key){
+			String key){
 		GameRegistry.registerTileEntity(clazz, LibResources.PREFIX_MOD + key);
 	}
 
 	private static void registerSubTile(Class<? extends SubTileEntity> clazz,
-	        String key){
+			String key){
 		BotaniaAPI.registerSubTile(key, clazz);
 		BotaniaAPI.registerSubTileSignature(clazz,
-		        new BotanicalWorkshopSignature(key));
+				new BotanicalWorkshopSignature(key));
 		BotaniaAPI.addSubTileToCreativeMenu(key);
 	}
 }

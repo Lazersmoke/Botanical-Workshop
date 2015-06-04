@@ -34,11 +34,11 @@ public class TonalGeneratingFlower extends SubTileGenerating{
 		}
 		for(int i = 0; i < pitches.length; i++)
 			if(ticksExisted - lastTicks[i] == ( firstTick ? ticksExisted
-			        - lastTicks[i] : times[i][note[i]] * tempo )){
+					- lastTicks[i] : times[i][note[i]] * tempo )){
 				lastTicks[i] = ticksExisted;
 				if(LibConfigs.TONAL_FLORA)
 					playSound(soundEffect[i][note[i]], volumes[i][note[i]],
-					        pitches[i][note[i]]);
+							pitches[i][note[i]]);
 				note[i]++;
 				if(note[i] > ( times[i].length - 1 ))
 					note[i] = 0;
@@ -49,7 +49,7 @@ public class TonalGeneratingFlower extends SubTileGenerating{
 
 	private void playSound(String sound, float volume, float pitch){
 		supertile.getWorldObj().playSoundEffect(supertile.xCoord,
-		        supertile.yCoord, supertile.zCoord, sound, volume, pitch);
+				supertile.yCoord, supertile.zCoord, sound, volume, pitch);
 	}
 
 }

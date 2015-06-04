@@ -21,7 +21,7 @@ public class ShiftedArmorUpgradeRecipe implements IRecipe{
 				if(foundUpgrade && foundArmor)
 					return false;
 				if(stack.getItem() instanceof IShiftedArmorUpgrade
-				        && !foundUpgrade)
+						&& !foundUpgrade)
 					foundUpgrade = true;
 				else if(!foundArmor){
 					if(stack.getItem() instanceof ItemShiftedArmor)
@@ -44,7 +44,7 @@ public class ShiftedArmorUpgradeRecipe implements IRecipe{
 			ItemStack stack = inventory.getStackInSlot(i);
 			if(stack != null){
 				if(stack.getItem() instanceof ItemShiftedArmor
-				        && armorStack == null)
+						&& armorStack == null)
 					armorStack = stack;
 				else
 					upgradeStack = stack;
@@ -52,8 +52,8 @@ public class ShiftedArmorUpgradeRecipe implements IRecipe{
 		}
 		ItemStack copy = armorStack.copy();
 		ItemNBTHelper.setBoolean(copy, ItemShiftedArmor.TAG_UPGRADE_BASE
-		        + ( (IShiftedArmorUpgrade) upgradeStack.getItem() ).getKey(),
-		        true);
+				+ ( (IShiftedArmorUpgrade) upgradeStack.getItem() ).getKey(),
+				true);
 		return copy;
 	}
 

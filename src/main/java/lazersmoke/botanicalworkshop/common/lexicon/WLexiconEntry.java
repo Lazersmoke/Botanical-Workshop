@@ -19,12 +19,12 @@ public class WLexiconEntry extends LexiconEntry implements IAddonEntry{
 	public LexiconEntry setLexiconPages(LexiconPage ... pages){
 		for(LexiconPage page : pages){
 			page.unlocalizedName = "botanicalworkshop.page."
-			        + getLazyUnlocalizedName() + page.unlocalizedName;
+					+ getLazyUnlocalizedName() + page.unlocalizedName;
 			if(page instanceof ITwoNamedPage){
 				ITwoNamedPage dou = (ITwoNamedPage) page;
 				dou.setSecondUnlocalizedName("botanicalworkshop.page."
-				        + getLazyUnlocalizedName()
-				        + dou.getSecondUnlocalizedName());
+						+ getLazyUnlocalizedName()
+						+ dou.getSecondUnlocalizedName());
 			}
 		}
 

@@ -27,20 +27,20 @@ import vazkii.botania.common.lexicon.page.PageRecipe;
 public class PageGatewayTransmutationRecipe extends PageRecipe{
 
 	private static final ResourceLocation gatewayRecipeOverlay = new ResourceLocation(
-	        LibResources.GUI_GATEWAY_TRANSMUTATION_OVERLAY);
+			LibResources.GUI_GATEWAY_TRANSMUTATION_OVERLAY);
 
 	List<RecipeGatewayTransmutation> recipes = new ArrayList<RecipeGatewayTransmutation>();
 	int ticksElapsed = 0;
 	int recipeAt = 0;
 
 	public PageGatewayTransmutationRecipe(String unlocalizedName,
-	        List<RecipeGatewayTransmutation> recipes){
+			List<RecipeGatewayTransmutation> recipes){
 		super(unlocalizedName);
 		this.recipes = recipes;
 	}
 
 	public PageGatewayTransmutationRecipe(String unlocalizedName,
-	        RecipeGatewayTransmutation recipe){
+			RecipeGatewayTransmutation recipe){
 		this(unlocalizedName, Arrays.asList(recipe));
 	}
 
@@ -60,11 +60,11 @@ public class PageGatewayTransmutationRecipe extends PageRecipe{
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 		GL11.glColor4f(1F, 1F, 1F, 1F);
 		( (GuiScreen) gui ).drawTexturedModalRect(gui.getLeft(), gui.getTop(),
-		        0, 0, gui.getWidth(), gui.getHeight());
+				0, 0, gui.getWidth(), gui.getHeight());
 		GL11.glDisable(GL11.GL_BLEND);
 
 		renderItem(gui, gui.getLeft() + 38, gui.getTop() + 52,
-		        recipe.getCatalyst(), false);
+				recipe.getCatalyst(), false);
 
 		renderItemAtGridPos(gui, 3, 1, recipe.getOutput(), false);
 
@@ -79,14 +79,14 @@ public class PageGatewayTransmutationRecipe extends PageRecipe{
 
 		IIcon portalIcon = BlockGatewayCore.portalTex;
 		Minecraft.getMinecraft().renderEngine
-		        .bindTexture(TextureMap.locationBlocksTexture);
+				.bindTexture(TextureMap.locationBlocksTexture);
 		RenderItem.getInstance().renderIcon(gui.getLeft() + 22,
-		        gui.getTop() + 36, portalIcon, 48, 48);
+				gui.getTop() + 36, portalIcon, 48, 48);
 	}
 
 	@SideOnly(Side.CLIENT)
 	public void renderItemAtInputPos(IGuiLexiconEntry gui, int x,
-	        ItemStack stack){
+			ItemStack stack){
 		if(stack == null || stack.getItem() == null)
 			return;
 		stack = stack.copy();

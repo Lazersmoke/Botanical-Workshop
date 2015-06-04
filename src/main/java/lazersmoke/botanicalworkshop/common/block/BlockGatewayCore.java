@@ -27,7 +27,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 // This class is all Lazersmoke
 public class BlockGatewayCore extends BlockContainer implements IWandable,
-        IWandHUD, ILexiconable{
+		IWandHUD, ILexiconable{
 
 	public static IIcon iconOff, iconOn, portalTex;
 
@@ -51,11 +51,11 @@ public class BlockGatewayCore extends BlockContainer implements IWandable,
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister par1IconRegister){
 		iconOff = par1IconRegister.registerIcon(LibResources.PREFIX_MOD
-		        + getUnlocalizedName().replaceAll("tile\\.", "") + "0");
+				+ getUnlocalizedName().replaceAll("tile\\.", "") + "0");
 		iconOn = par1IconRegister.registerIcon(LibResources.PREFIX_MOD
-		        + getUnlocalizedName().replaceAll("tile\\.", "") + "1");
+				+ getUnlocalizedName().replaceAll("tile\\.", "") + "1");
 		portalTex = par1IconRegister.registerIcon(LibResources.PREFIX_MOD
-		        + getUnlocalizedName().replaceAll("tile\\.", "") + "Portal");
+				+ getUnlocalizedName().replaceAll("tile\\.", "") + "Portal");
 	}
 
 	@Override
@@ -70,21 +70,21 @@ public class BlockGatewayCore extends BlockContainer implements IWandable,
 
 	@Override
 	public void renderHUD(Minecraft mc, ScaledResolution res, World world,
-	        int x, int y, int z){
+			int x, int y, int z){
 		( (TileGatewayCore) world.getTileEntity(x, y, z) ).renderHUD(mc, res);
 	}
 
 	@Override
 	public boolean onUsedByWand(EntityPlayer player, ItemStack stack,
-	        World world, int x, int y, int z, int side){
+			World world, int x, int y, int z, int side){
 		boolean did = ( (TileGatewayCore) world.getTileEntity(x, y, z) )
-		        .onWanded();
+				.onWanded();
 		return did;
 	}
 
 	@Override
 	public LexiconEntry getEntry(World world, int x, int y, int z,
-	        EntityPlayer player, ItemStack lexicon){
+			EntityPlayer player, ItemStack lexicon){
 		return LexiconData.gatewayCore;
 	}
 

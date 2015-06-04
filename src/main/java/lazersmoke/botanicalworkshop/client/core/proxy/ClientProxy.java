@@ -23,6 +23,6 @@ public class ClientProxy extends CommonProxy{
 		RenderingRegistry.registerBlockHandler(new RenderElvenPool());
 
 		ClientRegistry.bindTileEntitySpecialRenderer(TileElvenPool.class,
-		        new RenderTileElvenPool());
+				new RenderTileElvenPool());
 	}
 }

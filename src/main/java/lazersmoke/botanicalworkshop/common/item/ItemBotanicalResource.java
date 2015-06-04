@@ -37,14 +37,14 @@ public class ItemBotanicalResource extends ItemMod{
 		icons = new IIcon[types];
 		for(int i = 0; i < icons.length; i++)
 			icons[i] = register.registerIcon(LibResources.PREFIX_MOD
-			        + LibItemNames.BOTANICAL_RESOURCE_NAMES[i]);
+					+ LibItemNames.BOTANICAL_RESOURCE_NAMES[i]);
 	}
 
 	@Override
 	public String getUnlocalizedName(ItemStack stack){
 		return "item."
-		        + LibItemNames.BOTANICAL_RESOURCE_NAMES[Math.min(types - 1,
-		                stack.getItemDamage())];
+				+ LibItemNames.BOTANICAL_RESOURCE_NAMES[Math.min(types - 1,
+						stack.getItemDamage())];
 	}
 
 	@Override

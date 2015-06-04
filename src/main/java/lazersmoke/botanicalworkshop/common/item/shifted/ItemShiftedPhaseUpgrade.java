@@ -11,7 +11,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
 public class ItemShiftedPhaseUpgrade extends ItemMod implements
-        IShiftedArmorUpgrade{
+		IShiftedArmorUpgrade{
 
 	public ItemShiftedPhaseUpgrade(){
 		super(LibItemNames.PHASE_UPGRADE);
@@ -25,9 +25,9 @@ public class ItemShiftedPhaseUpgrade extends ItemMod implements
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack stack){
 		if(ItemShiftedArmor.getCore(stack, world) != null
-		        && ItemShiftedArmor.getCore(stack, world).addMana(-1000))
+				&& ItemShiftedArmor.getCore(stack, world).addMana(-1000))
 			player.addPotionEffect(new PotionEffect(Potion.invisibility.id, 10,
-			        1, true));// true sets ambient; no or reduced particles
+					1, true));// true sets ambient; no or reduced particles
 		( (ItemShiftedArmor) stack.getItem() ).setPhantomInk(stack, true);
 	}
 

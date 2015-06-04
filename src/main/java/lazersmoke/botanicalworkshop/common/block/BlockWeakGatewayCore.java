@@ -40,12 +40,12 @@ public class BlockWeakGatewayCore extends Block implements ILexiconable{
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister par1IconRegister){
 		blockIcon = par1IconRegister.registerIcon(LibResources.PREFIX_MOD
-		        + getUnlocalizedName().replaceAll("tile\\.", ""));
+				+ getUnlocalizedName().replaceAll("tile\\.", ""));
 	}
 
 	@Override
 	public LexiconEntry getEntry(World world, int x, int y, int z,
-	        EntityPlayer player, ItemStack lexicon){
+			EntityPlayer player, ItemStack lexicon){
 		return LexiconData.thaumicCore;
 	}
 }

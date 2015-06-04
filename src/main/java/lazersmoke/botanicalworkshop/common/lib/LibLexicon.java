@@ -8,7 +8,7 @@ public class LibLexicon{
 	public static final String CATEGORY_THAUMIC = CATEGORY_PREFIX + "thaumic";
 	public static final String CATEGORY_BLOOD = CATEGORY_PREFIX + "blood";
 	public static final String CATEGORY_MECHANICAL = CATEGORY_PREFIX
-	        + "mechanical";
+			+ "mechanical";
 
 	public static final String KNOWLEDGE_WORKSHOP = "workshop";
 	public static final String KNOWLEDGE_THAUMIC = "thaumic";

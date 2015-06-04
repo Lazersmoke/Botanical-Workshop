@@ -42,7 +42,7 @@ import vazkii.botania.common.core.handler.ManaNetworkHandler;
 import vazkii.botania.common.core.helper.Vector3;
 
 public class TileElvenPool extends TileMod implements IManaPool, IDyablePool,
-        IKeyLocked, ISparkAttachable, IThrottledPacket{
+		IKeyLocked, ISparkAttachable, IThrottledPacket{
 
 	public static final int MAX_MANA = 1000000;
 
@@ -82,7 +82,7 @@ public class TileElvenPool extends TileMod implements IManaPool, IDyablePool,
 	public boolean isFull(){
 		Block blockBelow = worldObj.getBlock(xCoord, yCoord - 1, zCoord);
 		return blockBelow != vazkii.botania.common.block.ModBlocks.manaVoid
-		        && getCurrentMana() >= manaCap;
+				&& getCurrentMana() >= manaCap;
 	}
 
 	@Override
@@ -92,7 +92,7 @@ public class TileElvenPool extends TileMod implements IManaPool, IDyablePool,
 		this.mana = Math.max(0, Math.min(getCurrentMana() + mana, manaCap));
 		if(!full)
 			worldObj.func_147453_f(xCoord, yCoord, zCoord,
-			        worldObj.getBlock(xCoord, yCoord, zCoord));
+					worldObj.getBlock(xCoord, yCoord, zCoord));
 	}
 
 	@Override
@@ -118,7 +118,7 @@ public class TileElvenPool extends TileMod implements IManaPool, IDyablePool,
 
 		if(stack.getItem() instanceof IManaDissolvable){
 			( (IManaDissolvable) stack.getItem() ).onDissolveTick(this, stack,
-			        item);
+					item);
 			if(stack.stackSize == 0)
 				item.setDead();
 		}
@@ -128,10 +128,10 @@ public class TileElvenPool extends TileMod implements IManaPool, IDyablePool,
 
 		for(RecipeManaInfusion recipe : BotaniaAPI.manaInfusionRecipes){
 			if(recipe.matches(stack)
-			        && ( !recipe.isAlchemy() || alchemy )
-			        && ( !recipe.isConjuration() || conjuration )
-			        && ( getBlockMetadata() != 2 || recipe.getOutput()
-			                .getItem() == Item.getItemFromBlock(getBlockType()) )){
+					&& ( !recipe.isAlchemy() || alchemy )
+					&& ( !recipe.isConjuration() || conjuration )
+					&& ( getBlockMetadata() != 2 || recipe.getOutput()
+							.getItem() == Item.getItemFromBlock(getBlockType()) )){
 				int mana = recipe.getManaToConsume();
 				if(getCurrentMana() >= mana){
 					recieveMana(-mana);
@@ -143,8 +143,8 @@ public class TileElvenPool extends TileMod implements IManaPool, IDyablePool,
 
 						ItemStack output = recipe.getOutput().copy();
 						EntityItem outputItem = new EntityItem(worldObj,
-						        xCoord + 0.5, yCoord + 1.5, zCoord + 0.5,
-						        output);
+								xCoord + 0.5, yCoord + 1.5, zCoord + 0.5,
+								output);
 						outputItem.age = 105;
 						worldObj.spawnEntityInWorld(outputItem);
 					}
@@ -163,7 +163,7 @@ public class TileElvenPool extends TileMod implements IManaPool, IDyablePool,
 	public void craftingFanciness(){
 		if(soundTicks == 0){
 			worldObj.playSoundEffect(xCoord, yCoord, zCoord,
-			        "botania:manaPoolCraft", 0.4F, 4F);
+					"botania:manaPoolCraft", 0.4F, 4F);
 			soundTicks = 6;
 		}
 
@@ -172,8 +172,8 @@ public class TileElvenPool extends TileMod implements IManaPool, IDyablePool,
 			float green = (float) Math.random();
 			float blue = (float) Math.random();
 			Botania.proxy.sparkleFX(worldObj, xCoord + 0.5 + Math.random()
-			        * 0.4 - 0.2, yCoord + 1, zCoord + 0.5 + Math.random() * 0.4
-			        - 0.2, red, green, blue, (float) Math.random(), 10);
+					* 0.4 - 0.2, yCoord + 1, zCoord + 0.5 + Math.random() * 0.4
+					- 0.2, red, green, blue, (float) Math.random(), 10);
 		}
 	}
 
@@ -190,15 +190,15 @@ public class TileElvenPool extends TileMod implements IManaPool, IDyablePool,
 
 		if(worldObj.isRemote){
 			double particleChance = 1F - (double) getCurrentMana()
-			        / (double) manaCap * 0.1;
+					/ (double) manaCap * 0.1;
 			Color color = new Color(0x00C6FF);
 			if(Math.random() > particleChance)
 				Botania.proxy.wispFX(worldObj, xCoord + 0.3 + Math.random()
-				        * 0.5, yCoord + 0.6 + Math.random() * 0.25, zCoord
-				        + Math.random(), color.getRed() / 255F,
-				        color.getGreen() / 255F, color.getBlue() / 255F,
-				        (float) Math.random() / 3F,
-				        (float) -Math.random() / 25F, 2F);
+						* 0.5, yCoord + 0.6 + Math.random() * 0.25, zCoord
+						+ Math.random(), color.getRed() / 255F,
+						color.getGreen() / 255F, color.getBlue() / 255F,
+						(float) Math.random() / 3F,
+						(float) -Math.random() / 25F, 2F);
 		}
 
 		if(sendPacket && ticks % 10 == 0){
@@ -211,8 +211,8 @@ public class TileElvenPool extends TileMod implements IManaPool, IDyablePool,
 		catalystsRegistered = true;
 
 		List<EntityItem> items = worldObj.getEntitiesWithinAABB(
-		        EntityItem.class, AxisAlignedBB.getBoundingBox(xCoord, yCoord,
-		                zCoord, xCoord + 1, yCoord + 1, zCoord + 1));
+				EntityItem.class, AxisAlignedBB.getBoundingBox(xCoord, yCoord,
+						zCoord, xCoord + 1, yCoord + 1, zCoord + 1));
 		for(EntityItem item : items){
 			if(item.isDead)
 				continue;
@@ -221,22 +221,22 @@ public class TileElvenPool extends TileMod implements IManaPool, IDyablePool,
 			if(stack != null && stack.getItem() instanceof IManaItem){
 				IManaItem mana = (IManaItem) stack.getItem();
 				if(outputting && mana.canReceiveManaFromPool(stack, this)
-				        || !outputting && mana.canExportManaToPool(stack, this)){
+						|| !outputting && mana.canExportManaToPool(stack, this)){
 					boolean didSomething = false;
 
 					if(outputting){
 						if(canSpare){
 							if(getCurrentMana() > 0
-							        && mana.getMana(stack) < mana
-							                .getMaxMana(stack))
+									&& mana.getMana(stack) < mana
+											.getMaxMana(stack))
 								didSomething = true;
 
 							int manaVal = Math.min(
-							        1000,
-							        Math.min(
-							                getCurrentMana(),
-							                mana.getMaxMana(stack)
-							                        - mana.getMana(stack)));
+									1000,
+									Math.min(
+											getCurrentMana(),
+											mana.getMaxMana(stack)
+													- mana.getMana(stack)));
 							if(!worldObj.isRemote)
 								mana.addMana(stack, manaVal);
 							recieveMana(-manaVal);
@@ -247,9 +247,9 @@ public class TileElvenPool extends TileMod implements IManaPool, IDyablePool,
 								didSomething = true;
 
 							int manaVal = Math.min(
-							        1000,
-							        Math.min(manaCap - getCurrentMana(),
-							                mana.getMana(stack)));
+									1000,
+									Math.min(manaCap - getCurrentMana(),
+											mana.getMana(stack)));
 							if(!worldObj.isRemote)
 								mana.addMana(stack, -manaVal);
 							recieveMana(manaVal);
@@ -258,18 +258,18 @@ public class TileElvenPool extends TileMod implements IManaPool, IDyablePool,
 
 					if(didSomething){
 						if(worldObj.isRemote
-						        && vazkii.botania.common.core.handler.ConfigHandler.chargingAnimationEnabled
-						        && worldObj.rand.nextInt(20) == 0){
+								&& vazkii.botania.common.core.handler.ConfigHandler.chargingAnimationEnabled
+								&& worldObj.rand.nextInt(20) == 0){
 							Vector3 itemVec = Vector3.fromTileEntity(this).add(
-							        0.5, 0.5 + Math.random() * 0.3, 0.5);
+									0.5, 0.5 + Math.random() * 0.3, 0.5);
 							Vector3 tileVec = Vector3.fromTileEntity(this).add(
-							        0.2 + Math.random() * 0.6, 0,
-							        0.2 + Math.random() * 0.6);
+									0.2 + Math.random() * 0.6, 0,
+									0.2 + Math.random() * 0.6);
 							LightningHandler.spawnLightningBolt(worldObj,
-							        outputting ? tileVec : itemVec,
-							        outputting ? itemVec : tileVec, 80,
-							        worldObj.rand.nextLong(), 0x4400799c,
-							        0x4400C6FF);
+									outputting ? tileVec : itemVec,
+									outputting ? itemVec : tileVec, 80,
+									worldObj.rand.nextLong(), 0x4400799c,
+									0x4400C6FF);
 						}
 					}
 				}
@@ -324,7 +324,7 @@ public class TileElvenPool extends TileMod implements IManaPool, IDyablePool,
 		if(player.isSneaking()){
 			outputting = !outputting;
 			VanillaPacketDispatcher.dispatchTEToNearbyPlayers(worldObj, xCoord,
-			        yCoord, zCoord);
+					yCoord, zCoord);
 		}
 
 		if(!worldObj.isRemote){
@@ -333,8 +333,8 @@ public class TileElvenPool extends TileMod implements IManaPool, IDyablePool,
 			nbttagcompound.setInteger(TAG_KNOWN_MANA, getCurrentMana());
 			if(player instanceof EntityPlayerMP)
 				( (EntityPlayerMP) player ).playerNetServerHandler
-				        .sendPacket(new S35PacketUpdateTileEntity(xCoord,
-				                yCoord, zCoord, -999, nbttagcompound));
+						.sendPacket(new S35PacketUpdateTileEntity(xCoord,
+								yCoord, zCoord, -999, nbttagcompound));
 		}
 
 		worldObj.playSoundAtEntity(player, "botania:ding", 0.11F, 1F);
@@ -342,17 +342,17 @@ public class TileElvenPool extends TileMod implements IManaPool, IDyablePool,
 
 	public void renderHUD(Minecraft mc, ScaledResolution res){
 		String name = StatCollector.translateToLocal(new ItemStack(
-		        ModBlocks.elvenPool, 1, getBlockMetadata())
-		        .getUnlocalizedName().replaceAll("tile.",
-		                "tile." + LibResources.PREFIX_MOD)
-		        + ".name");
+				ModBlocks.elvenPool, 1, getBlockMetadata())
+				.getUnlocalizedName().replaceAll("tile.",
+						"tile." + LibResources.PREFIX_MOD)
+				+ ".name");
 		int color = 0x4444FF;
 		HUDHandler.drawSimpleManaHUD(color, knownMana, manaCap, name, res);
 
 		String power = StatCollector.translateToLocal("botaniamisc."
-		        + ( outputting ? "outputtingPower" : "inputtingPower" ));
+				+ ( outputting ? "outputtingPower" : "inputtingPower" ));
 		int x = res.getScaledWidth() / 2
-		        - mc.fontRenderer.getStringWidth(power) / 2;
+				- mc.fontRenderer.getStringWidth(power) / 2;
 		int y = res.getScaledHeight() / 2 + 30;
 		GL11.glEnable(GL11.GL_BLEND);
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
@@ -398,9 +398,9 @@ public class TileElvenPool extends TileMod implements IManaPool, IDyablePool,
 	@Override
 	public ISparkEntity getAttachedSpark(){
 		List<ISparkEntity> sparks = worldObj
-		        .getEntitiesWithinAABB(ISparkEntity.class, AxisAlignedBB
-		                .getBoundingBox(xCoord, yCoord + 1, zCoord, xCoord + 1,
-		                        yCoord + 2, zCoord + 1));
+				.getEntitiesWithinAABB(ISparkEntity.class, AxisAlignedBB
+						.getBoundingBox(xCoord, yCoord + 1, zCoord, xCoord + 1,
+								yCoord + 2, zCoord + 1));
 		if(sparks.size() == 1){
 			Entity e = (Entity) sparks.get(0);
 			return (ISparkEntity) e;

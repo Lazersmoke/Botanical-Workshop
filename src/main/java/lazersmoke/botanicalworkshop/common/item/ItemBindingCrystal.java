@@ -31,7 +31,7 @@ public class ItemBindingCrystal extends ItemCatalyst{
 		icons = new IIcon[4];
 		for(int i = 0; i < icons.length; i++)
 			icons[i] = register.registerIcon(LibResources.PREFIX_MOD
-			        + getUnlocalizedName().replaceAll("item\\.", "") + i);
+					+ getUnlocalizedName().replaceAll("item\\.", "") + i);
 	}
 
 	@Override
@@ -41,7 +41,7 @@ public class ItemBindingCrystal extends ItemCatalyst{
 
 	@Override
 	public void getSubItems(Item item, CreativeTabs creativeTab,
-	        List subItemList){
+			List subItemList){
 		for(int i = 0; i < icons.length; i++)
 			subItemList.add(new ItemStack(item, 1, i));
 	}

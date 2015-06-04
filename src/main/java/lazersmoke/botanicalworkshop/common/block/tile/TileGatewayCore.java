@@ -67,305 +67,305 @@ public class TileGatewayCore extends TileEntity implements IManaBlock{
 	private int ticksOpen = 0;
 	private boolean closeNow = false;
 	private static final int[][] LIVINGWOOD_POSITIONS = {
-	        {
-	                -1, 0, 0
-	        }, {
-	                1, 0, 0
-	        }, {
-	                0, 0, 1
-	        }, {
-	                0, 0, -1
-	        }, {
-	                -2, 1, 0
-	        }, {
-	                2, 1, 0
-	        }, {
-	                0, 1, 2
-	        }, {
-	                0, 1, -2
-	        }, {
-	                -3, 2, 0
-	        }, {
-	                3, 2, 0
-	        }, {
-	                0, 2, 3
-	        }, {
-	                0, 2, -3
-	        }, {
-	                -3, 4, 0
-	        }, {
-	                3, 4, 0
-	        }, {
-	                0, 4, 3
-	        }, {
-	                0, 4, -3
-	        }, {
-	                -2, 5, 0
-	        }, {
-	                2, 5, 0
-	        }, {
-	                0, 5, 2
-	        }, {
-	                0, 5, -2
-	        }, {
-	                -1, 6, 0
-	        }, {
-	                1, 6, 0
-	        }, {
-	                0, 6, 1
-	        }, {
-	                0, 6, -1
-	        }
+			{
+					-1, 0, 0
+			}, {
+					1, 0, 0
+			}, {
+					0, 0, 1
+			}, {
+					0, 0, -1
+			}, {
+					-2, 1, 0
+			}, {
+					2, 1, 0
+			}, {
+					0, 1, 2
+			}, {
+					0, 1, -2
+			}, {
+					-3, 2, 0
+			}, {
+					3, 2, 0
+			}, {
+					0, 2, 3
+			}, {
+					0, 2, -3
+			}, {
+					-3, 4, 0
+			}, {
+					3, 4, 0
+			}, {
+					0, 4, 3
+			}, {
+					0, 4, -3
+			}, {
+					-2, 5, 0
+			}, {
+					2, 5, 0
+			}, {
+					0, 5, 2
+			}, {
+					0, 5, -2
+			}, {
+					-1, 6, 0
+			}, {
+					1, 6, 0
+			}, {
+					0, 6, 1
+			}, {
+					0, 6, -1
+			}
 	};
 	private static final int[][] CHISLED_ELVEN_QUARTZ_POSITIONS = {
-	        {
-	                -1, 0, -1
-	        }, {
-	                -1, 0, 1
-	        }, {
-	                1, 0, -1
-	        }, {
-	                1, 0, 1
-	        }, {
-	                -1, 1, -2
-	        }, {
-	                -1, 1, 2
-	        }, {
-	                1, 1, -2
-	        }, {
-	                1, 1, 2
-	        }, {
-	                -2, 1, -1
-	        }, {
-	                -2, 1, 1
-	        }, {
-	                2, 1, -1
-	        }, {
-	                2, 1, 1
-	        }, {
-	                -1, 5, -2
-	        }, {
-	                -1, 5, 2
-	        }, {
-	                1, 5, -2
-	        }, {
-	                1, 5, 2
-	        }, {
-	                -2, 5, -1
-	        }, {
-	                -2, 5, 1
-	        }, {
-	                2, 5, -1
-	        }, {
-	                2, 5, 1
-	        }, {
-	                -1, 6, -1
-	        }, {
-	                -1, 6, 1
-	        }, {
-	                1, 6, -1
-	        }, {
-	                1, 6, 1
-	        }
+			{
+					-1, 0, -1
+			}, {
+					-1, 0, 1
+			}, {
+					1, 0, -1
+			}, {
+					1, 0, 1
+			}, {
+					-1, 1, -2
+			}, {
+					-1, 1, 2
+			}, {
+					1, 1, -2
+			}, {
+					1, 1, 2
+			}, {
+					-2, 1, -1
+			}, {
+					-2, 1, 1
+			}, {
+					2, 1, -1
+			}, {
+					2, 1, 1
+			}, {
+					-1, 5, -2
+			}, {
+					-1, 5, 2
+			}, {
+					1, 5, -2
+			}, {
+					1, 5, 2
+			}, {
+					-2, 5, -1
+			}, {
+					-2, 5, 1
+			}, {
+					2, 5, -1
+			}, {
+					2, 5, 1
+			}, {
+					-1, 6, -1
+			}, {
+					-1, 6, 1
+			}, {
+					1, 6, -1
+			}, {
+					1, 6, 1
+			}
 	};
 	private static final int[][] GLIMMERING_LIVINGWOOD_POSITIONS = {
-	        {
-	                -3, 3, 0
-	        }, {
-	                3, 3, 0
-	        }, {
-	                0, 3, 3
-	        }, {
-	                0, 3, -3
-	        }
+			{
+					-3, 3, 0
+			}, {
+					3, 3, 0
+			}, {
+					0, 3, 3
+			}, {
+					0, 3, -3
+			}
 	};
 	private static final int[][] LIVINGWOOD_STAIRS_UP_POSITIONS = {
-	        {
-	                -2, 2, 0
-	        }, {
-	                2, 2, 0
-	        }, {
-	                0, 2, -2
-	        }, {
-	                0, 2, 2
-	        }
+			{
+					-2, 2, 0
+			}, {
+					2, 2, 0
+			}, {
+					0, 2, -2
+			}, {
+					0, 2, 2
+			}
 	};
 	private static final int[][] LIVINGWOOD_STAIRS_DOWN_POSITIONS = {
-	        {
-	                -2, 4, 0
-	        }, {
-	                2, 4, 0
-	        }, {
-	                0, 4, -2
-	        }, {
-	                0, 4, 2
-	        }
+			{
+					-2, 4, 0
+			}, {
+					2, 4, 0
+			}, {
+					0, 4, -2
+			}, {
+					0, 4, 2
+			}
 	};
 	private static final int[][] AIR_POSITIONS = {
-	        {
-	                1, 1, 0
-	        }, {
-	                0, 1, 1
-	        }, {
-	                -1, 1, 0
-	        }, {
-	                0, 1, -1
-	        }, {
-	                1, 1, -1
-	        }, {
-	                -1, 1, 1
-	        }, {
-	                1, 1, 1
-	        }, {
-	                -1, 1, -1
-	        }, {
-	                0, 1, 0
-	        }, {
-	                1, 2, 0
-	        }, {
-	                0, 2, 1
-	        }, {
-	                -1, 2, 0
-	        }, {
-	                0, 2, -1
-	        }, {
-	                1, 2, -1
-	        }, {
-	                -1, 2, 1
-	        }, {
-	                1, 2, 1
-	        }, {
-	                -1, 2, -1
-	        }, {
-	                0, 2, 0
-	        }, {
-	                1, 3, 0
-	        }, {
-	                0, 3, 1
-	        }, {
-	                -1, 3, 0
-	        }, {
-	                0, 3, -1
-	        }, {
-	                1, 3, -1
-	        }, {
-	                -1, 3, 1
-	        }, {
-	                1, 3, 1
-	        }, {
-	                -1, 3, -1
-	        }, {
-	                0, 3, 0
-	        }, {
-	                1, 4, 0
-	        }, {
-	                0, 4, 1
-	        }, {
-	                -1, 4, 0
-	        }, {
-	                0, 4, -1
-	        }, {
-	                1, 4, -1
-	        }, {
-	                -1, 4, 1
-	        }, {
-	                1, 4, 1
-	        }, {
-	                -1, 4, -1
-	        }, {
-	                0, 4, 0
-	        }, {
-	                1, 5, 0
-	        }, {
-	                0, 5, 1
-	        }, {
-	                -1, 5, 0
-	        }, {
-	                0, 5, -1
-	        }, {
-	                1, 5, -1
-	        }, {
-	                -1, 5, 1
-	        }, {
-	                1, 5, 1
-	        }, {
-	                -1, 5, -1
-	        }, {
-	                0, 5, 0
-	        }
+			{
+					1, 1, 0
+			}, {
+					0, 1, 1
+			}, {
+					-1, 1, 0
+			}, {
+					0, 1, -1
+			}, {
+					1, 1, -1
+			}, {
+					-1, 1, 1
+			}, {
+					1, 1, 1
+			}, {
+					-1, 1, -1
+			}, {
+					0, 1, 0
+			}, {
+					1, 2, 0
+			}, {
+					0, 2, 1
+			}, {
+					-1, 2, 0
+			}, {
+					0, 2, -1
+			}, {
+					1, 2, -1
+			}, {
+					-1, 2, 1
+			}, {
+					1, 2, 1
+			}, {
+					-1, 2, -1
+			}, {
+					0, 2, 0
+			}, {
+					1, 3, 0
+			}, {
+					0, 3, 1
+			}, {
+					-1, 3, 0
+			}, {
+					0, 3, -1
+			}, {
+					1, 3, -1
+			}, {
+					-1, 3, 1
+			}, {
+					1, 3, 1
+			}, {
+					-1, 3, -1
+			}, {
+					0, 3, 0
+			}, {
+					1, 4, 0
+			}, {
+					0, 4, 1
+			}, {
+					-1, 4, 0
+			}, {
+					0, 4, -1
+			}, {
+					1, 4, -1
+			}, {
+					-1, 4, 1
+			}, {
+					1, 4, 1
+			}, {
+					-1, 4, -1
+			}, {
+					0, 4, 0
+			}, {
+					1, 5, 0
+			}, {
+					0, 5, 1
+			}, {
+					-1, 5, 0
+			}, {
+					0, 5, -1
+			}, {
+					1, 5, -1
+			}, {
+					-1, 5, 1
+			}, {
+					1, 5, 1
+			}, {
+					-1, 5, -1
+			}, {
+					0, 5, 0
+			}
 	};
 	private static final int[][] ELVEN_POOL_POSITIONS = {
-	        {
-	                -1, 2, -2
-	        }, {
-	                -1, 2, 2
-	        }, {
-	                1, 2, -2
-	        }, {
-	                1, 2, 2
-	        }, {
-	                -2, 2, -1
-	        }, {
-	                -2, 2, 1
-	        }, {
-	                2, 2, -1
-	        }, {
-	                2, 2, 1
-	        }
+			{
+					-1, 2, -2
+			}, {
+					-1, 2, 2
+			}, {
+					1, 2, -2
+			}, {
+					1, 2, 2
+			}, {
+					-2, 2, -1
+			}, {
+					-2, 2, 1
+			}, {
+					2, 2, -1
+			}, {
+					2, 2, 1
+			}
 	};
 	private static final int[][] ADDITIONAL_ELVEN_POOL_POSITIONS = {
-	        {
-	                3, 3, 1
-	        }, {
-	                3, 3, -1
-	        }, {
-	                -3, 3, 1
-	        }, {
-	                -3, 3, -1
-	        }, {
-	                1, 3, 3
-	        }, {
-	                -1, 3, 3
-	        }, {
-	                1, 3, -3
-	        }, {
-	                -1, 3, -3
-	        }, {
-	                2, 3, 2
-	        }, {
-	                2, 3, -2
-	        }, {
-	                -2, 3, 2
-	        }, {
-	                -2, 3, -2
-	        },
+			{
+					3, 3, 1
+			}, {
+					3, 3, -1
+			}, {
+					-3, 3, 1
+			}, {
+					-3, 3, -1
+			}, {
+					1, 3, 3
+			}, {
+					-1, 3, 3
+			}, {
+					1, 3, -3
+			}, {
+					-1, 3, -3
+			}, {
+					2, 3, 2
+			}, {
+					2, 3, -2
+			}, {
+					-2, 3, 2
+			}, {
+					-2, 3, -2
+			},
 	};
 	private static final int[][] ADDITIONAL_CHISLED_ELVEN_QUARTZ_POSITIONS = {
-	        {
-	                3, 2, 1
-	        }, {
-	                3, 2, -1
-	        }, {
-	                -3, 2, 1
-	        }, {
-	                -3, 2, -1
-	        }, {
-	                1, 2, 3
-	        }, {
-	                -1, 2, 3
-	        }, {
-	                1, 2, -3
-	        }, {
-	                -1, 2, -3
-	        }, {
-	                2, 2, 2
-	        }, {
-	                2, 2, -2
-	        }, {
-	                -2, 2, 2
-	        }, {
-	                -2, 2, -2
-	        },
+			{
+					3, 2, 1
+			}, {
+					3, 2, -1
+			}, {
+					-3, 2, 1
+			}, {
+					-3, 2, -1
+			}, {
+					1, 2, 3
+			}, {
+					-1, 2, 3
+			}, {
+					1, 2, -3
+			}, {
+					-1, 2, -3
+			}, {
+					2, 2, 2
+			}, {
+					2, 2, -2
+			}, {
+					-2, 2, 2
+			}, {
+					-2, 2, -2
+			},
 	};
 
 	@Override
@@ -390,21 +390,21 @@ public class TileGatewayCore extends TileEntity implements IManaBlock{
 			}
 
 			List<EntityPlayer> players = worldObj.getEntitiesWithinAABB(
-			        EntityPlayer.class, aabb);
+					EntityPlayer.class, aabb);
 			for(EntityPlayer player : players)
 				player.addPotionEffect(new PotionEffect(Potion.jump.id, 10, 5,
-				        true));// Allows player to jump out of pit
+						true));// Allows player to jump out of pit
 
 			List<EntityItem> items = worldObj.getEntitiesWithinAABB(
-			        EntityItem.class, aabb);
+					EntityItem.class, aabb);
 			for(EntityItem item : items){
 				if(! ( item.getEntityItem().getItem() instanceof IGatewayCatalyst )
-				        && ! ( item.getEntityData().getBoolean(TAG_PORTAL_KEEP) )){
+						&& ! ( item.getEntityData().getBoolean(TAG_PORTAL_KEEP) )){
 					currentInventory.add(item.getEntityItem());
 					item.setDead();
 				}
 				if(item.getEntityItem() != null
-				        && item.getEntityItem().getItem() instanceof IGatewayCatalyst){
+						&& item.getEntityItem().getItem() instanceof IGatewayCatalyst){
 					resolveRecipes();
 				}
 			}
@@ -413,7 +413,7 @@ public class TileGatewayCore extends TileEntity implements IManaBlock{
 
 		if(closeNow){
 			worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, 0,
-			        1 | 2);
+					1 | 2);
 			for(int i = 0; i < 36; i++)
 				blockParticle(meta);
 			closeNow = false;
@@ -422,7 +422,7 @@ public class TileGatewayCore extends TileEntity implements IManaBlock{
 				for(int i = 0; i < 36; i++)
 					blockParticle(meta);
 			worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord,
-			        updatedMeta, 1 | 2);
+					updatedMeta, 1 | 2);
 		}
 
 		hasUnloadedParts = false;
@@ -431,20 +431,20 @@ public class TileGatewayCore extends TileEntity implements IManaBlock{
 	private void blockParticle(int meta){
 		int i = worldObj.rand.nextInt(AIR_POSITIONS.length);
 		double[] pos = new double[] {
-		        AIR_POSITIONS[i][0] + 0.5F, AIR_POSITIONS[i][1] + 0.5F,
-		        AIR_POSITIONS[i][2] + 0.5F
+				AIR_POSITIONS[i][0] + 0.5F, AIR_POSITIONS[i][1] + 0.5F,
+				AIR_POSITIONS[i][2] + 0.5F
 		};
 		float motionMul = 0.2F;
 		for(i = 0; i < LibConfigs.PARTICLE_DENSITY; i++)
 			Botania.proxy.wispFX(getWorldObj(), xCoord + pos[0], yCoord
-			        + pos[1], zCoord + pos[2],
-			        (float) ( Math.random() * 0.25F ),
-			        (float) ( Math.random() * 0.5F + 0.5F ),
-			        (float) ( Math.random() * 0.25F ),
-			        (float) ( Math.random() * 0.15F + 0.1F ),
-			        (float) ( Math.random() - 0.5F ) * motionMul,
-			        (float) ( Math.random() - 0.5F ) * motionMul,
-			        (float) ( Math.random() - 0.5F ) * motionMul);
+					+ pos[1], zCoord + pos[2],
+					(float) ( Math.random() * 0.25F ),
+					(float) ( Math.random() * 0.5F + 0.5F ),
+					(float) ( Math.random() * 0.25F ),
+					(float) ( Math.random() * 0.15F + 0.1F ),
+					(float) ( Math.random() - 0.5F ) * motionMul,
+					(float) ( Math.random() - 0.5F ) * motionMul,
+					(float) ( Math.random() - 0.5F ) * motionMul);
 	}
 
 	private int getUpdatedMetadata(){
@@ -470,7 +470,7 @@ public class TileGatewayCore extends TileEntity implements IManaBlock{
 
 		Block blockat = worldObj.getBlock(x, y, z);
 		if(block == Blocks.air ? blockat.isAir(worldObj, x, y, z)
-		        : blockat == block){
+				: blockat == block){
 			if(meta == -1)
 				return true;
 
@@ -487,7 +487,7 @@ public class TileGatewayCore extends TileEntity implements IManaBlock{
 			int newMeta = getUpdatedMetadata();
 			if(newMeta != 0){
 				worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord,
-				        newMeta, 1 | 2);
+						newMeta, 1 | 2);
 				return true;
 			}
 		}
@@ -497,28 +497,28 @@ public class TileGatewayCore extends TileEntity implements IManaBlock{
 
 	private boolean checkConstructed(){
 		if(!checkPositions(LIVINGWOOD_POSITIONS,
-		        vazkii.botania.common.block.ModBlocks.livingwood, 0))
+				vazkii.botania.common.block.ModBlocks.livingwood, 0))
 			return false;
 		if(!checkPositions(CHISLED_ELVEN_QUARTZ_POSITIONS,
-		        vazkii.botania.common.block.ModFluffBlocks.elfQuartz, 1))
+				vazkii.botania.common.block.ModFluffBlocks.elfQuartz, 1))
 			return false;
 		if(!checkPositions(GLIMMERING_LIVINGWOOD_POSITIONS,
-		        vazkii.botania.common.block.ModBlocks.livingwood, 5))
+				vazkii.botania.common.block.ModBlocks.livingwood, 5))
 			return false;
 		if(!checkPositions(LIVINGWOOD_STAIRS_UP_POSITIONS,
-		        vazkii.botania.common.block.ModFluffBlocks.livingwoodStairs, -1))// meh
+				vazkii.botania.common.block.ModFluffBlocks.livingwoodStairs, -1))// meh
 			return false;
 		if(!checkPositions(LIVINGWOOD_STAIRS_DOWN_POSITIONS,
-		        vazkii.botania.common.block.ModFluffBlocks.livingwoodStairs, -1))
+				vazkii.botania.common.block.ModFluffBlocks.livingwoodStairs, -1))
 			return false;
 		if(!checkPositions(ELVEN_POOL_POSITIONS, ModBlocks.elvenPool, -1))
 			return false;
 		if(!checkPositions(AIR_POSITIONS, Blocks.air, -1))
 			return false;
 		if(checkPositions(ADDITIONAL_CHISLED_ELVEN_QUARTZ_POSITIONS,
-		        vazkii.botania.common.block.ModFluffBlocks.elfQuartz, 1)
-		        && checkPositions(ADDITIONAL_ELVEN_POOL_POSITIONS,
-		                ModBlocks.elvenPool, -1))
+				vazkii.botania.common.block.ModFluffBlocks.elfQuartz, 1)
+				&& checkPositions(ADDITIONAL_ELVEN_POOL_POSITIONS,
+						ModBlocks.elvenPool, -1))
 			additionalPools = true;
 		activatePortal();
 		return true;
@@ -536,7 +536,7 @@ public class TileGatewayCore extends TileEntity implements IManaBlock{
 	public void summonItem(ItemStack stack){
 		if(!worldObj.isRemote){
 			EntityItem item = new EntityItem(worldObj, xCoord + 0.5,
-			        yCoord + 1.5, zCoord + 0.5, stack);
+					yCoord + 1.5, zCoord + 0.5, stack);
 			item.getEntityData().setBoolean(TAG_PORTAL_KEEP, true);
 			ItemNBTHelper.setInt(item.getEntityItem(), "boundGatewayX", xCoord);
 			ItemNBTHelper.setInt(item.getEntityItem(), "boundGatewayY", yCoord);
@@ -547,40 +547,40 @@ public class TileGatewayCore extends TileEntity implements IManaBlock{
 
 	private boolean resolveRecipes(){
 		List<EntityItem> items = worldObj.getEntitiesWithinAABB(
-		        EntityItem.class, getPortalAABB());
+				EntityItem.class, getPortalAABB());
 		for(EntityItem item : items)
 			if(item.getEntityItem().getItem() instanceof IGatewayCatalyst){
 				for(RecipeGatewayTransmutation recipe : BotanicalWorkshopAPI.gatewayRecipes)
 					if(recipe.getCatalyst().isItemEqual(item.getEntityItem()))
 						if(recipe.matches(currentInventory, false)
-						        && !worldObj.isRemote){
+								&& !worldObj.isRemote){
 							recipe.matches(currentInventory, true);
 							summonItem(recipe.getOutput().copy());
 							return true;
 						}
 				if(item.getEntityItem().getItem() instanceof IGatewayMod
-				        && ! ( item.getEntityData().getBoolean(TAG_PORTAL_KEEP) )){
+						&& ! ( item.getEntityData().getBoolean(TAG_PORTAL_KEEP) )){
 					( (IGatewayMod) item.getEntityItem().getItem() )
-					        .onGatewayUpdate(this, item);
+							.onGatewayUpdate(this, item);
 				}
 
 				for(ItemStack possibleLexicon : currentInventory)
 					if(possibleLexicon.getItem() instanceof ILexicon){
 						if(item.getEntityItem() == new ItemStack(
-						        ModItems.bindingCrystal, 1, 1))
+								ModItems.bindingCrystal, 1, 1))
 							( (ILexicon) possibleLexicon.getItem() )
-							        .unlockKnowledge(possibleLexicon,
-							                LexiconData.thaumicKnowledge);
+									.unlockKnowledge(possibleLexicon,
+											LexiconData.thaumicKnowledge);
 						if(item.getEntityItem() == new ItemStack(
-						        ModItems.bindingCrystal, 1, 2))
+								ModItems.bindingCrystal, 1, 2))
 							( (ILexicon) possibleLexicon.getItem() )
-							        .unlockKnowledge(possibleLexicon,
-							                LexiconData.bloodKnowledge);
+									.unlockKnowledge(possibleLexicon,
+											LexiconData.bloodKnowledge);
 						if(item.getEntityItem() == new ItemStack(
-						        ModItems.bindingCrystal, 1, 3))
+								ModItems.bindingCrystal, 1, 3))
 							( (ILexicon) possibleLexicon.getItem() )
-							        .unlockKnowledge(possibleLexicon,
-							                LexiconData.mechanicalKnowledge);
+									.unlockKnowledge(possibleLexicon,
+											LexiconData.mechanicalKnowledge);
 					}
 			}
 		return false;
@@ -590,18 +590,18 @@ public class TileGatewayCore extends TileEntity implements IManaBlock{
 	public boolean addMana(int amount){
 		int totalMana = getCurrentMana();
 		int[][] positions = additionalPools ? ArrayUtils.addAll(
-		        ELVEN_POOL_POSITIONS, ADDITIONAL_ELVEN_POOL_POSITIONS)
-		        : ELVEN_POOL_POSITIONS;
+				ELVEN_POOL_POSITIONS, ADDITIONAL_ELVEN_POOL_POSITIONS)
+				: ELVEN_POOL_POSITIONS;
 		if(-amount < ( totalMana - 64 )){
 			for(int[] pos : positions){
 				TileEntity tile = worldObj.getTileEntity(xCoord + pos[0],
-				        yCoord + pos[1], zCoord + pos[2]);
+						yCoord + pos[1], zCoord + pos[2]);
 				if(tile instanceof TileElvenPool){
 					TileElvenPool pool = (TileElvenPool) tile;
 					double costRatio = Math.abs(amount) == amount ? ( (double) TileElvenPool.MAX_MANA - (double) pool
-					        .getCurrentMana() ) / ( (double) totalMana )
-					        : (double) pool.getCurrentMana()
-					                / (double) totalMana; // What percent does a small pool get when adding mana?
+							.getCurrentMana() ) / ( (double) totalMana )
+							: (double) pool.getCurrentMana()
+									/ (double) totalMana; // What percent does a small pool get when adding mana?
 					// If cost ratio is positive give small pools more; If negative, take more from large pools
 					if(!worldObj.isRemote)
 						pool.recieveMana((int) Math.round(amount * costRatio));
@@ -615,11 +615,11 @@ public class TileGatewayCore extends TileEntity implements IManaBlock{
 	public int getCurrentMana(){
 		int totalMana = 0;
 		int[][] positions = additionalPools ? ArrayUtils.addAll(
-		        ELVEN_POOL_POSITIONS, ADDITIONAL_ELVEN_POOL_POSITIONS)
-		        : ELVEN_POOL_POSITIONS;
+				ELVEN_POOL_POSITIONS, ADDITIONAL_ELVEN_POOL_POSITIONS)
+				: ELVEN_POOL_POSITIONS;
 		for(int[] pos : positions){
 			TileEntity tile = worldObj.getTileEntity(xCoord + pos[0], yCoord
-			        + pos[1], zCoord + pos[2]);
+					+ pos[1], zCoord + pos[2]);
 			if(tile instanceof TileElvenPool){
 				TileElvenPool pool = (TileElvenPool) tile;
 				totalMana += pool.getCurrentMana();
@@ -630,36 +630,36 @@ public class TileGatewayCore extends TileEntity implements IManaBlock{
 
 	public void renderHUD(Minecraft mc, ScaledResolution res){
 		String name = StatCollector.translateToLocal(new ItemStack(
-		        ModBlocks.gatewayCore, 1, getBlockMetadata())
-		        .getUnlocalizedName().replaceAll("tile.",
-		                "tile." + LibResources.PREFIX_MOD)
-		        + ".name");
+				ModBlocks.gatewayCore, 1, getBlockMetadata())
+				.getUnlocalizedName().replaceAll("tile.",
+						"tile." + LibResources.PREFIX_MOD)
+				+ ".name");
 		int color = 0xB6F2B7; // Offical color of the elves
 		HUDHandler.drawSimpleManaHUD(color, getCurrentMana(),
-		        TileElvenPool.MAX_MANA
-		                * ( additionalPools ? ELVEN_POOL_POSITIONS.length
-		                        + ADDITIONAL_ELVEN_POOL_POSITIONS.length
-		                        : ELVEN_POOL_POSITIONS.length ), name, res);
+				TileElvenPool.MAX_MANA
+						* ( additionalPools ? ELVEN_POOL_POSITIONS.length
+								+ ADDITIONAL_ELVEN_POOL_POSITIONS.length
+								: ELVEN_POOL_POSITIONS.length ), name, res);
 		String catalysts = "";
 
 		List<EntityItem> items = worldObj.getEntitiesWithinAABB(
-		        EntityItem.class, getPortalAABB());
+				EntityItem.class, getPortalAABB());
 		for(EntityItem item : items)
 			if(item.getEntityItem().getItem() instanceof IGatewayCatalyst)
 				catalysts = catalysts
-				        + ", "
-				        + StatCollector.translateToLocal(item
-				                .getEntityItem()
-				                .getUnlocalizedName()
-				                .replaceAll("item.",
-				                        "item." + LibResources.PREFIX_MOD)
-				                + ".name");
+						+ ", "
+						+ StatCollector.translateToLocal(item
+								.getEntityItem()
+								.getUnlocalizedName()
+								.replaceAll("item.",
+										"item." + LibResources.PREFIX_MOD)
+								+ ".name");
 
 		if(catalysts.length() >= 2) // Avoid index out of range on no catalysts
 			catalysts = catalysts.substring(2); // Skip Initial ", "
 
 		int x = res.getScaledWidth() / 2
-		        - mc.fontRenderer.getStringWidth(catalysts) / 2;
+				- mc.fontRenderer.getStringWidth(catalysts) / 2;
 		int y = res.getScaledHeight() / 2 + 30;
 		GL11.glEnable(GL11.GL_BLEND);
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
@@ -669,7 +669,7 @@ public class TileGatewayCore extends TileEntity implements IManaBlock{
 
 	public AxisAlignedBB getPortalAABB(){
 		AxisAlignedBB aabb = AxisAlignedBB.getBoundingBox(xCoord - 1,
-		        yCoord + 1, zCoord - 1, xCoord + 2, yCoord + 6, zCoord + 2);
+				yCoord + 1, zCoord - 1, xCoord + 2, yCoord + 6, zCoord + 2);
 		return aabb;
 	}
 

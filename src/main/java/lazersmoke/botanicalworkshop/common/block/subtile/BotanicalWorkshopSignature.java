@@ -19,7 +19,7 @@ public class BotanicalWorkshopSignature extends SubTileSignature{
 	@Override
 	public void registerIcons(IIconRegister register){
 		IIcon normal = register.registerIcon(LibResources.PREFIX_SUBTILE
-		        + name.replaceAll("tile\\.", "").replaceAll("subtile", ""));
+				+ name.replaceAll("tile\\.", "").replaceAll("subtile", ""));
 		BlockSpecialFlower.icons.put(name, normal);
 	}
 
@@ -44,6 +44,6 @@ public class BotanicalWorkshopSignature extends SubTileSignature{
 
 	private String unlocalizedName(String end){
 		return "tile.botanicalworkshop:"
-		        + SubTileSignature.SPECIAL_FLOWER_PREFIX + name + end;
+				+ SubTileSignature.SPECIAL_FLOWER_PREFIX + name + end;
 	}
 }

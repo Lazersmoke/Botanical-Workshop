@@ -11,7 +11,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
 public class ItemShiftedHopsUpgrade extends ItemMod implements
-        IShiftedArmorUpgrade{
+		IShiftedArmorUpgrade{
 
 	public ItemShiftedHopsUpgrade(){
 		super(LibItemNames.HOPS_UPGRADE);
@@ -25,7 +25,7 @@ public class ItemShiftedHopsUpgrade extends ItemMod implements
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack stack){
 		if(ItemShiftedArmor.getCore(stack, world) != null
-		        && ItemShiftedArmor.getCore(stack, world).addMana(-1000))
+				&& ItemShiftedArmor.getCore(stack, world).addMana(-1000))
 			player.addPotionEffect(new PotionEffect(Potion.jump.id, 10, 4, true));// true sets ambient; no or reduced particles
 	}
 

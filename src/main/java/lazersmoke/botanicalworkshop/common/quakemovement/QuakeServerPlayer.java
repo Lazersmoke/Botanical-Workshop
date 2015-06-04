@@ -15,20 +15,20 @@ public class QuakeServerPlayer extends ServerPlayerBase{
 	@Override
 	public void fall(float fallDistance){
 		wasVelocityChangedBeforeFall = this.playerAPI.getVelocityChangedField()
-		        || this.player.velocityChanged;
+				|| this.player.velocityChanged;
 
 		if(QuakeConfig.INCREASED_FALL_DISTANCE != 0.0D
-		        && ItemNBTHelper.getBoolean(this.player.getEquipmentInSlot(0),
-		                "shiftedUpgradeHopsUpgrade", false)){
+				&& ItemNBTHelper.getBoolean(this.player.getEquipmentInSlot(0),
+						"shiftedUpgradeHopsUpgrade", false)){
 			fallDistance -= QuakeConfig.INCREASED_FALL_DISTANCE;
 		}
 		super.fall(fallDistance);
 
 		this.playerAPI.setVelocityChangedField(wasVelocityChangedBeforeFall
-		        && ItemNBTHelper.getBoolean(this.player.getEquipmentInSlot(0),
-		                "shiftedUpgradeHopsUpgrade", false));
+				&& ItemNBTHelper.getBoolean(this.player.getEquipmentInSlot(0),
+						"shiftedUpgradeHopsUpgrade", false));
 		this.player.velocityChanged = wasVelocityChangedBeforeFall
-		        && ItemNBTHelper.getBoolean(this.player.getEquipmentInSlot(0),
-		                "shiftedUpgradeHopsUpgrade", false);
+				&& ItemNBTHelper.getBoolean(this.player.getEquipmentInSlot(0),
+						"shiftedUpgradeHopsUpgrade", false);
 	}
 }

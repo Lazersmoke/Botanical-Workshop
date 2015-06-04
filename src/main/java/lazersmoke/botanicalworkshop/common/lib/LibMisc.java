@@ -20,7 +20,7 @@ public final class LibMisc{
 
 	// Misc Constants
 	public static final ForgeDirection[] CARDINAL_DIRECTIONS = new ForgeDirection[] {
-	        ForgeDirection.NORTH, ForgeDirection.SOUTH, ForgeDirection.EAST,
-	        ForgeDirection.WEST
+			ForgeDirection.NORTH, ForgeDirection.SOUTH, ForgeDirection.EAST,
+			ForgeDirection.WEST
 	};
 }

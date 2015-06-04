@@ -34,7 +34,7 @@ public class ItemManaTransferCatalyst extends ItemActiveCatalyst{
 			if(currManaMod.uuid == gateway.uuid)
 				continue;
 			else if(currManaMod.getCurrentMana() < gateway.getCurrentMana()
-			        && gateway.getCurrentMana() > 10000){
+					&& gateway.getCurrentMana() > 10000){
 				currManaMod.addMana(10000);
 				gateway.addMana(-10000);
 			}
@@ -44,11 +44,11 @@ public class ItemManaTransferCatalyst extends ItemActiveCatalyst{
 
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player,
-	        List loreLineList, boolean par4){
+			List loreLineList, boolean par4){
 		for(int i = 0; i < 4; i++)
 			loreLineList
-			        .add(StatCollector
-			                .translateToLocal("botanicalworkshopmisc.manaTransferCatalyst"
-			                        + i));
+					.add(StatCollector
+							.translateToLocal("botanicalworkshopmisc.manaTransferCatalyst"
+									+ i));
 	}
 }

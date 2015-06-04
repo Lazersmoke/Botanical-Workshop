@@ -19,9 +19,9 @@ public class BotanicalWorkshopAPI{
 	public static Map<String, IShiftedArmorUpgrade> shiftedUpgrades = new HashMap<String, IShiftedArmorUpgrade>();
 	public static Set<String> subtilesForCreativeMenu = new LinkedHashSet<String>();
 	public static ArmorMaterial shiftedArmorMaterial = EnumHelper
-	        .addArmorMaterial("SHIFTED", 16, new int[] {
-	                2, 6, 5, 2
-	        }, 18);
+			.addArmorMaterial("SHIFTED", 16, new int[] {
+					2, 6, 5, 2
+			}, 18);
 
 	/**
 	 * Registers a Gateway recipe (throw some items in a Gateway).
@@ -33,9 +33,9 @@ public class BotanicalWorkshopAPI{
 	 * @return The recipe created.
 	 */
 	public static RecipeGatewayTransmutation registerGatewayRecipe(
-	        ItemStack output, ItemStack catalyst, ItemStack ... inputs){
+			ItemStack output, ItemStack catalyst, ItemStack ... inputs){
 		RecipeGatewayTransmutation recipe = new RecipeGatewayTransmutation(
-		        output, catalyst, inputs);
+				output, catalyst, inputs);
 		gatewayRecipes.add(recipe);
 		return recipe;
 	}
@@ -48,7 +48,7 @@ public class BotanicalWorkshopAPI{
 	 * @return The upgrade registered.
 	 */
 	public static IShiftedArmorUpgrade registerShiftedArmorUpgrade(
-	        IShiftedArmorUpgrade upgrade){
+			IShiftedArmorUpgrade upgrade){
 		shiftedUpgrades.put(upgrade.getKey(), upgrade);
 		return upgrade;
 	}

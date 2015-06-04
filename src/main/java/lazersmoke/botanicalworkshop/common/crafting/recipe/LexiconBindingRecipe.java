@@ -53,9 +53,9 @@ public class LexiconBindingRecipe implements IRecipe{
 		}
 
 		KnowledgeType knowledgeType = ItemBindingCrystal
-		        .getKnowledgeType(bindingCrystal);
+				.getKnowledgeType(bindingCrystal);
 		LexiconEntry openingEntry = ItemBindingCrystal
-		        .getOpeningEntry(bindingCrystal);
+				.getOpeningEntry(bindingCrystal);
 
 		ILexicon lexicon = (ILexicon) lexiconStack.getItem();
 		if(lexicon.isKnowledgeUnlocked(lexiconStack, knowledgeType))

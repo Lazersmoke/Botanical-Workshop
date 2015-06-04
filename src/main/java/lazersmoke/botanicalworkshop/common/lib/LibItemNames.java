@@ -9,7 +9,7 @@ public final class LibItemNames{
 	public static final String THAUMIC_CATALYST = "thaumicCatalyst";
 	public static final String BOTANICAL_RESOURCE = "botanicalResource";
 	public static final String[] BOTANICAL_RESOURCE_NAMES = {
-	        "elvenCrystal", "recipeDisabled"
+			"elvenCrystal", "recipeDisabled"
 	};
 	public static final String THAUMIC_RESOURCE = "thaumicResource";
 	public static final String[] THAUMIC_RESOURCE_NAMES = {
