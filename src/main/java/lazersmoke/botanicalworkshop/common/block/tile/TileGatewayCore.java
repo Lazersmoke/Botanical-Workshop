@@ -32,11 +32,12 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.lwjgl.opengl.GL11;
 
 import vazkii.botania.api.lexicon.ILexicon;
+import vazkii.botania.api.mana.IManaBlock;
 import vazkii.botania.client.core.handler.HUDHandler;
 import vazkii.botania.common.Botania;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
 
-public class TileGatewayCore extends TileEntity{
+public class TileGatewayCore extends TileEntity implements IManaBlock{
 		//  W W
 		// W   W
 		//WS   SW
@@ -129,7 +130,7 @@ public class TileGatewayCore extends TileEntity{
 			
 			List<EntityPlayer> players = worldObj.getEntitiesWithinAABB(EntityPlayer.class, aabb);
 			for(EntityPlayer player : players)
-				player.addPotionEffect(new PotionEffect(Potion.jump.id, 10, 5));//Allows player to jump out of pit
+				player.addPotionEffect(new PotionEffect(Potion.jump.id, 10, 5, true));//Allows player to jump out of pit
 			
 			List<EntityItem> items = worldObj.getEntitiesWithinAABB(EntityItem.class, aabb);
 			for(EntityItem item : items){
@@ -322,7 +323,6 @@ public class TileGatewayCore extends TileEntity{
 		String name = StatCollector.translateToLocal(new ItemStack(ModBlocks.gatewayCore, 1, getBlockMetadata()).getUnlocalizedName().replaceAll("tile.", "tile." + LibResources.PREFIX_MOD) + ".name");
 		int color = 0xB6F2B7; //Offical color of the elves
 		HUDHandler.drawSimpleManaHUD(color, getCurrentMana(), TileElvenPool.MAX_MANA * (additionalPools ? ELVEN_POOL_POSITIONS.length + ADDITIONAL_ELVEN_POOL_POSITIONS.length : ELVEN_POOL_POSITIONS.length), name, res);
-
 		String catalysts = "";
 		
 		List<EntityItem> items = worldObj.getEntitiesWithinAABB(EntityItem.class, getPortalAABB());

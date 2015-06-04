@@ -46,7 +46,7 @@ minecraft {
 
 dependencies {
     compile files(
-        'Botania-deobf.jar','Baubles-deobf.jar','Thaumcraft-deobf.jar'
+        'Botania-deobf.jar','Baubles-deobf.jar','Thaumcraft-deobf.jar','PlayerAPI.jar'
     )
     compile "codechicken:CodeChickenLib:1.7.10-1.1.3.136:dev"
     compile "codechicken:CodeChickenCore:1.7.10-1.0.6.44:dev"
@@ -113,5 +113,4 @@ jar {
     archiveName = "${baseName} ${version}.${extension}"
 }
 
-//change this so it only increments on upload
-defaultTasks 'clean', 'build', 'sort', 'curse', 'upload' //remove clean if you want faster builds, this will stop rare inconsistancies. 
+defaultTasks 'clean', 'build', 'sort' //remove clean if you want faster builds, this will stop rare inconsistancies. 

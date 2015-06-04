@@ -1,8 +1,5 @@
 package lazersmoke.botanicalworkshop.common.block;
 
-import vazkii.botania.api.BotaniaAPI;
-import vazkii.botania.api.subtile.SubTileEntity;
-import cpw.mods.fml.common.registry.GameRegistry;
 import lazersmoke.botanicalworkshop.client.lib.LibResources;
 import lazersmoke.botanicalworkshop.common.block.mana.BlockElvenPool;
 import lazersmoke.botanicalworkshop.common.block.subtile.BotanicalWorkshopSignature;
@@ -14,6 +11,9 @@ import lazersmoke.botanicalworkshop.common.block.tile.mana.TileElvenPool;
 import lazersmoke.botanicalworkshop.common.lib.LibBlockNames;
 import net.minecraft.block.Block;
 import net.minecraft.tileentity.TileEntity;
+import vazkii.botania.api.BotaniaAPI;
+import vazkii.botania.api.subtile.SubTileEntity;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 public final class ModBlocks {
 	
@@ -39,7 +39,6 @@ public final class ModBlocks {
 		
 		registerSubTile(SubTileExAquainas.class, LibBlockNames.SUBTILE_EXAQUAINAS);
 		registerSubTile(SubTileLogicalSound.class, LibBlockNames.SUBTILE_LOGICALSOUND);
-		
 	}
 
 	private static void registerTile(Class<? extends TileEntity> clazz, String key) {

@@ -4,7 +4,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.IEssentiaTransport;
-import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Optional;
 
 @Optional.InterfaceList({
@@ -13,11 +12,22 @@ import cpw.mods.fml.common.Optional;
 public class TileThaumicCore extends TileEntity implements IEssentiaTransport{
 
 	private int essentiaCount = 0;
+	private int ticksOn = 0;
+	
+	@Override
+	public void updateEntity(){
+		if(this.blockMetadata == 1)
+			ticksOn++;
+		else if(this.blockMetadata == 0 || ticksOn > 20)
+			ticksOn = 0;
+		
+		if(ticksOn == 0)
+			this.blockMetadata = 0;
+	}
 	
 	@Override
 	public int addEssentia(Aspect aspect, int amount, ForgeDirection side) {
 		essentiaCount += amount;
-		FMLLog.info("Added %d Essentia, now have: %d", amount, essentiaCount);
 		return amount;
 	}
 

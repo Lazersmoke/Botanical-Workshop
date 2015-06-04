@@ -15,6 +15,12 @@ public interface IShiftedArmorUpgrade {
 	public String getKey();
 	
 	/**
+	 * Returns the display name for the hover over tooltip on armor that this upgrade
+	 * is attached to. Can be different each time.
+	 */
+	public String getDisplayName();
+	
+	/**
 	 * Just like ItemShiftedArmor.onArmorTick, but mana cost has already been accounted for.
 	 * @param stack The Stack of the armor piece
 	 * @param player player wearing armor

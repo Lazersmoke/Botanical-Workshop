@@ -2,10 +2,15 @@ package lazersmoke.botanicalworkshop.common;
 
 import lazersmoke.botanicalworkshop.common.core.proxy.CommonProxy;
 import lazersmoke.botanicalworkshop.common.lib.LibMisc;
+import lazersmoke.botanicalworkshop.common.quakemovement.QuakeClientPlayer;
+import lazersmoke.botanicalworkshop.common.quakemovement.QuakeConfig;
+import lazersmoke.botanicalworkshop.common.quakemovement.QuakeServerPlayer;
 import net.minecraft.creativetab.CreativeTabs;
 
 import org.apache.logging.log4j.Logger;
 
+import api.player.client.ClientPlayerAPI;
+import api.player.server.ServerPlayerAPI;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -16,6 +21,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.event.FMLServerStoppingEvent;
+import cpw.mods.fml.relauncher.Side;
 
 @Mod(modid = LibMisc.MOD_ID, name = LibMisc.MOD_NAME, version = LibMisc.VERSION, dependencies = LibMisc.DEPENDENCIES)
 public class BotanicalWorkshop{
@@ -44,6 +50,8 @@ public class BotanicalWorkshop{
 		thaumcraftLoaded = Loader.isModLoaded("Thaumcraft");
 		bloodMagicLoaded = Loader.isModLoaded("AWWayofTime"); // Psh, noob
 		
+		QuakeConfig.init(event.getSuggestedConfigurationFile());
+		
 		proxy.preInit(event);
 	}
 	
@@ -54,6 +62,12 @@ public class BotanicalWorkshop{
 	
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event){
+		
+		ServerPlayerAPI.register(LibMisc.MOD_ID, QuakeServerPlayer.class);
+
+		if (event.getSide() == Side.CLIENT)
+			ClientPlayerAPI.register(LibMisc.MOD_ID, QuakeClientPlayer.class);
+		
 		proxy.postInit(event);
 	}
 	

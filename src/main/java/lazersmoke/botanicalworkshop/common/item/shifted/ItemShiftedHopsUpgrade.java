@@ -10,25 +10,25 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
-public class ItemShiftedPhaseUpgrade extends ItemMod implements IShiftedArmorUpgrade{
-	public ItemShiftedPhaseUpgrade() {
-		super(LibItemNames.PHASE_UPGRADE);
+public class ItemShiftedHopsUpgrade extends ItemMod implements IShiftedArmorUpgrade{
+	
+	public ItemShiftedHopsUpgrade() {
+		super(LibItemNames.HOPS_UPGRADE);
 	}
 
 	@Override
 	public String getKey() {
-		return "PhaseUpgrade";
+		return "HopsUpgrade";
 	}
 	
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack stack){
 		if(ItemShiftedArmor.getCore(stack, world) != null && ItemShiftedArmor.getCore(stack, world).addMana(-1000))
-			player.addPotionEffect(new PotionEffect(Potion.invisibility.id, 10, 1, true));//true sets ambient; no or reduced particles
-		((ItemShiftedArmor) stack.getItem()).setPhantomInk(stack, true);
+			player.addPotionEffect(new PotionEffect(Potion.jump.id, 10, 4, true));//true sets ambient; no or reduced particles
 	}
 
 	@Override
 	public String getDisplayName() {
-		return "Shifted Phase Upgrade";
+		return "Shifted Hops Upgrade";
 	}
 }

@@ -1,5 +1,6 @@
 package lazersmoke.botanicalworkshop.common.block;
 
+import lazersmoke.botanicalworkshop.client.lib.LibResources;
 import lazersmoke.botanicalworkshop.common.BotanicalWorkshop;
 import lazersmoke.botanicalworkshop.common.block.tile.TileThaumicCore;
 import lazersmoke.botanicalworkshop.common.item.block.ItemBlockThaumicCore;
@@ -12,6 +13,7 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
@@ -22,6 +24,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 //This class is all Lazersmoke
 public class BlockThaumicCore extends BlockContainer implements ILexiconable{
 		
+	public static IIcon iconOff, iconOn;
+	
 	public BlockThaumicCore() {
 		super(Material.wood);
 		setHardness(2.0F);
@@ -43,10 +47,11 @@ public class BlockThaumicCore extends BlockContainer implements ILexiconable{
 		return new TileThaumicCore();
 	}
 	
-    @Override
+	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister register) {
-		//NO OP
+	public void registerBlockIcons(IIconRegister par1IconRegister) {
+		iconOff = par1IconRegister.registerIcon(LibResources.PREFIX_MOD + getUnlocalizedName().replaceAll("tile\\.", "") + "0");
+		iconOn = par1IconRegister.registerIcon(LibResources.PREFIX_MOD + getUnlocalizedName().replaceAll("tile\\.", "") + "1");
 	}
 	
 	@Override

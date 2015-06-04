@@ -38,6 +38,7 @@ public final class LexiconData {
 	public static LexiconEntry bindingCrystal;
 	public static LexiconEntry basicCatalyst;
 	public static LexiconEntry logicalSound;
+	public static LexiconEntry elvenStar;
 	
 	public static LexiconEntry thaumicIntro;
 	public static LexiconEntry thaumicCore;
@@ -75,6 +76,11 @@ public final class LexiconData {
 				new PageText("0"), 
 				new PageCraftingRecipe("1", ModCraftingRecipes.recipeElvenPool), 
 				new PageElvenRecipe("2", ModElvenTradeRecipes.elvenPoolRecipe));
+		
+		elvenStar = new WLexiconEntry(LibLexicon.WORKSHOP_ELVENSTAR, categoryWorkshop);
+		elvenStar.setLexiconPages(
+				new PageText("0"),
+				new PagePetalRecipe<RecipePetals>("1", ModPetalRecipes.elvenStarRecipe));
 		
 		logicalSound = new WLexiconEntry(LibLexicon.WORKSHOP_LOGICALSOUND, categoryWorkshop);
 		logicalSound.setLexiconPages(

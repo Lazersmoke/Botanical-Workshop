@@ -9,7 +9,7 @@ public final class LibMisc {
 	public static final String MOD_NAME = MOD_ID;
 	public static final String BUILD = "GRADLE:BUILD";
 	public static final String VERSION = "GRADLE:VERSION" + BUILD;
-	public static final String DEPENDENCIES = vazkii.botania.common.lib.LibMisc.DEPENDENCIES + ";required-after:Botania";
+	public static final String DEPENDENCIES = "required-after:Botania;required-after:PlayerAPI";
 	
 	// Network Constants
 	public static final String NETWORK_CHANNEL = MOD_ID;

@@ -29,8 +29,10 @@ public class ItemThaumicCatalyst extends ItemActiveCatalyst{
 		if(thaumicCore instanceof BlockThaumicCore && BotanicalWorkshop.thaumcraftLoaded){
 			TileThaumicCore tileThaumicCore = (TileThaumicCore) catalyst.worldObj.getTileEntity(gateway.xCoord, gateway.yCoord + 6, gateway.zCoord);
 			if(vazkii.botania.client.core.handler.ClientTickHandler.ticksInGame % 10 == 0)
-				if(AspectSourceHelper.drainEssentia(tileThaumicCore, Aspect.MAGIC, ForgeDirection.UNKNOWN, 3))
+				if(AspectSourceHelper.drainEssentia(tileThaumicCore, Aspect.MAGIC, ForgeDirection.UNKNOWN, 3)){
 					gateway.currentInventory.add(new ItemStack(ModItems.thaumicResource, 1, 0));
+					catalyst.worldObj.setBlockMetadataWithNotify(gateway.xCoord, gateway.yCoord + 6, gateway.zCoord, 0, 1);
+				}
 		}
 	}
 }

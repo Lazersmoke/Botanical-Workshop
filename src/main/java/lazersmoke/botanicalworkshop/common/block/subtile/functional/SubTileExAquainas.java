@@ -4,8 +4,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import lazersmoke.botanicalworkshop.api.flowers.TonalFunctionalFlower;
 import lazersmoke.botanicalworkshop.common.lexicon.LexiconData;
-import lazersmoke.botanicalworkshop.common.lib.LibConfigs;
 import lazersmoke.botanicalworkshop.common.lib.LibMisc;
 import net.minecraft.block.Block;
 import net.minecraft.entity.item.EntityItem;
@@ -20,52 +20,45 @@ import net.minecraftforge.fluids.IFluidHandler;
 import vazkii.botania.api.item.IPetalApothecary;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.subtile.RadiusDescriptor;
-import vazkii.botania.api.subtile.SubTileFunctional;
 
-public class SubTileExAquainas extends SubTileFunctional{
+public class SubTileExAquainas extends TonalFunctionalFlower{
 	private static final int COST = 35;
 	private static final int maxMana = 1000;
 	private static final int[][] OFFSETS = { { 0, 1 }, { 0, -1 }, { 1, 0 }, { -1, 0 }, { -1, 1 }, { -1, -1 }, { 1, 1 }, { 1, -1 } };
-	
-	private static final float[] pitches = {
-		//0.67F, 0.6F, 0.67F, 0.7F, 0.67F, 0.56F, 0.45F, intro
-		0.9F, 1.2F, 1.4F, 1.32F, 1.2F, 0.95F, 
-		0.9F, 0.8F, 0.7F, 0.67F, 0.9F, 
-		0.9F, 1.2F, 1.4F, 1.32F, 1.2F, 0.95F, 
-		0.9F, 0.8F, 0.7F, 1.1F, 0.9F, 
-		0.9F, 0.8F, 0.7F, 1.05F, 0.7F, 
-		0.8F, 0.9F, 0.95F, 0.9F, 0.8F, 
-		0.7F, 0.67F, 0.6F, 0.67F, 0.7F, 0.95F, 0.9F, 
-		1.1F, 1.32F, 1.9F, 1.8F
-	};
-	private int note = 0;
-	private int lastTicks = 0;
-	private int tempo = 2;
+
 	private boolean firstTick = true;
-	private static final int[] times = {
-		4, //6, 1, 1, 2, 2, 2, 2, intro
-		6, 1, 1, 2, 4, 2, 
-		6, 1, 1, 4, 4, 
-		6, 1, 1, 2, 4, 2, 
-		6, 1, 1, 4, 4, 
-		6, 1, 1, 4, 4, 
-		6, 1, 1, 4, 4, 
-		1, 1, 1, 1, 4, 4, 4, 
-		4, 4, 4
-	};//last -> first
 
 	@Override
 	public void onUpdate(){
-		super.onUpdate();
-		
-		if(ticksExisted-lastTicks == (firstTick ? ticksExisted-lastTicks : times[note] * tempo)){
-			lastTicks = ticksExisted;
-			if(redstoneSignal > 0 && LibConfigs.TONAL_FLORA)
-				playSound("note.harp", 0.3F, pitches[note]);
-			note++;
-			if(note > (times.length - 1))
-				note = 0;
+		if(firstTick){
+			pitches = new float[][]{{
+				0.9F, 1.2F, 1.4F, 1.32F, 1.2F, 0.95F, 
+				0.9F, 0.8F, 0.7F, 0.67F, 0.9F, 
+				0.9F, 1.2F, 1.4F, 1.32F, 1.2F, 0.95F, 
+				0.9F, 0.8F, 0.7F, 1.1F, 0.9F, 
+				0.9F, 0.8F, 0.7F, 1.05F, 0.7F, 
+				0.8F, 0.9F, 0.95F, 0.9F, 0.8F, 
+				0.7F, 0.67F, 0.6F, 0.67F, 0.7F, 0.95F, 0.9F, 
+				1.1F, 1.32F, 1.9F, 1.8F
+			}};
+			times = new int[][]{{
+				4,
+				6, 1, 1, 2, 4, 2, 
+				6, 1, 1, 4, 4, 
+				6, 1, 1, 2, 4, 2, 
+				6, 1, 1, 4, 4, 
+				6, 1, 1, 4, 4, 
+				6, 1, 1, 4, 4, 
+				1, 1, 1, 1, 4, 4, 4, 
+				4, 4, 4
+			}};
+			tempo = 2;
+			soundEffect = new String[1][pitches[0].length];
+			Arrays.fill(soundEffect[0], "note.harp");
+			volumes = new float[1][pitches[0].length];
+			Arrays.fill(volumes[0], 0.3F);
 		}
+		super.onUpdate();
 		firstTick = false;
 		
 		TileEntity activeTile = supertile.getWorldObj().getTileEntity(supertile.xCoord, supertile.yCoord + 1, supertile.zCoord);

@@ -1,5 +1,7 @@
 package lazersmoke.botanicalworkshop.common.item.equipment.armor.shifted;
 
+import java.util.List;
+
 import lazersmoke.botanicalworkshop.api.BotanicalWorkshopAPI;
 import lazersmoke.botanicalworkshop.api.shifted.IShiftedArmorUpgrade;
 import lazersmoke.botanicalworkshop.client.lib.LibResources;
@@ -18,6 +20,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.ISpecialArmor;
 import vazkii.botania.api.item.IPhantomInkable;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
+import vazkii.botania.common.item.ItemTemperanceStone;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -95,14 +98,21 @@ public class ItemShiftedArmor extends ItemArmor implements ISpecialArmor, IPhant
 
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack stack) {
-		if(getCore(stack, world) != null)
-			if(getCore(stack, world).addMana(-1000) && stack.getItemDamage() > 0){
-				stack.setItemDamage(stack.getItemDamage() - 1);
-				getCore(stack, world).addMana(-1000);
-			}
-		for(String key : BotanicalWorkshopAPI.shiftedUpgrades.keySet())
-			if(ItemNBTHelper.getBoolean(stack, TAG_UPGRADE_BASE + key, false))
-				((IShiftedArmorUpgrade) BotanicalWorkshopAPI.shiftedUpgrades.get(key)).onArmorTick(world, player, stack);
+		boolean isInArmorSlot = false;
+		for(ItemStack testStack : player.inventory.armorInventory)
+			if(testStack != null && testStack.equals(stack))
+				isInArmorSlot = true;
+		if(isInArmorSlot){
+			for(String key : BotanicalWorkshopAPI.shiftedUpgrades.keySet())
+				if(ItemNBTHelper.getBoolean(stack, TAG_UPGRADE_BASE + key, false) && !ItemTemperanceStone.hasTemperanceActive(player))
+					((IShiftedArmorUpgrade) BotanicalWorkshopAPI.shiftedUpgrades.get(key)).onArmorTick(world, player, stack);
+			
+			if(getCore(stack, world) != null)
+				if(getCore(stack, world).addMana(-1000) && stack.getItemDamage() > 0){
+					stack.setItemDamage(stack.getItemDamage() - 1);
+					getCore(stack, world).addMana(-1000);
+				}
+		}
 	}
 
 	@Override
@@ -115,5 +125,18 @@ public class ItemShiftedArmor extends ItemArmor implements ISpecialArmor, IPhant
 				ItemNBTHelper.getInt(stack, "boundGatewayX", 0), 
 				ItemNBTHelper.getInt(stack, "boundGatewayY", -1), 
 				ItemNBTHelper.getInt(stack, "boundGatewayZ", 0));
+	}
+	
+	@Override
+	public void addInformation(ItemStack stack, EntityPlayer player, List loreLineList, boolean par4){
+		if(ItemTemperanceStone.hasTemperanceActive(player))
+			loreLineList.add("Temperance Stone Active!");
+			
+		if(ItemNBTHelper.getInt(stack, "boundGatewayY", -1) != -1)
+			loreLineList.add("Gateway: [" + ItemNBTHelper.getInt(stack, "boundGatewayX", -1) + ", " + ItemNBTHelper.getInt(stack, "boundGatewayY", -1) + ", " + ItemNBTHelper.getInt(stack, "boundGatewayZ", -1) + "]");
+		
+		for(String key : BotanicalWorkshopAPI.shiftedUpgrades.keySet())
+			if(ItemNBTHelper.getBoolean(stack, TAG_UPGRADE_BASE + key, false))
+				loreLineList.add(((IShiftedArmorUpgrade) BotanicalWorkshopAPI.shiftedUpgrades.get(key)).getDisplayName());
 	}
 }
