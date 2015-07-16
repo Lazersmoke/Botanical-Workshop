@@ -21,6 +21,7 @@ public class LibLexicon{
 	public static final String WORKSHOP_GATEWAYCORE = "gatewayCore";
 	public static final String WORKSHOP_BINDINGCRYSTAL = "bindingCrystal";
 	public static final String WORKSHOP_ELVENSTAR = "elvenStar";
+	public static final String WORKSHOP_MANABANKINTERFACE = "manaBankInterface";
 	
 	public static final String THAUMIC_INTRO = "thaumicIntro";
 	public static final String THAUMIC_THAUMICCORE = "thaumicCore";
@@ -30,4 +31,5 @@ public class LibLexicon{
 	
 	public static final String MECHANICAL_INTRO = "mechanicalIntro";
 	public static final String MECHANICAL_EXAQUAINAS = "exAquainas";
+
 }

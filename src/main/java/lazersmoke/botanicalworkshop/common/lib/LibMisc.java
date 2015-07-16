@@ -22,4 +22,8 @@ public final class LibMisc {
 	public static final ForgeDirection[] CARDINAL_DIRECTIONS = new ForgeDirection[] {
 		ForgeDirection.NORTH, ForgeDirection.SOUTH, ForgeDirection.EAST, ForgeDirection.WEST
 	};
+	
+	public static final ForgeDirection[] ALL_DIRECTIONS = new ForgeDirection[] {
+		ForgeDirection.NORTH, ForgeDirection.SOUTH, ForgeDirection.EAST, ForgeDirection.WEST, ForgeDirection.UP, ForgeDirection.DOWN
+	};
 }

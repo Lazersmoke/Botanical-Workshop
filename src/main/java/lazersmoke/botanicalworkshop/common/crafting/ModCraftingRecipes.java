@@ -18,6 +18,7 @@ public class ModCraftingRecipes {
 	public static IRecipe recipeEmptyCatalyst = defaultRecipe;
 	public static IRecipe recipeSimpleCatalyst = defaultRecipe;
 	public static IRecipe recipeWeakGatewayCore = defaultRecipe;
+	public static IRecipe recipeManaBankInterface = defaultRecipe;
 	
 	public static void init() {
 		
@@ -47,6 +48,14 @@ public class ModCraftingRecipes {
 				'G', new ItemStack(Items.gold_ingot),
 				'L', new ItemStack(Items.dye, 1, 4), //Lapis
 				'E', new ItemStack(vazkii.botania.common.block.ModBlocks.alfPortal));
+			recipeWeakGatewayCore = BotaniaAPI.getLatestAddedRecipe();
+		}
+		
+		if(LibConfigs.CRAFT_MANA_BANK_INTERFACE){
+			addOreDictRecipe(new ItemStack(ModBlocks.manaBankInterface),
+				" P ", "PKP", " P ",
+				'P', new ItemStack(ModBlocks.elvenPool),
+				'K', new ItemStack(ModItems.botanicalResource, 1, 2/*Elven Knotting*/));
 			recipeWeakGatewayCore = BotaniaAPI.getLatestAddedRecipe();
 		}
 	}

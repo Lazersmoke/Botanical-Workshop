@@ -48,9 +48,7 @@ public class QuakeClientPlayer extends ClientPlayerBase
 	@Override
 	public void moveEntityWithHeading(float sidemove, float forwardmove)
 	{
-		BotanicalWorkshop.logger.info("Moving Entity With Heading");
 		if(ItemNBTHelper.getBoolean(this.player.getEquipmentInSlot(1), "shiftedUpgradeHopsUpgrade", false)){
-			BotanicalWorkshop.logger.info("Entity Has Hops!");
 			double d0 = this.player.posX;
 			double d1 = this.player.posY;
 			double d2 = this.player.posZ;

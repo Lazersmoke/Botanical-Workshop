@@ -108,9 +108,9 @@ public class ItemShiftedArmor extends ItemArmor implements ISpecialArmor, IPhant
 					((IShiftedArmorUpgrade) BotanicalWorkshopAPI.shiftedUpgrades.get(key)).onArmorTick(world, player, stack);
 			
 			if(getCore(stack, world) != null)
-				if(getCore(stack, world).addMana(-1000) && stack.getItemDamage() > 0){
+				if(getCore(stack, world).getCurrentMana() >= 1000 && stack.getItemDamage() > 0){
 					stack.setItemDamage(stack.getItemDamage() - 1);
-					getCore(stack, world).addMana(-1000);
+					getCore(stack, world).recieveMana(-1000);
 				}
 		}
 	}

@@ -106,11 +106,7 @@ public class SubTileExAquainas extends TonalFunctionalFlower{
 	public boolean acceptsRedstone(){
 		return true;
 	}
-	
-	private void playSound(String sound, float volume, float pitch) {
-		supertile.getWorldObj().playSoundEffect(supertile.xCoord, supertile.yCoord, supertile.zCoord, sound, volume, pitch);
-	}
-	
+		
 	@Override
 	public int getColor(){
 		return 0x532FE0; //Same as Hydroangaes

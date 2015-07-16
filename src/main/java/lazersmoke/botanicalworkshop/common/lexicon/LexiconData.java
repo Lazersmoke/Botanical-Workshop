@@ -39,6 +39,7 @@ public final class LexiconData {
 	public static LexiconEntry basicCatalyst;
 	public static LexiconEntry logicalSound;
 	public static LexiconEntry elvenStar;
+	public static LexiconEntry manaBankInterface;
 	
 	public static LexiconEntry thaumicIntro;
 	public static LexiconEntry thaumicCore;
@@ -109,8 +110,8 @@ public final class LexiconData {
 				new PageGatewayTransmutationRecipe("3", ModGatewayTransmutationRecipes.thaumicBindingCrystalRecipe), 
 				new PageGatewayTransmutationRecipe("4", ModGatewayTransmutationRecipes.mechanicalBindingCrystalRecipe));
 		
-		basicCatalyst = new WLexiconEntry(LibLexicon.WORKSHOP_BASICCATALYST, categoryWorkshop);
-		basicCatalyst.setPriority().setLexiconPages(
+		manaBankInterface = new WLexiconEntry(LibLexicon.WORKSHOP_MANABANKINTERFACE, categoryWorkshop);
+		manaBankInterface.setPriority().setLexiconPages(
 				new PageText("0"), 
 				new PageText("1"), 
 				new PageCraftingRecipe("2", ModCraftingRecipes.recipeSimpleCatalyst), 

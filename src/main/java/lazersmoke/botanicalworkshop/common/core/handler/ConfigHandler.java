@@ -41,12 +41,18 @@ public final class ConfigHandler {
 		desc = "Set this to false to disable the crafting of Weak Gateway Cores";
 		LibConfigs.CRAFT_WEAK_GATEWAY_CORE = loadPropBool("crafting.table.weakGatewayCore", desc, true);
 		
+		desc = "Set this to false to disable the crafting of Mana Bank Interfaces";
+		LibConfigs.CRAFT_MANA_BANK_INTERFACE = loadPropBool("crafting.table.manaBankInterface", desc, true);
+		
 		//Elven Portal Crafting
 		desc = "Set this to false to disable the crafting of Elven Mana Pools using alfheim portals.";
 		LibConfigs.PORTAL_CRAFT_ELVEN_POOL = loadPropBool("crafting.portal.elvenPool", desc, true);
 		
 		desc = "Set this to false to disable the crafting of Elven Crystals using alfheim portals.";
-		LibConfigs.PORTAL_CRAFT_ELVEN_POOL = loadPropBool("crafting.portal.elvenCrystal", desc, true);
+		LibConfigs.PORTAL_CRAFT_ELVEN_CRYSTAL = loadPropBool("crafting.portal.elvenCrystal", desc, true);
+		
+		desc = "Set this to false to disable the crafting of Elven Knotting using alfheim portals.";
+		LibConfigs.PORTAL_CRAFT_ELVEN_KNOTTING = loadPropBool("crafting.portal.elvenKnotting", desc, true);
 		
 		desc = "Set this to false to disable the crafting of Gateway Cores using alfheim portals.";
 		LibConfigs.PORTAL_CRAFT_GATEWAY_CORE = loadPropBool("crafting.portal.gatewayCore", desc, true);

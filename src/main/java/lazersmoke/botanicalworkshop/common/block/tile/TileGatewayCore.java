@@ -32,12 +32,12 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.lwjgl.opengl.GL11;
 
 import vazkii.botania.api.lexicon.ILexicon;
-import vazkii.botania.api.mana.IManaBlock;
+import vazkii.botania.api.mana.IManaReceiver;
 import vazkii.botania.client.core.handler.HUDHandler;
 import vazkii.botania.common.Botania;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
 
-public class TileGatewayCore extends TileEntity implements IManaBlock{
+public class TileGatewayCore extends TileEntity implements IManaReceiver{
 		//  W W
 		// W   W
 		//WS   SW
@@ -243,8 +243,9 @@ public class TileGatewayCore extends TileEntity implements IManaBlock{
 			return;
 
 		int cost = ticksOpen == 50 ? OPENING_MANA_COST : COST_PER_TICK;//one time cost (one pool, 1/8 from each) : every tick afterward
-		if(!addMana(-cost))
+		if(cost > getCurrentMana())
 			closeNow = true;
+		else recieveMana(-cost);
 	}
 	
 	public void summonItem(ItemStack stack){
@@ -287,7 +288,7 @@ public class TileGatewayCore extends TileEntity implements IManaBlock{
 
 	}
 	
-	public boolean addMana(int amount){
+	public void recieveMana(int amount){
 		int totalMana = getCurrentMana();
 		int[][] positions = additionalPools ? ArrayUtils.addAll(ELVEN_POOL_POSITIONS, ADDITIONAL_ELVEN_POOL_POSITIONS) : ELVEN_POOL_POSITIONS;
 		if(-amount < (totalMana - 64)){
@@ -301,9 +302,7 @@ public class TileGatewayCore extends TileEntity implements IManaBlock{
 						pool.recieveMana((int)Math.round(amount * costRatio));
 				}
 			}
-			return true;
 		}
-		return false;
 	}
 	
 	public int getCurrentMana(){
@@ -345,5 +344,20 @@ public class TileGatewayCore extends TileEntity implements IManaBlock{
 		AxisAlignedBB aabb = AxisAlignedBB.getBoundingBox(xCoord - 1, yCoord + 1, zCoord - 1, xCoord + 2, yCoord + 6, zCoord + 2);
 		return aabb;
 	}
-	
+
+	@Override
+	public boolean canRecieveManaFromBursts() {
+		return true;
+	}
+
+	@Override
+	public boolean isFull() {
+		int[][] positions = additionalPools ? ArrayUtils.addAll(ELVEN_POOL_POSITIONS, ADDITIONAL_ELVEN_POOL_POSITIONS) : ELVEN_POOL_POSITIONS;
+		for(int[] pos : positions) {
+			TileEntity tile = worldObj.getTileEntity(xCoord + pos[0], yCoord + pos[1], zCoord + pos[2]);
+			if(tile instanceof TileElvenPool && !((TileElvenPool) tile).isFull())
+				return false;
+		}
+		return true;//Made it through all locations without finding not full pool; if no pools, then it is full of 0 mana, max capacity is 0
+	}	
 }

@@ -29,14 +29,14 @@ public class ItemManaTransferCatalyst extends ItemActiveCatalyst{
 			UUIDList.add(gateway.uuid);
 		}
 			
-		gateway.addMana(-100);
+		gateway.recieveMana(-100);
 		
 		for(TileGatewayCore currManaMod : gatewayList){			
 			if(currManaMod.uuid == gateway.uuid)
 				continue;
 			else if(currManaMod.getCurrentMana() < gateway.getCurrentMana() && gateway.getCurrentMana() > 10000){
-				currManaMod.addMana(10000);
-				gateway.addMana(-10000);
+				currManaMod.recieveMana(10000);
+				gateway.recieveMana(-10000);
 			}
 		}
 		

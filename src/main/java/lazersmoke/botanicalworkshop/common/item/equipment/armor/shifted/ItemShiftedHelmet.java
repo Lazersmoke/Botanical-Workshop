@@ -23,12 +23,20 @@ public class ItemShiftedHelmet extends ItemShiftedArmor implements IGoggles, IRe
 	
 	@Override
 	public boolean showNodes(ItemStack itemstack, EntityLivingBase player) {
-		return ItemNBTHelper.getBoolean(itemstack, TAG_UPGRADE_BASE + "RevealingUpgrade", false) && super.getCore(itemstack, player.worldObj) != null && super.getCore(itemstack, player.worldObj).addMana(-100);
+		if(super.getCore(itemstack, player.worldObj) != null && super.getCore(itemstack, player.worldObj).getCurrentMana() >= 100){
+			super.getCore(itemstack, player.worldObj).recieveMana(-100);
+			return ItemNBTHelper.getBoolean(itemstack, TAG_UPGRADE_BASE + "RevealingUpgrade", false) && super.getCore(itemstack, player.worldObj) != null;
+		}
+		return false;
 	}
 
 	@Override
 	public boolean showIngamePopups(ItemStack itemstack, EntityLivingBase player) {
-		return ItemNBTHelper.getBoolean(itemstack, TAG_UPGRADE_BASE + "RevealingUpgrade", false) && super.getCore(itemstack, player.worldObj) != null && super.getCore(itemstack, player.worldObj).addMana(-100);
+		if(super.getCore(itemstack, player.worldObj) != null && super.getCore(itemstack, player.worldObj).getCurrentMana() >= 100){
+			super.getCore(itemstack, player.worldObj).recieveMana(-100);
+			return ItemNBTHelper.getBoolean(itemstack, TAG_UPGRADE_BASE + "RevealingUpgrade", false) && super.getCore(itemstack, player.worldObj) != null;
+		}
+		return false;
 	}
 
 }
