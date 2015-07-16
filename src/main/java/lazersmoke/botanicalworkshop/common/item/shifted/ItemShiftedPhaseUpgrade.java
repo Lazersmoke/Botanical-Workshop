@@ -10,16 +10,18 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
-public class ItemShiftedPhaseUpgrade extends ItemMod implements IShiftedArmorUpgrade{
-	public ItemShiftedPhaseUpgrade() {
+public class ItemShiftedPhaseUpgrade extends ItemMod implements
+		IShiftedArmorUpgrade{
+
+	public ItemShiftedPhaseUpgrade(){
 		super(LibItemNames.PHASE_UPGRADE);
 	}
 
 	@Override
-	public String getKey() {
+	public String getKey(){
 		return "PhaseUpgrade";
 	}
-	
+
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack stack){
 		if(ItemShiftedArmor.getCore(stack, world) != null && ItemShiftedArmor.getCore(stack, world).getCurrentMana() >= 1000){
@@ -30,7 +32,7 @@ public class ItemShiftedPhaseUpgrade extends ItemMod implements IShiftedArmorUpg
 	}
 
 	@Override
-	public String getDisplayName() {
+	public String getDisplayName(){
 		return "Shifted Phase Upgrade";
 	}
 }

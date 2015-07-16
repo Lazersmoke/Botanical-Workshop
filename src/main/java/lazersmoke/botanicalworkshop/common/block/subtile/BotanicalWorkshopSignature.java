@@ -8,40 +8,42 @@ import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.subtile.signature.SubTileSignature;
 import vazkii.botania.common.block.BlockSpecialFlower;
 
-public class BotanicalWorkshopSignature extends SubTileSignature {
+public class BotanicalWorkshopSignature extends SubTileSignature{
 
 	final String name;
 
-	public BotanicalWorkshopSignature(String name) {
+	public BotanicalWorkshopSignature(String name){
 		this.name = name;
 	}
 
 	@Override
-	public void registerIcons(IIconRegister register) {
-		IIcon normal = register.registerIcon(LibResources.PREFIX_SUBTILE + name.replaceAll("tile\\.", "").replaceAll("subtile", ""));
+	public void registerIcons(IIconRegister register){
+		IIcon normal = register.registerIcon(LibResources.PREFIX_SUBTILE
+				+ name.replaceAll("tile\\.", "").replaceAll("subtile", ""));
 		BlockSpecialFlower.icons.put(name, normal);
 	}
 
 	@Override
-	public IIcon getIconForStack(ItemStack stack) {
+	public IIcon getIconForStack(ItemStack stack){
 		return BotaniaAPI.internalHandler.getSubTileIconForName(name);
 	}
 
 	@Override
-	public String getUnlocalizedNameForStack(ItemStack stack) {
+	public String getUnlocalizedNameForStack(ItemStack stack){
 		return unlocalizedName("");
 	}
 
 	@Override
-	public String getUnlocalizedLoreTextForStack(ItemStack stack) {
+	public String getUnlocalizedLoreTextForStack(ItemStack stack){
 		return unlocalizedName(".reference");
 	}
 
-	public String getName() {
+	public String getName(){
 		return name;
 	}
 
-	private String unlocalizedName(String end) {
-		return "tile.botanicalworkshop:" + SubTileSignature.SPECIAL_FLOWER_PREFIX + name + end;
+	private String unlocalizedName(String end){
+		return "tile.botanicalworkshop:"
+				+ SubTileSignature.SPECIAL_FLOWER_PREFIX + name + end;
 	}
 }

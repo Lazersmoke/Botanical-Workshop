@@ -9,19 +9,22 @@ import vazkii.botania.api.lexicon.LexiconPage;
 
 public class WLexiconEntry extends LexiconEntry implements IAddonEntry{
 
-	public WLexiconEntry(String unlocalizedName, LexiconCategory category) {
+	public WLexiconEntry(String unlocalizedName, LexiconCategory category){
 		super(unlocalizedName, category);
 		BotaniaAPI.addEntry(this, category);
 		setKnowledgeType(LexiconData.workshopKnowledge);
 	}
 
 	@Override
-	public LexiconEntry setLexiconPages(LexiconPage... pages) {
-		for(LexiconPage page : pages) {
-			page.unlocalizedName = "botanicalworkshop.page." + getLazyUnlocalizedName() + page.unlocalizedName;
-			if(page instanceof ITwoNamedPage) {
+	public LexiconEntry setLexiconPages(LexiconPage ... pages){
+		for(LexiconPage page : pages){
+			page.unlocalizedName = "botanicalworkshop.page."
+					+ getLazyUnlocalizedName() + page.unlocalizedName;
+			if(page instanceof ITwoNamedPage){
 				ITwoNamedPage dou = (ITwoNamedPage) page;
-				dou.setSecondUnlocalizedName("botanicalworkshop.page." + getLazyUnlocalizedName() + dou.getSecondUnlocalizedName());
+				dou.setSecondUnlocalizedName("botanicalworkshop.page."
+						+ getLazyUnlocalizedName()
+						+ dou.getSecondUnlocalizedName());
 			}
 		}
 
@@ -29,21 +32,21 @@ public class WLexiconEntry extends LexiconEntry implements IAddonEntry{
 	}
 
 	@Override
-	public String getUnlocalizedName() {
+	public String getUnlocalizedName(){
 		return "botanicalworkshop.entry." + super.getUnlocalizedName();
 	}
 
-	public String getLazyUnlocalizedName() {
+	public String getLazyUnlocalizedName(){
 		return super.getUnlocalizedName();
 	}
 
 	@Override
-	public String getWebLink() {
-		return null;//TODO Github Wiki!
+	public String getWebLink(){
+		return null;// TODO Github Wiki!
 	}
-	
+
 	@Override
-	public String getSubtitle() {
+	public String getSubtitle(){
 		return "botanicalworkshop.gui.lexicon.subtitle";
 	}
 

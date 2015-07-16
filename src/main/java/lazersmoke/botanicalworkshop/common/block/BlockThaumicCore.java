@@ -21,12 +21,12 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-//This class is all Lazersmoke
+// This class is all Lazersmoke
 public class BlockThaumicCore extends BlockContainer implements ILexiconable{
-		
+
 	public static IIcon iconOff, iconOn;
-	
-	public BlockThaumicCore() {
+
+	public BlockThaumicCore(){
 		super(Material.wood);
 		setHardness(2.0F);
 		setResistance(10.0F);
@@ -43,19 +43,22 @@ public class BlockThaumicCore extends BlockContainer implements ILexiconable{
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World arg0, int arg1) {
+	public TileEntity createNewTileEntity(World arg0, int arg1){
 		return new TileThaumicCore();
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister par1IconRegister) {
-		iconOff = par1IconRegister.registerIcon(LibResources.PREFIX_MOD + getUnlocalizedName().replaceAll("tile\\.", "") + "0");
-		iconOn = par1IconRegister.registerIcon(LibResources.PREFIX_MOD + getUnlocalizedName().replaceAll("tile\\.", "") + "1");
+	public void registerBlockIcons(IIconRegister par1IconRegister){
+		iconOff = par1IconRegister.registerIcon(LibResources.PREFIX_MOD
+				+ getUnlocalizedName().replaceAll("tile\\.", "") + "0");
+		iconOn = par1IconRegister.registerIcon(LibResources.PREFIX_MOD
+				+ getUnlocalizedName().replaceAll("tile\\.", "") + "1");
 	}
-	
+
 	@Override
-	public LexiconEntry getEntry(World world, int x, int y, int z, EntityPlayer player, ItemStack lexicon) {
+	public LexiconEntry getEntry(World world, int x, int y, int z,
+			EntityPlayer player, ItemStack lexicon){
 		return LexiconData.thaumicCore;
 	}
 }

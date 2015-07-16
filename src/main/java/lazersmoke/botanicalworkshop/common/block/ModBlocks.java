@@ -17,8 +17,8 @@ import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.subtile.SubTileEntity;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-public final class ModBlocks {
-	
+public final class ModBlocks{
+
 	public static Block elvenPool;
 	public static Block gatewayCore;
 	public static Block thaumicCore;
@@ -26,7 +26,7 @@ public final class ModBlocks {
 	public static Block manaBankInterface;
 	
 	public static void init(){
-		
+
 		gatewayCore = new BlockGatewayCore();
 		elvenPool = new BlockElvenPool();
 		thaumicCore = new BlockThaumicCore();
@@ -35,7 +35,7 @@ public final class ModBlocks {
 		
 		initTileEntities();
 	}
-	
+
 	public static void initTileEntities(){
 		registerTile(TileElvenPool.class, LibBlockNames.ELVEN_POOL);
 		registerTile(TileGatewayCore.class, LibBlockNames.GATEWAY_CORE);
@@ -46,13 +46,16 @@ public final class ModBlocks {
 		registerSubTile(SubTileLogicalSound.class, LibBlockNames.SUBTILE_LOGICALSOUND);
 	}
 
-	private static void registerTile(Class<? extends TileEntity> clazz, String key) {
+	private static void registerTile(Class<? extends TileEntity> clazz,
+			String key){
 		GameRegistry.registerTileEntity(clazz, LibResources.PREFIX_MOD + key);
 	}
-	
-	private static void registerSubTile(Class<? extends SubTileEntity> clazz, String key) {
+
+	private static void registerSubTile(Class<? extends SubTileEntity> clazz,
+			String key){
 		BotaniaAPI.registerSubTile(key, clazz);
-		BotaniaAPI.registerSubTileSignature(clazz, new BotanicalWorkshopSignature(key));
+		BotaniaAPI.registerSubTileSignature(clazz,
+				new BotanicalWorkshopSignature(key));
 		BotaniaAPI.addSubTileToCreativeMenu(key);
 	}
 }

@@ -11,24 +11,22 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 
-
 public class ItemManaTransferCatalyst extends ItemActiveCatalyst{
-	
+
 	static List<UUID> UUIDList = new CopyOnWriteArrayList<UUID>();
 	static List<TileGatewayCore> gatewayList = new CopyOnWriteArrayList<TileGatewayCore>();
-	
+
 	public ItemManaTransferCatalyst(){
 		super(LibItemNames.MANA_TRANSFER_CATALYST);
 	}
-	
+
 	@Override
 	public void onGatewayUpdate(TileGatewayCore gateway, EntityItem catalyst){
-		
+
 		if(!UUIDList.contains(gateway.uuid)){
 			gatewayList.add(gateway);
 			UUIDList.add(gateway.uuid);
 		}
-			
 		gateway.recieveMana(-100);
 		
 		for(TileGatewayCore currManaMod : gatewayList){			
@@ -39,13 +37,16 @@ public class ItemManaTransferCatalyst extends ItemActiveCatalyst{
 				gateway.recieveMana(-10000);
 			}
 		}
-		
+
 	}
-	
-	
+
 	@Override
-	public void addInformation(ItemStack stack, EntityPlayer player,  List loreLineList, boolean par4){
+	public void addInformation(ItemStack stack, EntityPlayer player,
+			List loreLineList, boolean par4){
 		for(int i = 0; i < 4; i++)
-			loreLineList.add(StatCollector.translateToLocal("botanicalworkshopmisc.manaTransferCatalyst" + i));
+			loreLineList
+					.add(StatCollector
+							.translateToLocal("botanicalworkshopmisc.manaTransferCatalyst"
+									+ i));
 	}
 }

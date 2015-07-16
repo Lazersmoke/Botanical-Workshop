@@ -25,59 +25,68 @@ import vazkii.botania.api.lexicon.LexiconRecipeMappings;
 import vazkii.botania.common.lexicon.page.PageRecipe;
 
 public class PageGatewayTransmutationRecipe extends PageRecipe{
-	private static final ResourceLocation gatewayRecipeOverlay = new ResourceLocation(LibResources.GUI_GATEWAY_TRANSMUTATION_OVERLAY);
+
+	private static final ResourceLocation gatewayRecipeOverlay = new ResourceLocation(
+			LibResources.GUI_GATEWAY_TRANSMUTATION_OVERLAY);
 
 	List<RecipeGatewayTransmutation> recipes = new ArrayList<RecipeGatewayTransmutation>();
 	int ticksElapsed = 0;
 	int recipeAt = 0;
 
-	public PageGatewayTransmutationRecipe(String unlocalizedName, List<RecipeGatewayTransmutation> recipes) {
+	public PageGatewayTransmutationRecipe(String unlocalizedName,
+			List<RecipeGatewayTransmutation> recipes){
 		super(unlocalizedName);
 		this.recipes = recipes;
 	}
 
-	public PageGatewayTransmutationRecipe(String unlocalizedName, RecipeGatewayTransmutation recipe) {
+	public PageGatewayTransmutationRecipe(String unlocalizedName,
+			RecipeGatewayTransmutation recipe){
 		this(unlocalizedName, Arrays.asList(recipe));
 	}
 
 	@Override
-	public void onPageAdded(LexiconEntry entry, int index) {
+	public void onPageAdded(LexiconEntry entry, int index){
 		for(RecipeGatewayTransmutation recipe : recipes)
-				LexiconRecipeMappings.map(recipe.getOutput(), entry, index);
+			LexiconRecipeMappings.map(recipe.getOutput(), entry, index);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void renderRecipe(IGuiLexiconEntry gui, int mx, int my) {
+	public void renderRecipe(IGuiLexiconEntry gui, int mx, int my){
 		RecipeGatewayTransmutation recipe = recipes.get(recipeAt);
 		TextureManager render = Minecraft.getMinecraft().renderEngine;
 		render.bindTexture(gatewayRecipeOverlay);
 		GL11.glEnable(GL11.GL_BLEND);
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 		GL11.glColor4f(1F, 1F, 1F, 1F);
-		((GuiScreen) gui).drawTexturedModalRect(gui.getLeft(), gui.getTop(), 0, 0, gui.getWidth(), gui.getHeight());
+		( (GuiScreen) gui ).drawTexturedModalRect(gui.getLeft(), gui.getTop(),
+				0, 0, gui.getWidth(), gui.getHeight());
 		GL11.glDisable(GL11.GL_BLEND);
 
-		renderItem(gui, gui.getLeft() + 38, gui.getTop() + 52, recipe.getCatalyst(), false);
-		
+		renderItem(gui, gui.getLeft() + 38, gui.getTop() + 52,
+				recipe.getCatalyst(), false);
+
 		renderItemAtGridPos(gui, 3, 1, recipe.getOutput(), false);
 
 		List<ItemStack> inputs = recipe.getInputs();
 		int i = 0;
-		for(Object obj : inputs) {
+		for(Object obj : inputs){
 			Object input = obj;
-			
+
 			renderItemAtInputPos(gui, i, (ItemStack) input);
 			i++;
 		}
 
 		IIcon portalIcon = BlockGatewayCore.portalTex;
-		Minecraft.getMinecraft().renderEngine.bindTexture(TextureMap.locationBlocksTexture);
-		RenderItem.getInstance().renderIcon(gui.getLeft() + 22, gui.getTop() + 36, portalIcon, 48, 48);
+		Minecraft.getMinecraft().renderEngine
+				.bindTexture(TextureMap.locationBlocksTexture);
+		RenderItem.getInstance().renderIcon(gui.getLeft() + 22,
+				gui.getTop() + 36, portalIcon, 48, 48);
 	}
 
 	@SideOnly(Side.CLIENT)
-	public void renderItemAtInputPos(IGuiLexiconEntry gui, int x, ItemStack stack) {
+	public void renderItemAtInputPos(IGuiLexiconEntry gui, int x,
+			ItemStack stack){
 		if(stack == null || stack.getItem() == null)
 			return;
 		stack = stack.copy();
@@ -94,11 +103,10 @@ public class PageGatewayTransmutationRecipe extends PageRecipe{
 		renderItem(gui, xPos, yPos, stack1, false);
 	}
 
-
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void updateScreen() {
-		if(ticksElapsed % 20 == 0) {
+	public void updateScreen(){
+		if(ticksElapsed % 20 == 0){
 			recipeAt++;
 
 			if(recipeAt == recipes.size())

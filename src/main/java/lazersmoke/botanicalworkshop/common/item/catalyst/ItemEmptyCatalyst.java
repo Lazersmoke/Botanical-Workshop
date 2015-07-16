@@ -11,11 +11,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 
 public class ItemEmptyCatalyst extends ItemActiveCatalyst{
-	
+
 	public ItemEmptyCatalyst(){
 		super(LibItemNames.EMPTY_CATALYST);
 	}
-	
+
 	@Override
 	public void onGatewayUpdate(TileGatewayCore gateway, EntityItem catalyst){
 		boolean toKill = false;
@@ -27,11 +27,14 @@ public class ItemEmptyCatalyst extends ItemActiveCatalyst{
 		if(toKill)
 			gateway.currentInventory = new ArrayList<ItemStack>();
 	}
-	
-	
+
 	@Override
-	public void addInformation(ItemStack stack, EntityPlayer player,  List loreLineList, boolean par4){
+	public void addInformation(ItemStack stack, EntityPlayer player,
+			List loreLineList, boolean par4){
 		for(int i = 0; i < 3; i++)
-			loreLineList.add(StatCollector.translateToLocal("botanicalworkshopmisc.emptyCatalyst" + i));
+			loreLineList
+					.add(StatCollector
+							.translateToLocal("botanicalworkshopmisc.emptyCatalyst"
+									+ i));
 	}
 }

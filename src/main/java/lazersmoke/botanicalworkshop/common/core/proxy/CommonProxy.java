@@ -17,40 +17,43 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.event.FMLServerStoppingEvent;
 
-public class CommonProxy {
+public class CommonProxy{
+
 	public void preInit(FMLPreInitializationEvent event){
-		BotanicalWorkshop.creativeTab = new CreativeTabs("Botanical Workshop") {
+		BotanicalWorkshop.creativeTab = new CreativeTabs("Botanical Workshop"){
+
 			@Override
-			public Item getTabIconItem() {
+			public Item getTabIconItem(){
 				return ModItems.simpleCatalyst;
 			}
 		};
-		
+
 		ConfigHandler.loadConfig(event.getSuggestedConfigurationFile());
-		
+
 		ModBlocks.init();
 		ModItems.init();
-		
+
 		ModCraftingRecipes.init();
 		ModElvenTradeRecipes.init();
 		ModGatewayTransmutationRecipes.init();
 		ModPetalRecipes.init();
-		
+
 		LexiconData.init();
 	}
-	
-	public void init(FMLInitializationEvent event){
-	}
-	
+
+	public void init(FMLInitializationEvent event){}
+
 	public void postInit(FMLPostInitializationEvent event){
-		BotanicalWorkshop.logger.info("Botanical workshop dev Lazersmoke expresses his sincere gratitude to Vazkii and SoundLogic");
+		BotanicalWorkshop.logger
+				.info("Botanical workshop dev Lazersmoke expresses his sincere gratitude to Vazkii and SoundLogic");
 	}
-	
-	public void serverStarting(FMLServerStartingEvent event) {
-		//NO-OP
-		
-	}	
-	public void serverStopping(FMLServerStoppingEvent event) {
-		//NO-OP
+
+	public void serverStarting(FMLServerStartingEvent event){
+		// NO-OP
+
+	}
+
+	public void serverStopping(FMLServerStoppingEvent event){
+		// NO-OP
 	}
 }

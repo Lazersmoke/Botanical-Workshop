@@ -10,17 +10,19 @@ import lazersmoke.botanicalworkshop.common.block.tile.mana.TileElvenPool;
 import lazersmoke.botanicalworkshop.common.core.proxy.CommonProxy;
 
 public class ClientProxy extends CommonProxy{
+
 	@Override
 	public void init(FMLInitializationEvent event){
 		super.init(event);
 		initRenderers();
 	}
 
-	private void initRenderers() {
+	private void initRenderers(){
 		LibRenderIDs.idPool = RenderingRegistry.getNextAvailableRenderId();
-		
+
 		RenderingRegistry.registerBlockHandler(new RenderElvenPool());
-		
-		ClientRegistry.bindTileEntitySpecialRenderer(TileElvenPool.class, new RenderTileElvenPool());
+
+		ClientRegistry.bindTileEntitySpecialRenderer(TileElvenPool.class,
+				new RenderTileElvenPool());
 	}
 }

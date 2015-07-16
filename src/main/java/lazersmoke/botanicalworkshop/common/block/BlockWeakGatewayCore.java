@@ -17,10 +17,10 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-//This class is all Lazersmoke
+// This class is all Lazersmoke
 public class BlockWeakGatewayCore extends Block implements ILexiconable{
-		
-	public BlockWeakGatewayCore() {
+
+	public BlockWeakGatewayCore(){
 		super(Material.rock);
 		setHardness(2.0F);
 		setResistance(10.0F);
@@ -35,15 +35,17 @@ public class BlockWeakGatewayCore extends Block implements ILexiconable{
 		GameRegistry.registerBlock(this, ItemBlockWeakGatewayCore.class, name);
 		return super.setBlockName(name);
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister par1IconRegister) {
-		blockIcon = par1IconRegister.registerIcon(LibResources.PREFIX_MOD + getUnlocalizedName().replaceAll("tile\\.", ""));
+	public void registerBlockIcons(IIconRegister par1IconRegister){
+		blockIcon = par1IconRegister.registerIcon(LibResources.PREFIX_MOD
+				+ getUnlocalizedName().replaceAll("tile\\.", ""));
 	}
-	
+
 	@Override
-	public LexiconEntry getEntry(World world, int x, int y, int z, EntityPlayer player, ItemStack lexicon) {
+	public LexiconEntry getEntry(World world, int x, int y, int z,
+			EntityPlayer player, ItemStack lexicon){
 		return LexiconData.thaumicCore;
 	}
 }

@@ -14,21 +14,22 @@ import net.minecraft.world.World;
 public class LexiconBindingRecipe implements IRecipe{
 
 	@Override
-	public boolean matches(InventoryCrafting var1, World var2) {
+	public boolean matches(InventoryCrafting var1, World var2){
 		boolean foundCrystal = false;
 		boolean foundLexicon = false;
 
-		for(int i = 0; i < var1.getSizeInventory(); i++) {
+		for(int i = 0; i < var1.getSizeInventory(); i++){
 			ItemStack stack = var1.getStackInSlot(i);
-			if(stack != null) {
+			if(stack != null){
 				if(foundCrystal && foundLexicon)
 					return false;
 				if(stack.getItem() == ModItems.bindingCrystal && !foundCrystal)
 					foundCrystal = true;
-				else if(!foundLexicon) {
+				else if(!foundLexicon){
 					if(stack.getItem() instanceof ILexicon)
 						foundLexicon = true;
-					else return false;
+					else
+						return false;
 				}
 			}
 		}
@@ -37,22 +38,25 @@ public class LexiconBindingRecipe implements IRecipe{
 	}
 
 	@Override
-	public ItemStack getCraftingResult(InventoryCrafting var1) {
+	public ItemStack getCraftingResult(InventoryCrafting var1){
 		ItemStack lexiconStack = null;
 		ItemStack bindingCrystal = null;
 
-		for(int i = 0; i < var1.getSizeInventory(); i++) {
+		for(int i = 0; i < var1.getSizeInventory(); i++){
 			ItemStack stack = var1.getStackInSlot(i);
-			if(stack != null) {
+			if(stack != null){
 				if(stack.getItem() instanceof ILexicon && lexiconStack == null)
 					lexiconStack = stack;
-				else bindingCrystal = stack;
+				else
+					bindingCrystal = stack;
 			}
 		}
 
-		KnowledgeType knowledgeType=ItemBindingCrystal.getKnowledgeType(bindingCrystal);
-		LexiconEntry openingEntry=ItemBindingCrystal.getOpeningEntry(bindingCrystal);
-		
+		KnowledgeType knowledgeType = ItemBindingCrystal
+				.getKnowledgeType(bindingCrystal);
+		LexiconEntry openingEntry = ItemBindingCrystal
+				.getOpeningEntry(bindingCrystal);
+
 		ILexicon lexicon = (ILexicon) lexiconStack.getItem();
 		if(lexicon.isKnowledgeUnlocked(lexiconStack, knowledgeType))
 			return null;
@@ -62,14 +66,14 @@ public class LexiconBindingRecipe implements IRecipe{
 		ItemLexicon.setForcedPage(copy, openingEntry.unlocalizedName);
 		return copy;
 	}
-	
+
 	@Override
-	public int getRecipeSize() {
+	public int getRecipeSize(){
 		return 10;
 	}
 
 	@Override
-	public ItemStack getRecipeOutput() {
+	public ItemStack getRecipeOutput(){
 		return null;
 	}
 }

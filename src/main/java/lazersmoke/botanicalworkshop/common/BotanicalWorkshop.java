@@ -25,57 +25,56 @@ import cpw.mods.fml.relauncher.Side;
 
 @Mod(modid = LibMisc.MOD_ID, name = LibMisc.MOD_NAME, version = LibMisc.VERSION, dependencies = LibMisc.DEPENDENCIES)
 public class BotanicalWorkshop{
-	
+
 	public static Logger logger;
-	
+
 	public static boolean botaniaLoaded = false;
-	public static boolean thaumcraftLoaded = false;	
+	public static boolean thaumcraftLoaded = false;
 	public static boolean bloodMagicLoaded = false;
-	
+
 	@Instance(LibMisc.MOD_ID)
 	public static BotanicalWorkshop instance;
-	
+
 	@SidedProxy(serverSide = LibMisc.PROXY_COMMON, clientSide = LibMisc.PROXY_CLIENT)
 	public static CommonProxy proxy;
 
 	public static CreativeTabs creativeTab;
 
-	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event){
-		
+
 		logger = event.getModLog();
-		
-		botaniaLoaded = Loader.isModLoaded("Botania");		
+
+		botaniaLoaded = Loader.isModLoaded("Botania");
 		thaumcraftLoaded = Loader.isModLoaded("Thaumcraft");
 		bloodMagicLoaded = Loader.isModLoaded("AWWayofTime"); // Psh, noob
-		
+
 		QuakeConfig.init(event.getSuggestedConfigurationFile());
-		
+
 		proxy.preInit(event);
 	}
-	
+
 	@EventHandler
 	public void init(FMLInitializationEvent event){
 		proxy.init(event);
 	}
-	
+
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event){
-		
+
 		ServerPlayerAPI.register(LibMisc.MOD_ID, QuakeServerPlayer.class);
 
-		if (event.getSide() == Side.CLIENT)
+		if(event.getSide() == Side.CLIENT)
 			ClientPlayerAPI.register(LibMisc.MOD_ID, QuakeClientPlayer.class);
-		
+
 		proxy.postInit(event);
 	}
-	
+
 	@EventHandler
 	public void serverStarting(FMLServerStartingEvent event){
 		proxy.serverStarting(event);
 	}
-	
+
 	@EventHandler
 	public void serverStopping(FMLServerStoppingEvent event){
 		proxy.serverStopping(event);
