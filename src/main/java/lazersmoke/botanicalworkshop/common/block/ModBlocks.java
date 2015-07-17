@@ -2,14 +2,12 @@ package lazersmoke.botanicalworkshop.common.block;
 
 import lazersmoke.botanicalworkshop.client.lib.LibResources;
 import lazersmoke.botanicalworkshop.common.block.mana.BlockElvenPool;
-import lazersmoke.botanicalworkshop.common.block.mana.BlockManaBankInterface;
 import lazersmoke.botanicalworkshop.common.block.subtile.BotanicalWorkshopSignature;
 import lazersmoke.botanicalworkshop.common.block.subtile.functional.SubTileExAquainas;
 import lazersmoke.botanicalworkshop.common.block.subtile.functional.SubTileLogicalSound;
 import lazersmoke.botanicalworkshop.common.block.tile.TileGatewayCore;
 import lazersmoke.botanicalworkshop.common.block.tile.TileThaumicCore;
 import lazersmoke.botanicalworkshop.common.block.tile.mana.TileElvenPool;
-import lazersmoke.botanicalworkshop.common.block.tile.mana.TileManaBankInterface;
 import lazersmoke.botanicalworkshop.common.lib.LibBlockNames;
 import net.minecraft.block.Block;
 import net.minecraft.tileentity.TileEntity;
@@ -31,7 +29,6 @@ public final class ModBlocks{
 		elvenPool = new BlockElvenPool();
 		thaumicCore = new BlockThaumicCore();
 		weakGatewayCore = new BlockWeakGatewayCore();
-		manaBankInterface = new BlockManaBankInterface();
 		
 		initTileEntities();
 	}
@@ -40,7 +37,6 @@ public final class ModBlocks{
 		registerTile(TileElvenPool.class, LibBlockNames.ELVEN_POOL);
 		registerTile(TileGatewayCore.class, LibBlockNames.GATEWAY_CORE);
 		registerTile(TileThaumicCore.class, LibBlockNames.THAUMIC_CORE);
-		registerTile(TileManaBankInterface.class, LibBlockNames.MANA_BANK_INTERFACE);
 		
 		registerSubTile(SubTileExAquainas.class, LibBlockNames.SUBTILE_EXAQUAINAS);
 		registerSubTile(SubTileLogicalSound.class, LibBlockNames.SUBTILE_LOGICALSOUND);

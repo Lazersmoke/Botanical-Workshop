@@ -19,6 +19,7 @@ import lazersmoke.botanicalworkshop.common.lib.LibConfigs;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -33,12 +34,13 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.lwjgl.opengl.GL11;
 
 import vazkii.botania.api.lexicon.ILexicon;
-import vazkii.botania.api.mana.IManaReceiver;
+import vazkii.botania.api.mana.spark.ISparkAttachable;
+import vazkii.botania.api.mana.spark.ISparkEntity;
 import vazkii.botania.client.core.handler.HUDHandler;
 import vazkii.botania.common.Botania;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
 
-public class TileGatewayCore extends TileEntity implements IManaReceiver{
+public class TileGatewayCore extends TileMod implements ISparkAttachable/*extends IManaReceiver*/{
 		//  W W
 		// W   W
 		//WS   SW
@@ -684,5 +686,36 @@ public class TileGatewayCore extends TileEntity implements IManaReceiver{
 				return false;
 		}
 		return true;//Made it through all locations without finding not full pool; if no pools, then it is full of 0 mana, max capacity is 0
+	}
+
+	@Override
+	public boolean canAttachSpark(ItemStack stack) {
+		return true;
+	}
+
+	@Override
+	public void attachSpark(ISparkEntity entity) {
+		// NO-OP
+	}
+
+	@Override
+	public ISparkEntity getAttachedSpark() {
+		List<ISparkEntity> sparks = worldObj.getEntitiesWithinAABB(ISparkEntity.class, AxisAlignedBB.getBoundingBox(xCoord, yCoord + 1, zCoord, xCoord + 1, yCoord + 2, zCoord + 1));
+		if(sparks.size() == 1) {
+			Entity e = (Entity) sparks.get(0);
+			return (ISparkEntity) e;
+		}
+
+		return null;
+	}
+
+	@Override
+	public boolean areIncomingTranfersDone() {
+		return !isFull();
+	}
+
+	@Override
+	public int getAvailableSpaceForMana() {
+		return Math.max(0, TileElvenPool.MAX_MANA * (additionalPools ? ELVEN_POOL_POSITIONS.length + ADDITIONAL_ELVEN_POOL_POSITIONS.length : ELVEN_POOL_POSITIONS.length) - getCurrentMana());
 	}
 }

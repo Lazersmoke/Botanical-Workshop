@@ -122,14 +122,6 @@ public final class LexiconData{
 				new PageGatewayTransmutationRecipe("2", ModGatewayTransmutationRecipes.bloodBindingCrystalRecipe), 
 				new PageGatewayTransmutationRecipe("3", ModGatewayTransmutationRecipes.thaumicBindingCrystalRecipe), 
 				new PageGatewayTransmutationRecipe("4", ModGatewayTransmutationRecipes.mechanicalBindingCrystalRecipe));
-		
-		manaBankInterface = new WLexiconEntry(LibLexicon.WORKSHOP_MANABANKINTERFACE, categoryWorkshop);
-		manaBankInterface.setPriority().setLexiconPages(
-				new PageText("0"), 
-				new PageText("1"), 
-				new PageCraftingRecipe("2", ModCraftingRecipes.recipeSimpleCatalyst), 
-				new PageText("3"), 
-				new PageCraftingRecipe("4", ModCraftingRecipes.recipeEmptyCatalyst));
 		// THAUMIC ENTRIES
 		thaumicIntro = new TLexiconEntry(LibLexicon.THAUMIC_INTRO,
 				categoryThaumic);
