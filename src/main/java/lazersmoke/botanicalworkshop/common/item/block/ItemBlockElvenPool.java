@@ -16,7 +16,7 @@ public class ItemBlockElvenPool extends ItemBlockWithMetadataAndName{
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player,
 			List loreLineList, boolean par4){
-		for(int i = 0; i < 2; i++)
+		for(int i = 0; i < 1; i++)
 			loreLineList.add(StatCollector
 					.translateToLocal("botanicalworkshopmisc.elvenPool" + i));
 	}

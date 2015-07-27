@@ -40,20 +40,20 @@ import vazkii.botania.client.core.handler.HUDHandler;
 import vazkii.botania.common.Botania;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
 
-public class TileGatewayCore extends TileMod implements ISparkAttachable/*extends IManaReceiver*/{
-		//  W W
-		// W   W
-		//WS   SW
-		//W     G
-		//WS   SW
-		// W   W 
-		//  WCW 
+public class TileGatewayCore extends TileMod implements ISparkAttachable/* implements IManaReceiver */{
+	// W W
+	// W W
+	// WS SW
+	// W G
+	// WS SW
+	// W W
+	// WCW
 	public List<ItemStack> currentInventory = new ArrayList<ItemStack>();
 	public boolean open = false;
 	public UUID uuid;
 	public static HashMap<UUID, TileGatewayCore> UUIDMap = new HashMap<UUID, TileGatewayCore>();
 
-	public TileGatewayCore(){
+	public TileGatewayCore() {
 		super();
 		UUID freshUuid = UUID.randomUUID();
 		UUIDMap.put(freshUuid, this);
@@ -67,412 +67,144 @@ public class TileGatewayCore extends TileMod implements ISparkAttachable/*extend
 	private boolean additionalPools = false;
 	private int ticksOpen = 0;
 	private boolean closeNow = false;
-	private static final int[][] LIVINGWOOD_POSITIONS = {
-			{
-					-1, 0, 0
-			}, {
-					1, 0, 0
-			}, {
-					0, 0, 1
-			}, {
-					0, 0, -1
-			}, {
-					-2, 1, 0
-			}, {
-					2, 1, 0
-			}, {
-					0, 1, 2
-			}, {
-					0, 1, -2
-			}, {
-					-3, 2, 0
-			}, {
-					3, 2, 0
-			}, {
-					0, 2, 3
-			}, {
-					0, 2, -3
-			}, {
-					-3, 4, 0
-			}, {
-					3, 4, 0
-			}, {
-					0, 4, 3
-			}, {
-					0, 4, -3
-			}, {
-					-2, 5, 0
-			}, {
-					2, 5, 0
-			}, {
-					0, 5, 2
-			}, {
-					0, 5, -2
-			}, {
-					-1, 6, 0
-			}, {
-					1, 6, 0
-			}, {
-					0, 6, 1
-			}, {
-					0, 6, -1
-			}
-	};
-	private static final int[][] CHISLED_ELVEN_QUARTZ_POSITIONS = {
-			{
-					-1, 0, -1
-			}, {
-					-1, 0, 1
-			}, {
-					1, 0, -1
-			}, {
-					1, 0, 1
-			}, {
-					-1, 1, -2
-			}, {
-					-1, 1, 2
-			}, {
-					1, 1, -2
-			}, {
-					1, 1, 2
-			}, {
-					-2, 1, -1
-			}, {
-					-2, 1, 1
-			}, {
-					2, 1, -1
-			}, {
-					2, 1, 1
-			}, {
-					-1, 5, -2
-			}, {
-					-1, 5, 2
-			}, {
-					1, 5, -2
-			}, {
-					1, 5, 2
-			}, {
-					-2, 5, -1
-			}, {
-					-2, 5, 1
-			}, {
-					2, 5, -1
-			}, {
-					2, 5, 1
-			}, {
-					-1, 6, -1
-			}, {
-					-1, 6, 1
-			}, {
-					1, 6, -1
-			}, {
-					1, 6, 1
-			}
-	};
-	private static final int[][] GLIMMERING_LIVINGWOOD_POSITIONS = {
-			{
-					-3, 3, 0
-			}, {
-					3, 3, 0
-			}, {
-					0, 3, 3
-			}, {
-					0, 3, -3
-			}
-	};
-	private static final int[][] LIVINGWOOD_STAIRS_UP_POSITIONS = {
-			{
-					-2, 2, 0
-			}, {
-					2, 2, 0
-			}, {
-					0, 2, -2
-			}, {
-					0, 2, 2
-			}
-	};
-	private static final int[][] LIVINGWOOD_STAIRS_DOWN_POSITIONS = {
-			{
-					-2, 4, 0
-			}, {
-					2, 4, 0
-			}, {
-					0, 4, -2
-			}, {
-					0, 4, 2
-			}
-	};
+	//@formatter:off
+	private static final int[][] LIVINGWOOD_POSITIONS = { 
+		{ -1, 0, 0 }, { 1, 0, 0 },
+		{ 0, 0, 1 }, { 0, 0, -1 },
+		{ -2, 1, 0 }, { 2, 1, 0 },
+		{ 0, 1, 2 }, { 0, 1, -2 },
+		{ -3, 2, 0 }, { 3, 2, 0 },
+		{ 0, 2, 3 }, { 0, 2, -3 },
+		{ -3, 4, 0 }, { 3, 4, 0 },
+		{ 0, 4, 3 }, { 0, 4, -3 },
+		{ -2, 5, 0 }, { 2, 5, 0 },
+		{ 0, 5, 2 }, { 0, 5, -2 },
+		{ -1, 6, 0 }, { 1, 6, 0 },
+		{ 0, 6, 1 }, { 0, 6, -1 }};
+	private static final int[][] CHISLED_ELVEN_QUARTZ_POSITIONS = { 
+		{ -1, 0, -1 }, { -1, 0, 1 },
+		{ 1, 0, -1 }, { 1, 0, 1 },
+		{ -1, 1, -2 }, { -1, 1, 2 },
+		{ 1, 1, -2 }, { 1, 1, 2 },
+		{ -2, 1, -1 }, { -2, 1, 1 },
+		{ 2, 1, -1 }, { 2, 1, 1 },
+		{ -1, 5, -2 }, { -1, 5, 2 },
+		{ 1, 5, -2 }, { 1, 5, 2 },
+		{ -2, 5, -1 }, { -2, 5, 1 },
+		{ 2, 5, -1 }, { 2, 5, 1 },
+		{ -1, 6, -1 }, { -1, 6, 1 },
+		{ 1, 6, -1 }, { 1, 6, 1 }};
+	private static final int[][] GLIMMERING_LIVINGWOOD_POSITIONS = {{ -3, 3, 0 }, { 3, 3, 0 }, { 0, 3, 3 }, { 0, 3, -3 }};
+	private static final int[][] LIVINGWOOD_STAIRS_UP_POSITIONS = {{ -2, 2, 0 }, { 2, 2, 0 }, { 0, 2, -2 }, { 0, 2, 2 }};
+	private static final int[][] LIVINGWOOD_STAIRS_DOWN_POSITIONS = {{ -2, 4, 0 }, { 2, 4, 0 }, { 0, 4, -2 }, { 0, 4, 2 }};
 	private static final int[][] AIR_POSITIONS = {
-			{
-					1, 1, 0
-			}, {
-					0, 1, 1
-			}, {
-					-1, 1, 0
-			}, {
-					0, 1, -1
-			}, {
-					1, 1, -1
-			}, {
-					-1, 1, 1
-			}, {
-					1, 1, 1
-			}, {
-					-1, 1, -1
-			}, {
-					0, 1, 0
-			}, {
-					1, 2, 0
-			}, {
-					0, 2, 1
-			}, {
-					-1, 2, 0
-			}, {
-					0, 2, -1
-			}, {
-					1, 2, -1
-			}, {
-					-1, 2, 1
-			}, {
-					1, 2, 1
-			}, {
-					-1, 2, -1
-			}, {
-					0, 2, 0
-			}, {
-					1, 3, 0
-			}, {
-					0, 3, 1
-			}, {
-					-1, 3, 0
-			}, {
-					0, 3, -1
-			}, {
-					1, 3, -1
-			}, {
-					-1, 3, 1
-			}, {
-					1, 3, 1
-			}, {
-					-1, 3, -1
-			}, {
-					0, 3, 0
-			}, {
-					1, 4, 0
-			}, {
-					0, 4, 1
-			}, {
-					-1, 4, 0
-			}, {
-					0, 4, -1
-			}, {
-					1, 4, -1
-			}, {
-					-1, 4, 1
-			}, {
-					1, 4, 1
-			}, {
-					-1, 4, -1
-			}, {
-					0, 4, 0
-			}, {
-					1, 5, 0
-			}, {
-					0, 5, 1
-			}, {
-					-1, 5, 0
-			}, {
-					0, 5, -1
-			}, {
-					1, 5, -1
-			}, {
-					-1, 5, 1
-			}, {
-					1, 5, 1
-			}, {
-					-1, 5, -1
-			}, {
-					0, 5, 0
-			}
-	};
-	private static final int[][] ELVEN_POOL_POSITIONS = {
-			{
-					-1, 2, -2
-			}, {
-					-1, 2, 2
-			}, {
-					1, 2, -2
-			}, {
-					1, 2, 2
-			}, {
-					-2, 2, -1
-			}, {
-					-2, 2, 1
-			}, {
-					2, 2, -1
-			}, {
-					2, 2, 1
-			}
-	};
-	private static final int[][] ADDITIONAL_ELVEN_POOL_POSITIONS = {
-			{
-					3, 3, 1
-			}, {
-					3, 3, -1
-			}, {
-					-3, 3, 1
-			}, {
-					-3, 3, -1
-			}, {
-					1, 3, 3
-			}, {
-					-1, 3, 3
-			}, {
-					1, 3, -3
-			}, {
-					-1, 3, -3
-			}, {
-					2, 3, 2
-			}, {
-					2, 3, -2
-			}, {
-					-2, 3, 2
-			}, {
-					-2, 3, -2
-			},
-	};
-	private static final int[][] ADDITIONAL_CHISLED_ELVEN_QUARTZ_POSITIONS = {
-			{
-					3, 2, 1
-			}, {
-					3, 2, -1
-			}, {
-					-3, 2, 1
-			}, {
-					-3, 2, -1
-			}, {
-					1, 2, 3
-			}, {
-					-1, 2, 3
-			}, {
-					1, 2, -3
-			}, {
-					-1, 2, -3
-			}, {
-					2, 2, 2
-			}, {
-					2, 2, -2
-			}, {
-					-2, 2, 2
-			}, {
-					-2, 2, -2
-			},
-	};
+		{ 1, 1, 0 }, { 0, 1, 1 }, { -1, 1, 0 }, { 0, 1, -1 }, { 1, 1, -1 }, { -1, 1, 1 }, { 1, 1, 1 }, { -1, 1, -1 }, { 0, 1, 0 },
+		{ 1, 2, 0 }, { 0, 2, 1 }, { -1, 2, 0 }, { 0, 2, -1 }, { 1, 2, -1 }, { -1, 2, 1 }, { 1, 2, 1 }, { -1, 2, -1 }, { 0, 2, 0 }, 
+		{ 1, 3, 0 }, { 0, 3, 1 }, { -1, 3, 0 }, { 0, 3, -1 }, { 1, 3, -1 }, { -1, 3, 1 }, { 1, 3, 1 }, { -1, 3, -1 }, { 0, 3, 0 },
+		{ 1, 4, 0 }, { 0, 4, 1 }, { -1, 4, 0 }, { 0, 4, -1 }, { 1, 4, -1 }, { -1, 4, 1 }, { 1, 4, 1 }, { -1, 4, -1 }, { 0, 4, 0 },
+		{ 1, 5, 0 }, { 0, 5, 1 }, { -1, 5, 0 }, { 0, 5, -1 }, { 1, 5, -1 }, { -1, 5, 1 }, { 1, 5, 1 }, { -1, 5, -1 }, { 0, 5, 0 }};
+	private static final int[][] ELVEN_POOL_POSITIONS = { { -1, 2, -2 }, { -1, 2, 2 }, { 1, 2, -2 }, { 1, 2, 2 }, { -2, 2, -1 }, { -2, 2, 1 }, { 2, 2, -1 }, { 2, 2, 1 } };
+	private static final int[][] ADDITIONAL_ELVEN_POOL_POSITIONS = { { 3, 3, 1 }, { 3, 3, -1 }, { -3, 3, 1 }, { -3, 3, -1 }, { 1, 3, 3 }, { -1, 3, 3 }, { 1, 3, -3 }, { -1, 3, -3 }, { 2, 3, 2 },
+			{ 2, 3, -2 }, { -2, 3, 2 }, { -2, 3, -2 }, };
+	private static final int[][] ADDITIONAL_CHISLED_ELVEN_QUARTZ_POSITIONS = { 
+		{ 3, 2, 1 }, { 3, 2, -1 },
+		{ -3, 2, 1 }, { -3, 2, -1 },
+		{ 1, 2, 3 }, { -1, 2, 3 },
+		{ 1, 2, -3 }, { -1, 2, -3 },
+		{ 2, 2, 2 }, { 2, 2, -2 },
+		{ -2, 2, 2 }, { -2, 2, -2 }};
+	//@formatter:on
+	public boolean isOpen() {
+		return worldObj.getBlockMetadata(xCoord, yCoord, zCoord) == 1;
+	}
 
 	@Override
-	public void updateEntity(){
+	public void updateEntity() {
 
 		int meta = getBlockMetadata();
 
-		if(meta == 0){// closed
+		if (meta == 0) {// closed
 			ticksOpen = 0;
 			return;
 		}
 		int updatedMeta = getUpdatedMetadata();
 
-		if(!hasUnloadedParts){
+		if (!hasUnloadedParts) {
 			ticksOpen++;
 			AxisAlignedBB aabb = getPortalAABB();
 			open = ticksOpen > 60;
 
-			if(open){
-				if(vazkii.botania.common.core.handler.ConfigHandler.elfPortalParticlesEnabled)// import configs
+			if (open) {
+				if (vazkii.botania.common.core.handler.ConfigHandler.elfPortalParticlesEnabled)// import configs
 					blockParticle(meta);
 			}
 
-			List<EntityPlayer> players = worldObj.getEntitiesWithinAABB(
-					EntityPlayer.class, aabb);
-			for(EntityPlayer player : players)
-				player.addPotionEffect(new PotionEffect(Potion.jump.id, 10, 5,
-						true));// Allows player to jump out of pit
+			List<EntityPlayer> players = worldObj.getEntitiesWithinAABB(EntityPlayer.class, aabb);
+			for (EntityPlayer player : players)
+				player.addPotionEffect(new PotionEffect(Potion.jump.id, 10, 5, true));// Allows player to jump out of pit
 
-			List<EntityItem> items = worldObj.getEntitiesWithinAABB(
-					EntityItem.class, aabb);
-			for(EntityItem item : items){
-				if(! ( item.getEntityItem().getItem() instanceof IGatewayCatalyst )
-						&& ! ( item.getEntityData().getBoolean(TAG_PORTAL_KEEP) )){
+			List<EntityItem> items = worldObj.getEntitiesWithinAABB(EntityItem.class, aabb);
+			for (EntityItem item : items) {
+				if (!(item.getEntityItem().getItem() instanceof IGatewayCatalyst) && !(item.getEntityData().getBoolean(TAG_PORTAL_KEEP))) {
 					currentInventory.add(item.getEntityItem());
 					item.setDead();
 				}
-				if(item.getEntityItem() != null
-						&& item.getEntityItem().getItem() instanceof IGatewayCatalyst){
+				if (item.getEntityItem() != null && item.getEntityItem().getItem() instanceof IGatewayCatalyst) {
 					resolveRecipes();
 				}
 			}
-		}else
+		} else
 			closeNow = false;
 
-		if(closeNow){
-			worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, 0,
-					1 | 2);
-			for(int i = 0; i < 36; i++)
+		if (closeNow) {
+			worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, 0, 1 | 2);
+			for (int i = 0; i < 36; i++)
 				blockParticle(meta);
 			closeNow = false;
-		}else if(updatedMeta != meta){
-			if(updatedMeta == 0)
-				for(int i = 0; i < 36; i++)
+		} else if (updatedMeta != meta) {
+			if (updatedMeta == 0)
+				for (int i = 0; i < 36; i++)
 					blockParticle(meta);
-			worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord,
-					updatedMeta, 1 | 2);
+			worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, updatedMeta, 1 | 2);
 		}
 
 		hasUnloadedParts = false;
 	}
 
-	private void blockParticle(int meta){
+	private void blockParticle(int meta) {
 		int i = worldObj.rand.nextInt(AIR_POSITIONS.length);
-		double[] pos = new double[] {
-				AIR_POSITIONS[i][0] + 0.5F, AIR_POSITIONS[i][1] + 0.5F,
-				AIR_POSITIONS[i][2] + 0.5F
-		};
+		double[] pos = new double[] { AIR_POSITIONS[i][0] + 0.5F, AIR_POSITIONS[i][1] + 0.5F, AIR_POSITIONS[i][2] + 0.5F };
 		float motionMul = 0.2F;
-		for(i = 0; i < LibConfigs.PARTICLE_DENSITY; i++)
-			Botania.proxy.wispFX(getWorldObj(), xCoord + pos[0], yCoord
-					+ pos[1], zCoord + pos[2],
-					(float) ( Math.random() * 0.25F ),
-					(float) ( Math.random() * 0.5F + 0.5F ),
-					(float) ( Math.random() * 0.25F ),
-					(float) ( Math.random() * 0.15F + 0.1F ),
-					(float) ( Math.random() - 0.5F ) * motionMul,
-					(float) ( Math.random() - 0.5F ) * motionMul,
-					(float) ( Math.random() - 0.5F ) * motionMul);
+		for (i = 0; i < LibConfigs.PARTICLE_DENSITY; i++)
+			Botania.proxy.wispFX(getWorldObj(), xCoord + pos[0], yCoord + pos[1], zCoord + pos[2], (float) (Math.random() * 0.25F), (float) (Math.random() * 0.5F + 0.5F),
+					(float) (Math.random() * 0.25F), (float) (Math.random() * 0.15F + 0.1F), (float) (Math.random() - 0.5F) * motionMul, (float) (Math.random() - 0.5F) * motionMul,
+					(float) (Math.random() - 0.5F) * motionMul);
 	}
 
-	private int getUpdatedMetadata(){
+	private int getUpdatedMetadata() {
 		return checkConstructed() ? 1 : 0;
 	}
 
-	private boolean checkPositions(int[][] positions, Block block, int meta){
-		for(int[] pos : positions){
-			if(!checkPosition(pos, block, meta))
+	private boolean checkPositions(int[][] positions, Block block, int meta) {
+		for (int[] pos : positions) {
+			if (!checkPosition(pos, block, meta))
 				return false;
 		}
 		return true;
 	}
 
-	private boolean checkPosition(int[] pos, Block block, int meta){
+	private boolean checkPosition(int[] pos, Block block, int meta) {
 		int x = xCoord + pos[0];
 		int y = yCoord + pos[1];
 		int z = zCoord + pos[2];
-		if(!worldObj.blockExists(x, y, z)){
+		if (!worldObj.blockExists(x, y, z)) {
 			hasUnloadedParts = true;
 			return true; // Don't fuck everything up if there's a chunk unload
 		}
 
 		Block blockat = worldObj.getBlock(x, y, z);
-		if(block == Blocks.air ? blockat.isAir(worldObj, x, y, z)
-				: blockat == block){
-			if(meta == -1)
+		if (block == Blocks.air ? blockat.isAir(worldObj, x, y, z) : blockat == block) {
+			if (meta == -1)
 				return true;
 
 			int metaat = worldObj.getBlockMetadata(x, y, z);
@@ -482,13 +214,12 @@ public class TileGatewayCore extends TileMod implements ISparkAttachable/*extend
 		return false;
 	}
 
-	public boolean onWanded(){
+	public boolean onWanded() {
 		int meta = getBlockMetadata();
-		if(meta == 0){
+		if (meta == 0) {
 			int newMeta = getUpdatedMetadata();
-			if(newMeta != 0){
-				worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord,
-						newMeta, 1 | 2);
+			if (newMeta != 0) {
+				worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, newMeta, 1 | 2);
 				return true;
 			}
 		}
@@ -496,48 +227,41 @@ public class TileGatewayCore extends TileMod implements ISparkAttachable/*extend
 		return false;
 	}
 
-	private boolean checkConstructed(){
-		if(!checkPositions(LIVINGWOOD_POSITIONS,
-				vazkii.botania.common.block.ModBlocks.livingwood, 0))
+	private boolean checkConstructed() {
+		if (!checkPositions(LIVINGWOOD_POSITIONS, vazkii.botania.common.block.ModBlocks.livingwood, 0))
 			return false;
-		if(!checkPositions(CHISLED_ELVEN_QUARTZ_POSITIONS,
-				vazkii.botania.common.block.ModFluffBlocks.elfQuartz, 1))
+		if (!checkPositions(CHISLED_ELVEN_QUARTZ_POSITIONS, vazkii.botania.common.block.ModFluffBlocks.elfQuartz, 1))
 			return false;
-		if(!checkPositions(GLIMMERING_LIVINGWOOD_POSITIONS,
-				vazkii.botania.common.block.ModBlocks.livingwood, 5))
+		if (!checkPositions(GLIMMERING_LIVINGWOOD_POSITIONS, vazkii.botania.common.block.ModBlocks.livingwood, 5))
 			return false;
-		if(!checkPositions(LIVINGWOOD_STAIRS_UP_POSITIONS,
-				vazkii.botania.common.block.ModFluffBlocks.livingwoodStairs, -1))// meh
+		if (!checkPositions(LIVINGWOOD_STAIRS_UP_POSITIONS, vazkii.botania.common.block.ModFluffBlocks.livingwoodStairs, -1))// meh
 			return false;
-		if(!checkPositions(LIVINGWOOD_STAIRS_DOWN_POSITIONS,
-				vazkii.botania.common.block.ModFluffBlocks.livingwoodStairs, -1))
+		if (!checkPositions(LIVINGWOOD_STAIRS_DOWN_POSITIONS, vazkii.botania.common.block.ModFluffBlocks.livingwoodStairs, -1))
 			return false;
-		if(!checkPositions(ELVEN_POOL_POSITIONS, ModBlocks.elvenPool, -1))
+		if (!checkPositions(ELVEN_POOL_POSITIONS, ModBlocks.elvenPool, -1))
 			return false;
-		if(!checkPositions(AIR_POSITIONS, Blocks.air, -1))
+		if (!checkPositions(AIR_POSITIONS, Blocks.air, -1))
 			return false;
-		if(checkPositions(ADDITIONAL_CHISLED_ELVEN_QUARTZ_POSITIONS,
-				vazkii.botania.common.block.ModFluffBlocks.elfQuartz, 1)
-				&& checkPositions(ADDITIONAL_ELVEN_POOL_POSITIONS,
-						ModBlocks.elvenPool, -1))
+		if (checkPositions(ADDITIONAL_CHISLED_ELVEN_QUARTZ_POSITIONS, vazkii.botania.common.block.ModFluffBlocks.elfQuartz, 1)
+				&& checkPositions(ADDITIONAL_ELVEN_POOL_POSITIONS, ModBlocks.elvenPool, -1))
 			additionalPools = true;
 		activatePortal();
 		return true;
 	}
 
-	private void activatePortal(){
-		if(ticksOpen < 50)// Opening
+	private void activatePortal() {
+		if (ticksOpen < 50)// Opening
 			return;
-		int cost = ticksOpen == 50 ? OPENING_MANA_COST : COST_PER_TICK;//one time cost (one pool, 1/8 from each) : every tick afterward
-		if(cost > getCurrentMana())
+		int cost = ticksOpen == 50 ? OPENING_MANA_COST : COST_PER_TICK;// one time cost (one pool, 1/8 from each) : every tick afterward
+		if (cost > getCurrentMana())
 			closeNow = true;
-		else recieveMana(-cost);
+		else
+			recieveMana(-cost);
 	}
 
-	public void summonItem(ItemStack stack){
-		if(!worldObj.isRemote){
-			EntityItem item = new EntityItem(worldObj, xCoord + 0.5,
-					yCoord + 1.5, zCoord + 0.5, stack);
+	public void summonItem(ItemStack stack) {
+		if (!worldObj.isRemote) {
+			EntityItem item = new EntityItem(worldObj, xCoord + 0.5, yCoord + 1.5, zCoord + 0.5, stack);
 			item.getEntityData().setBoolean(TAG_PORTAL_KEEP, true);
 			ItemNBTHelper.setInt(item.getEntityItem(), "boundGatewayX", xCoord);
 			ItemNBTHelper.setInt(item.getEntityItem(), "boundGatewayY", yCoord);
@@ -546,80 +270,59 @@ public class TileGatewayCore extends TileMod implements ISparkAttachable/*extend
 		}
 	}
 
-	private boolean resolveRecipes(){
-		List<EntityItem> items = worldObj.getEntitiesWithinAABB(
-				EntityItem.class, getPortalAABB());
-		for(EntityItem item : items)
-			if(item.getEntityItem().getItem() instanceof IGatewayCatalyst){
-				for(RecipeGatewayTransmutation recipe : BotanicalWorkshopAPI.gatewayRecipes)
-					if(recipe.getCatalyst().isItemEqual(item.getEntityItem()))
-						if(recipe.matches(currentInventory, false)
-								&& !worldObj.isRemote){
+	private boolean resolveRecipes() {
+		List<EntityItem> items = worldObj.getEntitiesWithinAABB(EntityItem.class, getPortalAABB());
+		for (EntityItem item : items)
+			if (item.getEntityItem().getItem() instanceof IGatewayCatalyst) {
+				for (RecipeGatewayTransmutation recipe : BotanicalWorkshopAPI.gatewayRecipes)
+					if (recipe.getCatalyst().isItemEqual(item.getEntityItem()))
+						if (recipe.matches(currentInventory, false) && !worldObj.isRemote) {
 							recipe.matches(currentInventory, true);
 							summonItem(recipe.getOutput().copy());
 							return true;
 						}
-				if(item.getEntityItem().getItem() instanceof IGatewayMod
-						&& ! ( item.getEntityData().getBoolean(TAG_PORTAL_KEEP) )){
-					( (IGatewayMod) item.getEntityItem().getItem() )
-							.onGatewayUpdate(this, item);
+				if (item.getEntityItem().getItem() instanceof IGatewayMod && !(item.getEntityData().getBoolean(TAG_PORTAL_KEEP))) {
+					((IGatewayMod) item.getEntityItem().getItem()).onGatewayUpdate(this, item);
 				}
 
-				for(ItemStack possibleLexicon : currentInventory)
-					if(possibleLexicon.getItem() instanceof ILexicon){
-						if(item.getEntityItem() == new ItemStack(
-								ModItems.bindingCrystal, 1, 1))
-							( (ILexicon) possibleLexicon.getItem() )
-									.unlockKnowledge(possibleLexicon,
-											LexiconData.thaumicKnowledge);
-						if(item.getEntityItem() == new ItemStack(
-								ModItems.bindingCrystal, 1, 2))
-							( (ILexicon) possibleLexicon.getItem() )
-									.unlockKnowledge(possibleLexicon,
-											LexiconData.bloodKnowledge);
-						if(item.getEntityItem() == new ItemStack(
-								ModItems.bindingCrystal, 1, 3))
-							( (ILexicon) possibleLexicon.getItem() )
-									.unlockKnowledge(possibleLexicon,
-											LexiconData.mechanicalKnowledge);
+				for (ItemStack possibleLexicon : currentInventory)
+					if (possibleLexicon.getItem() instanceof ILexicon) {
+						if (item.getEntityItem() == new ItemStack(ModItems.bindingCrystal, 1, 1))
+							((ILexicon) possibleLexicon.getItem()).unlockKnowledge(possibleLexicon, LexiconData.thaumicKnowledge);
+						if (item.getEntityItem() == new ItemStack(ModItems.bindingCrystal, 1, 2))
+							((ILexicon) possibleLexicon.getItem()).unlockKnowledge(possibleLexicon, LexiconData.bloodKnowledge);
+						if (item.getEntityItem() == new ItemStack(ModItems.bindingCrystal, 1, 3))
+							((ILexicon) possibleLexicon.getItem()).unlockKnowledge(possibleLexicon, LexiconData.mechanicalKnowledge);
 					}
 			}
 		return false;
 
 	}
-	
-	public void recieveMana(int amount){
+
+	public void recieveMana(int amount) {
 		int totalMana = getCurrentMana();
-		int[][] positions = additionalPools ? ArrayUtils.addAll(
-				ELVEN_POOL_POSITIONS, ADDITIONAL_ELVEN_POOL_POSITIONS)
-				: ELVEN_POOL_POSITIONS;
-		if(-amount < ( totalMana - 64 )){
-			for(int[] pos : positions){
-				TileEntity tile = worldObj.getTileEntity(xCoord + pos[0],
-						yCoord + pos[1], zCoord + pos[2]);
-				if(tile instanceof TileElvenPool){
+		int[][] positions = additionalPools ? ArrayUtils.addAll(ELVEN_POOL_POSITIONS, ADDITIONAL_ELVEN_POOL_POSITIONS) : ELVEN_POOL_POSITIONS;
+		if (-amount < (totalMana - 64)) {
+			for (int[] pos : positions) {
+				TileEntity tile = worldObj.getTileEntity(xCoord + pos[0], yCoord + pos[1], zCoord + pos[2]);
+				if (tile instanceof TileElvenPool) {
 					TileElvenPool pool = (TileElvenPool) tile;
-					double costRatio = Math.abs(amount) == amount ? ( (double) TileElvenPool.MAX_MANA - (double) pool
-							.getCurrentMana() ) / ( (double) totalMana )
-							: (double) pool.getCurrentMana()
-									/ (double) totalMana; // What percent does a small pool get when adding mana?
+					double costRatio = Math.abs(amount) == amount ? ((double) TileElvenPool.MAX_MANA - (double) pool.getCurrentMana()) / ((double) totalMana) : (double) pool.getCurrentMana()
+							/ (double) totalMana; // What percent does a small pool get when adding mana?
 					// If cost ratio is positive give small pools more; If negative, take more from large pools
-					if(!worldObj.isRemote)
+					if (!worldObj.isRemote)
 						pool.recieveMana((int) Math.round(amount * costRatio));
 				}
 			}
 		}
 	}
 
-	public int getCurrentMana(){
+	public int getCurrentMana() {
 		int totalMana = 0;
-		int[][] positions = additionalPools ? ArrayUtils.addAll(
-				ELVEN_POOL_POSITIONS, ADDITIONAL_ELVEN_POOL_POSITIONS)
-				: ELVEN_POOL_POSITIONS;
-		for(int[] pos : positions){
-			TileEntity tile = worldObj.getTileEntity(xCoord + pos[0], yCoord
-					+ pos[1], zCoord + pos[2]);
-			if(tile instanceof TileElvenPool){
+		int[][] positions = additionalPools ? ArrayUtils.addAll(ELVEN_POOL_POSITIONS, ADDITIONAL_ELVEN_POOL_POSITIONS) : ELVEN_POOL_POSITIONS;
+		for (int[] pos : positions) {
+			TileEntity tile = worldObj.getTileEntity(xCoord + pos[0], yCoord + pos[1], zCoord + pos[2]);
+			if (tile instanceof TileElvenPool) {
 				TileElvenPool pool = (TileElvenPool) tile;
 				totalMana += pool.getCurrentMana();
 			}
@@ -627,38 +330,22 @@ public class TileGatewayCore extends TileMod implements ISparkAttachable/*extend
 		return totalMana;
 	}
 
-	public void renderHUD(Minecraft mc, ScaledResolution res){
-		String name = StatCollector.translateToLocal(new ItemStack(
-				ModBlocks.gatewayCore, 1, getBlockMetadata())
-				.getUnlocalizedName().replaceAll("tile.",
-						"tile." + LibResources.PREFIX_MOD)
-				+ ".name");
+	public void renderHUD(Minecraft mc, ScaledResolution res) {
+		String name = StatCollector.translateToLocal(new ItemStack(ModBlocks.gatewayCore, 1, getBlockMetadata()).getUnlocalizedName().replaceAll("tile.", "tile." + LibResources.PREFIX_MOD) + ".name");
 		int color = 0xB6F2B7; // Offical color of the elves
-		HUDHandler.drawSimpleManaHUD(color, getCurrentMana(),
-				TileElvenPool.MAX_MANA
-						* ( additionalPools ? ELVEN_POOL_POSITIONS.length
-								+ ADDITIONAL_ELVEN_POOL_POSITIONS.length
-								: ELVEN_POOL_POSITIONS.length ), name, res);
+		HUDHandler.drawSimpleManaHUD(color, getCurrentMana(), TileElvenPool.MAX_MANA
+				* (additionalPools ? ELVEN_POOL_POSITIONS.length + ADDITIONAL_ELVEN_POOL_POSITIONS.length : ELVEN_POOL_POSITIONS.length), name, res);
 		String catalysts = "";
 
-		List<EntityItem> items = worldObj.getEntitiesWithinAABB(
-				EntityItem.class, getPortalAABB());
-		for(EntityItem item : items)
-			if(item.getEntityItem().getItem() instanceof IGatewayCatalyst)
-				catalysts = catalysts
-						+ ", "
-						+ StatCollector.translateToLocal(item
-								.getEntityItem()
-								.getUnlocalizedName()
-								.replaceAll("item.",
-										"item." + LibResources.PREFIX_MOD)
-								+ ".name");
+		List<EntityItem> items = worldObj.getEntitiesWithinAABB(EntityItem.class, getPortalAABB());
+		for (EntityItem item : items)
+			if (item.getEntityItem().getItem() instanceof IGatewayCatalyst)
+				catalysts = catalysts + ", " + StatCollector.translateToLocal(item.getEntityItem().getUnlocalizedName().replaceAll("item.", "item." + LibResources.PREFIX_MOD) + ".name");
 
-		if(catalysts.length() >= 2) // Avoid index out of range on no catalysts
+		if (catalysts.length() >= 2) // Avoid index out of range on no catalysts
 			catalysts = catalysts.substring(2); // Skip Initial ", "
 
-		int x = res.getScaledWidth() / 2
-				- mc.fontRenderer.getStringWidth(catalysts) / 2;
+		int x = res.getScaledWidth() / 2 - mc.fontRenderer.getStringWidth(catalysts) / 2;
 		int y = res.getScaledHeight() / 2 + 30;
 		GL11.glEnable(GL11.GL_BLEND);
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
@@ -666,9 +353,8 @@ public class TileGatewayCore extends TileMod implements ISparkAttachable/*extend
 		GL11.glDisable(GL11.GL_BLEND);
 	}
 
-	public AxisAlignedBB getPortalAABB(){
-		AxisAlignedBB aabb = AxisAlignedBB.getBoundingBox(xCoord - 1,
-				yCoord + 1, zCoord - 1, xCoord + 2, yCoord + 6, zCoord + 2);
+	public AxisAlignedBB getPortalAABB() {
+		AxisAlignedBB aabb = AxisAlignedBB.getBoundingBox(xCoord - 1, yCoord + 1, zCoord - 1, xCoord + 2, yCoord + 6, zCoord + 2);
 		return aabb;
 	}
 
@@ -680,12 +366,12 @@ public class TileGatewayCore extends TileMod implements ISparkAttachable/*extend
 	@Override
 	public boolean isFull() {
 		int[][] positions = additionalPools ? ArrayUtils.addAll(ELVEN_POOL_POSITIONS, ADDITIONAL_ELVEN_POOL_POSITIONS) : ELVEN_POOL_POSITIONS;
-		for(int[] pos : positions) {
+		for (int[] pos : positions) {
 			TileEntity tile = worldObj.getTileEntity(xCoord + pos[0], yCoord + pos[1], zCoord + pos[2]);
-			if(tile instanceof TileElvenPool && !((TileElvenPool) tile).isFull())
+			if (tile instanceof TileElvenPool && !((TileElvenPool) tile).isFull())
 				return false;
 		}
-		return true;//Made it through all locations without finding not full pool; if no pools, then it is full of 0 mana, max capacity is 0
+		return true;// Made it through all locations without finding not full pool; if no pools, then it is full of 0 mana, max capacity is 0
 	}
 
 	@Override
@@ -701,7 +387,7 @@ public class TileGatewayCore extends TileMod implements ISparkAttachable/*extend
 	@Override
 	public ISparkEntity getAttachedSpark() {
 		List<ISparkEntity> sparks = worldObj.getEntitiesWithinAABB(ISparkEntity.class, AxisAlignedBB.getBoundingBox(xCoord, yCoord + 1, zCoord, xCoord + 1, yCoord + 2, zCoord + 1));
-		if(sparks.size() == 1) {
+		if (sparks.size() == 1) {
 			Entity e = (Entity) sparks.get(0);
 			return (ISparkEntity) e;
 		}

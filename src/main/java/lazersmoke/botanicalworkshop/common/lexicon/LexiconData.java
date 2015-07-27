@@ -38,7 +38,6 @@ public final class LexiconData{
 	public static LexiconEntry bindingCrystal;
 	public static LexiconEntry basicCatalyst;
 	public static LexiconEntry logicalSound;
-	public static LexiconEntry elvenStar;
 	public static LexiconEntry manaBankInterface;
 	public static LexiconEntry thaumicIntro;
 	public static LexiconEntry thaumicCore;
@@ -84,76 +83,66 @@ public final class LexiconData{
 		workshopIntro = new WLexiconEntry(LibLexicon.WORKSHOP_INTRO,
 				categoryWorkshop);
 		workshopIntro.setPriority().setLexiconPages(new PageText("0"),
-				new PageText("1"));		
+			new PageText("1"));
 		elvenPool = new WLexiconEntry(LibLexicon.WORKSHOP_ELVENPOOL, categoryWorkshop);
 		elvenPool.setLexiconPages(
-				new PageText("0"), 
-				new PageCraftingRecipe("1", ModCraftingRecipes.recipeElvenPool), 
-				new PageElvenRecipe("2", ModElvenTradeRecipes.elvenPoolRecipe));
-		
-		elvenStar = new WLexiconEntry(LibLexicon.WORKSHOP_ELVENSTAR, categoryWorkshop);
-		elvenStar.setLexiconPages(
-				new PageText("0"),
-				new PagePetalRecipe<RecipePetals>("1", ModPetalRecipes.elvenStarRecipe));
+			new PageText("0"), 
+			new PageCraftingRecipe("1", ModCraftingRecipes.recipeElvenPool), 
+			new PageElvenRecipe("2", ModElvenTradeRecipes.elvenPoolRecipe));
 		
 		logicalSound = new WLexiconEntry(LibLexicon.WORKSHOP_LOGICALSOUND, categoryWorkshop);
 		logicalSound.setLexiconPages(
-				new PageText("0"), 
-				new PagePetalRecipe<RecipePetals>("1", ModPetalRecipes.logicalSoundRecipe));
+			new PageText("0"), 
+			new PagePetalRecipe<RecipePetals>("1", ModPetalRecipes.logicalSoundRecipe));
 		
 		gatewayCore = new WLexiconEntry(LibLexicon.WORKSHOP_GATEWAYCORE, categoryWorkshop);
 		gatewayCore.setPriority().setLexiconPages(
-				new PageText("0"), 
-				new PageCraftingRecipe("1", ModCraftingRecipes.recipeWeakGatewayCore), 
-				new PageElvenRecipe("2", ModElvenTradeRecipes.gatewayCoreRecipe),
-				new PageImage("3", LibResources.PREFIX_ENTRIES + LibResources.ENTRIES_GATEWAY[0]),
-				new PageImage("4", LibResources.PREFIX_ENTRIES + LibResources.ENTRIES_GATEWAY[1]),
-				new PageImage("5", LibResources.PREFIX_ENTRIES + LibResources.ENTRIES_GATEWAY[2]),
-				new PageImage("6", LibResources.PREFIX_ENTRIES + LibResources.ENTRIES_GATEWAY[3]),
-				new PageImage("7", LibResources.PREFIX_ENTRIES + LibResources.ENTRIES_GATEWAY[4]),
-				new PageText("8"),
-				new PageText("9"),
-				new PageText("10"));
+			new PageText("0"), 
+			new PageCraftingRecipe("1", ModCraftingRecipes.recipeWeakGatewayCore), 
+			new PageElvenRecipe("2", ModElvenTradeRecipes.gatewayCoreRecipe),
+			new PageImage("3", LibResources.PREFIX_ENTRIES + LibResources.ENTRIES_GATEWAY[0]),
+			new PageImage("4", LibResources.PREFIX_ENTRIES + LibResources.ENTRIES_GATEWAY[1]),
+			new PageImage("5", LibResources.PREFIX_ENTRIES + LibResources.ENTRIES_GATEWAY[2]),
+			new PageImage("6", LibResources.PREFIX_ENTRIES + LibResources.ENTRIES_GATEWAY[3]),
+			new PageImage("7", LibResources.PREFIX_ENTRIES + LibResources.ENTRIES_GATEWAY[4]),
+			new PageText("8"),
+			new PageText("9"),
+			new PageText("10"));
 		
 		bindingCrystal = new WLexiconEntry(LibLexicon.WORKSHOP_BINDINGCRYSTAL, categoryWorkshop);
 		bindingCrystal.setPriority().setLexiconPages(
-				new PageText("0"), 
-				new PageGatewayTransmutationRecipe("1", ModGatewayTransmutationRecipes.manaBindingCrystalRecipe), 
-				new PageGatewayTransmutationRecipe("2", ModGatewayTransmutationRecipes.bloodBindingCrystalRecipe), 
-				new PageGatewayTransmutationRecipe("3", ModGatewayTransmutationRecipes.thaumicBindingCrystalRecipe), 
-				new PageGatewayTransmutationRecipe("4", ModGatewayTransmutationRecipes.mechanicalBindingCrystalRecipe));
+			new PageText("0"), 
+			new PageGatewayTransmutationRecipe("1", ModGatewayTransmutationRecipes.manaBindingCrystalRecipe), 
+			new PageGatewayTransmutationRecipe("2", ModGatewayTransmutationRecipes.bloodBindingCrystalRecipe), 
+			new PageGatewayTransmutationRecipe("3", ModGatewayTransmutationRecipes.thaumicBindingCrystalRecipe), 
+			new PageGatewayTransmutationRecipe("4", ModGatewayTransmutationRecipes.mechanicalBindingCrystalRecipe));
 		// THAUMIC ENTRIES
-		thaumicIntro = new TLexiconEntry(LibLexicon.THAUMIC_INTRO,
-				categoryThaumic);
-		thaumicIntro.setPriority().setLexiconPages(new PageText("0"));
+		thaumicIntro = new TLexiconEntry(LibLexicon.THAUMIC_INTRO, categoryThaumic);
+		thaumicIntro.setPriority().setLexiconPages(
+			new PageText("0"));
 
-		thaumicCore = new TLexiconEntry(LibLexicon.THAUMIC_THAUMICCORE,
-				categoryThaumic);
+		thaumicCore = new TLexiconEntry(LibLexicon.THAUMIC_THAUMICCORE, categoryThaumic);
 		thaumicCore.setPriority().setLexiconPages(
-				new PageText("0"),
-				new PageGatewayTransmutationRecipe("1",
-						ModGatewayTransmutationRecipes.thaumicCoreRecipe),
-				new PageImage("2", LibResources.ENTRY_THAUMICCORE));
+			new PageText("0"),
+			new PageGatewayTransmutationRecipe("1", ModGatewayTransmutationRecipes.thaumicCoreRecipe),
+			new PageImage("2", LibResources.ENTRY_THAUMICCORE));
 
-		thaumicCatalyst = new TLexiconEntry(LibLexicon.THAUMIC_THAUMICCATALYST,
-				categoryThaumic);
+		thaumicCatalyst = new TLexiconEntry(LibLexicon.THAUMIC_THAUMICCATALYST, categoryThaumic);
 		thaumicCatalyst.setLexiconPages(new PageText("0"),
-				new PageGatewayTransmutationRecipe("1",
-						ModGatewayTransmutationRecipes.thaumicCatalystRecipe));
+			new PageGatewayTransmutationRecipe("1", ModGatewayTransmutationRecipes.thaumicCatalystRecipe));
 
 		// BLOOD ENTRIES
 		bloodIntro = new BLexiconEntry(LibLexicon.BLOOD_INTRO, categoryBlood);
-		bloodIntro.setPriority().setLexiconPages(new PageText("0"));
+		bloodIntro.setPriority().setLexiconPages(
+			new PageText("0"));
 
 		// MECHANICAL ENTRIES
-		mechanicalIntro = new MLexiconEntry(LibLexicon.MECHANICAL_INTRO,
-				categoryMechanical);
-		mechanicalIntro.setPriority().setLexiconPages(new PageText("0"));
+		mechanicalIntro = new MLexiconEntry(LibLexicon.MECHANICAL_INTRO, categoryMechanical);
+		mechanicalIntro.setPriority().setLexiconPages(
+			new PageText("0"));
 
-		exAquainas = new MLexiconEntry(LibLexicon.MECHANICAL_EXAQUAINAS,
-				categoryMechanical);
+		exAquainas = new MLexiconEntry(LibLexicon.MECHANICAL_EXAQUAINAS, categoryMechanical);
 		exAquainas.setLexiconPages(new PageText("0"),
-				new PagePetalRecipe<RecipePetals>("1",
-						ModPetalRecipes.exAquainasRecipe));
+			new PagePetalRecipe<RecipePetals>("1", ModPetalRecipes.exAquainasRecipe));
 	}
 }

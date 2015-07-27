@@ -3,7 +3,7 @@ package lazersmoke.botanicalworkshop.common.item;
 import lazersmoke.botanicalworkshop.api.BotanicalWorkshopAPI;
 import lazersmoke.botanicalworkshop.api.shifted.IShiftedArmorUpgrade;
 import lazersmoke.botanicalworkshop.common.item.catalyst.ItemEmptyCatalyst;
-import lazersmoke.botanicalworkshop.common.item.catalyst.ItemManaTransferCatalyst;
+import lazersmoke.botanicalworkshop.common.item.catalyst.ItemTransferCatalyst;
 import lazersmoke.botanicalworkshop.common.item.catalyst.ItemSimpleCatalyst;
 import lazersmoke.botanicalworkshop.common.item.catalyst.ItemThaumicCatalyst;
 import lazersmoke.botanicalworkshop.common.item.equipment.armor.shifted.ItemShiftedBoots;
@@ -37,7 +37,7 @@ public final class ModItems{
 		bindingCrystal = new ItemBindingCrystal();
 		simpleCatalyst = new ItemSimpleCatalyst();
 		emptyCatalyst = new ItemEmptyCatalyst();
-		manaCatalyst = new ItemManaTransferCatalyst();
+		manaCatalyst = new ItemTransferCatalyst();
 		shiftedHelmet = new ItemShiftedHelmet();
 		shiftedChestplate = new ItemShiftedChestplate();
 		shiftedLeggings = new ItemShiftedLeggings();

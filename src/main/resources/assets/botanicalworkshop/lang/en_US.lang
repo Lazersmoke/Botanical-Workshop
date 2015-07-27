@@ -1,5 +1,5 @@
 #MISC
-itemGroup.BotanicalWorkshop=BotanicalWorkshop
+itemGroup.BotanicalWorkshop=Botanical Workshop
 
 #UNLOC
 botanicalworkshopmisc.noloc=botanicalworkshopmisc.noloc
@@ -35,21 +35,23 @@ item.botanicalworkshop:bindingCrystal3.name=Mechanical Binding Crystal
 #BOTANICAL RESOURCES
 item.botanicalworkshop:elvenCrystal.name=Elven Crystal
 item.botanicalworkshop:recipeDisabled.name=Recipe Disabled!
+item.botanicalworkshop:elvenKnotting.name=Elven Knotting
 
 #THAUMIC RESOURCES
 item.botanicalworkshop:thaumicResource0.name=Mana Essentia Crystal
 
-
+#SHIFTED
 item.botanicalworkshop:shiftedBoots.name=Shifted Boots
 item.botanicalworkshop:shiftedLeggings.name=Shifted Leggings
 item.botanicalworkshop:shiftedChestplate.name=Shifted Chestplate
 item.botanicalworkshop:shiftedHelmet.name=Shifted Helmet
 item.botanicalworkshop:shiftedPhaseUpgrade.name=Shifted Phase Upgrade
+item.botanicalworkshop:shiftedHopsUpgrade.name=Shifted Hops Upgrade
+item.botanicalworkshop:shiftedRevealingUpgrade.name=Shifted Revealing Upgrade
 
 #TILE ENTITIES
 tile.botanicalworkshop:elvenPool0.name=Elven Mana Pool
-botanicalworkshopmisc.elvenPool0=Line1
-botanicalworkshopmisc.elvenPool1=Line2
+botanicalworkshopmisc.elvenPool0=Pool of the Elves
 
 tile.botanicalworkshop:gatewayCore0.name=Gateway Core
 botanicalworkshopmisc.gatewayCore0=This core has been restored
@@ -73,12 +75,21 @@ botanicalworkshopmisc.thaumicCore2=a gateway structure!
 tile.botanicalworkshop:flower.exAquainas.name=Ex Aquainas
 tile.botanicalworkshop:flower.logicalSound.name=Logical Sound
 
+#NEI INTEGRATION
+botanicalworkshop.nei.gateway=Elven Gateway
+
+#KNOWLEDGE
+botania.knowledge.workshop=&1Workshop&7 Knowledge
+botania.knowledge.thaumic=&5Thaumic&7 Knowledge
+botania.knowledge.blood=&4Blood&7 Knowledge
+botania.knowledge.mechanical=&bMechanical&7 Knowledge
+
 #LEXICON
 botanicalworkshop.gui.lexicon.subtitle=This entry is added by Lazersmoke's Botanical Workshop Add-on.
 #BOTANICAL WORKSHOP
 botanicalworkshop.category.workshop=Botanical Workshop
 
-botanicalworkshop.entry.workshopIntro=Introduction to Botanical Workshop
+botanicalworkshop.entry.workshopIntro=An Introduction to Botanical Workshop
 botanicalworkshop.page.workshopIntro0=Welcome to Botanical Workshop! This mod will allow you to craft all manner of weird and wonderful things, including singing ducks and &1Elven Gateways&0. If you haven't already, I would recommend checking out the configuration file for this mod, as it is very inclusive. You can disable every crafting recipe in the mod, and then some!
 botanicalworkshop.page.workshopIntro1=There are some quirks that go along with this decision however. For instance, you may encounter red X's in the Lexica Botania or in NEI. These are not an error, but simply mean that the recipe has been disabled in some way, either through the configuration or because a mod isn't loaded that it needs to operate. To start off, you should read the italicized entries in both Botania and Botanical Workshop.
 
@@ -122,7 +133,7 @@ botanicalworkshop.page.logicalSound1=&5QUACKQUACKQUACKQUACKQUACKQUACKQUACKQUACKQ
 #BOTANICAL THAUMATURGY
 botanicalworkshop.category.thaumic=Botanical Thaumaturgy
 
-botanicalworkshop.entry.thaumicIntro=Introduction to Botanical Thaumaturgy
+botanicalworkshop.entry.thaumicIntro=An Introduction to Botanical Thaumaturgy
 botanicalworkshop.page.thaumicIntro0=You have successfully created a Thaumic Binding Crystal, and by studying it you have found several uses for it that involve the various fields of Thaumaturgy. The entries in this section describe these advances. Some knowledge may still be wait for you in your Thaumonomicon.
 
 botanicalworkshop.entry.thaumicCore=Thaumic Gateway Core
@@ -136,15 +147,15 @@ botanicalworkshop.page.thaumicCatalyst1=It sees you!
 #BOTANICAL SACRIFICE
 botanicalworkshop.category.blood=Botanical Sacrifice
 
-botanicalworkshop.entry.bloodIntro=Introduction to Botanical Sacrifice
+botanicalworkshop.entry.bloodIntro=An Introduction to Botanical Sacrifice
 botanicalworkshop.page.bloodIntro0=You have successfully created a Blood Binding Crystal, and by studying it you have found several uses for it that utilize sacrificial magic. The entries in this section document your discoveries, and include ways to integrate the Gateway with your Blood Altar.
 
 #BOTANICAL MECHANICS
-botanicalworkshop.category.mechanical=Botanical Mechanics
+botanicalworkshop.category.mechanical=An Botanical Mechanics
 
-botanicalworkshop.entry.bloodIntro=Introduction to Botanical Mechanics
-botanicalworkshop.page.bloodIntro0=You have successfully created a Mechanical Binding Crystal, and doing so has made you realize that magic can only take you so far. You have become increasingly irritated my the menial labour involved in Botany, and have turned to machines to help automate your endeavours. Upon doing so, however you have come to realize that not all machines are inter-compatible; in fact there are many competing standards to be dealt with.
-botanicalworkshop.page.bloodIntro1=In response, you have thrown your support for the most popular, a cult following the so-called "Forge of the Gods." Your allies include the Thaumaturges and various others who uphold the shrine of IFluidHandler.
+botanicalworkshop.entry.mechanicalIntro=Introduction to Botanical Mechanics
+botanicalworkshop.page.mechanicalIntro0=You have successfully created a Mechanical Binding Crystal, and doing so has made you realize that magic can only take you so far. You have become increasingly irritated my the menial labour involved in Botany, and have turned to machines to help automate your endeavours. Upon doing so, however you have come to realize that not all machines are inter-compatible; in fact there are many competing standards to be dealt with.
+botanicalworkshop.page.mechanicalIntro1=In response, you have thrown your support for the most popular, a cult following the so-called "Forge of the Gods." Your allies include the Thaumaturges and various others who uphold the shrine of IFluidHandler.
 
 botanicalworkshop.entry.exAquainas=Ex Aquainas
 botanicalworkshop.page.exAquainas0=After finding yourself with a dire need to clean up some &l*cough*&r fluid, you invented the &1Ex Aquainas&0, a flower capable of extracting water around it, much like the &1Hydroangaes&0. Unlike the &1Hydoangaes&0, however, the &1Ex Aquainas&0 keeps the liquid in its normal form and instead transfers it into a container above or below it. The exact container specifications are unknown, but you suspect that they must implement the Forge of the Gods to work.

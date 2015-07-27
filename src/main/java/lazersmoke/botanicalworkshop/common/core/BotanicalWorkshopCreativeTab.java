@@ -9,7 +9,6 @@ package lazersmoke.botanicalworkshop.common.core;
 
 import java.util.List;
 
-import lazersmoke.botanicalworkshop.common.lib.LibMisc;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -21,7 +20,7 @@ public final class BotanicalWorkshopCreativeTab extends CreativeTabs{
 	List list;
 
 	public BotanicalWorkshopCreativeTab(){
-		super(LibMisc.MOD_ID);
+		super("BotanicalWorkshop");
 		setNoTitle();
 		setBackgroundImageName(LibResources.GUI_CREATIVE);
 	}
