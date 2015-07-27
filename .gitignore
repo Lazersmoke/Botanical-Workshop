@@ -80,5 +80,8 @@ build.properties
 /private.properties
 
 ## Jars
-*.jar
+Thaumcraft-deobf.jar
+PlayerAPI.jar
+Botania-deobf.jar
+Baubles-deobf.jar
 !/gradle/wrapper/gradle-wrapper.jar
