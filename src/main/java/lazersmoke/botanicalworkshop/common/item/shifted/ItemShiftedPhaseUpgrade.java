@@ -24,7 +24,7 @@ public class ItemShiftedPhaseUpgrade extends ItemMod implements
 
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack stack){
-		if(ItemShiftedArmor.getCore(stack, world) != null && ItemShiftedArmor.getCore(stack, world).getCurrentMana() >= 1000){
+		if(ItemShiftedArmor.getCore(stack, world) != null && ItemShiftedArmor.getCore(stack, world).getCurrentMana() >= 1000 && player.isSneaking()){
 			player.addPotionEffect(new PotionEffect(Potion.invisibility.id, 10, 1, true));//true sets ambient; no or reduced particles
 			ItemShiftedArmor.getCore(stack, world).recieveMana(-1000);
 		}

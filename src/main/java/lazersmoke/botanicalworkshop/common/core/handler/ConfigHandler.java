@@ -23,7 +23,8 @@ public final class ConfigHandler {
 	}
 
 	public static void load() {
-		String desc;
+		String desc = "Set this to false to disable the crafting of Shifted Armor.";
+		LibConfigs.CRAFT_SHIFTED_ARMOR = loadPropBool("crafting.gateway.shiftedArmor", desc, true);;
 
 		// Table Crafting
 		desc = "Set this to false to disable the crafting of Elven Mana Pools.";
@@ -41,8 +42,17 @@ public final class ConfigHandler {
 		desc = "Set this to false to disable the crafting of Weak Gateway Cores";
 		LibConfigs.CRAFT_WEAK_GATEWAY_CORE = loadPropBool("crafting.table.weakGatewayCore", desc, true);
 
-		desc = "Set this to false to disable the crafting of Mana Bank Interfaces";
-		LibConfigs.CRAFT_MANA_BANK_INTERFACE = loadPropBool("crafting.table.manaBankInterface", desc, true);
+		desc = "Set this to false to disable the crafting of Shifted Armor.";
+		LibConfigs.CRAFT_SHIFTED_ARMOR = loadPropBool("crafting.table.shiftedArmor", desc, true);
+
+		desc = "Set this to false to disable the crafting of Shifted Hops Upgrades.";
+		LibConfigs.CRAFT_SHIFTED_HOPS_UPGRADE = loadPropBool("crafting.table.shiftedHopsUpgrade", desc, true);
+		
+		desc = "Set this to false to disable the crafting of Shifted Phase Upgrades.";
+		LibConfigs.CRAFT_SHIFTED_PHASE_UPGRADE = loadPropBool("crafting.table.shiftedPhaseUpgrade", desc, true);
+		
+		desc = "Set this to false to disable the crafting of Shifted Revealing Upgrades.";
+		LibConfigs.CRAFT_SHIFTED_REVEALING_UPGRADE = loadPropBool("crafting.table.shiftedRevealingUpgrade", desc, true);
 
 		// Elven Portal Craftinghis to false to disable the crafting of Elven Mana Pools using alfheim portals.";
 		LibConfigs.PORTAL_CRAFT_ELVEN_POOL = loadPropBool("crafting.portal.elvenPool", desc, true);
@@ -77,7 +87,10 @@ public final class ConfigHandler {
 
 		desc = "Set this to false to disable the crafting of Thaumic Catalyst using the Gateway.";
 		LibConfigs.GATEWAY_CRAFT_THAUMIC_CATALYST = loadPropBool("crafting.gateway.thaumicCatalyst", desc, true);
-
+		
+		desc = "Set this to false to disable the crafting of Shifted Matter using the Gateway.";
+		LibConfigs.GATEWAY_CRAFT_SHIFTED_MATTER = loadPropBool("crafting.gateway.shiftedMatter", desc, true);
+		
 		// Gameplay Settings
 		desc = "Set this to change the mana cost of opening a Gateway.";
 		LibConfigs.GATEWAY_OPENING_MANA_COST = loadPropInt("gameplay.gateway.openingManaCost", desc, 1000000);

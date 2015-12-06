@@ -38,62 +38,51 @@ public final class LexiconData{
 	public static LexiconEntry bindingCrystal;
 	public static LexiconEntry basicCatalyst;
 	public static LexiconEntry logicalSound;
-	public static LexiconEntry manaBankInterface;
 	public static LexiconEntry thaumicIntro;
 	public static LexiconEntry thaumicCore;
 	public static LexiconEntry thaumicCatalyst;
-
+	public static LexiconEntry shiftedArmor;
+	public static LexiconEntry shiftedArmorUpgrade;
+	
 	public static LexiconEntry bloodIntro;
 
 	public static LexiconEntry mechanicalIntro;
 	public static LexiconEntry exAquainas;
 
 	public static void init(){
+		//Unlocked by using binding crystals, except for the default one
+		workshopKnowledge = BotaniaAPI.registerKnowledgeType(LibLexicon.KNOWLEDGE_WORKSHOP, EnumChatFormatting.DARK_RED, true);
+		thaumicKnowledge = BotaniaAPI.registerKnowledgeType(LibLexicon.KNOWLEDGE_THAUMIC, EnumChatFormatting.DARK_PURPLE, false);
+		bloodKnowledge = BotaniaAPI.registerKnowledgeType(LibLexicon.KNOWLEDGE_BLOOD, EnumChatFormatting.RED, false);
+		mechanicalKnowledge = BotaniaAPI.registerKnowledgeType(LibLexicon.KNOWLEDGE_MECHANICAL, EnumChatFormatting.WHITE, false);
 
-		workshopKnowledge = BotaniaAPI.registerKnowledgeType(
-				LibLexicon.KNOWLEDGE_WORKSHOP, EnumChatFormatting.DARK_RED,
-				true);
-		thaumicKnowledge = BotaniaAPI.registerKnowledgeType(
-				LibLexicon.KNOWLEDGE_THAUMIC, EnumChatFormatting.DARK_PURPLE,
-				false);
-		bloodKnowledge = BotaniaAPI.registerKnowledgeType(
-				LibLexicon.KNOWLEDGE_BLOOD, EnumChatFormatting.RED, false);
-		mechanicalKnowledge = BotaniaAPI.registerKnowledgeType(
-				LibLexicon.KNOWLEDGE_MECHANICAL, EnumChatFormatting.WHITE,
-				false);
-
-		categoryWorkshop = new WLexiconCategory(LibLexicon.CATEGORY_WORKSHOP, 8)
-				.setIcon(new ResourceLocation(LibResources.WORKSHOP_ICON
-						+ ".png"));
+		categoryWorkshop = new WLexiconCategory(LibLexicon.CATEGORY_WORKSHOP, 8).setIcon(new ResourceLocation(LibResources.WORKSHOP_ICON + ".png"));
 		BotaniaAPI.addCategory(categoryWorkshop);
-		categoryThaumic = new WLexiconCategory(LibLexicon.CATEGORY_THAUMIC, 7)
-				.setIcon(new ResourceLocation(LibResources.THAUMIC_ICON
-						+ ".png"));
+		categoryThaumic = new WLexiconCategory(LibLexicon.CATEGORY_THAUMIC, 7).setIcon(new ResourceLocation(LibResources.THAUMIC_ICON + ".png"));
 		BotaniaAPI.addCategory(categoryThaumic);
-		categoryBlood = new WLexiconCategory(LibLexicon.CATEGORY_BLOOD, 7)
-				.setIcon(new ResourceLocation(LibResources.BLOOD_ICON + ".png"));
+		categoryBlood = new WLexiconCategory(LibLexicon.CATEGORY_BLOOD, 7).setIcon(new ResourceLocation(LibResources.BLOOD_ICON + ".png"));
 		BotaniaAPI.addCategory(categoryBlood);
-		categoryMechanical = new WLexiconCategory(
-				LibLexicon.CATEGORY_MECHANICAL, 7)
-				.setIcon(new ResourceLocation(LibResources.MECHANICAL_ICON
-						+ ".png"));
+		categoryMechanical = new WLexiconCategory(LibLexicon.CATEGORY_MECHANICAL, 7).setIcon(new ResourceLocation(LibResources.MECHANICAL_ICON + ".png"));
 		BotaniaAPI.addCategory(categoryMechanical);
 
 		// MAIN WORKSHOP ENTRIES
-		workshopIntro = new WLexiconEntry(LibLexicon.WORKSHOP_INTRO,
-				categoryWorkshop);
-		workshopIntro.setPriority().setLexiconPages(new PageText("0"),
-			new PageText("1"));
+		workshopIntro = new WLexiconEntry(LibLexicon.WORKSHOP_INTRO, categoryWorkshop);
+		workshopIntro.setPriority().setLexiconPages(
+			new PageText("0"),
+			new PageText("1")
+			);
 		elvenPool = new WLexiconEntry(LibLexicon.WORKSHOP_ELVENPOOL, categoryWorkshop);
 		elvenPool.setLexiconPages(
 			new PageText("0"), 
 			new PageCraftingRecipe("1", ModCraftingRecipes.recipeElvenPool), 
-			new PageElvenRecipe("2", ModElvenTradeRecipes.elvenPoolRecipe));
+			new PageElvenRecipe("2", ModElvenTradeRecipes.elvenPoolRecipe)
+			);
 		
 		logicalSound = new WLexiconEntry(LibLexicon.WORKSHOP_LOGICALSOUND, categoryWorkshop);
 		logicalSound.setLexiconPages(
 			new PageText("0"), 
-			new PagePetalRecipe<RecipePetals>("1", ModPetalRecipes.logicalSoundRecipe));
+			new PagePetalRecipe<RecipePetals>("1", ModPetalRecipes.logicalSoundRecipe)
+			);
 		
 		gatewayCore = new WLexiconEntry(LibLexicon.WORKSHOP_GATEWAYCORE, categoryWorkshop);
 		gatewayCore.setPriority().setLexiconPages(
@@ -107,7 +96,8 @@ public final class LexiconData{
 			new PageImage("7", LibResources.PREFIX_ENTRIES + LibResources.ENTRIES_GATEWAY[4]),
 			new PageText("8"),
 			new PageText("9"),
-			new PageText("10"));
+			new PageText("10")
+			);
 		
 		bindingCrystal = new WLexiconEntry(LibLexicon.WORKSHOP_BINDINGCRYSTAL, categoryWorkshop);
 		bindingCrystal.setPriority().setLexiconPages(
@@ -115,34 +105,61 @@ public final class LexiconData{
 			new PageGatewayTransmutationRecipe("1", ModGatewayTransmutationRecipes.manaBindingCrystalRecipe), 
 			new PageGatewayTransmutationRecipe("2", ModGatewayTransmutationRecipes.bloodBindingCrystalRecipe), 
 			new PageGatewayTransmutationRecipe("3", ModGatewayTransmutationRecipes.thaumicBindingCrystalRecipe), 
-			new PageGatewayTransmutationRecipe("4", ModGatewayTransmutationRecipes.mechanicalBindingCrystalRecipe));
+			new PageGatewayTransmutationRecipe("4", ModGatewayTransmutationRecipes.mechanicalBindingCrystalRecipe)
+			);
+		shiftedArmor = new WLexiconEntry(LibLexicon.WORKSHOP_SHIFTEDARMOR, categoryWorkshop);
+		shiftedArmor.setLexiconPages(
+			new PageText("0"), 
+			new PageCraftingRecipe("1", ModCraftingRecipes.recipeShiftedBoots), 
+			new PageCraftingRecipe("2", ModCraftingRecipes.recipeShiftedLeggings), 
+			new PageCraftingRecipe("3", ModCraftingRecipes.recipeShiftedChestplate), 
+			new PageCraftingRecipe("4", ModCraftingRecipes.recipeShiftedHelmet)
+			);
+		shiftedArmorUpgrade = new WLexiconEntry(LibLexicon.WORKSHOP_SHIFTEDARMORUPGRADE, categoryWorkshop);
+		shiftedArmorUpgrade.setLexiconPages(
+			new PageText("0"), 
+			new PageCraftingRecipe("1", ModCraftingRecipes.recipeShiftedHopsUpgrade),
+			new PageText("2"),
+			new PageCraftingRecipe("3", ModCraftingRecipes.recipeShiftedPhaseUpgrade),
+			new PageText("4"),
+			new PageCraftingRecipe("5", ModCraftingRecipes.recipeShiftedRevealingUpgrade),
+			new PageText("6")
+			);
 		// THAUMIC ENTRIES
 		thaumicIntro = new TLexiconEntry(LibLexicon.THAUMIC_INTRO, categoryThaumic);
 		thaumicIntro.setPriority().setLexiconPages(
-			new PageText("0"));
+			new PageText("0")
+			);
 
 		thaumicCore = new TLexiconEntry(LibLexicon.THAUMIC_THAUMICCORE, categoryThaumic);
 		thaumicCore.setPriority().setLexiconPages(
 			new PageText("0"),
 			new PageGatewayTransmutationRecipe("1", ModGatewayTransmutationRecipes.thaumicCoreRecipe),
-			new PageImage("2", LibResources.ENTRY_THAUMICCORE));
+			new PageImage("2", LibResources.ENTRY_THAUMICCORE)
+			);
 
 		thaumicCatalyst = new TLexiconEntry(LibLexicon.THAUMIC_THAUMICCATALYST, categoryThaumic);
-		thaumicCatalyst.setLexiconPages(new PageText("0"),
-			new PageGatewayTransmutationRecipe("1", ModGatewayTransmutationRecipes.thaumicCatalystRecipe));
+		thaumicCatalyst.setLexiconPages(
+			new PageText("0"),
+			new PageGatewayTransmutationRecipe("1", ModGatewayTransmutationRecipes.thaumicCatalystRecipe)
+			);
 
 		// BLOOD ENTRIES
 		bloodIntro = new BLexiconEntry(LibLexicon.BLOOD_INTRO, categoryBlood);
 		bloodIntro.setPriority().setLexiconPages(
-			new PageText("0"));
+			new PageText("0")
+			);
 
 		// MECHANICAL ENTRIES
 		mechanicalIntro = new MLexiconEntry(LibLexicon.MECHANICAL_INTRO, categoryMechanical);
 		mechanicalIntro.setPriority().setLexiconPages(
-			new PageText("0"));
+			new PageText("0")
+			);
 
 		exAquainas = new MLexiconEntry(LibLexicon.MECHANICAL_EXAQUAINAS, categoryMechanical);
-		exAquainas.setLexiconPages(new PageText("0"),
-			new PagePetalRecipe<RecipePetals>("1", ModPetalRecipes.exAquainasRecipe));
+		exAquainas.setLexiconPages(
+			new PageText("0"),
+			new PagePetalRecipe<RecipePetals>("1", ModPetalRecipes.exAquainasRecipe)
+			);
 	}
 }

@@ -19,22 +19,7 @@ public final class ModPetalRecipes{
 			blue = LibOreDict.PETAL[11], brown = LibOreDict.PETAL[12],
 			green = LibOreDict.PETAL[13], red = LibOreDict.PETAL[14],
 			black = LibOreDict.PETAL[15];
-	public static final String whiteMana = LibOreDict.MANA_PETAL[0],
-			orangeMana = LibOreDict.MANA_PETAL[1],
-			magentaMana = LibOreDict.MANA_PETAL[2],
-			lightBlueMana = LibOreDict.MANA_PETAL[3],
-			yellowMana = LibOreDict.MANA_PETAL[4],
-			limeMana = LibOreDict.MANA_PETAL[5],
-			pinkMana = LibOreDict.MANA_PETAL[6],
-			grayMana = LibOreDict.MANA_PETAL[7],
-			lightGrayMana = LibOreDict.MANA_PETAL[8],
-			cyanMana = LibOreDict.MANA_PETAL[9],
-			purpleMana = LibOreDict.MANA_PETAL[10],
-			blueMana = LibOreDict.MANA_PETAL[11],
-			brownMana = LibOreDict.MANA_PETAL[12],
-			greenMana = LibOreDict.MANA_PETAL[13],
-			redMana = LibOreDict.MANA_PETAL[14],
-			blackMana = LibOreDict.MANA_PETAL[15];
+	public static final String manaPowder = LibOreDict.MANA_POWDER;
 	public static final String runeWater = LibOreDict.RUNE[0],
 			runeFire = LibOreDict.RUNE[1], runeEarth = LibOreDict.RUNE[2],
 			runeAir = LibOreDict.RUNE[3], runeSpring = LibOreDict.RUNE[4],
@@ -58,13 +43,13 @@ public final class ModPetalRecipes{
 		exAquainasRecipe = BotaniaAPI
 				.registerPetalRecipe(ItemBlockSpecialFlower
 						.ofType(LibBlockNames.SUBTILE_EXAQUAINAS), blue,
-						blueMana, yellow, orange, orangeMana);
+						blue, yellow, orange, orange, manaPowder);
 		logicalSoundRecipe = BotaniaAPI.registerPetalRecipe(
 				ItemBlockSpecialFlower
 						.ofType(LibBlockNames.SUBTILE_LOGICALSOUND), blue,
-				black, green, yellowMana, orange, orangeMana);
+				black, green, yellow, orange, orange, manaPowder);
 		elvenStarRecipe = BotaniaAPI.registerPetalRecipe(
 				ItemBlockSpecialFlower.ofType(LibBlockNames.SUBTILE_ELVENSTAR),
-				lightBlueMana, greenMana, redMana, cyanMana, greenMana);
+				lightBlue, green, red, cyan, green, manaPowder, manaPowder);
 	}
 }

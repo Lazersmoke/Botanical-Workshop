@@ -11,7 +11,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
-
+//This is an (Item) Mana Transfer Catalyst that transfers Mana, not an Item Transfer Catalyst that transports items
 public class ItemTransferCatalyst extends ItemActiveCatalyst {
 
 	public ItemTransferCatalyst() {

@@ -19,4 +19,5 @@ public final class LibItemNames {
 	public static final String PHASE_UPGRADE = "shiftedPhaseUpgrade";
 	public static final String HOPS_UPGRADE = "shiftedHopsUpgrade";
 	public static final String REVEALING_UPGRADE = "shiftedRevealingUpgrade";
+	public static final String SHIFTED_MATTER = "shiftedMatter";
 }

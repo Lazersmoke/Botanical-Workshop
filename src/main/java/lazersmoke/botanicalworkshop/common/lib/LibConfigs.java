@@ -1,7 +1,6 @@
 package lazersmoke.botanicalworkshop.common.lib;
 
 public class LibConfigs{
-	
 	//Table Crafting
 	public static boolean CRAFT_ELVEN_POOL;
 	public static boolean CRAFT_SIMPLE_CATALYST;
@@ -9,6 +8,10 @@ public class LibConfigs{
 	public static boolean CRAFT_ELVEN_CRYSTAL;
 	public static boolean CRAFT_WEAK_GATEWAY_CORE;
 	public static boolean CRAFT_MANA_BANK_INTERFACE;
+	public static boolean CRAFT_SHIFTED_ARMOR;
+	public static boolean CRAFT_SHIFTED_HOPS_UPGRADE;
+	public static boolean CRAFT_SHIFTED_PHASE_UPGRADE;
+	public static boolean CRAFT_SHIFTED_REVEALING_UPGRADE;
 	
 	//Elven Portal Crafting
 	public static boolean PORTAL_CRAFT_ELVEN_POOL;
@@ -24,6 +27,7 @@ public class LibConfigs{
 	public static boolean GATEWAY_CRAFT_MANA_CATALYST;
 	public static boolean GATEWAY_CRAFT_THAUMIC_CORE;
 	public static boolean GATEWAY_CRAFT_THAUMIC_CATALYST;
+	public static boolean GATEWAY_CRAFT_SHIFTED_MATTER;
 
 	// Gameplay Settings
 	public static int GATEWAY_TICK_MANA_COST;
@@ -32,5 +36,6 @@ public class LibConfigs{
 
 	// Performance Settings
 	public static int PARTICLE_DENSITY;
+	
 
 }

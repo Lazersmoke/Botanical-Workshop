@@ -130,6 +130,22 @@ botanicalworkshop.entry.logicalSound=Logical Sound
 botanicalworkshop.page.logicalSound0=This flower is a tribute to everyone on irc (irc.esper.net:vazkii) for their continuous help, support, and &5QUACK&0. Special thanks to &l&1SoundLogic&r for helping with technical problems and inspiring me to continue development, &l&1MyDeloreanWontStart&r for &5^O_O^ QUACK QUACK QUACK OR RIOT ^O_O^&0, and to &1&lVazkii&r for making such an amazing base mod.
 botanicalworkshop.page.logicalSound1=&5QUACKQUACKQUACKQUACKQUACKQUACKQUACKQUACKQUACKQUACKQUACKQUACKQUACKQUACKQUACKQUACK<DANKMEMEHERE>&0
 
+botanicalworkshop.entry.shiftedArmor=Shifted Armor
+botanicalworkshop.page.shiftedArmor0=This special armor is bound to a specific &1Gateway&0 by passing through it, either during the crafting process or manually using an &4Empty Catalyst&4. Once bound, the armor will automatically repair itself using the mana stored in the &1Gateway&0. You can also upgrade the armor using Shifted Upgrade tablets.
+botanicalworkshop.page.shiftedArmor1=Gotta go fast!
+botanicalworkshop.page.shiftedArmor2=Not what you think
+botanicalworkshop.page.shiftedArmor3=The most expensive part
+botanicalworkshop.page.shiftedArmor4=Hardhat Required
+
+botanicalworkshop.entry.shiftedArmorUpgrade=Shifted Armor Upgrades
+botanicalworkshop.page.shiftedArmorUpgrade0=These upgrades can be used with Shifted Armor pieces to upgrade them. Using these often requires a large quantity of mana.
+botanicalworkshop.page.shiftedArmorUpgrade1=Grants you mad hops
+botanicalworkshop.page.shiftedArmorUpgrade2=The Shifted Hops Upgrade gives you the ability to bunny hop, just like in old Quake times. The code was literally copy-pasted, so the functionality is the same. You can tweak the variables in the config. Only works on boots.
+botanicalworkshop.page.shiftedArmorUpgrade3=Sneaky like a NINja!
+botanicalworkshop.page.shiftedArmorUpgrade4=The Shifted Phase Upgrade is like applying invisible ink, except sneaking makes *you* invisible as well. Works on all armor pieces.
+botanicalworkshop.page.shiftedArmorUpgrade5=I SEE THINGS!
+botanicalworkshop.page.shiftedArmorUpgrade6=The Shifted Revealing Upgrade is like using goggles of revealing. Thats pretty much it. Only works on helmet. (Because you can't see with your toes, silly!)
+
 #BOTANICAL THAUMATURGY
 botanicalworkshop.category.thaumic=Botanical Thaumaturgy
 
