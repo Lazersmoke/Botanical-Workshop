@@ -91,6 +91,18 @@ public final class ConfigHandler {
 		desc = "Set this to false to disable the crafting of Shifted Matter using the Gateway.";
 		LibConfigs.GATEWAY_CRAFT_SHIFTED_MATTER = loadPropBool("crafting.gateway.shiftedMatter", desc, true);
 		
+		desc = "Set this to false to disable the crafting of Shifted Armor using the Gateway.";
+		LibConfigs.GATEWAY_CRAFT_SHIFTED_ARMOR = loadPropBool("crafting.gateway.shiftedArmor", desc, true);
+		
+		desc = "Set this to false to disable the crafting of Shifted Hops Upgrades using the Gateway.";
+		LibConfigs.GATEWAY_CRAFT_SHIFTED_HOPS_UPGRADE = loadPropBool("crafting.gateway.shiftedHopsUpgrade", desc, true);
+		
+		desc = "Set this to false to disable the crafting of Shifted Phase Upgrades using the Gateway.";
+		LibConfigs.GATEWAY_CRAFT_SHIFTED_PHASE_UPGRADE = loadPropBool("crafting.gateway.shiftedPhaseUpgrade", desc, true);
+		
+		desc = "Set this to false to disable the crafting of Shifted Revealing Upgrades using the Gateway.";
+		LibConfigs.GATEWAY_CRAFT_SHIFTED_REVEALING_UPGRADE = loadPropBool("crafting.gateway.shiftedRevealingUpgrade", desc, true);
+		
 		// Gameplay Settings
 		desc = "Set this to change the mana cost of opening a Gateway.";
 		LibConfigs.GATEWAY_OPENING_MANA_COST = loadPropInt("gameplay.gateway.openingManaCost", desc, 1000000);

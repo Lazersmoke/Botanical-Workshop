@@ -28,6 +28,10 @@ public class LibConfigs{
 	public static boolean GATEWAY_CRAFT_THAUMIC_CORE;
 	public static boolean GATEWAY_CRAFT_THAUMIC_CATALYST;
 	public static boolean GATEWAY_CRAFT_SHIFTED_MATTER;
+	public static boolean GATEWAY_CRAFT_SHIFTED_ARMOR;
+	public static boolean GATEWAY_CRAFT_SHIFTED_HOPS_UPGRADE;
+	public static boolean GATEWAY_CRAFT_SHIFTED_PHASE_UPGRADE;
+	public static boolean GATEWAY_CRAFT_SHIFTED_REVEALING_UPGRADE;
 
 	// Gameplay Settings
 	public static int GATEWAY_TICK_MANA_COST;

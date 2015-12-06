@@ -110,20 +110,28 @@ public final class LexiconData{
 		shiftedArmor = new WLexiconEntry(LibLexicon.WORKSHOP_SHIFTEDARMOR, categoryWorkshop);
 		shiftedArmor.setLexiconPages(
 			new PageText("0"), 
-			new PageCraftingRecipe("1", ModCraftingRecipes.recipeShiftedBoots), 
-			new PageCraftingRecipe("2", ModCraftingRecipes.recipeShiftedLeggings), 
-			new PageCraftingRecipe("3", ModCraftingRecipes.recipeShiftedChestplate), 
-			new PageCraftingRecipe("4", ModCraftingRecipes.recipeShiftedHelmet)
+			new PageGatewayTransmutationRecipe("1", ModGatewayTransmutationRecipes.shiftedMatterRecipe),
+			new PageCraftingRecipe("2", ModCraftingRecipes.recipeShiftedBoots),
+			new PageGatewayTransmutationRecipe("3", ModGatewayTransmutationRecipes.shiftedBootsRecipe),
+			new PageCraftingRecipe("4", ModCraftingRecipes.recipeShiftedLeggings), 
+			new PageGatewayTransmutationRecipe("5", ModGatewayTransmutationRecipes.shiftedLeggingsRecipe),
+			new PageCraftingRecipe("6", ModCraftingRecipes.recipeShiftedChestplate), 
+			new PageGatewayTransmutationRecipe("7", ModGatewayTransmutationRecipes.shiftedChestplateRecipe),
+			new PageCraftingRecipe("8", ModCraftingRecipes.recipeShiftedHelmet),
+			new PageGatewayTransmutationRecipe("9", ModGatewayTransmutationRecipes.shiftedHelmetRecipe)
 			);
 		shiftedArmorUpgrade = new WLexiconEntry(LibLexicon.WORKSHOP_SHIFTEDARMORUPGRADE, categoryWorkshop);
 		shiftedArmorUpgrade.setLexiconPages(
 			new PageText("0"), 
 			new PageCraftingRecipe("1", ModCraftingRecipes.recipeShiftedHopsUpgrade),
-			new PageText("2"),
-			new PageCraftingRecipe("3", ModCraftingRecipes.recipeShiftedPhaseUpgrade),
-			new PageText("4"),
-			new PageCraftingRecipe("5", ModCraftingRecipes.recipeShiftedRevealingUpgrade),
-			new PageText("6")
+			new PageGatewayTransmutationRecipe("2", ModGatewayTransmutationRecipes.shiftedHopsUpgradeRecipe),
+			new PageText("3"),
+			new PageCraftingRecipe("4", ModCraftingRecipes.recipeShiftedPhaseUpgrade),
+			new PageGatewayTransmutationRecipe("5", ModGatewayTransmutationRecipes.shiftedPhaseUpgradeRecipe),
+			new PageText("6"),
+			new PageCraftingRecipe("7", ModCraftingRecipes.recipeShiftedRevealingUpgrade),
+			new PageGatewayTransmutationRecipe("8", ModGatewayTransmutationRecipes.shiftedRevealingUpgradeRecipe),
+			new PageText("9")
 			);
 		// THAUMIC ENTRIES
 		thaumicIntro = new TLexiconEntry(LibLexicon.THAUMIC_INTRO, categoryThaumic);
