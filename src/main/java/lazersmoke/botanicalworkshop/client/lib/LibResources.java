@@ -1,7 +1,6 @@
 package lazersmoke.botanicalworkshop.client.lib;
 
 public final class LibResources {
-
 	public static final String PREFIX_MOD = "botanicalworkshop:";
 	public static final String PREFIX_GUI = PREFIX_MOD + "textures/gui/";
 	public static final String PREFIX_ENTRIES = PREFIX_GUI + "entries/";
@@ -15,6 +14,7 @@ public final class LibResources {
 	public static final String MODEL_SHIFTED_1 = PREFIX_MODEL + "shifted1.png";
 
 	public static final String GUI_GATEWAY_TRANSMUTATION_OVERLAY = PREFIX_GUI + "gatewayTransmutationOverlay.png";
+	public static final String GUI_LIGHTNING_HUD = PREFIX_GUI + "lightningHUD.png";
 	public static final String WORKSHOP_ICON = PREFIX_CATEGORIES + "workshop";
 	public static final String THAUMIC_ICON = PREFIX_CATEGORIES + "thaumic";
 	public static final String BLOOD_ICON = PREFIX_CATEGORIES + "blood";
@@ -22,6 +22,4 @@ public final class LibResources {
 	public static final String ENTRY_GATEWAY = PREFIX_ENTRIES + "gateway.png";
 	public static final String ENTRY_THAUMICCORE = PREFIX_ENTRIES + "thaumicCore.png";
 	public static final String[] ENTRIES_GATEWAY = { "gateway0.png", "gateway1.png", "gateway2.png", "gateway3.png", "gateway4.png", };
-	
-
 }

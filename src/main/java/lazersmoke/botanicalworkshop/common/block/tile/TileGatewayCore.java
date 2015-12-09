@@ -2,6 +2,7 @@ package lazersmoke.botanicalworkshop.common.block.tile;
 
 // This class is %50 Lazersmoke
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
@@ -11,6 +12,7 @@ import lazersmoke.botanicalworkshop.api.mana.IGatewayCatalyst;
 import lazersmoke.botanicalworkshop.api.mana.IGatewayMod;
 import lazersmoke.botanicalworkshop.api.recipe.RecipeGatewayTransmutation;
 import lazersmoke.botanicalworkshop.client.lib.LibResources;
+import lazersmoke.botanicalworkshop.common.BotanicalWorkshop;
 import lazersmoke.botanicalworkshop.common.block.ModBlocks;
 import lazersmoke.botanicalworkshop.common.block.tile.mana.TileElvenPool;
 import lazersmoke.botanicalworkshop.common.item.ModItems;
@@ -31,6 +33,7 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.StatCollector;
 
 import org.apache.commons.lang3.ArrayUtils;
+import org.apache.logging.log4j.Level;
 import org.lwjgl.opengl.GL11;
 
 import vazkii.botania.api.lexicon.ILexicon;
@@ -39,15 +42,14 @@ import vazkii.botania.api.mana.spark.ISparkEntity;
 import vazkii.botania.client.core.handler.HUDHandler;
 import vazkii.botania.common.Botania;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
-
 public class TileGatewayCore extends TileMod implements ISparkAttachable/* implements IManaReceiver */{
-	// W W
-	// W W
-	// WS SW
-	// W G
-	// WS SW
-	// W W
-	// WCW
+	//   W W
+	//  W   W
+	// WS   SW
+	// G     G
+	// WS   SW
+	//  W   W
+	//   WCW
 	public List<ItemStack> currentInventory = new ArrayList<ItemStack>();
 	public boolean open = false;
 	public UUID uuid;
@@ -58,6 +60,10 @@ public class TileGatewayCore extends TileMod implements ISparkAttachable/* imple
 		UUID freshUuid = UUID.randomUUID();
 		UUIDMap.put(freshUuid, this);
 		this.uuid = freshUuid;
+		if(BotanicalWorkshop.bloodMagicLoaded){
+			acceptableAlternativeMaterialsQuartz.add(WayofTime.alchemicalWizardry.ModBlocks.bloodRune);
+			acceptableAlternativeMaterialsLivingwood.add(WayofTime.alchemicalWizardry.ModBlocks.bloodRune);
+		}
 	}
 
 	private static final String TAG_PORTAL_KEEP = "gatewayKeep";
@@ -68,6 +74,36 @@ public class TileGatewayCore extends TileMod implements ISparkAttachable/* imple
 	private int ticksOpen = 0;
 	private boolean closeNow = false;
 	//@formatter:off
+	private static List<Block> acceptableAlternativeMaterialsQuartz = new ArrayList<Block>(Arrays.asList(
+			vazkii.botania.common.block.ModFluffBlocks.elfQuartz,
+			vazkii.botania.common.block.ModFluffBlocks.elfQuartzSlab,
+			vazkii.botania.common.block.ModFluffBlocks.elfQuartzStairs,
+			vazkii.botania.common.block.ModFluffBlocks.manaQuartz,
+			vazkii.botania.common.block.ModFluffBlocks.manaQuartzSlab,
+			vazkii.botania.common.block.ModFluffBlocks.manaQuartzStairs
+			));
+	private static List<Block> acceptableAlternativeMaterialsLivingwood = new ArrayList<Block>(Arrays.asList(
+			vazkii.botania.common.block.ModBlocks.livingwood,
+			vazkii.botania.common.block.ModFluffBlocks.livingwoodPlankSlab,
+			vazkii.botania.common.block.ModFluffBlocks.livingwoodPlankStairs,
+			vazkii.botania.common.block.ModFluffBlocks.livingwoodSlab,
+			vazkii.botania.common.block.ModFluffBlocks.livingwoodStairs,
+			vazkii.botania.common.block.ModBlocks.dreamwood,
+			vazkii.botania.common.block.ModFluffBlocks.dreamwoodPlankSlab,
+			vazkii.botania.common.block.ModFluffBlocks.dreamwoodPlankStairs,
+			vazkii.botania.common.block.ModFluffBlocks.dreamwoodSlab,
+			vazkii.botania.common.block.ModFluffBlocks.dreamwoodStairs
+			));
+	private static List<Block> acceptableAlternativeMaterialsLivingwoodStairs = new ArrayList<Block>(Arrays.asList(
+			vazkii.botania.common.block.ModFluffBlocks.livingwoodStairs,
+			vazkii.botania.common.block.ModFluffBlocks.livingwoodPlankStairs,
+			vazkii.botania.common.block.ModFluffBlocks.dreamwoodStairs,
+			vazkii.botania.common.block.ModFluffBlocks.dreamwoodPlankStairs
+			));
+	private static List<Block> acceptableAlternativeMaterialsGlimmeringLivingwood = new ArrayList<Block>(Arrays.asList(
+			vazkii.botania.common.block.ModBlocks.livingwood,
+			Blocks.glowstone
+			));
 	private static final int[][] LIVINGWOOD_POSITIONS = { 
 		{ -1, 0, 0 }, { 1, 0, 0 },
 		{ 0, 0, 1 }, { 0, 0, -1 },
@@ -175,7 +211,7 @@ public class TileGatewayCore extends TileMod implements ISparkAttachable/* imple
 		int i = worldObj.rand.nextInt(AIR_POSITIONS.length);
 		double[] pos = new double[] { AIR_POSITIONS[i][0] + 0.5F, AIR_POSITIONS[i][1] + 0.5F, AIR_POSITIONS[i][2] + 0.5F };
 		float motionMul = 0.2F;
-		for (i = 0; i < LibConfigs.PARTICLE_DENSITY; i++)
+		for (i = 0; i < LibConfigs.PARTICLE_DENSITY * 10; i++)
 			Botania.proxy.wispFX(getWorldObj(), xCoord + pos[0], yCoord + pos[1], zCoord + pos[2], (float) (Math.random() * 0.25F), (float) (Math.random() * 0.5F + 0.5F),
 					(float) (Math.random() * 0.25F), (float) (Math.random() * 0.15F + 0.1F), (float) (Math.random() - 0.5F) * motionMul, (float) (Math.random() - 0.5F) * motionMul,
 					(float) (Math.random() - 0.5F) * motionMul);
@@ -185,15 +221,14 @@ public class TileGatewayCore extends TileMod implements ISparkAttachable/* imple
 		return checkConstructed() ? 1 : 0;
 	}
 
-	private boolean checkPositions(int[][] positions, Block block, int meta) {
-		for (int[] pos : positions) {
-			if (!checkPosition(pos, block, meta))
+	private boolean checkPositions(int[][] positions, List<Block> blocks) {
+		for (int[] pos : positions)
+			if (!checkPosition(pos, blocks))
 				return false;
-		}
 		return true;
 	}
 
-	private boolean checkPosition(int[] pos, Block block, int meta) {
+	private boolean checkPosition(int[] pos, List<Block> blocks) {
 		int x = xCoord + pos[0];
 		int y = yCoord + pos[1];
 		int z = zCoord + pos[2];
@@ -203,14 +238,9 @@ public class TileGatewayCore extends TileMod implements ISparkAttachable/* imple
 		}
 
 		Block blockat = worldObj.getBlock(x, y, z);
-		if (block == Blocks.air ? blockat.isAir(worldObj, x, y, z) : blockat == block) {
-			if (meta == -1)
+		for(Block block : blocks)
+			if (block == Blocks.air ? blockat.isAir(worldObj, x, y, z) : blockat == block)
 				return true;
-
-			int metaat = worldObj.getBlockMetadata(x, y, z);
-			return meta == metaat;
-		}
-
 		return false;
 	}
 
@@ -228,22 +258,28 @@ public class TileGatewayCore extends TileMod implements ISparkAttachable/* imple
 	}
 
 	private boolean checkConstructed() {
-		if (!checkPositions(LIVINGWOOD_POSITIONS, vazkii.botania.common.block.ModBlocks.livingwood, 0))
-			return false;
-		if (!checkPositions(CHISLED_ELVEN_QUARTZ_POSITIONS, vazkii.botania.common.block.ModFluffBlocks.elfQuartz, 1))
-			return false;
-		if (!checkPositions(GLIMMERING_LIVINGWOOD_POSITIONS, vazkii.botania.common.block.ModBlocks.livingwood, 5))
-			return false;
-		if (!checkPositions(LIVINGWOOD_STAIRS_UP_POSITIONS, vazkii.botania.common.block.ModFluffBlocks.livingwoodStairs, -1))// meh
-			return false;
-		if (!checkPositions(LIVINGWOOD_STAIRS_DOWN_POSITIONS, vazkii.botania.common.block.ModFluffBlocks.livingwoodStairs, -1))
-			return false;
-		if (!checkPositions(ELVEN_POOL_POSITIONS, ModBlocks.elvenPool, -1))
-			return false;
-		if (!checkPositions(AIR_POSITIONS, Blocks.air, -1))
-			return false;
-		if (checkPositions(ADDITIONAL_CHISLED_ELVEN_QUARTZ_POSITIONS, vazkii.botania.common.block.ModFluffBlocks.elfQuartz, 1)
-				&& checkPositions(ADDITIONAL_ELVEN_POOL_POSITIONS, ModBlocks.elvenPool, -1))
+		if (!checkPositions(LIVINGWOOD_POSITIONS, acceptableAlternativeMaterialsLivingwood)){
+			BotanicalWorkshop.logger.log(Level.INFO, "Failed 1");
+			return false;}
+		if (!checkPositions(CHISLED_ELVEN_QUARTZ_POSITIONS, acceptableAlternativeMaterialsQuartz)){
+			BotanicalWorkshop.logger.log(Level.INFO, "Failed 2");
+			return false;}
+		if (!checkPositions(GLIMMERING_LIVINGWOOD_POSITIONS, acceptableAlternativeMaterialsGlimmeringLivingwood)){
+			BotanicalWorkshop.logger.log(Level.INFO, "Failed 3");
+			return false;}
+		if (!checkPositions(LIVINGWOOD_STAIRS_UP_POSITIONS, acceptableAlternativeMaterialsLivingwoodStairs)){// meh
+			BotanicalWorkshop.logger.log(Level.INFO, "Failed 4");
+			return false;}
+		if (!checkPositions(LIVINGWOOD_STAIRS_DOWN_POSITIONS, acceptableAlternativeMaterialsLivingwoodStairs)){
+			BotanicalWorkshop.logger.log(Level.INFO, "Failed 5");
+			return false;}
+		if (!checkPositions(ELVEN_POOL_POSITIONS, Arrays.asList(ModBlocks.elvenPool))){
+			BotanicalWorkshop.logger.log(Level.INFO, "Failed 6");
+			return false;}
+		if (!checkPositions(AIR_POSITIONS, Arrays.asList(Blocks.air))){
+			BotanicalWorkshop.logger.log(Level.INFO, "Failed 7");
+			return false;}
+		if (checkPositions(ADDITIONAL_CHISLED_ELVEN_QUARTZ_POSITIONS, acceptableAlternativeMaterialsQuartz) && checkPositions(ADDITIONAL_ELVEN_POOL_POSITIONS, Arrays.asList(ModBlocks.elvenPool)))
 			additionalPools = true;
 		activatePortal();
 		return true;

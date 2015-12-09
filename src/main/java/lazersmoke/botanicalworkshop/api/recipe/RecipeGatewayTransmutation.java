@@ -5,9 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import org.apache.logging.log4j.Level;
-
-import lazersmoke.botanicalworkshop.common.BotanicalWorkshop;
 import lazersmoke.botanicalworkshop.common.item.ModItems;
 import net.minecraft.item.ItemStack;
 

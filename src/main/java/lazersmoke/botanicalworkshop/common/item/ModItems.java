@@ -33,6 +33,7 @@ public final class ModItems{
 	public static Item shiftedRevealingUpgrade;
 	public static Item shiftedHopsUpgrade;
 	public static Item shiftedMatter;
+	public static Item voltmeter;
 
 	public static void init(){
 
@@ -51,6 +52,7 @@ public final class ModItems{
 		shiftedRevealingUpgrade = new ItemShiftedRevealingUpgrade();
 		shiftedHopsUpgrade = new ItemShiftedHopsUpgrade();
 		shiftedMatter = new ItemShiftedMatter();
+		voltmeter = new ItemVoltmeter();
 
 		BotanicalWorkshopAPI.registerShiftedArmorUpgrade((IShiftedArmorUpgrade) shiftedPhaseUpgrade);
 		BotanicalWorkshopAPI.registerShiftedArmorUpgrade((IShiftedArmorUpgrade) shiftedRevealingUpgrade);

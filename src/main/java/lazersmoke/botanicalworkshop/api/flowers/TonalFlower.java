@@ -33,14 +33,12 @@ public class TonalFlower extends SubTileEntity{
 			Arrays.fill(lastTicks, 0);
 		}
 		for(int i = 0; i < pitches.length; i++)
-			if(ticksExisted - lastTicks[i] == ( firstTick ? ticksExisted
-					- lastTicks[i] : times[i][note[i]] * tempo )){
+			if(ticksExisted - lastTicks[i] == ( firstTick ? ticksExisted - lastTicks[i] : times[i][note[i]] * tempo )){
 				lastTicks[i] = ticksExisted;
 				if(LibConfigs.TONAL_FLORA)
-					playSound(soundEffect[i][note[i]], volumes[i][note[i]],
-							pitches[i][note[i]]);
+					playSound(soundEffect[i][note[i]], volumes[i][note[i]], pitches[i][note[i]]);
 				note[i]++;
-				if(note[i] > ( times[i].length - 1 ))
+				if(note[i] > (times[i].length - 1))
 					note[i] = 0;
 			}
 		firstTick = false;
@@ -48,8 +46,6 @@ public class TonalFlower extends SubTileEntity{
 	}
 
 	private void playSound(String sound, float volume, float pitch){
-		supertile.getWorldObj().playSoundEffect(supertile.xCoord,
-				supertile.yCoord, supertile.zCoord, sound, volume, pitch);
+		supertile.getWorldObj().playSoundEffect(supertile.xCoord, supertile.yCoord, supertile.zCoord, sound, volume, pitch);
 	}
-
 }

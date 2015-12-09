@@ -15,6 +15,7 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import vazkii.botania.api.lexicon.ILexiconable;
@@ -75,10 +76,9 @@ public class BlockGatewayCore extends BlockContainer implements IWandable,
 	}
 
 	@Override
-	public boolean onUsedByWand(EntityPlayer player, ItemStack stack,
-			World world, int x, int y, int z, int side){
-		boolean did = ( (TileGatewayCore) world.getTileEntity(x, y, z) )
-				.onWanded();
+	public boolean onUsedByWand(EntityPlayer player, ItemStack stack,World world, int x, int y, int z, int side){
+		player.addChatMessage(new ChatComponentText("You wanded it!"));
+		boolean did = ( (TileGatewayCore) world.getTileEntity(x, y, z) ).onWanded();
 		return did;
 	}
 

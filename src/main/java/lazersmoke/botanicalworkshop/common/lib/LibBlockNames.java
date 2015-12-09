@@ -10,4 +10,6 @@ public final class LibBlockNames{
 	public static final String SUBTILE_ELVENSTAR = "elvenStar";
 	public static final String WEAK_GATEWAY_CORE = "weakGatewayCore";
 	public static final String SPECIAL_FLOWER = "botanicalWorkshopSpecialFlower";
+	public static final String THAUMTANICAL_TRANSPOSER = "thaumtanicalTransposer";
+	public static final String LIGHTNING_ROD = "lightningRod";
 }
