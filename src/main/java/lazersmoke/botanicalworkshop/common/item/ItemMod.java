@@ -42,12 +42,9 @@ public class ItemMod extends Item{
 	@Override
 	public String getUnlocalizedNameInefficiently(ItemStack stack){
 		if(namedMetadata){
-			return super.getUnlocalizedNameInefficiently(stack).replaceAll(
-					"item\\.", "item." + LibResources.PREFIX_MOD)
-					+ "." + stack.getItemDamage();
+			return super.getUnlocalizedNameInefficiently(stack).replaceAll("item\\.", "item." + LibResources.PREFIX_MOD) + "." + stack.getItemDamage();
 		}
-		return super.getUnlocalizedNameInefficiently(stack).replaceAll(
-				"item\\.", "item." + LibResources.PREFIX_MOD);
+		return super.getUnlocalizedNameInefficiently(stack).replaceAll("item\\.", "item." + LibResources.PREFIX_MOD);
 	}
 
 	public void addStringToTooltip(String s, List<String> tooltip){

@@ -18,7 +18,7 @@ public final class LibResources {
 	public static final String WORKSHOP_ICON = PREFIX_CATEGORIES + "workshop";
 	public static final String THAUMIC_ICON = PREFIX_CATEGORIES + "thaumic";
 	public static final String BLOOD_ICON = PREFIX_CATEGORIES + "blood";
-	public static final String MECHANICAL_ICON = PREFIX_CATEGORIES + "mechanical";
+	public static final String LIGHTNING_ICON = PREFIX_CATEGORIES + "lightning";
 	public static final String ENTRY_GATEWAY = PREFIX_ENTRIES + "gateway.png";
 	public static final String ENTRY_THAUMICCORE = PREFIX_ENTRIES + "thaumicCore.png";
 	public static final String[] ENTRIES_GATEWAY = { "gateway0.png", "gateway1.png", "gateway2.png", "gateway3.png", "gateway4.png", };

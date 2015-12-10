@@ -76,8 +76,8 @@ public final class ConfigHandler {
 		desc = "Set this to false to disable the crafting of Thaumic Binding Crystals using the Gateway.";
 		LibConfigs.GATEWAY_CRAFT_THAUMIC_BINDING_CRYSTAL = loadPropBool("crafting.gateway.thaumicBindingCrystal", desc, true);
 
-		desc = "Set this to false to disable the crafting of Mechanical Binding Crystals using the Gateway.";
-		LibConfigs.GATEWAY_CRAFT_MECHANICAL_BINDING_CRYSTAL = loadPropBool("crafting.gateway.mechanicalBindingCrystal", desc, true);
+		desc = "Set this to false to disable the crafting of Lightning Binding Crystals using the Gateway.";
+		LibConfigs.GATEWAY_CRAFT_LIGHTNING_BINDING_CRYSTAL = loadPropBool("crafting.gateway.lightningBindingCrystal", desc, true);
 
 		desc = "Set this to false to disable the crafting of Mana Catalysts using the Gateway.";
 		LibConfigs.GATEWAY_CRAFT_MANA_CATALYST = loadPropBool("crafting.gateway.manaCatalyst", desc, true);

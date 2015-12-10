@@ -17,7 +17,7 @@ public class ModGatewayTransmutationRecipes{
 	public static RecipeGatewayTransmutation manaBindingCrystalRecipe = defaultRecipe;
 	public static RecipeGatewayTransmutation bloodBindingCrystalRecipe = defaultRecipe;
 	public static RecipeGatewayTransmutation thaumicBindingCrystalRecipe = defaultRecipe;
-	public static RecipeGatewayTransmutation mechanicalBindingCrystalRecipe = defaultRecipe;
+	public static RecipeGatewayTransmutation lightningBindingCrystalRecipe = defaultRecipe;
 	public static RecipeGatewayTransmutation manaCatalystRecipe = defaultRecipe;
 	public static RecipeGatewayTransmutation thaumicCoreRecipe = defaultRecipe;
 	public static RecipeGatewayTransmutation thaumicCatalystRecipe = defaultRecipe;
@@ -29,6 +29,9 @@ public class ModGatewayTransmutationRecipes{
 	public static RecipeGatewayTransmutation shiftedHopsUpgradeRecipe = defaultRecipe;
 	public static RecipeGatewayTransmutation shiftedPhaseUpgradeRecipe = defaultRecipe;
 	public static RecipeGatewayTransmutation shiftedRevealingUpgradeRecipe = defaultRecipe;
+	public static RecipeGatewayTransmutation lightningCoreRecipe = defaultRecipe;//TODO
+	public static RecipeGatewayTransmutation lightningConsumingCatalystRecipe = defaultRecipe;//TODO
+	public static RecipeGatewayTransmutation lightningGeneratingCatalystRecipe = defaultRecipe;//TODO
 
 	public static void init(){
 		if(LibConfigs.GATEWAY_CRAFT_MANA_BINDING_CRYSTAL)
@@ -55,10 +58,14 @@ public class ModGatewayTransmutationRecipes{
 				new ItemStack((Item) Item.itemRegistry.getObject("Thaumcraft:ItemResource"), 1, 2), // Thaumium Ingot
 				new ItemStack((Item) Item.itemRegistry.getObject("Thaumcraft:ItemResource"), 1, 14) // Salis Mundus
 				);
-		/*
-		 * if(LibConfigs.GATEWAY_CRAFT_MECHANICAL_BINDING_CRYSTAL) mechanicalBindingCrystal = BotanicalWorkshopAPI.registerGatewayRecipe( new
-		 * ItemStack(ModItems.bindingCrystal, 1, 3), //Mechanical Binding Crystal new ItemStack(ModItems.simpleCatalyst), //Simple Catalyst new ItemStack())
-		 */
+		if(LibConfigs.GATEWAY_CRAFT_LIGHTNING_BINDING_CRYSTAL)
+			lightningBindingCrystalRecipe = BotanicalWorkshopAPI.registerGatewayRecipe(
+					new ItemStack(ModItems.bindingCrystal, 1, 3), //Mechanical Binding Crystal 
+					new ItemStack(ModItems.simpleCatalyst), //Simple Catalyst 
+					new ItemStack(ModItems.voltmeter)//,
+					//new ItemStack(ModItems.botanicalCapacitor)
+					//TODO
+					);
 		if(LibConfigs.GATEWAY_CRAFT_MANA_CATALYST)
 			manaCatalystRecipe = BotanicalWorkshopAPI.registerGatewayRecipe(
 				new ItemStack(ModItems.manaCatalyst, 1, 0), //Result

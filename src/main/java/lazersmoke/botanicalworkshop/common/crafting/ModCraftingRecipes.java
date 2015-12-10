@@ -16,9 +16,10 @@ import vazkii.botania.api.BotaniaAPI;
 
 public class ModCraftingRecipes{
 
-	public static IRecipe defaultRecipe = new ShapelessOreRecipe(new ItemStack(
-			ModItems.botanicalResource, 1, 1), new ItemStack(
-			ModItems.botanicalResource, 1, 1));
+	public static IRecipe defaultRecipe = new ShapelessOreRecipe(
+		new ItemStack(ModItems.botanicalResource, 1, 1),
+		new ItemStack(ModItems.botanicalResource, 1, 1)
+		);
 	public static IRecipe recipeElvenPool = defaultRecipe;
 	public static IRecipe recipeEmptyCatalyst = defaultRecipe;
 	public static IRecipe recipeSimpleCatalyst = defaultRecipe;
@@ -30,6 +31,10 @@ public class ModCraftingRecipes{
 	public static IRecipe recipeShiftedHopsUpgrade = defaultRecipe;
 	public static IRecipe recipeShiftedPhaseUpgrade = defaultRecipe;
 	public static IRecipe recipeShiftedRevealingUpgrade = defaultRecipe;
+	public static IRecipe recipeVoltmeter = defaultRecipe;//TODO
+	public static IRecipe recipeBotanicalCapacitor = defaultRecipe;//TODO
+	public static IRecipe recipeLightningConsumingCatalyst = defaultRecipe;//TODO
+	public static IRecipe recipeLightningGeneratingCatalyst = defaultRecipe;//TODO
 	
 	public static void init() {
 		if(LibConfigs.CRAFT_ELVEN_POOL){

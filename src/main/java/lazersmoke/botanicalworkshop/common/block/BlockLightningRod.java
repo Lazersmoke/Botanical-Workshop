@@ -15,7 +15,7 @@ import net.minecraft.world.World;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import cpw.mods.fml.common.registry.GameRegistry;
-
+//TODO Texture/Model this somehow
 // This class is all Lazersmoke
 public class BlockLightningRod extends BlockContainer implements ILexiconable{
 	public BlockLightningRod(){
@@ -41,6 +41,6 @@ public class BlockLightningRod extends BlockContainer implements ILexiconable{
 
 	@Override
 	public LexiconEntry getEntry(World world, int x, int y, int z, EntityPlayer player, ItemStack lexicon){
-		return LexiconData.gatewayCore;
+		return LexiconData.lightningRod;
 	}
 }

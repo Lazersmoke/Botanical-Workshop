@@ -6,7 +6,6 @@ import lazersmoke.botanicalworkshop.client.lib.LibResources;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.StatCollector;
 
 import org.lwjgl.opengl.GL11;
 
@@ -31,7 +30,7 @@ public class HUDHandler {
 		renderLightningBar(x, y, color, lightning < 0 ? 0.5F : 1F, lightning, power, buffer, overflow);
 
 		if(lightning < 0) {
-			String text = StatCollector.translateToLocal("botaniamisc.statusUnknown");
+			String text = "UNKNOWN";
 			x = res.getScaledWidth() / 2 - mc.fontRenderer.getStringWidth(text) / 2;
 			y -= 1;
 			mc.fontRenderer.drawString(text, x, y, color);

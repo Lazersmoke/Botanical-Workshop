@@ -30,7 +30,7 @@ item.botanicalworkshop:manaEssentiaCrystal.name=Mana Essentia Crystal
 item.botanicalworkshop:bindingCrystal0.name=Mana Binding Crystal
 item.botanicalworkshop:bindingCrystal1.name=Blood Binding Crystal
 item.botanicalworkshop:bindingCrystal2.name=Thaumic Binding Crystal
-item.botanicalworkshop:bindingCrystal3.name=Mechanical Binding Crystal
+item.botanicalworkshop:bindingCrystal3.name=Lightning Binding Crystal
 
 #BOTANICAL RESOURCES
 item.botanicalworkshop:elvenCrystal.name=Elven Crystal
@@ -83,7 +83,7 @@ botanicalworkshop.nei.gateway=Elven Gateway
 botania.knowledge.workshop=&1Workshop&7 Knowledge
 botania.knowledge.thaumic=&5Thaumic&7 Knowledge
 botania.knowledge.blood=&4Blood&7 Knowledge
-botania.knowledge.mechanical=&bMechanical&7 Knowledge
+botania.knowledge.lightning=&bLightning&7 Knowledge
 
 #LEXICON
 botanicalworkshop.gui.lexicon.subtitle=This entry is added by Lazersmoke's Botanical Workshop Add-on.
@@ -107,7 +107,7 @@ botanicalworkshop.page.bindingCrystal0=Created using the &1Gateway&0, &1Binding 
 botanicalworkshop.page.bindingCrystal1=This will help craft &lmana&r items.
 botanicalworkshop.page.bindingCrystal2=This will help craft &lalchemo-bloody&r items.
 botanicalworkshop.page.bindingCrystal3=This will help craft &lthaumaturgical&r items.
-botanicalworkshop.page.bindingCrystal4=This will help craft &lmechanical&r items.
+botanicalworkshop.page.bindingCrystal4=This will help craft &llightning&r items.
 
 botanicalworkshop.entry.elvenPool=Elven Mana Pool
 botanicalworkshop.page.elvenPool0=This advanced &1Mana Pool&0 has been delicately crafted by &2elves&0 (or shoddily assembled by you) so that it can channel &2elven&0 energies much better than a normal pool. Although functionally identical to normal pools, you are sure you will find a use for the green basins.
@@ -155,6 +155,10 @@ botanicalworkshop.page.shiftedArmorUpgrade7=I SEE THINGS!
 botanicalworkshop.page.shiftedArmorUpgrade8=Cheaper with elves
 botanicalworkshop.page.shiftedArmorUpgrade9=The Shifted Revealing Upgrade is like using goggles of revealing. Thats pretty much it. Only works on helmet. (Because you can't see with your toes, silly!)
 
+botanicalworkshop.entry.exAquainas=Ex Aquainas
+botanicalworkshop.page.exAquainas0=After finding yourself with a dire need to clean up some &l*cough*&r fluid, you invented the &1Ex Aquainas&0, a flower capable of extracting water around it, much like the &1Hydroangaes&0. Unlike the &1Hydoangaes&0, however, the &1Ex Aquainas&0 keeps the liquid in its normal form and instead transfers it into a container above or below it. The exact container specifications are unknown, but you suspect that they must implement the Forge of the Gods to work.
+botanicalworkshop.page.exAquainas1=Error 0451 - Shades not included
+
 #BOTANICAL THAUMATURGY
 botanicalworkshop.category.thaumic=Botanical Thaumaturgy
 
@@ -175,13 +179,9 @@ botanicalworkshop.category.blood=Botanical Sacrifice
 botanicalworkshop.entry.bloodIntro=An Introduction to Botanical Sacrifice
 botanicalworkshop.page.bloodIntro0=You have successfully created a Blood Binding Crystal, and by studying it you have found several uses for it that utilize sacrificial magic. The entries in this section document your discoveries, and include ways to integrate the Gateway with your Blood Altar.
 
-#BOTANICAL MECHANICS
-botanicalworkshop.category.mechanical=An Botanical Mechanics
+#BOTANICAL LIGHTNING
+botanicalworkshop.category.lightning=Botanical Lightning
 
-botanicalworkshop.entry.mechanicalIntro=Introduction to Botanical Mechanics
-botanicalworkshop.page.mechanicalIntro0=You have successfully created a Mechanical Binding Crystal, and doing so has made you realize that magic can only take you so far. You have become increasingly irritated my the menial labour involved in Botany, and have turned to machines to help automate your endeavours. Upon doing so, however you have come to realize that not all machines are inter-compatible; in fact there are many competing standards to be dealt with.
-botanicalworkshop.page.mechanicalIntro1=In response, you have thrown your support for the most popular, a cult following the so-called "Forge of the Gods." Your allies include the Thaumaturges and various others who uphold the shrine of IFluidHandler.
-
-botanicalworkshop.entry.exAquainas=Ex Aquainas
-botanicalworkshop.page.exAquainas0=After finding yourself with a dire need to clean up some &l*cough*&r fluid, you invented the &1Ex Aquainas&0, a flower capable of extracting water around it, much like the &1Hydroangaes&0. Unlike the &1Hydoangaes&0, however, the &1Ex Aquainas&0 keeps the liquid in its normal form and instead transfers it into a container above or below it. The exact container specifications are unknown, but you suspect that they must implement the Forge of the Gods to work.
-botanicalworkshop.page.exAquainas1=Error 0451 - Shades not included
+botanicalworkshop.entry.lightningIntro=Introduction to Botanical Lightning
+botanicalworkshop.page.lightningIntro0=
+botanicalworkshop.page.lightningIntro1=

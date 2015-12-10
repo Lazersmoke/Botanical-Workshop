@@ -21,4 +21,5 @@ public final class LibItemNames {
 	public static final String REVEALING_UPGRADE = "shiftedRevealingUpgrade";
 	public static final String SHIFTED_MATTER = "shiftedMatter";
 	public static final String VOLTMETER = "voltmeter";
+	public static final String LIGHTNING_GENERATION_CATALYST = "lightningGenerationCatalyst";
 }

@@ -30,8 +30,7 @@ public class ItemBindingCrystal extends ItemCatalyst{
 	public void registerIcons(IIconRegister register){
 		icons = new IIcon[4];
 		for(int i = 0; i < icons.length; i++)
-			icons[i] = register.registerIcon(LibResources.PREFIX_MOD
-					+ getUnlocalizedName().replaceAll("item\\.", "") + i);
+			icons[i] = register.registerIcon(LibResources.PREFIX_MOD + getUnlocalizedName().replaceAll("item\\.", "") + i);
 	}
 
 	@Override
@@ -64,7 +63,7 @@ public class ItemBindingCrystal extends ItemCatalyst{
 			case 2:
 				return LexiconData.thaumicKnowledge;
 			case 3:
-				return LexiconData.mechanicalKnowledge;
+				return LexiconData.lightningKnowledge;
 		}
 		return LexiconData.workshopKnowledge;
 	}
@@ -78,7 +77,7 @@ public class ItemBindingCrystal extends ItemCatalyst{
 			case 2:
 				return LexiconData.thaumicIntro;
 			case 3:
-				return LexiconData.mechanicalIntro;
+				return LexiconData.lightningIntro;//TODO texture this
 		}
 		return LexiconData.workshopIntro;
 	}

@@ -25,12 +25,12 @@ public final class LexiconData{
 	public static LexiconCategory categoryWorkshop;
 	public static LexiconCategory categoryThaumic;
 	public static LexiconCategory categoryBlood;
-	public static LexiconCategory categoryMechanical;
+	public static LexiconCategory categoryLightning;
 
 	public static KnowledgeType workshopKnowledge;
 	public static KnowledgeType thaumicKnowledge;
 	public static KnowledgeType bloodKnowledge;
-	public static KnowledgeType mechanicalKnowledge;
+	public static KnowledgeType lightningKnowledge;
 
 	public static LexiconEntry workshopIntro;
 	public static LexiconEntry elvenPool;
@@ -46,15 +46,18 @@ public final class LexiconData{
 	
 	public static LexiconEntry bloodIntro;
 
-	public static LexiconEntry mechanicalIntro;
+	public static LexiconEntry lightningIntro;
 	public static LexiconEntry exAquainas;
+	public static LexiconEntry lightningCore;
+	public static LexiconEntry lightningRod;
+	public static LexiconEntry thaumtanicalTransposer;//TODO
 
 	public static void init(){
 		//Unlocked by using binding crystals, except for the default one
 		workshopKnowledge = BotaniaAPI.registerKnowledgeType(LibLexicon.KNOWLEDGE_WORKSHOP, EnumChatFormatting.DARK_RED, true);
 		thaumicKnowledge = BotaniaAPI.registerKnowledgeType(LibLexicon.KNOWLEDGE_THAUMIC, EnumChatFormatting.DARK_PURPLE, false);
 		bloodKnowledge = BotaniaAPI.registerKnowledgeType(LibLexicon.KNOWLEDGE_BLOOD, EnumChatFormatting.RED, false);
-		mechanicalKnowledge = BotaniaAPI.registerKnowledgeType(LibLexicon.KNOWLEDGE_MECHANICAL, EnumChatFormatting.WHITE, false);
+		lightningKnowledge = BotaniaAPI.registerKnowledgeType(LibLexicon.KNOWLEDGE_LIGHTNING, EnumChatFormatting.WHITE, false);
 
 		categoryWorkshop = new WLexiconCategory(LibLexicon.CATEGORY_WORKSHOP, 8).setIcon(new ResourceLocation(LibResources.WORKSHOP_ICON + ".png"));
 		BotaniaAPI.addCategory(categoryWorkshop);
@@ -62,8 +65,8 @@ public final class LexiconData{
 		BotaniaAPI.addCategory(categoryThaumic);
 		categoryBlood = new WLexiconCategory(LibLexicon.CATEGORY_BLOOD, 7).setIcon(new ResourceLocation(LibResources.BLOOD_ICON + ".png"));
 		BotaniaAPI.addCategory(categoryBlood);
-		categoryMechanical = new WLexiconCategory(LibLexicon.CATEGORY_MECHANICAL, 7).setIcon(new ResourceLocation(LibResources.MECHANICAL_ICON + ".png"));
-		BotaniaAPI.addCategory(categoryMechanical);
+		categoryLightning = new WLexiconCategory(LibLexicon.CATEGORY_LIGHTNING, 7).setIcon(new ResourceLocation(LibResources.LIGHTNING_ICON + ".png"));
+		BotaniaAPI.addCategory(categoryLightning);
 
 		// MAIN WORKSHOP ENTRIES
 		workshopIntro = new WLexiconEntry(LibLexicon.WORKSHOP_INTRO, categoryWorkshop);
@@ -105,7 +108,7 @@ public final class LexiconData{
 			new PageGatewayTransmutationRecipe("1", ModGatewayTransmutationRecipes.manaBindingCrystalRecipe), 
 			new PageGatewayTransmutationRecipe("2", ModGatewayTransmutationRecipes.bloodBindingCrystalRecipe), 
 			new PageGatewayTransmutationRecipe("3", ModGatewayTransmutationRecipes.thaumicBindingCrystalRecipe), 
-			new PageGatewayTransmutationRecipe("4", ModGatewayTransmutationRecipes.mechanicalBindingCrystalRecipe)
+			new PageGatewayTransmutationRecipe("4", ModGatewayTransmutationRecipes.lightningBindingCrystalRecipe)
 			);
 		shiftedArmor = new WLexiconEntry(LibLexicon.WORKSHOP_SHIFTEDARMOR, categoryWorkshop);
 		shiftedArmor.setLexiconPages(
@@ -133,6 +136,11 @@ public final class LexiconData{
 			new PageGatewayTransmutationRecipe("8", ModGatewayTransmutationRecipes.shiftedRevealingUpgradeRecipe),
 			new PageText("9")
 			);
+		exAquainas = new WLexiconEntry(LibLexicon.WORKSHOP_EXAQUAINAS, categoryWorkshop);
+		exAquainas.setLexiconPages(
+			new PageText("0"),
+			new PagePetalRecipe<RecipePetals>("1", ModPetalRecipes.exAquainasRecipe)
+			);
 		// THAUMIC ENTRIES
 		thaumicIntro = new TLexiconEntry(LibLexicon.THAUMIC_INTRO, categoryThaumic);
 		thaumicIntro.setPriority().setLexiconPages(
@@ -158,16 +166,19 @@ public final class LexiconData{
 			new PageText("0")
 			);
 
-		// MECHANICAL ENTRIES
-		mechanicalIntro = new MLexiconEntry(LibLexicon.MECHANICAL_INTRO, categoryMechanical);
-		mechanicalIntro.setPriority().setLexiconPages(
-			new PageText("0")
+		// LIGHTNING ENTRIES
+		lightningIntro = new LLexiconEntry(LibLexicon.LIGHTNING_INTRO, categoryLightning);
+		lightningIntro.setPriority().setLexiconPages(
+			new PageText("0")//TODO
 			);
-
-		exAquainas = new MLexiconEntry(LibLexicon.MECHANICAL_EXAQUAINAS, categoryMechanical);
-		exAquainas.setLexiconPages(
-			new PageText("0"),
-			new PagePetalRecipe<RecipePetals>("1", ModPetalRecipes.exAquainasRecipe)
+		lightningCore = new LLexiconEntry(LibLexicon.LIGHTNING_CORE, categoryLightning);
+		lightningCore.setPriority().setLexiconPages(
+			new PageText("0"),//TODO
+			new PageGatewayTransmutationRecipe("1", ModGatewayTransmutationRecipes.lightningCoreRecipe)
+			);
+		lightningRod = new LLexiconEntry(LibLexicon.LIGHTNING_ROD, categoryLightning);
+		lightningRod.setPriority().setLexiconPages(
+			new PageText("0")//TODO
 			);
 	}
 }

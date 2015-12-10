@@ -29,7 +29,7 @@ public class LightningNetworkHandler implements ILightningNetwork{
 	public WeakHashMap<World, List<TileSignature>> lightningBlocks = new WeakHashMap<World, List<TileSignature>>();
 	
 	@SubscribeEvent
-	public void onNetworkEvent(LightningNetworkEvent event) {
+	public void onNetworkEvent(LightningNetworkEvent event) {//TODO make LR work
 		if(event.action == Action.ADD) 			add(lightningBlocks, event.tile);
 		else if(event.action == Action.REMOVE) 	remove(lightningBlocks, event.tile);
 		else if(event.action == Action.TICK){
@@ -41,7 +41,7 @@ public class LightningNetworkHandler implements ILightningNetwork{
 							makeFancies(event.tile.getWorldObj(), theBlock.getPos(), currBlock.getPos());
 		}
 	}
-	private void makeFancies(World world, ChunkCoordinates start, ChunkCoordinates end){
+	private void makeFancies(World world, ChunkCoordinates start, ChunkCoordinates end){//TODO make fancier with lightning and sound
 		BotanicalWorkshop.logger.log(Level.INFO, "Making Fancies!");
 		if (!world.isRemote){
 		world.spawnParticle( "happyVillager", 

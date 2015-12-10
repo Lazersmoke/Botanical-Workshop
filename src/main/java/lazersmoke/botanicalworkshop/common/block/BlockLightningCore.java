@@ -22,16 +22,21 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 // This class is all Lazersmoke
-public class BlockThaumicCore extends BlockContainer implements ILexiconable{
+/**Metadata guide:
+ * 0 = disabled
+ * 1 = consuming
+ * 2 = generating 
+ */
+public class BlockLightningCore extends BlockContainer implements ILexiconable{
 
-	public static IIcon iconOff, iconOn;
+	public static IIcon iconGenerating, iconConsuming, iconDisabled;
 
-	public BlockThaumicCore(){
-		super(Material.wood);
+	public BlockLightningCore(){
+		super(Material.rock);
 		setHardness(2.0F);
 		setResistance(10.0F);
-		setStepSound(soundTypeWood);
-		setBlockName(LibBlockNames.THAUMIC_CORE);
+		setStepSound(soundTypeStone);
+		setBlockName(LibBlockNames.LIGHTNING_CORE);
 		setCreativeTab(BotanicalWorkshop.creativeTab);
 		setBlockBounds(0F, 0F, 0F, 1F, 1F, 1F);
 	}
@@ -50,18 +55,17 @@ public class BlockThaumicCore extends BlockContainer implements ILexiconable{
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister par1IconRegister){
-		iconOff = par1IconRegister.registerIcon(LibResources.PREFIX_MOD + getUnlocalizedName().replaceAll("tile\\.", "") + "Off");//TODO Rename file
-		iconOn = par1IconRegister.registerIcon(LibResources.PREFIX_MOD + getUnlocalizedName().replaceAll("tile\\.", "") + "On");//TODO Rename file
+		iconGenerating = par1IconRegister.registerIcon(LibResources.PREFIX_MOD + getUnlocalizedName().replaceAll("tile\\.", "") + "Generating");
+		iconConsuming = par1IconRegister.registerIcon(LibResources.PREFIX_MOD + getUnlocalizedName().replaceAll("tile\\.", "") + "Consuming");
+		iconDisabled = par1IconRegister.registerIcon(LibResources.PREFIX_MOD + getUnlocalizedName().replaceAll("tile\\.", "") + "Disabled");
 	}
-	
 	@Override
 	public IIcon getIcon(int side, int meta){
-		return meta == 0 ? iconOff : iconOn;
+		return meta == 0 ? iconDisabled : meta == 1 ? iconConsuming : meta == 2 ? iconGenerating : iconDisabled;
 	}
 
 	@Override
-	public LexiconEntry getEntry(World world, int x, int y, int z,
-			EntityPlayer player, ItemStack lexicon){
-		return LexiconData.thaumicCore;
+	public LexiconEntry getEntry(World world, int x, int y, int z, EntityPlayer player, ItemStack lexicon){
+		return LexiconData.lightningCore;
 	}
 }

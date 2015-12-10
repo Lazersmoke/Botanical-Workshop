@@ -2,8 +2,6 @@ package lazersmoke.botanicalworkshop.common.block.tile.mana.lightning;
 
 import java.util.List;
 
-import org.apache.logging.log4j.Level;
-
 import lazersmoke.botanicalworkshop.api.mana.lightning.IBotanicalLightningBlockWithThresholds;
 import lazersmoke.botanicalworkshop.client.core.handler.HUDHandler;
 import lazersmoke.botanicalworkshop.common.BotanicalWorkshop;
@@ -15,6 +13,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChunkCoordinates;
+
+import org.apache.logging.log4j.Level;
+
 import vazkii.botania.api.wand.IWandBindable;
 
 public class TileThaumtanicalTransposer extends TileModLightning implements IBotanicalLightningBlockWithThresholds, IWandBindable{
@@ -30,9 +31,7 @@ public class TileThaumtanicalTransposer extends TileModLightning implements IBot
 	@Override
 	public void updateEntity(){
 		super.updateEntity();
-		BotanicalWorkshop.logger.log(Level.INFO, "getState is " + getState());
-		BotanicalWorkshop.logger.log(Level.INFO, "getCurrentLightning is " + getCurrentLightning());
-		if(getState() && !worldObj.isRemote){
+		if(getState()){
 			List<EntityItem> items = (List<EntityItem>) worldObj.getEntitiesWithinAABB(EntityItem.class, getActiveAABB());
 			BotanicalWorkshop.logger.log(Level.INFO, "items.size() is " + items.size());
 			if(!items.isEmpty() && addLightning(-50)){
@@ -73,7 +72,7 @@ public class TileThaumtanicalTransposer extends TileModLightning implements IBot
 	public void renderHUD(Minecraft mc, ScaledResolution res) {
 		HUDHandler.drawSimpleLightningHUD(0xFF00AE, getCurrentLightning(), powerThreshold, bufferThreshold, overflowThreshold, "meow", res);
 	}
-	public boolean onWanded(){
+	public boolean onWanded(EntityPlayer player){
 		return addLightning(50);
 	}
 	private AxisAlignedBB getActiveAABB() {

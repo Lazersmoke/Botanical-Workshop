@@ -27,8 +27,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 // This class is all Lazersmoke
-public class BlockGatewayCore extends BlockContainer implements IWandable,
-		IWandHUD, ILexiconable{
+public class BlockGatewayCore extends BlockContainer implements IWandable, IWandHUD, ILexiconable{
 
 	public static IIcon iconOff, iconOn, portalTex;
 

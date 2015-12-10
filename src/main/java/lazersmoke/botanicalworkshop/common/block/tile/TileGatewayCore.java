@@ -328,7 +328,7 @@ public class TileGatewayCore extends TileMod implements ISparkAttachable/* imple
 						if (item.getEntityItem() == new ItemStack(ModItems.bindingCrystal, 1, 2))
 							((ILexicon) possibleLexicon.getItem()).unlockKnowledge(possibleLexicon, LexiconData.bloodKnowledge);
 						if (item.getEntityItem() == new ItemStack(ModItems.bindingCrystal, 1, 3))
-							((ILexicon) possibleLexicon.getItem()).unlockKnowledge(possibleLexicon, LexiconData.mechanicalKnowledge);
+							((ILexicon) possibleLexicon.getItem()).unlockKnowledge(possibleLexicon, LexiconData.lightningKnowledge);
 					}
 			}
 		return false;

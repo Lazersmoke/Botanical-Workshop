@@ -23,7 +23,7 @@ public class LibConfigs{
 	public static boolean GATEWAY_CRAFT_MANA_BINDING_CRYSTAL;
 	public static boolean GATEWAY_CRAFT_BLOOD_BINDING_CRYSTAL;
 	public static boolean GATEWAY_CRAFT_THAUMIC_BINDING_CRYSTAL;
-	public static boolean GATEWAY_CRAFT_MECHANICAL_BINDING_CRYSTAL;
+	public static boolean GATEWAY_CRAFT_LIGHTNING_BINDING_CRYSTAL;
 	public static boolean GATEWAY_CRAFT_MANA_CATALYST;
 	public static boolean GATEWAY_CRAFT_THAUMIC_CORE;
 	public static boolean GATEWAY_CRAFT_THAUMIC_CATALYST;
