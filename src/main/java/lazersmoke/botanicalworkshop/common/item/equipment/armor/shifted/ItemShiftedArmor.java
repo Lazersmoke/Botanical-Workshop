@@ -3,6 +3,7 @@ package lazersmoke.botanicalworkshop.common.item.equipment.armor.shifted;
 import java.util.List;
 
 import lazersmoke.botanicalworkshop.api.BotanicalWorkshopAPI;
+import lazersmoke.botanicalworkshop.api.mana.IGatewayBindingItem;
 import lazersmoke.botanicalworkshop.api.shifted.IShiftedArmorUpgrade;
 import lazersmoke.botanicalworkshop.client.lib.LibResources;
 import lazersmoke.botanicalworkshop.common.BotanicalWorkshop;
@@ -25,7 +26,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemShiftedArmor extends ItemArmor implements ISpecialArmor, IPhantomInkable {
+public class ItemShiftedArmor extends ItemArmor implements ISpecialArmor, IPhantomInkable, IGatewayBindingItem {
 
 	public static int dmgRdc;
 

@@ -21,11 +21,11 @@ public interface IShiftedArmorUpgrade{
 	 * Just like ItemShiftedArmor.onArmorTick, but mana cost has already been accounted for.
 	 * 
 	 * @param stack
-	 *            The Stack of the armor piece
+	 * The Stack of the armor piece
 	 * @param player
-	 *            player wearing armor
+	 * player wearing armor
 	 * @param world
-	 *            world
+	 * world
 	 */
 	public void onArmorTick(World world, EntityPlayer player, ItemStack stack);
 }

@@ -159,6 +159,16 @@ botanicalworkshop.entry.exAquainas=Ex Aquainas
 botanicalworkshop.page.exAquainas0=After finding yourself with a dire need to clean up some &l*cough*&r fluid, you invented the &1Ex Aquainas&0, a flower capable of extracting water around it, much like the &1Hydroangaes&0. Unlike the &1Hydoangaes&0, however, the &1Ex Aquainas&0 keeps the liquid in its normal form and instead transfers it into a container above or below it. The exact container specifications are unknown, but you suspect that they must implement the Forge of the Gods to work.
 botanicalworkshop.page.exAquainas1=Error 0451 - Shades not included
 
+botanicalworkshop.entry.botanicalResources=Botanical Resources
+botanicalworkshop.page.botanicalResources0=The elves have agreed to exchange in unlimited quantities certain resources through the gateway. You have taken careful notes of these on the next several pages.
+botanicalworkshop.page.botanicalResources1=Cheaper with a gateway (free shipping)
+botanicalworkshop.page.botanicalResources2=Cheaper with a gateway (free shipping)
+botanicalworkshop.page.botanicalResources3=Conducts Lightning
+
+botanicalworkshop.entry.thaumtanicalTransposer=Thaumtanical Transposer
+botanicalworkshop.page.thaumtanicalTransposer0=This block can teleport items to a given target location at the cost of lightning energy. To use, simply place, bind like a spreader, power, then chuck an item on it! The item will be teleported to directly above the bound spot! This is useful to put stuff in gateways remotely. The cost is related to the distance teleported.
+botanicalworkshop.page.thaumtanicalTransposer1=Has nothing to do with Thaumcraft.
+
 #BOTANICAL THAUMATURGY
 botanicalworkshop.category.thaumic=Botanical Thaumaturgy
 
@@ -183,5 +193,19 @@ botanicalworkshop.page.bloodIntro0=You have successfully created a Blood Binding
 botanicalworkshop.category.lightning=Botanical Lightning
 
 botanicalworkshop.entry.lightningIntro=Introduction to Botanical Lightning
-botanicalworkshop.page.lightningIntro0=
-botanicalworkshop.page.lightningIntro1=
+botanicalworkshop.page.lightningIntro0=You have discover a way to convert calm, docile mana in gateways to chaotic, violent lightning that arcs through the air! This lightning can be harnessed by many devices to perform useful functions.
+botanicalworkshop.page.lightningIntro1=The guiding principle of Botanical Lightning is that lightning flows from low to high conductivity. All lightning-conducting blocks have a conductivity that makes sense, but in case you need to check exactly what it is, you can right click it with a voltmeter.
+botanicalworkshop.page.lightningIntro2=Gold wires garunteed for 10K insertions!
+botanicalworkshop.page.lightningIntro3=In addition to conductivity and lightning, all lightning-conducting blocks have some limits. In order to activate or turn on, they first need collect a lot of energy. To stay on, however, they only need to maintain a lower amount of energy.
+botanicalworkshop.page.lightningIntro4=WARNING: Gathering too much energy in one place can sometimes lead to &lshocking&r results.
+
+botanicalworkshop.entry.lightningCore=Lightning Conversion Gateway Core
+botanicalworkshop.page.lightningCore0=In order to get lightning from your gateway's mana, you need to install a Lightning Conversion Gateway Core. Simply create it, then place it in the empty slot at the top of the gateway.
+botanicalworkshop.page.lightningCore1=EZPZ Lightning Squeezy!
+botanicalworkshop.page.lightningCore2=Now that you have inserted your core, you need to make a Lightning Conversion Catalyst to catalyze the conversion in the gateway. They come in two varieties: Lightning Generating and Lightning Consuming. The Lightning Consuming one produces mana from lightning, and the Lightning Generating one... I'll let you guess ;)
+botanicalworkshop.page.lightningCore3=Mana -> Lightning
+botanicalworkshop.page.lightningCore4=Lightning -> Mana
+
+botanicalworkshop.entry.lightningRod=Lightning Rod
+botanicalworkshop.page.lightningRod0=Lightning rods are used to pass lightning along when thing are out of lightning zap range.
+botanicalworkshop.page.lightningRod1=As seen on TV!

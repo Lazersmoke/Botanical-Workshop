@@ -3,6 +3,8 @@ package lazersmoke.botanicalworkshop.common.item;
 import lazersmoke.botanicalworkshop.api.BotanicalWorkshopAPI;
 import lazersmoke.botanicalworkshop.api.shifted.IShiftedArmorUpgrade;
 import lazersmoke.botanicalworkshop.common.item.catalyst.ItemEmptyCatalyst;
+import lazersmoke.botanicalworkshop.common.item.catalyst.ItemLightningConsumingCatalyst;
+import lazersmoke.botanicalworkshop.common.item.catalyst.ItemLightningGenerationCatalyst;
 import lazersmoke.botanicalworkshop.common.item.catalyst.ItemTransferCatalyst;
 import lazersmoke.botanicalworkshop.common.item.catalyst.ItemSimpleCatalyst;
 import lazersmoke.botanicalworkshop.common.item.catalyst.ItemThaumicCatalyst;
@@ -34,6 +36,8 @@ public final class ModItems{
 	public static Item shiftedHopsUpgrade;
 	public static Item shiftedMatter;
 	public static Item voltmeter;
+	public static Item lightningGenerationCatalyst;
+	public static Item lightningConsumingCatalyst;
 
 	public static void init(){
 
@@ -53,6 +57,8 @@ public final class ModItems{
 		shiftedHopsUpgrade = new ItemShiftedHopsUpgrade();
 		shiftedMatter = new ItemShiftedMatter();
 		voltmeter = new ItemVoltmeter();
+		lightningGenerationCatalyst = new ItemLightningGenerationCatalyst();
+		lightningConsumingCatalyst = new ItemLightningConsumingCatalyst();
 
 		BotanicalWorkshopAPI.registerShiftedArmorUpgrade((IShiftedArmorUpgrade) shiftedPhaseUpgrade);
 		BotanicalWorkshopAPI.registerShiftedArmorUpgrade((IShiftedArmorUpgrade) shiftedRevealingUpgrade);

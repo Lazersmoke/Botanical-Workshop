@@ -12,6 +12,8 @@ public class LibConfigs{
 	public static boolean CRAFT_SHIFTED_HOPS_UPGRADE;
 	public static boolean CRAFT_SHIFTED_PHASE_UPGRADE;
 	public static boolean CRAFT_SHIFTED_REVEALING_UPGRADE;
+	public static boolean CRAFT_VOLTMETER;
+	public static boolean CRAFT_LIGHTNING_ROD;
 	
 	//Elven Portal Crafting
 	public static boolean PORTAL_CRAFT_ELVEN_POOL;
@@ -32,6 +34,10 @@ public class LibConfigs{
 	public static boolean GATEWAY_CRAFT_SHIFTED_HOPS_UPGRADE;
 	public static boolean GATEWAY_CRAFT_SHIFTED_PHASE_UPGRADE;
 	public static boolean GATEWAY_CRAFT_SHIFTED_REVEALING_UPGRADE;
+	public static boolean GATEWAY_CRAFT_SCRAP_METAL;
+	public static boolean GATEWAY_CRAFT_ELVEN_KNOTTING;
+	public static boolean GATEWAY_CRAFT_ELVEN_CRYSTAL;
+	public static boolean GATEWAY_CRAFT_LIGHTNING_CORE;
 
 	// Gameplay Settings
 	public static int GATEWAY_TICK_MANA_COST;
@@ -40,6 +46,4 @@ public class LibConfigs{
 
 	// Performance Settings
 	public static int PARTICLE_DENSITY;
-	
-
 }

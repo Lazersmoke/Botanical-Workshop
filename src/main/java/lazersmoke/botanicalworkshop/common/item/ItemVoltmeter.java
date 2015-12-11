@@ -1,15 +1,14 @@
 package lazersmoke.botanicalworkshop.common.item;
 
+import lazersmoke.botanicalworkshop.api.mana.lightning.IBotanicalLightningBlock;
+import lazersmoke.botanicalworkshop.common.lib.LibItemNames;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
-import lazersmoke.botanicalworkshop.api.mana.lightning.IBotanicalLightningBlock;
-import lazersmoke.botanicalworkshop.api.mana.lightning.IBotanicalVoltmeter;
-import lazersmoke.botanicalworkshop.common.lib.LibItemNames;
 //TODO texture this
-public class ItemVoltmeter extends ItemMod implements IBotanicalVoltmeter{
+public class ItemVoltmeter extends ItemMod{
 	public ItemVoltmeter() {
 		super(LibItemNames.VOLTMETER);
 	}

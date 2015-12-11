@@ -1,6 +1,7 @@
 package lazersmoke.botanicalworkshop.common.core.handler;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.WeakHashMap;
@@ -29,16 +30,19 @@ public class LightningNetworkHandler implements ILightningNetwork{
 	public WeakHashMap<World, List<TileSignature>> lightningBlocks = new WeakHashMap<World, List<TileSignature>>();
 	
 	@SubscribeEvent
-	public void onNetworkEvent(LightningNetworkEvent event) {//TODO make LR work
+	public void onNetworkEvent(LightningNetworkEvent event) {
 		if(event.action == Action.ADD) 			add(lightningBlocks, event.tile);
 		else if(event.action == Action.REMOVE) 	remove(lightningBlocks, event.tile);
 		else if(event.action == Action.TICK){
 			IBotanicalLightningBlock theBlock = (IBotanicalLightningBlock) event.tile;
 			List<IBotanicalLightningBlock> blocksAround = getClosestXLightningBlocks(theBlock.getPos(), event.tile.getWorldObj(), LIGHTNING_RANGE, 4);
+			Collections.shuffle(blocksAround);//To ensure no shenanigans!
 			for(IBotanicalLightningBlock currBlock : blocksAround)
-				if(currBlock != theBlock && currBlock.getConductivity() >= theBlock.getConductivity())
+				if(currBlock != theBlock && currBlock.getConductivity() >= theBlock.getConductivity() && currBlock.getConductivity() != -1)//-1 is special case for generators which should never take in lightning, even from other generators.
 						if(theBlock.blindAddLightning(-currBlock.blindAddLightning(Math.min(MAX_LIGHTNING_TRANSFER_RATE, theBlock.getCurrentLightning()))) != 0)
 							makeFancies(event.tile.getWorldObj(), theBlock.getPos(), currBlock.getPos());
+			if(theBlock.getCurrentLightning() > theBlock.getOverflowThreshold())
+				theBlock.overflow();
 		}
 	}
 	private void makeFancies(World world, ChunkCoordinates start, ChunkCoordinates end){//TODO make fancier with lightning and sound

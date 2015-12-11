@@ -1,5 +1,6 @@
 package lazersmoke.botanicalworkshop.common.block;
 
+import lazersmoke.botanicalworkshop.client.lib.LibRenderIDs;
 import lazersmoke.botanicalworkshop.common.BotanicalWorkshop;
 import lazersmoke.botanicalworkshop.common.block.tile.mana.lightning.TileLightningRod;
 import lazersmoke.botanicalworkshop.common.item.block.ItemBlockLightningRod;
@@ -25,7 +26,23 @@ public class BlockLightningRod extends BlockContainer implements ILexiconable{
 		setStepSound(soundTypeMetal);
 		setBlockName(LibBlockNames.LIGHTNING_ROD);
 		setCreativeTab(BotanicalWorkshop.creativeTab);
-		setBlockBounds(0F, 0F, 0F, 1F, 1F, 1F);
+		
+		float f = 1F / 16F * 4F;
+		setBlockBounds(f, 0F, f, 1F - f, 1F, 1F - f);
+	}
+	@Override
+	public boolean isOpaqueCube() {
+		return false;
+	}
+
+	@Override
+	public boolean renderAsNormalBlock() {
+		return false;
+	}
+
+	@Override
+	public int getRenderType() {
+		return LibRenderIDs.idRod;
 	}
 
 	@Override

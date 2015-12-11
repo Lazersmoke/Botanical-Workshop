@@ -2,7 +2,7 @@ package lazersmoke.botanicalworkshop.common.block;
 
 import lazersmoke.botanicalworkshop.client.lib.LibResources;
 import lazersmoke.botanicalworkshop.common.BotanicalWorkshop;
-import lazersmoke.botanicalworkshop.common.block.tile.TileThaumicCore;
+import lazersmoke.botanicalworkshop.common.block.tile.mana.lightning.TileLightningCore;
 import lazersmoke.botanicalworkshop.common.item.block.ItemBlockThaumicCore;
 import lazersmoke.botanicalworkshop.common.lexicon.LexiconData;
 import lazersmoke.botanicalworkshop.common.lib.LibBlockNames;
@@ -49,7 +49,7 @@ public class BlockLightningCore extends BlockContainer implements ILexiconable{
 
 	@Override
 	public TileEntity createNewTileEntity(World arg0, int arg1){
-		return new TileThaumicCore();
+		return new TileLightningCore();
 	}
 
 	@Override

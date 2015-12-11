@@ -2,28 +2,23 @@ package lazersmoke.botanicalworkshop.common.block.tile.mana.lightning;
 
 import java.util.List;
 
-import lazersmoke.botanicalworkshop.api.mana.lightning.IBotanicalLightningBlockWithThresholds;
-import lazersmoke.botanicalworkshop.client.core.handler.HUDHandler;
-import lazersmoke.botanicalworkshop.common.BotanicalWorkshop;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChunkCoordinates;
-
-import org.apache.logging.log4j.Level;
-
 import vazkii.botania.api.wand.IWandBindable;
+import vazkii.botania.common.core.helper.MathHelper;
 
-public class TileThaumtanicalTransposer extends TileModLightning implements IBotanicalLightningBlockWithThresholds, IWandBindable{
-	private int powerThreshold = 100;
-	private int bufferThreshold = 150;
-	private int overflowThreshold = 300;
+public class TileThaumtanicalTransposer extends TileModLightning implements IWandBindable{
+	protected int powerThreshold = 100;
+	protected int bufferThreshold = 150;
+	protected int overflowThreshold = 300;
 	
-	private int bindX, bindY, bindZ;
+	private int bindX = 0; 
+	private int bindY = -1;
+	private int bindZ = 0;
 	private static final String TAG_BIND_X = "bindGatewayX";
 	private static final String TAG_BIND_Y = "bindGatewayY";
 	private static final String TAG_BIND_Z = "bindGatewayZ";
@@ -33,25 +28,21 @@ public class TileThaumtanicalTransposer extends TileModLightning implements IBot
 		super.updateEntity();
 		if(getState()){
 			List<EntityItem> items = (List<EntityItem>) worldObj.getEntitiesWithinAABB(EntityItem.class, getActiveAABB());
-			BotanicalWorkshop.logger.log(Level.INFO, "items.size() is " + items.size());
-			if(!items.isEmpty() && addLightning(-50)){
-				BotanicalWorkshop.logger.log(Level.INFO, "TP Item");
+			if(!items.isEmpty() && addLightning(-getDistanceToBind())){
 				items.get(0).setPosition(bindX + 0.5F, bindY + 1.5F, bindZ + 0.5F);
 				items.get(0).motionX = 0;
 				items.get(0).motionY = 0;
 				items.get(0).motionZ = 0;
 			}
 		}
-		if(getCurrentLightning() > getOverflowThreshold())
-			overflow();
+		worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, getState() ? 1 : 0, 1);
 	}
-	private boolean state;
-	private boolean getState(){
-		if(!state && getCurrentLightning() >= getBufferThreshold())
-			state = true;
-		if(state && getCurrentLightning() < getPowerThreshold())
-			state = false;
-		return state;
+	private int getDistanceToBind(){
+		return (int) Math.ceil(MathHelper.pointDistanceSpace(xCoord, yCoord, zCoord, bindX, bindY, bindZ));
+	}
+	@Override
+	protected boolean getState(){
+		return super.getState() && bindY > -1;
 	}
 	@Override
 	public void writeCustomNBT(NBTTagCompound cmp) {
@@ -68,27 +59,11 @@ public class TileThaumtanicalTransposer extends TileModLightning implements IBot
 		bindY = cmp.getInteger(TAG_BIND_Y);
 		bindZ = cmp.getInteger(TAG_BIND_Z);
 	}
-	
-	public void renderHUD(Minecraft mc, ScaledResolution res) {
-		HUDHandler.drawSimpleLightningHUD(0xFF00AE, getCurrentLightning(), powerThreshold, bufferThreshold, overflowThreshold, "meow", res);
-	}
 	public boolean onWanded(EntityPlayer player){
 		return addLightning(50);
 	}
 	private AxisAlignedBB getActiveAABB() {
 		return AxisAlignedBB.getBoundingBox(xCoord, yCoord + 1, zCoord, xCoord + 1, yCoord + 2, zCoord + 1);
-	}
-	@Override
-	public int getPowerThreshold() {
-		return powerThreshold;
-	}
-	@Override
-	public int getBufferThreshold() {
-		return bufferThreshold;
-	}
-	@Override
-	public int getOverflowThreshold() {
-		return overflowThreshold;
 	}
 	@Override
 	public ChunkCoordinates getBinding() {
@@ -111,6 +86,18 @@ public class TileThaumtanicalTransposer extends TileModLightning implements IBot
 	}
 	@Override
 	public void overflow(){
-		blindAddLightning(-9999);
+		blindAddLightning(-getCurrentLightning());
+	}
+	@Override
+	public int getPowerThreshold() {
+		return 100;
+	}
+	@Override
+	public int getBufferThreshold() {
+		return 150;
+	}
+	@Override
+	public int getOverflowThreshold() {
+		return 300;
 	}
 }

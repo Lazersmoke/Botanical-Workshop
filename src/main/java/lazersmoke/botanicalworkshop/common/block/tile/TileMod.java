@@ -22,12 +22,12 @@ public class TileMod extends TileEntity {
 		readCustomNBT(par1nbtTagCompound);
 	}
 
-	public void writeCustomNBT(NBTTagCompound cmp) {
-		// NO-OP
+	public void writeCustomNBT(NBTTagCompound cmp){
+		//NO-OP
 	}
 
-	public void readCustomNBT(NBTTagCompound cmp) {
-		// NO-OP
+	public void readCustomNBT(NBTTagCompound cmp){
+		//NO-OP
 	}
 
 	@Override

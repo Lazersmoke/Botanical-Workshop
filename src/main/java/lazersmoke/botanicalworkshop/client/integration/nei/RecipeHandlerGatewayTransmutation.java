@@ -27,6 +27,7 @@ public class RecipeHandlerGatewayTransmutation extends TemplateRecipeHandler {
 
 		public List<PositionedStack> inputs = new ArrayList<PositionedStack>();
 		public PositionedStack output;
+		public PositionedStack catalyst;
 
 		public CachedElvenTradeRecipe(RecipeGatewayTransmutation recipe) {
 			if(recipe == null)
@@ -34,6 +35,7 @@ public class RecipeHandlerGatewayTransmutation extends TemplateRecipeHandler {
 
 			setIngredients(recipe.getInputs());
 			output = new PositionedStack(recipe.getOutput(), 107, 46);
+			catalyst = new PositionedStack(recipe.getCatalyst(), 60, 46);
 		}
 
 		public void setIngredients(List<ItemStack> list) {
@@ -121,7 +123,7 @@ public class RecipeHandlerGatewayTransmutation extends TemplateRecipeHandler {
 				continue;
 
 			CachedElvenTradeRecipe crecipe = new CachedElvenTradeRecipe(recipe);
-			if(crecipe.contains(crecipe.inputs, ingredient))
+			if(crecipe.contains(crecipe.inputs, ingredient) || NEIServerUtils.areStacksSameTypeCrafting(recipe.getCatalyst(), ingredient))
 				arecipes.add(crecipe);
 		}
 	}

@@ -8,6 +8,7 @@ import lazersmoke.botanicalworkshop.common.block.subtile.functional.SubTileLogic
 import lazersmoke.botanicalworkshop.common.block.tile.TileGatewayCore;
 import lazersmoke.botanicalworkshop.common.block.tile.TileThaumicCore;
 import lazersmoke.botanicalworkshop.common.block.tile.mana.TileElvenPool;
+import lazersmoke.botanicalworkshop.common.block.tile.mana.lightning.TileLightningCore;
 import lazersmoke.botanicalworkshop.common.block.tile.mana.lightning.TileLightningRod;
 import lazersmoke.botanicalworkshop.common.block.tile.mana.lightning.TileThaumtanicalTransposer;
 import lazersmoke.botanicalworkshop.common.lib.LibBlockNames;
@@ -25,6 +26,7 @@ public final class ModBlocks{
 	public static Block weakGatewayCore;
 	public static Block thaumtanicalTransposer;
 	public static Block lightningRod;
+	public static Block lightningCore;
 	
 	public static void init(){
 
@@ -34,6 +36,7 @@ public final class ModBlocks{
 		weakGatewayCore = new BlockWeakGatewayCore();
 		thaumtanicalTransposer = new BlockThaumtanicalTransposer();
 		lightningRod = new BlockLightningRod();
+		lightningCore = new BlockLightningCore();
 		
 		initTileEntities();
 	}
@@ -44,6 +47,7 @@ public final class ModBlocks{
 		registerTile(TileThaumicCore.class, LibBlockNames.THAUMIC_CORE);
 		registerTile(TileThaumtanicalTransposer.class, LibBlockNames.THAUMTANICAL_TRANSPOSER);
 		registerTile(TileLightningRod.class, LibBlockNames.LIGHTNING_ROD);
+		registerTile(TileLightningCore.class, LibBlockNames.LIGHTNING_CORE);
 		
 		registerSubTile(SubTileExAquainas.class, LibBlockNames.SUBTILE_EXAQUAINAS);
 		registerSubTile(SubTileLogicalSound.class, LibBlockNames.SUBTILE_LOGICALSOUND);

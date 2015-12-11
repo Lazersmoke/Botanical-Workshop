@@ -43,13 +43,13 @@ public class BlockThaumtanicalTransposer extends BlockContainer implements IWand
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister par1IconRegister){
-		iconOff = par1IconRegister.registerIcon(LibResources.PREFIX_MOD + getUnlocalizedName().replaceAll("tile\\.", "") + "Off");//TODO texture this
-		iconOn = par1IconRegister.registerIcon(LibResources.PREFIX_MOD + getUnlocalizedName().replaceAll("tile\\.", "") + "On");//TODO texture this
+		iconOff = par1IconRegister.registerIcon(LibResources.PREFIX_MOD + getUnlocalizedName().replaceAll("tile\\.", "") + "Off");
+		iconOn = par1IconRegister.registerIcon(LibResources.PREFIX_MOD + getUnlocalizedName().replaceAll("tile\\.", "") + "On");
 	}
 	
 	@Override
 	public IIcon getIcon(int side, int meta){
-		return meta == 0 ? iconOff : iconOn;//TODO Make the tile update this, possibly 3 state?
+		return meta == 0 ? iconOff : iconOn;
 	}
 	
 	@Override

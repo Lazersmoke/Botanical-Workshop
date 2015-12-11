@@ -77,7 +77,7 @@ public class ItemBindingCrystal extends ItemCatalyst{
 			case 2:
 				return LexiconData.thaumicIntro;
 			case 3:
-				return LexiconData.lightningIntro;//TODO texture this
+				return LexiconData.lightningIntro;
 		}
 		return LexiconData.workshopIntro;
 	}

@@ -22,4 +22,21 @@ public class TileLightningCore extends TileModLightning implements IBotanicalLig
 	public void poke(){
 		ticks = 2;
 	}
+	@Override
+	public void overflow(){
+		blindAddLightning(-getCurrentLightning());
+		ticks = 0;
+	}
+	@Override
+	public int getPowerThreshold() {
+		return 0;
+	}
+	@Override
+	public int getBufferThreshold() {
+		return 0;
+	}
+	@Override
+	public int getOverflowThreshold() {
+		return 1000;
+	}
 }

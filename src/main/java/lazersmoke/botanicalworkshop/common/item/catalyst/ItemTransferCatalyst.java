@@ -2,6 +2,7 @@ package lazersmoke.botanicalworkshop.common.item.catalyst;
 
 import java.util.List;
 
+import lazersmoke.botanicalworkshop.api.mana.IGatewayBindingItem;
 import lazersmoke.botanicalworkshop.common.block.tile.TileGatewayCore;
 import lazersmoke.botanicalworkshop.common.lib.LibItemNames;
 import net.minecraft.entity.item.EntityItem;
@@ -12,7 +13,7 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
 //This is an (Item) Mana Transfer Catalyst that transfers Mana, not an Item Transfer Catalyst that transports items
-public class ItemTransferCatalyst extends ItemActiveCatalyst {
+public class ItemTransferCatalyst extends ItemActiveCatalyst implements IGatewayBindingItem {
 
 	public ItemTransferCatalyst() {
 		super(LibItemNames.MANA_TRANSFER_CATALYST);

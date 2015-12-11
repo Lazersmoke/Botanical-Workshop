@@ -20,7 +20,7 @@ public class ItemLightningGenerationCatalyst extends ItemActiveCatalyst{
 			gateway.getWorldObj().setBlockMetadataWithNotify(gateway.xCoord, gateway.yCoord + 6, gateway.zCoord, 2, 1);
 			TileLightningCore tileLightningCore = (TileLightningCore) catalyst.worldObj.getTileEntity(gateway.xCoord, gateway.yCoord + 6, gateway.zCoord);
 			tileLightningCore.poke();// *POKE*
-			if(gateway.getCurrentMana() >= 60000){
+			if(gateway.getCurrentMana() >= 60000 && tileLightningCore.getCurrentLightning() + 50 < tileLightningCore.getOverflowThreshold()){
 				gateway.recieveMana(-50000);
 				tileLightningCore.addLightning(50);
 			}

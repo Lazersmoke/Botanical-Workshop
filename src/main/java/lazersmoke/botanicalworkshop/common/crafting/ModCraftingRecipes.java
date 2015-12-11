@@ -31,10 +31,8 @@ public class ModCraftingRecipes{
 	public static IRecipe recipeShiftedHopsUpgrade = defaultRecipe;
 	public static IRecipe recipeShiftedPhaseUpgrade = defaultRecipe;
 	public static IRecipe recipeShiftedRevealingUpgrade = defaultRecipe;
-	public static IRecipe recipeVoltmeter = defaultRecipe;//TODO
-	public static IRecipe recipeBotanicalCapacitor = defaultRecipe;//TODO
-	public static IRecipe recipeLightningConsumingCatalyst = defaultRecipe;//TODO
-	public static IRecipe recipeLightningGeneratingCatalyst = defaultRecipe;//TODO
+	public static IRecipe recipeVoltmeter = defaultRecipe;
+	public static IRecipe recipeLightningRod = defaultRecipe;
 	
 	public static void init() {
 		if(LibConfigs.CRAFT_ELVEN_POOL){
@@ -138,6 +136,30 @@ public class ModCraftingRecipes{
 				'E', new ItemStack(vazkii.botania.common.block.ModBlocks.elfGlass)
 				);
 			recipeShiftedRevealingUpgrade = BotaniaAPI.getLatestAddedRecipe();
+		}
+		if(LibConfigs.CRAFT_VOLTMETER){
+			addOreDictRecipe(new ItemStack(ModItems.shiftedRevealingUpgrade), 
+				"NGN",
+				"BRB",
+				"NSN",
+				'N', new ItemStack(Items.gold_nugget),
+				'G', new ItemStack(Blocks.glass),
+				'B', new ItemStack(Items.gold_ingot),
+				'R', new ItemStack(Items.redstone),
+				'S', new ItemStack(ModItems.botanicalResource, 1, 3)//Scrap Metal
+				);
+			recipeVoltmeter = BotaniaAPI.getLatestAddedRecipe();
+		}
+		if(LibConfigs.CRAFT_LIGHTNING_ROD){
+			addOreDictRecipe(new ItemStack(ModItems.shiftedRevealingUpgrade), 
+				" R ",
+				" S ",
+				"SIS",
+				'I', new ItemStack(Items.iron_ingot),
+				'R', new ItemStack(Items.redstone),
+				'S', new ItemStack(ModItems.botanicalResource, 1, 3)//Scrap Metal
+				);
+			recipeVoltmeter = BotaniaAPI.getLatestAddedRecipe();
 		}
 	}
 

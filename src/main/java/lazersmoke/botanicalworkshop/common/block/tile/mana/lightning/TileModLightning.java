@@ -2,18 +2,30 @@ package lazersmoke.botanicalworkshop.common.block.tile.mana.lightning;
 
 import lazersmoke.botanicalworkshop.api.mana.LightningNetworkEvent;
 import lazersmoke.botanicalworkshop.api.mana.lightning.IBotanicalLightningBlock;
-import lazersmoke.botanicalworkshop.common.BotanicalWorkshop;
+import lazersmoke.botanicalworkshop.client.core.handler.HUDHandler;
 import lazersmoke.botanicalworkshop.common.block.tile.TileMod;
 import lazersmoke.botanicalworkshop.common.core.handler.LightningNetworkHandler;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ChunkCoordinates;
 
-import org.apache.logging.log4j.Level;
-
-public class TileModLightning extends TileMod implements IBotanicalLightningBlock{
-	private int lightning = 0;
+public abstract class TileModLightning extends TileMod implements IBotanicalLightningBlock{
 	protected static final String TAG_LIGHTNING = "botanicalLightning";
 	
+	private int lightning = 0;
+	
+	protected boolean state;
+	protected boolean getState(){
+		if(!state && getCurrentLightning() >= getBufferThreshold())
+			state = true;
+		if(state && getCurrentLightning() < getPowerThreshold())
+			state = false;
+		return state;
+	}
+	public void renderHUD(Minecraft mc, ScaledResolution res) {
+		HUDHandler.drawSimpleLightningHUD(0xFF00AE, getCurrentLightning(), getPowerThreshold(), getBufferThreshold(), getOverflowThreshold(), "meow", res);
+	}
 	@Override
 	public void updateEntity(){
 		super.updateEntity();
@@ -32,10 +44,6 @@ public class TileModLightning extends TileMod implements IBotanicalLightningBloc
 		invalidate();
 	}
 	@Override
-	public int getConductivity() {
-		return 1;
-	}
-	@Override
 	public int getCurrentLightning() {
 		return lightning;
 	}
@@ -49,7 +57,7 @@ public class TileModLightning extends TileMod implements IBotanicalLightningBloc
 	//Returns acutal change
 	@Override
 	public int blindAddLightning(int amount) {
-		BotanicalWorkshop.logger.log(Level.INFO, "Blindly Adding Lightning: " + amount + " to block at " + this.xCoord + ", " + this.yCoord + ", " + this.zCoord);
+		//BotanicalWorkshop.logger.log(Level.INFO, "Blindly Adding Lightning: " + amount + " to block at " + this.xCoord + ", " + this.yCoord + ", " + this.zCoord);
 		if(lightning >= -amount){
 			lightning += amount;
 			worldObj.func_147453_f(xCoord, yCoord, zCoord, worldObj.getBlock(xCoord, yCoord, zCoord));
@@ -80,9 +88,5 @@ public class TileModLightning extends TileMod implements IBotanicalLightningBloc
 	@Override
 	public ChunkCoordinates getPos() {
 		return new ChunkCoordinates(xCoord, yCoord, zCoord);
-	}
-	@Override
-	public void overflow() {
-		// NO-OP
 	}
 }

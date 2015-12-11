@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.UUID;
 
 import lazersmoke.botanicalworkshop.api.BotanicalWorkshopAPI;
+import lazersmoke.botanicalworkshop.api.mana.IGatewayBindingItem;
 import lazersmoke.botanicalworkshop.api.mana.IGatewayCatalyst;
 import lazersmoke.botanicalworkshop.api.mana.IGatewayMod;
 import lazersmoke.botanicalworkshop.api.recipe.RecipeGatewayTransmutation;
@@ -299,9 +300,11 @@ public class TileGatewayCore extends TileMod implements ISparkAttachable/* imple
 		if (!worldObj.isRemote) {
 			EntityItem item = new EntityItem(worldObj, xCoord + 0.5, yCoord + 1.5, zCoord + 0.5, stack);
 			item.getEntityData().setBoolean(TAG_PORTAL_KEEP, true);
-			ItemNBTHelper.setInt(item.getEntityItem(), "boundGatewayX", xCoord);
-			ItemNBTHelper.setInt(item.getEntityItem(), "boundGatewayY", yCoord);
-			ItemNBTHelper.setInt(item.getEntityItem(), "boundGatewayZ", zCoord);
+			if(item.getEntityItem().getItem() instanceof IGatewayBindingItem){
+				ItemNBTHelper.setInt(item.getEntityItem(), "boundGatewayX", xCoord);
+				ItemNBTHelper.setInt(item.getEntityItem(), "boundGatewayY", yCoord);
+				ItemNBTHelper.setInt(item.getEntityItem(), "boundGatewayZ", zCoord);
+			}
 			worldObj.spawnEntityInWorld(item);
 		}
 	}

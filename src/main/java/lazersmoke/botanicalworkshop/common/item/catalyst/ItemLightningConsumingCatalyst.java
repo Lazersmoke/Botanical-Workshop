@@ -10,7 +10,7 @@ import net.minecraft.entity.item.EntityItem;
 public class ItemLightningConsumingCatalyst extends ItemActiveCatalyst{
 
 	public ItemLightningConsumingCatalyst(){
-		super(LibItemNames.LIGHTNING_GENERATION_CATALYST);
+		super(LibItemNames.LIGHTNING_CONSUMING_CATALYST);
 	}
 
 	@Override

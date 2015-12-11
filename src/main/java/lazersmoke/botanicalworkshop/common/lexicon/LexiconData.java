@@ -43,6 +43,7 @@ public final class LexiconData{
 	public static LexiconEntry thaumicCatalyst;
 	public static LexiconEntry shiftedArmor;
 	public static LexiconEntry shiftedArmorUpgrade;
+	public static LexiconEntry botanicalResources;
 	
 	public static LexiconEntry bloodIntro;
 
@@ -50,7 +51,7 @@ public final class LexiconData{
 	public static LexiconEntry exAquainas;
 	public static LexiconEntry lightningCore;
 	public static LexiconEntry lightningRod;
-	public static LexiconEntry thaumtanicalTransposer;//TODO
+	public static LexiconEntry thaumtanicalTransposer;
 
 	public static void init(){
 		//Unlocked by using binding crystals, except for the default one
@@ -67,13 +68,35 @@ public final class LexiconData{
 		BotaniaAPI.addCategory(categoryBlood);
 		categoryLightning = new WLexiconCategory(LibLexicon.CATEGORY_LIGHTNING, 7).setIcon(new ResourceLocation(LibResources.LIGHTNING_ICON + ".png"));
 		BotaniaAPI.addCategory(categoryLightning);
-
+		
+		
+		/* How to format these entries:
+		 * 
+		 * name = new ?LexiconEntry(LibLexicon.?, category?);
+		 * name[.setPriority()].setLexiconPages(
+		 * new Page?("0"),
+		 * new Page?("1"),
+		 * .
+		 * .
+		 * .
+		 * new Page?("n")
+		 * );
+		 * <LINEBREAK>
+		 * name = new ?LexiconEntry(LibLexicon.?, category?);
+		 * .
+		 * .
+		 * .
+		 * etc
+		 * */
+		
+		
 		// MAIN WORKSHOP ENTRIES
 		workshopIntro = new WLexiconEntry(LibLexicon.WORKSHOP_INTRO, categoryWorkshop);
 		workshopIntro.setPriority().setLexiconPages(
 			new PageText("0"),
 			new PageText("1")
 			);
+		
 		elvenPool = new WLexiconEntry(LibLexicon.WORKSHOP_ELVENPOOL, categoryWorkshop);
 		elvenPool.setLexiconPages(
 			new PageText("0"), 
@@ -110,6 +133,7 @@ public final class LexiconData{
 			new PageGatewayTransmutationRecipe("3", ModGatewayTransmutationRecipes.thaumicBindingCrystalRecipe), 
 			new PageGatewayTransmutationRecipe("4", ModGatewayTransmutationRecipes.lightningBindingCrystalRecipe)
 			);
+		
 		shiftedArmor = new WLexiconEntry(LibLexicon.WORKSHOP_SHIFTEDARMOR, categoryWorkshop);
 		shiftedArmor.setLexiconPages(
 			new PageText("0"), 
@@ -123,6 +147,7 @@ public final class LexiconData{
 			new PageCraftingRecipe("8", ModCraftingRecipes.recipeShiftedHelmet),
 			new PageGatewayTransmutationRecipe("9", ModGatewayTransmutationRecipes.shiftedHelmetRecipe)
 			);
+		
 		shiftedArmorUpgrade = new WLexiconEntry(LibLexicon.WORKSHOP_SHIFTEDARMORUPGRADE, categoryWorkshop);
 		shiftedArmorUpgrade.setLexiconPages(
 			new PageText("0"), 
@@ -136,10 +161,24 @@ public final class LexiconData{
 			new PageGatewayTransmutationRecipe("8", ModGatewayTransmutationRecipes.shiftedRevealingUpgradeRecipe),
 			new PageText("9")
 			);
+		
 		exAquainas = new WLexiconEntry(LibLexicon.WORKSHOP_EXAQUAINAS, categoryWorkshop);
 		exAquainas.setLexiconPages(
 			new PageText("0"),
 			new PagePetalRecipe<RecipePetals>("1", ModPetalRecipes.exAquainasRecipe)
+			);
+		
+		botanicalResources = new WLexiconEntry(LibLexicon.WORKSHOP_RESOURCES, categoryWorkshop);
+		botanicalResources.setLexiconPages(
+			new PageText("0"),
+			new PageGatewayTransmutationRecipe("1", ModGatewayTransmutationRecipes.elvenCrystalRecipe),
+			new PageGatewayTransmutationRecipe("2", ModGatewayTransmutationRecipes.elvenKnottingRecipe),
+			new PageGatewayTransmutationRecipe("3", ModGatewayTransmutationRecipes.scrapMetalRecipe)
+			);
+		thaumtanicalTransposer = new LLexiconEntry(LibLexicon.THAUMTANICAL_TRANSPOSER, categoryWorkshop);
+		thaumtanicalTransposer.setLexiconPages(
+			new PageText("0"),
+			new PageGatewayTransmutationRecipe("1", ModGatewayTransmutationRecipes.thaumtanicalTransposerRecipe)
 			);
 		// THAUMIC ENTRIES
 		thaumicIntro = new TLexiconEntry(LibLexicon.THAUMIC_INTRO, categoryThaumic);
@@ -169,16 +208,22 @@ public final class LexiconData{
 		// LIGHTNING ENTRIES
 		lightningIntro = new LLexiconEntry(LibLexicon.LIGHTNING_INTRO, categoryLightning);
 		lightningIntro.setPriority().setLexiconPages(
-			new PageText("0")//TODO
+			new PageText("0"),
+			new PageText("1"),
+			new PageCraftingRecipe("2", ModCraftingRecipes.recipeVoltmeter)
 			);
 		lightningCore = new LLexiconEntry(LibLexicon.LIGHTNING_CORE, categoryLightning);
 		lightningCore.setPriority().setLexiconPages(
-			new PageText("0"),//TODO
-			new PageGatewayTransmutationRecipe("1", ModGatewayTransmutationRecipes.lightningCoreRecipe)
+			new PageText("0"),
+			new PageGatewayTransmutationRecipe("1", ModGatewayTransmutationRecipes.lightningCoreRecipe),
+			new PageText("2"),
+			new PageGatewayTransmutationRecipe("3", ModGatewayTransmutationRecipes.lightningGeneratingCatalystRecipe),
+			new PageGatewayTransmutationRecipe("4", ModGatewayTransmutationRecipes.lightningConsumingCatalystRecipe)
 			);
 		lightningRod = new LLexiconEntry(LibLexicon.LIGHTNING_ROD, categoryLightning);
 		lightningRod.setPriority().setLexiconPages(
-			new PageText("0")//TODO
+			new PageText("0"),
+			new PageCraftingRecipe("1", ModCraftingRecipes.recipeLightningRod)
 			);
 	}
 }

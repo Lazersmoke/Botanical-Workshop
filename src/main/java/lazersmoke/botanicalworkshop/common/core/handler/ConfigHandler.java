@@ -53,6 +53,12 @@ public final class ConfigHandler {
 		
 		desc = "Set this to false to disable the crafting of Shifted Revealing Upgrades.";
 		LibConfigs.CRAFT_SHIFTED_REVEALING_UPGRADE = loadPropBool("crafting.table.shiftedRevealingUpgrade", desc, true);
+		
+		desc = "Set this to false to disable the crafting of Voltmeters.";
+		LibConfigs.CRAFT_VOLTMETER = loadPropBool("crafting.table.voltmeter", desc, true);
+		
+		desc = "Set this to false to disable the crafting of Lightning Rods.";
+		LibConfigs.CRAFT_LIGHTNING_ROD = loadPropBool("crafting.table.lightningRod", desc, true);
 
 		// Elven Portal Craftinghis to false to disable the crafting of Elven Mana Pools using alfheim portals.";
 		LibConfigs.PORTAL_CRAFT_ELVEN_POOL = loadPropBool("crafting.portal.elvenPool", desc, true);
@@ -102,6 +108,18 @@ public final class ConfigHandler {
 		
 		desc = "Set this to false to disable the crafting of Shifted Revealing Upgrades using the Gateway.";
 		LibConfigs.GATEWAY_CRAFT_SHIFTED_REVEALING_UPGRADE = loadPropBool("crafting.gateway.shiftedRevealingUpgrade", desc, true);
+		
+		desc = "Set this to false to disable the crafting of Scrap Metal using the Gateway.";
+		LibConfigs.GATEWAY_CRAFT_SCRAP_METAL = loadPropBool("crafting.gateway.scrapMetal", desc, true);
+		
+		desc = "Set this to false to disable the crafting of Elven Crystal using the Gateway.";
+		LibConfigs.GATEWAY_CRAFT_ELVEN_CRYSTAL = loadPropBool("crafting.gateway.elvenCrystal", desc, true);
+		
+		desc = "Set this to false to disable the crafting of Elven Knotting using the Gateway.";
+		LibConfigs.GATEWAY_CRAFT_ELVEN_KNOTTING = loadPropBool("crafting.gateway.elvenKnotting", desc, true);
+		
+		desc = "Set this to false to disable the crafting of Lightning Cores using the Gateway.";
+		LibConfigs.GATEWAY_CRAFT_LIGHTNING_CORE = loadPropBool("crafting.gateway.lightningCore", desc, true);
 		
 		// Gameplay Settings
 		desc = "Set this to change the mana cost of opening a Gateway.";

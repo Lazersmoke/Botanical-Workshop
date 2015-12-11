@@ -29,10 +29,14 @@ public class ModGatewayTransmutationRecipes{
 	public static RecipeGatewayTransmutation shiftedHopsUpgradeRecipe = defaultRecipe;
 	public static RecipeGatewayTransmutation shiftedPhaseUpgradeRecipe = defaultRecipe;
 	public static RecipeGatewayTransmutation shiftedRevealingUpgradeRecipe = defaultRecipe;
-	public static RecipeGatewayTransmutation lightningCoreRecipe = defaultRecipe;//TODO
+	public static RecipeGatewayTransmutation scrapMetalRecipe = defaultRecipe;
+	public static RecipeGatewayTransmutation lightningCoreRecipe = defaultRecipe;
 	public static RecipeGatewayTransmutation lightningConsumingCatalystRecipe = defaultRecipe;//TODO
 	public static RecipeGatewayTransmutation lightningGeneratingCatalystRecipe = defaultRecipe;//TODO
-
+	public static RecipeGatewayTransmutation thaumtanicalTransposerRecipe = defaultRecipe;//TODO
+	public static RecipeGatewayTransmutation elvenCrystalRecipe = defaultRecipe;
+	public static RecipeGatewayTransmutation elvenKnottingRecipe = defaultRecipe;
+	
 	public static void init(){
 		if(LibConfigs.GATEWAY_CRAFT_MANA_BINDING_CRYSTAL)
 			manaBindingCrystalRecipe = BotanicalWorkshopAPI.registerGatewayRecipe(
@@ -60,11 +64,10 @@ public class ModGatewayTransmutationRecipes{
 				);
 		if(LibConfigs.GATEWAY_CRAFT_LIGHTNING_BINDING_CRYSTAL)
 			lightningBindingCrystalRecipe = BotanicalWorkshopAPI.registerGatewayRecipe(
-					new ItemStack(ModItems.bindingCrystal, 1, 3), //Mechanical Binding Crystal 
+					new ItemStack(ModItems.bindingCrystal, 1, 3), //Lightning Binding Crystal 
 					new ItemStack(ModItems.simpleCatalyst), //Simple Catalyst 
-					new ItemStack(ModItems.voltmeter)//,
-					//new ItemStack(ModItems.botanicalCapacitor)
-					//TODO
+					new ItemStack(ModItems.voltmeter),
+					new ItemStack(ModItems.botanicalResource, 2, 3) //2x Scrap Metal
 					);
 		if(LibConfigs.GATEWAY_CRAFT_MANA_CATALYST)
 			manaCatalystRecipe = BotanicalWorkshopAPI.registerGatewayRecipe(
@@ -127,7 +130,7 @@ public class ModGatewayTransmutationRecipes{
 				new ItemStack(ModItems.shiftedMatter, 4, 0)
 				);
 		}
-		if(LibConfigs.CRAFT_SHIFTED_HOPS_UPGRADE)
+		if(LibConfigs.GATEWAY_CRAFT_SHIFTED_HOPS_UPGRADE)
 			shiftedHopsUpgradeRecipe = BotanicalWorkshopAPI.registerGatewayRecipe(
 				new ItemStack(ModItems.shiftedHopsUpgrade),//Result
 				new ItemStack(ModItems.bindingCrystal, 1, 0), // Mana Binding Crystal
@@ -135,7 +138,7 @@ public class ModGatewayTransmutationRecipes{
 				new ItemStack(vazkii.botania.common.block.ModBlocks.dreamwood, 2, 0),
 				new ItemStack(Items.nether_star)
 				);
-		if(LibConfigs.CRAFT_SHIFTED_PHASE_UPGRADE)
+		if(LibConfigs.GATEWAY_CRAFT_SHIFTED_PHASE_UPGRADE)
 			shiftedPhaseUpgradeRecipe = BotanicalWorkshopAPI.registerGatewayRecipe(
 				new ItemStack(ModItems.shiftedPhaseUpgrade),//Result
 				new ItemStack(ModItems.bindingCrystal, 1, 0), // Mana Binding Crystal
@@ -143,13 +146,39 @@ public class ModGatewayTransmutationRecipes{
 				new ItemStack(ModItems.botanicalResource, 2, 0),//Elven Crystal
 				new ItemStack(vazkii.botania.common.item.ModItems.phantomInk)
 				);
-		if(LibConfigs.CRAFT_SHIFTED_REVEALING_UPGRADE && BotanicalWorkshop.thaumcraftLoaded)
+		if(LibConfigs.GATEWAY_CRAFT_SHIFTED_REVEALING_UPGRADE && BotanicalWorkshop.thaumcraftLoaded)
 			shiftedRevealingUpgradeRecipe = BotanicalWorkshopAPI.registerGatewayRecipe(
 				new ItemStack(ModItems.shiftedRevealingUpgrade),//Result
 				new ItemStack(ModItems.bindingCrystal, 1, 2), // Thaumic Binding Crystal
 				new ItemStack(vazkii.botania.common.block.ModBlocks.manaGlass, 2, 0),
 				new ItemStack(vazkii.botania.common.block.ModBlocks.elfGlass, 2, 0),
 				new ItemStack((Item) Item.itemRegistry.getObject("Thaumcraft:ItemGoggles"))
+				);
+		if(LibConfigs.GATEWAY_CRAFT_SCRAP_METAL)
+			scrapMetalRecipe  = BotanicalWorkshopAPI.registerGatewayRecipe(
+				new ItemStack(ModItems.botanicalResource, 1, 3),//Scrap Metal Result
+				new ItemStack(ModItems.bindingCrystal, 1, 0), // Mana Binding Crystal
+				new ItemStack(Items.redstone, 2, 0),
+				new ItemStack(Items.iron_ingot)
+				);
+		if(LibConfigs.GATEWAY_CRAFT_ELVEN_CRYSTAL)
+			elvenCrystalRecipe  = BotanicalWorkshopAPI.registerGatewayRecipe(
+				new ItemStack(ModItems.botanicalResource, 1, 0),//Elven Crystal Result
+				new ItemStack(ModItems.bindingCrystal, 1, 0), // Mana Binding Crystal
+				new ItemStack(vazkii.botania.common.item.ModItems.manaResource,1, 2) // mana pearl
+				);
+		if(LibConfigs.GATEWAY_CRAFT_ELVEN_KNOTTING)
+			elvenKnottingRecipe  = BotanicalWorkshopAPI.registerGatewayRecipe(
+				new ItemStack(ModItems.botanicalResource, 1, 2),//Elven Knotting Result
+				new ItemStack(ModItems.bindingCrystal, 1, 0), // Mana Binding Crystal
+				new ItemStack(Items.string)
+				);
+		if(LibConfigs.GATEWAY_CRAFT_LIGHTNING_CORE)
+			lightningCoreRecipe  = BotanicalWorkshopAPI.registerGatewayRecipe(
+				new ItemStack(ModBlocks.lightningCore),// Result
+				new ItemStack(ModItems.bindingCrystal, 1, 3), // Lightning Binding Crystal
+				new ItemStack(ModBlocks.lightningRod),
+				new ItemStack(ModItems.botanicalResource, 4, 3) // 4x Scrap Metal
 				);
 	}
 }

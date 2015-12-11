@@ -7,4 +7,24 @@ public class TileLightningRod extends TileModLightning implements IBotanicalLigh
 	public void updateEntity(){
 		super.updateEntity();
 	}
+	@Override
+	public int getConductivity(){
+		return 0;
+	}
+	@Override
+	public void overflow() {
+		blindAddLightning(-getCurrentLightning());
+	}
+	@Override
+	public int getPowerThreshold() {
+		return 0;
+	}
+	@Override
+	public int getBufferThreshold() {
+		return 0;
+	}
+	@Override
+	public int getOverflowThreshold() {
+		return 100;
+	}
 }
