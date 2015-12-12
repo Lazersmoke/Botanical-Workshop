@@ -7,7 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
-//TODO texture this
+
 public class ItemVoltmeter extends ItemMod{
 	public ItemVoltmeter() {
 		super(LibItemNames.VOLTMETER);

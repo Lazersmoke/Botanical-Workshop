@@ -16,7 +16,7 @@ public class TileLightningCore extends TileModLightning implements IBotanicalLig
 	}
 	@Override
 	public int getConductivity() {
-		return -1;//NOTE: -1 reserved for generator-only blocks
+		return blockMetadata == 1 ? 1 : -1;//NOTE: -1 reserved for generator-only blocks
 	}
 	//Stops metadata from reset for another 2 ticks
 	public void poke(){

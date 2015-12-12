@@ -1,5 +1,6 @@
 package lazersmoke.botanicalworkshop.common.block.tile.mana.lightning;
 
+import vazkii.botania.common.core.helper.Vector3;
 import lazersmoke.botanicalworkshop.api.mana.LightningNetworkEvent;
 import lazersmoke.botanicalworkshop.api.mana.lightning.IBotanicalLightningBlock;
 import lazersmoke.botanicalworkshop.client.core.handler.HUDHandler;
@@ -49,7 +50,6 @@ public abstract class TileModLightning extends TileMod implements IBotanicalLigh
 	}
 	@Override
 	public boolean addLightning(int amount) {
-		//BotanicalWorkshop.logger.log(Level.INFO, "Adding Lightning: " + amount + " to block at " + this.xCoord + ", " + this.yCoord + ", " + this.zCoord);
 		if(-amount <= getCurrentLightning()) return blindAddLightning(amount) == amount;
 		else return false;
 	}
@@ -57,7 +57,6 @@ public abstract class TileModLightning extends TileMod implements IBotanicalLigh
 	//Returns acutal change
 	@Override
 	public int blindAddLightning(int amount) {
-		//BotanicalWorkshop.logger.log(Level.INFO, "Blindly Adding Lightning: " + amount + " to block at " + this.xCoord + ", " + this.yCoord + ", " + this.zCoord);
 		if(lightning >= -amount){
 			lightning += amount;
 			worldObj.func_147453_f(xCoord, yCoord, zCoord, worldObj.getBlock(xCoord, yCoord, zCoord));
@@ -88,5 +87,9 @@ public abstract class TileModLightning extends TileMod implements IBotanicalLigh
 	@Override
 	public ChunkCoordinates getPos() {
 		return new ChunkCoordinates(xCoord, yCoord, zCoord);
+	}
+	@Override
+	public Vector3 getLightningRenderOffset(){
+		return new Vector3(0.5F, 1.16F, 0.5F);
 	}
 }

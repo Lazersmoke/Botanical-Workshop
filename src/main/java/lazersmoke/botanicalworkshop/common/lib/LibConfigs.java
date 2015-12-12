@@ -38,6 +38,8 @@ public class LibConfigs{
 	public static boolean GATEWAY_CRAFT_ELVEN_KNOTTING;
 	public static boolean GATEWAY_CRAFT_ELVEN_CRYSTAL;
 	public static boolean GATEWAY_CRAFT_LIGHTNING_CORE;
+	public static boolean GATEWAY_CRAFT_LIGHTNING_CONSUMING_CATALYST;
+	public static boolean GATEWAY_CRAFT_LIGHTNING_GENERATION_CATALYST;
 
 	// Gameplay Settings
 	public static int GATEWAY_TICK_MANA_COST;

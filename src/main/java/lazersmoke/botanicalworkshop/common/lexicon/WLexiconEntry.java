@@ -18,13 +18,10 @@ public class WLexiconEntry extends LexiconEntry implements IAddonEntry{
 	@Override
 	public LexiconEntry setLexiconPages(LexiconPage ... pages){
 		for(LexiconPage page : pages){
-			page.unlocalizedName = "botanicalworkshop.page."
-					+ getLazyUnlocalizedName() + page.unlocalizedName;
+			page.unlocalizedName = "botanicalworkshop.page." + getLazyUnlocalizedName() + page.unlocalizedName;
 			if(page instanceof ITwoNamedPage){
 				ITwoNamedPage dou = (ITwoNamedPage) page;
-				dou.setSecondUnlocalizedName("botanicalworkshop.page."
-						+ getLazyUnlocalizedName()
-						+ dou.getSecondUnlocalizedName());
+				dou.setSecondUnlocalizedName("botanicalworkshop.page." + getLazyUnlocalizedName() + dou.getSecondUnlocalizedName());
 			}
 		}
 
@@ -36,6 +33,11 @@ public class WLexiconEntry extends LexiconEntry implements IAddonEntry{
 		return "botanicalworkshop.entry." + super.getUnlocalizedName();
 	}
 
+	@Override
+	public String getTagline() {
+		return "botanicalworkshop.tagline." + super.getUnlocalizedName();
+	}
+	
 	public String getLazyUnlocalizedName(){
 		return super.getUnlocalizedName();
 	}

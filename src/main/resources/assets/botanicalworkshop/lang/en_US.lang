@@ -1,5 +1,5 @@
 #MISC
-itemGroup.BotanicalWorkshop=Botanical Workshop
+itemGroup.Botanical Workshop=Botanical Workshop
 
 #UNLOC
 botanicalworkshopmisc.noloc=botanicalworkshopmisc.noloc
@@ -36,6 +36,7 @@ item.botanicalworkshop:bindingCrystal3.name=Lightning Binding Crystal
 item.botanicalworkshop:elvenCrystal.name=Elven Crystal
 item.botanicalworkshop:recipeDisabled.name=Recipe Disabled!
 item.botanicalworkshop:elvenKnotting.name=Elven Knotting
+item.botanicalworkshop:scrapMetal.name=Scrap Metal
 
 #THAUMIC RESOURCES
 item.botanicalworkshop:thaumicResource0.name=Mana Essentia Crystal
@@ -49,6 +50,11 @@ item.botanicalworkshop:shiftedHelmet.name=Shifted Helmet
 item.botanicalworkshop:shiftedPhaseUpgrade.name=Shifted Phase Upgrade
 item.botanicalworkshop:shiftedHopsUpgrade.name=Shifted Hops Upgrade
 item.botanicalworkshop:shiftedRevealingUpgrade.name=Shifted Revealing Upgrade
+
+#LIGHTNING
+item.botanicalworkshop:voltmeter.name=Voltmeter
+item.botanicalworkshop:lightningGenerationCatalyst.name=Lightning Generation Catalyst
+item.botanicalworkshop:lightningConsumingCatalyst.name=Lightning Consuming Catalyst
 
 #TILE ENTITIES
 tile.botanicalworkshop:elvenPool0.name=Elven Mana Pool
@@ -76,6 +82,12 @@ botanicalworkshopmisc.thaumicCore2=a gateway structure!
 tile.botanicalworkshop:flower.exAquainas.name=Ex Aquainas
 tile.botanicalworkshop:flower.logicalSound.name=Logical Sound
 
+tile.botanicalworkshop:thaumtanicalTransposer0.name=Thaumtanical Transposer
+
+tile.botanicalworkshop:lightningRod0.name=Lightning Rod
+
+tile.botanicalworkshop:lightningCore0.name=Lightning Core
+
 #NEI INTEGRATION
 botanicalworkshop.nei.gateway=Elven Gateway
 
@@ -91,10 +103,12 @@ botanicalworkshop.gui.lexicon.subtitle=This entry is added by Lazersmoke's Botan
 botanicalworkshop.category.workshop=Botanical Workshop
 
 botanicalworkshop.entry.workshopIntro=An Introduction to Botanical Workshop
+botanicalworkshop.tagline.workshopIntro=Literally the best addon ever!
 botanicalworkshop.page.workshopIntro0=Welcome to Botanical Workshop! This mod will allow you to craft all manner of weird and wonderful things, including singing ducks and &1Elven Gateways&0. If you haven't already, I would recommend checking out the configuration file for this mod, as it is very inclusive. You can disable every crafting recipe in the mod, and then some!
 botanicalworkshop.page.workshopIntro1=There are some quirks that go along with this decision however. For instance, you may encounter red X's in the Lexica Botania or in NEI. These are not an error, but simply mean that the recipe has been disabled in some way, either through the configuration or because a mod isn't loaded that it needs to operate. To start off, you should read the italicized entries in both Botania and Botanical Workshop.
 
 botanicalworkshop.entry.basicCatalyst=Basic Catalysts
+botanicalworkshop.tagline.basicCatalyst=Gotta start somewhere
 botanicalworkshop.page.basicCatalyst0=On its own, the &1Gateway&0 is not very useful, but if you throw a &4catalyst&0 inside of one, it will augment its abilities beyond just looking fancy and allow you to enlist the elves to craft various blocks and items that could not be sent through the original &2Alfheim Portal&0. Some &4catalysts&0 go beyond even that, and add entirely new functionality to the &1Gateway&0.
 botanicalworkshop.page.basicCatalyst1=The first catalyst you will make is the &1Simple Catalyst&0. It will allow you to create &1Binding Crystals&0, which will serve as more advanced catalysts for more advanced recipes. It is simple in nature, and so can be made on a normal crafting table.
 botanicalworkshop.page.basicCatalyst2=Divide by Pixie Dust
@@ -103,6 +117,7 @@ botanicalworkshop.page.basicCatalyst4=Accidents happen!
 botanicalworkshop.page.basicCatalyst5=&oNOTE: Gateway Catalysts, Binding Crystals, or other catalyst-like objects will not despawn when tossed on the floor. Therefore, it is safe to leave them in your Gateway without fear of loosing them.&r
 
 botanicalworkshop.entry.bindingCrystal=Binding Crystals
+botanicalworkshop.tagline.bindingCrystal=Not alchemical
 botanicalworkshop.page.bindingCrystal0=Created using the &1Gateway&0, &1Binding Crystals&0 allow you to craft more complex and specialized &4catalysts&0 and other items than the &1Simple Catalyst&0 ever could. There are four varietes that you have discovered, and each is attuned to a different type of magic or machinery.
 botanicalworkshop.page.bindingCrystal1=This will help craft &lmana&r items.
 botanicalworkshop.page.bindingCrystal2=This will help craft &lalchemo-bloody&r items.
@@ -110,11 +125,13 @@ botanicalworkshop.page.bindingCrystal3=This will help craft &lthaumaturgical&r i
 botanicalworkshop.page.bindingCrystal4=This will help craft &llightning&r items.
 
 botanicalworkshop.entry.elvenPool=Elven Mana Pool
+botanicalworkshop.tagline.elvenPool=Because regular pools are so last month
 botanicalworkshop.page.elvenPool0=This advanced &1Mana Pool&0 has been delicately crafted by &2elves&0 (or shoddily assembled by you) so that it can channel &2elven&0 energies much better than a normal pool. Although functionally identical to normal pools, you are sure you will find a use for the green basins.
 botanicalworkshop.page.elvenPool1=Shoddy assembly manual included
 botanicalworkshop.page.elvenPool2=No returns, no refunds
 
 botanicalworkshop.entry.gatewayCore=Gateway
+botanicalworkshop.tagline.gatewayCore=The core mechanic
 botanicalworkshop.page.gatewayCore0=During your experimentation with the &2Alfheim Portal&0, you have discovered that is possible to build a type of "Super Portal", a &1Gateway&0 if you will, to facilitate more complicated transactions with the &2elves&0. It is a complicated and many-stepped procedure, but you think you can handle it.
 botanicalworkshop.page.gatewayCore1=TODO
 botanicalworkshop.page.gatewayCore2=TODO
@@ -128,10 +145,12 @@ botanicalworkshop.page.gatewayCore9=Following some experimentation, you have fou
 botanicalworkshop.page.gatewayCore10=&1Catalysts&0 will not be sent to the &2elves&0; instead, they will stay in the &1Gateway&0 until all of the needed ingredients to create an item they are capable of crafting are added to the &1Gateway&0's internal inventory. You record these &4transmutation&0 recipes as follows: inputs along the top, &4catalyst&0 in the center, and the output on the right.
 
 botanicalworkshop.entry.logicalSound=Logical Sound
+botanicalworkshop.tagline.logicalSound=QUACK!
 botanicalworkshop.page.logicalSound0=This flower is a tribute to everyone on irc (irc.esper.net:vazkii) for their continuous help, support, and &5QUACK&0. Special thanks to &l&1SoundLogic&r for helping with technical problems and inspiring me to continue development, &l&1MyDeloreanWontStart&r for &5^O_O^ QUACK QUACK QUACK OR RIOT ^O_O^&0, and to &1&lVazkii&r for making such an amazing base mod.
 botanicalworkshop.page.logicalSound1=&5QUACKQUACKQUACKQUACKQUACKQUACKQUACKQUACKQUACKQUACKQUACKQUACKQUACKQUACKQUACKQUACK<DANKMEMEHERE>&0
 
 botanicalworkshop.entry.shiftedArmor=Shifted Armor
+botanicalworkshop.tagline.shiftedArmor=Because you can't have enough armor
 botanicalworkshop.page.shiftedArmor0=This special armor is bound to a specific &1Gateway&0 by passing through it, either during the crafting process or manually using an &4Empty Catalyst&4. Once bound, the armor will automatically repair itself using the mana stored in the &1Gateway&0. You can also upgrade the armor using Shifted Upgrade tablets.
 botanicalworkshop.page.shiftedArmor1=Used to make the armor
 botanicalworkshop.page.shiftedArmor2=Gotta go fast!
@@ -144,6 +163,7 @@ botanicalworkshop.page.shiftedArmor8=Hardhat Required
 botanicalworkshop.page.shiftedArmor9=Cheaper with elves
 
 botanicalworkshop.entry.shiftedArmorUpgrade=Shifted Armor Upgrades
+botanicalworkshop.tagline.shiftedArmorUpgrade=Because regular armor is boring
 botanicalworkshop.page.shiftedArmorUpgrade0=These upgrades can be used with Shifted Armor pieces to upgrade them. Using these often requires a large quantity of mana.
 botanicalworkshop.page.shiftedArmorUpgrade1=Grants you mad hops
 botanicalworkshop.page.shiftedArmorUpgrade2=Cheaper with elves
@@ -156,16 +176,19 @@ botanicalworkshop.page.shiftedArmorUpgrade8=Cheaper with elves
 botanicalworkshop.page.shiftedArmorUpgrade9=The Shifted Revealing Upgrade is like using goggles of revealing. Thats pretty much it. Only works on helmet. (Because you can't see with your toes, silly!)
 
 botanicalworkshop.entry.exAquainas=Ex Aquainas
+botanicalworkshop.tagline.exAquainas=OH MY GOD JC A BOMB!
 botanicalworkshop.page.exAquainas0=After finding yourself with a dire need to clean up some &l*cough*&r fluid, you invented the &1Ex Aquainas&0, a flower capable of extracting water around it, much like the &1Hydroangaes&0. Unlike the &1Hydoangaes&0, however, the &1Ex Aquainas&0 keeps the liquid in its normal form and instead transfers it into a container above or below it. The exact container specifications are unknown, but you suspect that they must implement the Forge of the Gods to work.
 botanicalworkshop.page.exAquainas1=Error 0451 - Shades not included
 
 botanicalworkshop.entry.botanicalResources=Botanical Resources
+botanicalworkshop.tagline.botanicalResources=Generic crafting ingredients are fun!
 botanicalworkshop.page.botanicalResources0=The elves have agreed to exchange in unlimited quantities certain resources through the gateway. You have taken careful notes of these on the next several pages.
 botanicalworkshop.page.botanicalResources1=Cheaper with a gateway (free shipping)
 botanicalworkshop.page.botanicalResources2=Cheaper with a gateway (free shipping)
 botanicalworkshop.page.botanicalResources3=Conducts Lightning
 
 botanicalworkshop.entry.thaumtanicalTransposer=Thaumtanical Transposer
+botanicalworkshop.tagline.thaumtanicalTransposer=Neither thaumic nor a transposer
 botanicalworkshop.page.thaumtanicalTransposer0=This block can teleport items to a given target location at the cost of lightning energy. To use, simply place, bind like a spreader, power, then chuck an item on it! The item will be teleported to directly above the bound spot! This is useful to put stuff in gateways remotely. The cost is related to the distance teleported.
 botanicalworkshop.page.thaumtanicalTransposer1=Has nothing to do with Thaumcraft.
 
@@ -173,13 +196,16 @@ botanicalworkshop.page.thaumtanicalTransposer1=Has nothing to do with Thaumcraft
 botanicalworkshop.category.thaumic=Botanical Thaumaturgy
 
 botanicalworkshop.entry.thaumicIntro=An Introduction to Botanical Thaumaturgy
+botanicalworkshop.tagline.thaumicIntro=Introductions are important!
 botanicalworkshop.page.thaumicIntro0=You have successfully created a Thaumic Binding Crystal, and by studying it you have found several uses for it that involve the various fields of Thaumaturgy. The entries in this section describe these advances. Some knowledge may still be wait for you in your Thaumonomicon.
 
 botanicalworkshop.entry.thaumicCore=Thaumic Gateway Core
+botanicalworkshop.tagline.thaumicCore=Put it in the hole
 botanicalworkshop.page.thaumicCore0=Sometimes a botanist will find themselves in need of the aid of a &5different&0 field of magic. In order to fulfill that need, you have created the &1Thaumic Gateway Core&0! When placed in the hole in the top of a &1Gateway&0 with a &5Thaumic Catalyst&0 in it, this core will extract &5Precantatio&0 essentia from nearby jars and other containers. The essentia will then be crystallized by mana and added to the &1Gateway&0's crafting inventory.
 botanicalworkshop.page.thaumicCore1=It Sucks!
 
 botanicalworkshop.entry.thaumicCatalyst=Thaumic Catalyst
+botanicalworkshop.tagline.thaumicCatalyst=I'm out of wit today
 botanicalworkshop.page.thaumicCatalyst0=Used with the &1Thaumic Gateway Core&0. See that entry for more details.
 botanicalworkshop.page.thaumicCatalyst1=It sees you!
 
@@ -187,12 +213,14 @@ botanicalworkshop.page.thaumicCatalyst1=It sees you!
 botanicalworkshop.category.blood=Botanical Sacrifice
 
 botanicalworkshop.entry.bloodIntro=An Introduction to Botanical Sacrifice
+botanicalworkshop.tagline.bloodIntro=You say flowers, I say BLOOD!
 botanicalworkshop.page.bloodIntro0=You have successfully created a Blood Binding Crystal, and by studying it you have found several uses for it that utilize sacrificial magic. The entries in this section document your discoveries, and include ways to integrate the Gateway with your Blood Altar.
 
 #BOTANICAL LIGHTNING
 botanicalworkshop.category.lightning=Botanical Lightning
 
 botanicalworkshop.entry.lightningIntro=Introduction to Botanical Lightning
+botanicalworkshop.tagline.lightningIntro=Zippity Zip Zap
 botanicalworkshop.page.lightningIntro0=You have discover a way to convert calm, docile mana in gateways to chaotic, violent lightning that arcs through the air! This lightning can be harnessed by many devices to perform useful functions.
 botanicalworkshop.page.lightningIntro1=The guiding principle of Botanical Lightning is that lightning flows from low to high conductivity. All lightning-conducting blocks have a conductivity that makes sense, but in case you need to check exactly what it is, you can right click it with a voltmeter.
 botanicalworkshop.page.lightningIntro2=Gold wires garunteed for 10K insertions!
@@ -200,6 +228,7 @@ botanicalworkshop.page.lightningIntro3=In addition to conductivity and lightning
 botanicalworkshop.page.lightningIntro4=WARNING: Gathering too much energy in one place can sometimes lead to &lshocking&r results.
 
 botanicalworkshop.entry.lightningCore=Lightning Conversion Gateway Core
+botanicalworkshop.tagline.lightningCore=If you think this name is long, look at my source code
 botanicalworkshop.page.lightningCore0=In order to get lightning from your gateway's mana, you need to install a Lightning Conversion Gateway Core. Simply create it, then place it in the empty slot at the top of the gateway.
 botanicalworkshop.page.lightningCore1=EZPZ Lightning Squeezy!
 botanicalworkshop.page.lightningCore2=Now that you have inserted your core, you need to make a Lightning Conversion Catalyst to catalyze the conversion in the gateway. They come in two varieties: Lightning Generating and Lightning Consuming. The Lightning Consuming one produces mana from lightning, and the Lightning Generating one... I'll let you guess ;)
@@ -207,5 +236,6 @@ botanicalworkshop.page.lightningCore3=Mana -> Lightning
 botanicalworkshop.page.lightningCore4=Lightning -> Mana
 
 botanicalworkshop.entry.lightningRod=Lightning Rod
+botanicalworkshop.tagline.lightningRod=Literally a metal stick!
 botanicalworkshop.page.lightningRod0=Lightning rods are used to pass lightning along when thing are out of lightning zap range.
 botanicalworkshop.page.lightningRod1=As seen on TV!

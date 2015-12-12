@@ -16,6 +16,8 @@ public class HUDHandler {
 	public static final ResourceLocation lightningBar = new ResourceLocation(LibResources.GUI_LIGHTNING_HUD);
 	
 	public static void drawSimpleLightningHUD(int color, int lightning, int power, int buffer, int overflow, String name, ScaledResolution res) {
+		//LightningRenderer.renderLightningBolt(null, null, 7, res, 2.0F, new Random());
+		
 		GL11.glEnable(GL11.GL_BLEND);
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 		Minecraft mc = Minecraft.getMinecraft();

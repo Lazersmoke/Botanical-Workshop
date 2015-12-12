@@ -6,18 +6,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.WeakHashMap;
 
-import org.apache.logging.log4j.Level;
-
 import lazersmoke.botanicalworkshop.api.internal.ILightningNetwork;
 import lazersmoke.botanicalworkshop.api.mana.LightningNetworkEvent;
 import lazersmoke.botanicalworkshop.api.mana.LightningNetworkEvent.Action;
 import lazersmoke.botanicalworkshop.api.mana.TileSignature;
 import lazersmoke.botanicalworkshop.api.mana.lightning.IBotanicalLightningBlock;
-import lazersmoke.botanicalworkshop.common.BotanicalWorkshop;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.world.World;
+import vazkii.botania.client.core.handler.ClientTickHandler;
 import vazkii.botania.common.core.helper.MathHelper;
+import vazkii.botania.common.core.helper.Vector3;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class LightningNetworkHandler implements ILightningNetwork{
@@ -39,22 +38,25 @@ public class LightningNetworkHandler implements ILightningNetwork{
 			Collections.shuffle(blocksAround);//To ensure no shenanigans!
 			for(IBotanicalLightningBlock currBlock : blocksAround)
 				if(currBlock != theBlock && currBlock.getConductivity() >= theBlock.getConductivity() && currBlock.getConductivity() != -1)//-1 is special case for generators which should never take in lightning, even from other generators.
-						if(theBlock.blindAddLightning(-currBlock.blindAddLightning(Math.min(MAX_LIGHTNING_TRANSFER_RATE, theBlock.getCurrentLightning()))) != 0)
-							makeFancies(event.tile.getWorldObj(), theBlock.getPos(), currBlock.getPos());
+					if(
+						theBlock.blindAddLightning(//subtract from source
+							-currBlock.blindAddLightning(//add to target
+								Math.min(//The actual amount to move
+									MAX_LIGHTNING_TRANSFER_RATE,
+									theBlock.getCurrentLightning()
+								)
+							)
+						) != 0)
+							makeFancies((TileEntity) theBlock, (TileEntity) currBlock);
 			if(theBlock.getCurrentLightning() > theBlock.getOverflowThreshold())
 				theBlock.overflow();
 		}
 	}
-	private void makeFancies(World world, ChunkCoordinates start, ChunkCoordinates end){//TODO make fancier with lightning and sound
-		BotanicalWorkshop.logger.log(Level.INFO, "Making Fancies!");
-		if (!world.isRemote){
-		world.spawnParticle( "happyVillager", 
-		          start.posX, 
-		          start.posY, 
-		          start.posZ, 
-		          end.posX - start.posX, 
-		          end.posY - start.posY, 
-		          end.posZ - start.posZ);
+	private void makeFancies(TileEntity start, TileEntity end){
+		if(ClientTickHandler.ticksInGame % 10 == 0){
+			Vector3 tileStartVec = Vector3.fromTileEntity(start).add(((IBotanicalLightningBlock) start).getLightningRenderOffset());
+			Vector3 tileEndVec = Vector3.fromTileEntity(end).add(((IBotanicalLightningBlock) end).getLightningRenderOffset());
+			vazkii.botania.client.core.handler.LightningHandler.spawnLightningBolt(start.getWorldObj(), tileStartVec, tileEndVec, 1F / 7F, start.getWorldObj().rand.nextLong(), 0x4400799c, 0x4400C6FF);
 		}
 	}
 	private List<IBotanicalLightningBlock> getClosestXLightningBlocks(ChunkCoordinates pos, World world, int limit, int count){

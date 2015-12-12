@@ -16,9 +16,9 @@ public class TileThaumtanicalTransposer extends TileModLightning implements IWan
 	protected int bufferThreshold = 150;
 	protected int overflowThreshold = 300;
 	
-	private int bindX = 0; 
-	private int bindY = -1;
-	private int bindZ = 0;
+	private int bindX = xCoord; 
+	private int bindY = yCoord + 10;
+	private int bindZ = zCoord;
 	private static final String TAG_BIND_X = "bindGatewayX";
 	private static final String TAG_BIND_Y = "bindGatewayY";
 	private static final String TAG_BIND_Z = "bindGatewayZ";
@@ -39,10 +39,6 @@ public class TileThaumtanicalTransposer extends TileModLightning implements IWan
 	}
 	private int getDistanceToBind(){
 		return (int) Math.ceil(MathHelper.pointDistanceSpace(xCoord, yCoord, zCoord, bindX, bindY, bindZ));
-	}
-	@Override
-	protected boolean getState(){
-		return super.getState() && bindY > -1;
 	}
 	@Override
 	public void writeCustomNBT(NBTTagCompound cmp) {

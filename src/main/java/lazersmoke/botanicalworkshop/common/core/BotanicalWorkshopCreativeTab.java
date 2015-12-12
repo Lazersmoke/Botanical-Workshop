@@ -17,7 +17,7 @@ import vazkii.botania.client.lib.LibResources;
 public final class BotanicalWorkshopCreativeTab extends CreativeTabs{
 
 	public static BotanicalWorkshopCreativeTab INSTANCE = new BotanicalWorkshopCreativeTab();
-	List list;
+	private List list;
 
 	public BotanicalWorkshopCreativeTab(){
 		super("BotanicalWorkshop");

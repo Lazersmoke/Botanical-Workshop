@@ -138,7 +138,7 @@ public class ModCraftingRecipes{
 			recipeShiftedRevealingUpgrade = BotaniaAPI.getLatestAddedRecipe();
 		}
 		if(LibConfigs.CRAFT_VOLTMETER){
-			addOreDictRecipe(new ItemStack(ModItems.shiftedRevealingUpgrade), 
+			addOreDictRecipe(new ItemStack(ModItems.voltmeter), 
 				"NGN",
 				"BRB",
 				"NSN",
@@ -151,7 +151,7 @@ public class ModCraftingRecipes{
 			recipeVoltmeter = BotaniaAPI.getLatestAddedRecipe();
 		}
 		if(LibConfigs.CRAFT_LIGHTNING_ROD){
-			addOreDictRecipe(new ItemStack(ModItems.shiftedRevealingUpgrade), 
+			addOreDictRecipe(new ItemStack(ModBlocks.lightningRod), 
 				" R ",
 				" S ",
 				"SIS",
@@ -159,7 +159,7 @@ public class ModCraftingRecipes{
 				'R', new ItemStack(Items.redstone),
 				'S', new ItemStack(ModItems.botanicalResource, 1, 3)//Scrap Metal
 				);
-			recipeVoltmeter = BotaniaAPI.getLatestAddedRecipe();
+			recipeLightningRod = BotaniaAPI.getLatestAddedRecipe();
 		}
 	}
 

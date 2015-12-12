@@ -121,6 +121,12 @@ public final class ConfigHandler {
 		desc = "Set this to false to disable the crafting of Lightning Cores using the Gateway.";
 		LibConfigs.GATEWAY_CRAFT_LIGHTNING_CORE = loadPropBool("crafting.gateway.lightningCore", desc, true);
 		
+		desc = "Set this to false to disable the crafting of Lightning Consuming Catalysts using the Gateway.";
+		LibConfigs.GATEWAY_CRAFT_LIGHTNING_CONSUMING_CATALYST = loadPropBool("crafting.gateway.lightningConsumingCatalyst", desc, true);
+		
+		desc = "Set this to false to disable the crafting of Lightning Generation Catalysts using the Gateway.";
+		LibConfigs.GATEWAY_CRAFT_LIGHTNING_GENERATION_CATALYST = loadPropBool("crafting.gateway.lightningGenerationCatalyst", desc, true);
+		
 		// Gameplay Settings
 		desc = "Set this to change the mana cost of opening a Gateway.";
 		LibConfigs.GATEWAY_OPENING_MANA_COST = loadPropInt("gameplay.gateway.openingManaCost", desc, 1000000);

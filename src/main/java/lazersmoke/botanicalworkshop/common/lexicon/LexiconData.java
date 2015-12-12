@@ -217,7 +217,7 @@ public final class LexiconData{
 			new PageText("0"),
 			new PageGatewayTransmutationRecipe("1", ModGatewayTransmutationRecipes.lightningCoreRecipe),
 			new PageText("2"),
-			new PageGatewayTransmutationRecipe("3", ModGatewayTransmutationRecipes.lightningGeneratingCatalystRecipe),
+			new PageGatewayTransmutationRecipe("3", ModGatewayTransmutationRecipes.lightningGenerationCatalystRecipe),
 			new PageGatewayTransmutationRecipe("4", ModGatewayTransmutationRecipes.lightningConsumingCatalystRecipe)
 			);
 		lightningRod = new LLexiconEntry(LibLexicon.LIGHTNING_ROD, categoryLightning);

@@ -259,27 +259,20 @@ public class TileGatewayCore extends TileMod implements ISparkAttachable/* imple
 	}
 
 	private boolean checkConstructed() {
-		if (!checkPositions(LIVINGWOOD_POSITIONS, acceptableAlternativeMaterialsLivingwood)){
-			BotanicalWorkshop.logger.log(Level.INFO, "Failed 1");
-			return false;}
-		if (!checkPositions(CHISLED_ELVEN_QUARTZ_POSITIONS, acceptableAlternativeMaterialsQuartz)){
-			BotanicalWorkshop.logger.log(Level.INFO, "Failed 2");
-			return false;}
-		if (!checkPositions(GLIMMERING_LIVINGWOOD_POSITIONS, acceptableAlternativeMaterialsGlimmeringLivingwood)){
-			BotanicalWorkshop.logger.log(Level.INFO, "Failed 3");
-			return false;}
-		if (!checkPositions(LIVINGWOOD_STAIRS_UP_POSITIONS, acceptableAlternativeMaterialsLivingwoodStairs)){// meh
-			BotanicalWorkshop.logger.log(Level.INFO, "Failed 4");
-			return false;}
-		if (!checkPositions(LIVINGWOOD_STAIRS_DOWN_POSITIONS, acceptableAlternativeMaterialsLivingwoodStairs)){
-			BotanicalWorkshop.logger.log(Level.INFO, "Failed 5");
-			return false;}
-		if (!checkPositions(ELVEN_POOL_POSITIONS, Arrays.asList(ModBlocks.elvenPool))){
-			BotanicalWorkshop.logger.log(Level.INFO, "Failed 6");
-			return false;}
-		if (!checkPositions(AIR_POSITIONS, Arrays.asList(Blocks.air))){
-			BotanicalWorkshop.logger.log(Level.INFO, "Failed 7");
-			return false;}
+		if (!checkPositions(LIVINGWOOD_POSITIONS, acceptableAlternativeMaterialsLivingwood))
+			return false;
+		if (!checkPositions(CHISLED_ELVEN_QUARTZ_POSITIONS, acceptableAlternativeMaterialsQuartz))
+			return false;
+		if (!checkPositions(GLIMMERING_LIVINGWOOD_POSITIONS, acceptableAlternativeMaterialsGlimmeringLivingwood))
+			return false;
+		if (!checkPositions(LIVINGWOOD_STAIRS_UP_POSITIONS, acceptableAlternativeMaterialsLivingwoodStairs))
+			return false;
+		if (!checkPositions(LIVINGWOOD_STAIRS_DOWN_POSITIONS, acceptableAlternativeMaterialsLivingwoodStairs))
+			return false;
+		if (!checkPositions(ELVEN_POOL_POSITIONS, Arrays.asList(ModBlocks.elvenPool)))
+			return false;
+		if (!checkPositions(AIR_POSITIONS, Arrays.asList(Blocks.air)))
+			return false;
 		if (checkPositions(ADDITIONAL_CHISLED_ELVEN_QUARTZ_POSITIONS, acceptableAlternativeMaterialsQuartz) && checkPositions(ADDITIONAL_ELVEN_POOL_POSITIONS, Arrays.asList(ModBlocks.elvenPool)))
 			additionalPools = true;
 		activatePortal();

@@ -51,8 +51,7 @@ public class CommonProxy{
 	}
 
 	public void postInit(FMLPostInitializationEvent event){
-		BotanicalWorkshop.logger
-				.info("Botanical workshop dev Lazersmoke expresses his sincere gratitude to Vazkii and SoundLogic");
+		BotanicalWorkshop.logger.info("Botanical workshop dev Lazersmoke expresses his sincere gratitude to Vazkii and SoundLogic");
 	}
 
 	public void serverStarting(FMLServerStartingEvent event){

@@ -6,7 +6,6 @@ import lazersmoke.botanicalworkshop.common.block.tile.mana.lightning.TileLightni
 import lazersmoke.botanicalworkshop.common.lib.LibItemNames;
 import net.minecraft.block.Block;
 import net.minecraft.entity.item.EntityItem;
-//TODO texture this
 public class ItemLightningGenerationCatalyst extends ItemActiveCatalyst{
 
 	public ItemLightningGenerationCatalyst(){

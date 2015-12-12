@@ -16,6 +16,7 @@ public final class LibResources {
 
 	public static final String GUI_GATEWAY_TRANSMUTATION_OVERLAY = PREFIX_GUI + "gatewayTransmutationOverlay.png";
 	public static final String GUI_LIGHTNING_HUD = PREFIX_GUI + "lightningHUD.png";
+	public static final String WHITE_TEXTURE = PREFIX_GUI + "whiteTexture.png";
 	public static final String WORKSHOP_ICON = PREFIX_CATEGORIES + "workshop";
 	public static final String THAUMIC_ICON = PREFIX_CATEGORIES + "thaumic";
 	public static final String BLOOD_ICON = PREFIX_CATEGORIES + "blood";

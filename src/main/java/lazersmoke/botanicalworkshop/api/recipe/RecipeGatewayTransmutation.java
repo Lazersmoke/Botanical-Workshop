@@ -30,7 +30,7 @@ public class RecipeGatewayTransmutation{
 	public RecipeGatewayTransmutation(ItemStack output, ItemStack catalyst, ItemStack ... inputs){
 		this.output = output;
 		this.catalyst = catalyst;
-		this.inputs = reduceStacks(Arrays.asList(inputs));
+		this.inputs = /*reduceStacks(*/Arrays.asList(inputs)/*)*/;//Don't reduce inputs or it shows up seperate in lexicon
 	}
 	/**
 	 * Creates a predefined, named gateway transumatation recipe

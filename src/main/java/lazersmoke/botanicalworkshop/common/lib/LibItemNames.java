@@ -8,7 +8,7 @@ public final class LibItemNames {
 	public static final String MANA_TRANSFER_CATALYST = "manaTransferCatalyst";
 	public static final String THAUMIC_CATALYST = "thaumicCatalyst";
 	public static final String BOTANICAL_RESOURCE = "botanicalResource";
-	public static final String[] BOTANICAL_RESOURCE_NAMES = { "elvenCrystal", "recipeDisabled", "elvenKnotting", "scrapMetal" };//TODO texture scrap metal
+	public static final String[] BOTANICAL_RESOURCE_NAMES = { "elvenCrystal", "recipeDisabled", "elvenKnotting", "scrapMetal" };
 	public static final String THAUMIC_RESOURCE = "thaumicResource";
 	public static final String[] THAUMIC_RESOURCE_NAMES = { "manaEssentiaCrystal" };
 	public static final String SHIFTED_BOOTS = "shiftedBoots";

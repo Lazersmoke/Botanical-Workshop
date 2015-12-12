@@ -1,6 +1,8 @@
 package lazersmoke.botanicalworkshop.api.mana.lightning;
 
+import vazkii.botania.common.core.helper.Vector3;
 import net.minecraft.util.ChunkCoordinates;
+import net.minecraft.util.Vec3;
 
 
 /**
@@ -80,4 +82,10 @@ public interface IBotanicalLightningBlock{
 	 * Overflow Threshold
 	 */
 	int getOverflowThreshold();
+	/**
+	 * Gets the offset of the point to render lightning effects at.
+	 * @return
+	 * lightning render offset as a 3 element float array
+	 */
+	Vector3 getLightningRenderOffset();
 }
