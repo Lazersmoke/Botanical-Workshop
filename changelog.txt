@@ -1,3 +1,84 @@
-Build 6
-* Initial build
-* All features not listed under any other build
+***Build 6
+-Initial build
+-All features not listed under any other build
+
+***Version 0.2
+**Final commit before release of version 0.2!
+-Updated gradle script to auto upate thaumcraft
+-Added method to change lightning render point on lightning blocks
+-Fixed items not stacking in gateway recipes
+-Added lightning renderer, but not using (using botania lightning now)
+  +Havent decide what I will be keeping long term
+-Added most every texture
+-Fixed some lightning core weirdness (dont worry theres still plenty to be had)
+-Gave transposer a default bind
+-Gateway no longer spams console when it unloads
+-privateized list on creative tab
+-added recipes for everything (hopefully)
+-Added REALLY FANCY LIGHTNING W00T!
+-Random formatting
+-Added taglines for most blocks
+-Added lexicon entires and names for all the things maybe probably forgot some
+-Did i mention textures?
+
+update for today; i should make more commits
+-Added A TON of documentation
+-Removed GatewayHelper. Why did it exist?
+-Fixed items coming out of gateways not stacking well
+-Moves "WithThresholds" into main class
+-Removed IBotanicalVoltmeter
+-Random Formatting fixes
+-Added fully custom-rendered lightning rod WOOT!
+-Added catalyst support for gateway recipes in NEI
+-Fixed lightning core being a thaumic core inside. Derp.
+-Renamed 0 and 1 textures to actual names
+-Added a ton of textures
+-made TileModLightning abstract for better practice
+-made transposer distance-dependant and not magic items out of existence
+-added a bunch of crafting recipes and lexicon entries
+-Added special conductivity for generators
+-added new resource scrap metal
+-yay
+
+Some more patches and stuff
+-Changed mechanical to lightning
+-Random formatting shit
+-Added lightning core *%100 untested!*
+-made some TODO's for myself
+-Made ThaumtanicalTransposer multi-textured  (no textures yet)
+-Fixed many blocks' lexicon entries pointing to gatewaycore
+-Put in some more debug things, took some of the old ones out
+-Fixed all the sidedness silliness
+  +ALL HAIL worldObj.func_147453_f(xCoord, yCoord, zCoord, worldObj.getBlock(xCoord, yCoord, zCoord));
+  +worldObj.func_147453_f(xCoord, yCoord, zCoord, worldObj.getBlock(xCoord, yCoord, zCoord)); IS SUPREME
+  +FUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_FFUNC_147453_F
+-Added untested catalysts for lightning core
+
+*Forgets to update for 3 days*
+-Added .gitignore and build.gradle entries for BloodMagic-deobf.jar
+-Random Formatting fixes
+-Added LightningNetwork
+  +Voltmeter
+  +Lightning Blocks
+  +Magic Lightning
+-Added random Gateway Helper that im going to delete
+-Removed some random extra imports
+-Made HUDHandler for lightning bars
+-Some random debug messages that will be removed later
+-Added Thaumtanical Transposer
+-Added Lightning Rod
+-Added variants on styling for Gateways
+  +Seriously, they look really cool!
+
+IM ALIVE
+-Updated some god-awful formatting
+-Updated to work with latest Botania
+-Added some random recipes
+-Added shifted matter (no texture yet)
+-Scrubbed the fuck out of the scourge of reality known only as "Mana Bank Interface"
+  +If there is any remaining piece of it in my code I have this to tell it: "Fuck You!"
+
+Added Recipes for shifted stuff and fixed gateway
+-Added recipes for shifted armor and upgrades, including lexicon entries
+-Added shifted matter texture
+-Reworked Gateway techincal bits to make it work with multiple of the same item as inputs

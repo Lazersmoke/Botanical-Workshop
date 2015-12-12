@@ -32,7 +32,7 @@ public class BlockGatewayCore extends BlockContainer implements IWandable, IWand
 	public static IIcon iconOff, iconOn, portalTex;
 
 	public BlockGatewayCore(){
-		super(Material.rock);
+		super(Material.wood);
 		setHardness(2.0F);
 		setResistance(10.0F);
 		setStepSound(soundTypeStone);
