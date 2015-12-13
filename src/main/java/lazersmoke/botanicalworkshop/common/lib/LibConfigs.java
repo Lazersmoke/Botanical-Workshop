@@ -40,6 +40,9 @@ public class LibConfigs{
 	public static boolean GATEWAY_CRAFT_LIGHTNING_CORE;
 	public static boolean GATEWAY_CRAFT_LIGHTNING_CONSUMING_CATALYST;
 	public static boolean GATEWAY_CRAFT_LIGHTNING_GENERATION_CATALYST;
+	public static boolean GATEWAY_CRAFT_THAUMTANICAL_TRANSPOSER;
+	public static boolean GATEWAY_CRAFT_LIGHTNING_TRANSFORMER;
+	public static boolean GATEWAY_CRAFT_LIGHTNING_CAPACITOR;
 
 	// Gameplay Settings
 	public static int GATEWAY_TICK_MANA_COST;

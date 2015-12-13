@@ -50,12 +50,9 @@ public class BlockGatewayCore extends BlockContainer implements IWandable, IWand
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister par1IconRegister){
-		iconOff = par1IconRegister.registerIcon(LibResources.PREFIX_MOD
-				+ getUnlocalizedName().replaceAll("tile\\.", "") + "0");
-		iconOn = par1IconRegister.registerIcon(LibResources.PREFIX_MOD
-				+ getUnlocalizedName().replaceAll("tile\\.", "") + "1");
-		portalTex = par1IconRegister.registerIcon(LibResources.PREFIX_MOD
-				+ getUnlocalizedName().replaceAll("tile\\.", "") + "Portal");
+		iconOff = par1IconRegister.registerIcon(LibResources.PREFIX_MOD + getUnlocalizedName().replaceAll("tile\\.", "") + "0");
+		iconOn = par1IconRegister.registerIcon(LibResources.PREFIX_MOD + getUnlocalizedName().replaceAll("tile\\.", "") + "1");
+		portalTex = par1IconRegister.registerIcon(LibResources.PREFIX_MOD + getUnlocalizedName().replaceAll("tile\\.", "") + "Portal");
 	}
 
 	@Override

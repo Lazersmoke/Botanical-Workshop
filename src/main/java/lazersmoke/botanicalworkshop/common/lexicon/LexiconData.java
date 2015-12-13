@@ -44,6 +44,7 @@ public final class LexiconData{
 	public static LexiconEntry shiftedArmor;
 	public static LexiconEntry shiftedArmorUpgrade;
 	public static LexiconEntry botanicalResources;
+	public static LexiconEntry thaumtanicalTransposer;
 	
 	public static LexiconEntry bloodIntro;
 
@@ -51,7 +52,8 @@ public final class LexiconData{
 	public static LexiconEntry exAquainas;
 	public static LexiconEntry lightningCore;
 	public static LexiconEntry lightningRod;
-	public static LexiconEntry thaumtanicalTransposer;
+	public static LexiconEntry lightningTransformer;
+	public static LexiconEntry lightningCapacitor;
 
 	public static void init(){
 		//Unlocked by using binding crystals, except for the default one
@@ -224,6 +226,16 @@ public final class LexiconData{
 		lightningRod.setPriority().setLexiconPages(
 			new PageText("0"),
 			new PageCraftingRecipe("1", ModCraftingRecipes.recipeLightningRod)
+			);
+		lightningTransformer = new LLexiconEntry(LibLexicon.LIGHTNING_TRANSFORMER, categoryLightning);
+		lightningTransformer.setLexiconPages(
+			new PageText("0"),
+			new PageGatewayTransmutationRecipe("1", ModGatewayTransmutationRecipes.lightningTransformerRecipe)
+			);
+		lightningCapacitor = new LLexiconEntry(LibLexicon.LIGHTNING_CAPACITOR, categoryLightning);
+		lightningCapacitor.setLexiconPages(
+			new PageText("0"),
+			new PageGatewayTransmutationRecipe("1", ModGatewayTransmutationRecipes.lightningCapacitorRecipe)
 			);
 	}
 }

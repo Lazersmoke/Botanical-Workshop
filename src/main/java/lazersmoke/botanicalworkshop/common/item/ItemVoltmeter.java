@@ -30,8 +30,20 @@ public class ItemVoltmeter extends ItemMod{
 				if(world.getTileEntity(i, j, k) instanceof IBotanicalLightningBlock){
 					IBotanicalLightningBlock theBlock = (IBotanicalLightningBlock) world.getTileEntity(i, j, k);
 					world.playSoundEffect(i, j, k, "note.harp", 0.3F, 1.0F);
-					player.addChatMessage(new ChatComponentText("Current Lightning: " + theBlock.getCurrentLightning()));
-					player.addChatMessage(new ChatComponentText("Current Conductivity: " + theBlock.getConductivity()));
+					if(world.isRemote){
+						player.addChatMessage(new ChatComponentText("Client says:"));
+						player.addChatMessage(new ChatComponentText(" " + theBlock.getPowerThreshold() + "/" + theBlock.getBufferThreshold() + "/" + theBlock.getOverflowThreshold() ));
+						player.addChatMessage(new ChatComponentText(" Current Push Radius: " + theBlock.getLightningPushRange()));
+						player.addChatMessage(new ChatComponentText(" Current Lightning: " + theBlock.getCurrentLightning()));
+						player.addChatMessage(new ChatComponentText(" Current Conductivity: " + theBlock.getConductivity()));
+					}
+					if(!world.isRemote){
+						player.addChatMessage(new ChatComponentText("Server says:"));
+						player.addChatMessage(new ChatComponentText(" " + theBlock.getPowerThreshold() + "/" + theBlock.getBufferThreshold() + "/" + theBlock.getOverflowThreshold() ));
+						player.addChatMessage(new ChatComponentText(" Current Push Radius: " + theBlock.getLightningPushRange()));
+						player.addChatMessage(new ChatComponentText(" Current Lightning: " + theBlock.getCurrentLightning()));
+						player.addChatMessage(new ChatComponentText(" Current Conductivity: " + theBlock.getConductivity()));
+					}
 				}
 			}
 		}

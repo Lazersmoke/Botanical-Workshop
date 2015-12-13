@@ -13,6 +13,7 @@ import net.minecraft.util.ChunkCoordinates;
 
 public abstract class TileModLightning extends TileMod implements IBotanicalLightningBlock{
 	protected static final String TAG_LIGHTNING = "botanicalLightning";
+	protected static final String TAG_STATE = "botanicalState";
 	
 	private int lightning = 0;
 	
@@ -30,6 +31,7 @@ public abstract class TileModLightning extends TileMod implements IBotanicalLigh
 	@Override
 	public void updateEntity(){
 		super.updateEntity();
+		if(worldObj.isRemote) return;
 		if(!LightningNetworkHandler.instance.isBlockIn(this) && !isInvalid())
 			LightningNetworkEvent.addBlock(this);
 		LightningNetworkEvent.tickBlock(this);
@@ -77,12 +79,14 @@ public abstract class TileModLightning extends TileMod implements IBotanicalLigh
 	public void writeCustomNBT(NBTTagCompound cmp) {
 		super.writeCustomNBT(cmp);
 		cmp.setInteger(TAG_LIGHTNING, lightning);
+		cmp.setBoolean(TAG_STATE, state);
 	}
 	
 	@Override
 	public void readCustomNBT(NBTTagCompound cmp) {
 		super.readCustomNBT(cmp);
 		lightning = cmp.getInteger(TAG_LIGHTNING);
+		state = cmp.getBoolean(TAG_STATE);
 	}
 	@Override
 	public ChunkCoordinates getPos() {
@@ -91,5 +95,15 @@ public abstract class TileModLightning extends TileMod implements IBotanicalLigh
 	@Override
 	public Vector3 getLightningRenderOffset(){
 		return new Vector3(0.5F, 1.16F, 0.5F);
+	}
+	@Override
+	public int getLightningPushRange(){
+		return 7;
+	}
+	@Override
+	public void overflow() {
+		worldObj.spawnParticle("hugeexplosion", xCoord + 0.5F, yCoord + 0.5F, zCoord + 0.5F, 1.0D, 0.0D, 0.0D);
+		worldObj.playSoundEffect(xCoord + 0.5F, yCoord + 0.5F, zCoord + 0.5F, "random.explode", 1F, 0.7F);
+		worldObj.setBlockToAir(xCoord, yCoord, zCoord);
 	}
 }

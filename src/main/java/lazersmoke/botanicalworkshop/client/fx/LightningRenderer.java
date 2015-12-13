@@ -3,15 +3,13 @@ package lazersmoke.botanicalworkshop.client.fx;
 import java.util.Random;
 
 import lazersmoke.botanicalworkshop.client.lib.LibResources;
-
-import org.lwjgl.opengl.GL11;
-
-import vazkii.botania.common.core.helper.MathHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.ResourceLocation;
+
+import org.lwjgl.opengl.GL11;
 
 public class LightningRenderer {
 	public static final ResourceLocation theTexture = new ResourceLocation(LibResources.WHITE_TEXTURE);
@@ -37,8 +35,8 @@ public class LightningRenderer {
 		GL11.glColor4f(1F, 1F, 1F, 1F);
 		mc.renderEngine.bindTexture(theTexture);
 		
-		int u = 0;
-		int v = 0;
+		//int u = 0;
+		//int v = 0;
 		
 		Tessellator tessellator = Tessellator.instance;
 		

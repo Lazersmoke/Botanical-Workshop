@@ -8,6 +8,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChunkCoordinates;
+import vazkii.botania.api.mana.IManaItem;
 import vazkii.botania.api.wand.IWandBindable;
 import vazkii.botania.common.core.helper.MathHelper;
 
@@ -28,11 +29,22 @@ public class TileThaumtanicalTransposer extends TileModLightning implements IWan
 		super.updateEntity();
 		if(getState()){
 			List<EntityItem> items = (List<EntityItem>) worldObj.getEntitiesWithinAABB(EntityItem.class, getActiveAABB());
-			if(!items.isEmpty() && addLightning(-getDistanceToBind())){
+			//Don't tp if: nothing to tp OR its a IManaItem OR we dont have enough lightning 
+			if(!items.isEmpty() && !(items.get(0).getEntityItem().getItem() instanceof IManaItem) && addLightning(-getDistanceToBind())){
 				items.get(0).setPosition(bindX + 0.5F, bindY + 1.5F, bindZ + 0.5F);
 				items.get(0).motionX = 0;
 				items.get(0).motionY = 0;
 				items.get(0).motionZ = 0;
+				worldObj.playSoundEffect(
+						xCoord + 0.5F,
+						yCoord + 0.5F,
+						zCoord + 0.5F,
+						"mob.endermen.portal", 0.5F, (float) ((Math.random() / 2) + 0.25F));
+				worldObj.playSoundEffect(
+						bindX + 0.5F,
+						bindY + 1.5F,
+						bindZ + 0.5F,
+						"mob.endermen.portal", 0.5F, (float) ((Math.random() / 2) + 0.25F));
 			}
 		}
 		worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, getState() ? 1 : 0, 1);

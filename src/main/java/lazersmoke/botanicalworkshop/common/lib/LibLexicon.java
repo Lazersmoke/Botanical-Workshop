@@ -36,7 +36,6 @@ public class LibLexicon{
 	public static final String LIGHTNING_CORE = "lightningCore";
 	public static final String LIGHTNING_ROD = "lightningRod";
 	public static final String THAUMTANICAL_TRANSPOSER = "thaumtanicalTransposer";
-
-
-	
+	public static final String LIGHTNING_TRANSFORMER = "lightningTransformer";
+	public static final String LIGHTNING_CAPACITOR = "lightningCapacitor";
 }

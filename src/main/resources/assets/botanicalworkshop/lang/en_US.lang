@@ -88,6 +88,12 @@ tile.botanicalworkshop:lightningRod0.name=Lightning Rod
 
 tile.botanicalworkshop:lightningCore0.name=Lightning Core
 
+tile.botanicalworkshop:lightningTransformer0.name=Lightning Transformer
+
+tile.botanicalworkshop:lightningCapacitor0.name=Lightning Capacitor 
+
+tile.botanicalworkshop:creativeLightningBlock0.name=Creative Lightning Block
+
 #NEI INTEGRATION
 botanicalworkshop.nei.gateway=Elven Gateway
 
@@ -231,11 +237,21 @@ botanicalworkshop.entry.lightningCore=Lightning Conversion Gateway Core
 botanicalworkshop.tagline.lightningCore=If you think this name is long, look at my source code
 botanicalworkshop.page.lightningCore0=In order to get lightning from your gateway's mana, you need to install a Lightning Conversion Gateway Core. Simply create it, then place it in the empty slot at the top of the gateway.
 botanicalworkshop.page.lightningCore1=EZPZ Lightning Squeezy!
-botanicalworkshop.page.lightningCore2=Now that you have inserted your core, you need to make a Lightning Conversion Catalyst to catalyze the conversion in the gateway. They come in two varieties: Lightning Generating and Lightning Consuming. The Lightning Consuming one produces mana from lightning, and the Lightning Generating one... I'll let you guess ;)
+botanicalworkshop.page.lightningCore2=Now that you have inserted your core, you need to make a Lightning Conversion Catalyst to catalyze the conversion in the gateway. They come in two varieties: Lightning Generating and Lightning Consuming. The Lightning Consuming one produces mana from lightning, and the Lightning Generating one... I'll let you guess ;) The core only distributes lightning in a short range, so you will need other blocks for it to actually do anything.
 botanicalworkshop.page.lightningCore3=Mana -> Lightning
 botanicalworkshop.page.lightningCore4=Lightning -> Mana
 
 botanicalworkshop.entry.lightningRod=Lightning Rod
 botanicalworkshop.tagline.lightningRod=Literally a metal stick!
-botanicalworkshop.page.lightningRod0=Lightning rods are used to pass lightning along when thing are out of lightning zap range.
+botanicalworkshop.page.lightningRod0=Lightning rods are used to pass lightning along when thing are out of lightning zap range. You can also "ground" them by right-clicking with a wand to make them more resistant to lightning, meaning they will never overflow, but will not function normally.
 botanicalworkshop.page.lightningRod1=As seen on TV!
+
+botanicalworkshop.entry.lightningTransformer=Lightning Transformer
+botanicalworkshop.tagline.lightningTransformer=Transform your mind with this simple trick that they don't want you to know!
+botanicalworkshop.page.lightningTransformer0=Ever wondered if there was a better way to extract lightning from a gateway without blowing up a lightning rod? Well now there is! Simply put a transformer near any lightning generator and it will regulate lightning going into a lightning block placed above it. This block is very safe, as it will stop taking in lightning when it gets close to exploding.
+botanicalworkshop.page.lightningTransformer1=One weird trick!
+
+botanicalworkshop.entry.lightningCapacitor=Lightning Capacitor
+botanicalworkshop.tagline.lightningCapacitor=Captain Capacitance!
+botanicalworkshop.page.lightningCapacitor0=Although you could use power on demand from a gateway, you can also stockpile it using lightning capacitors. Capacitors charge up until they light up, then send out lightning until the run out, then repeat the cycle. Note that it can stay in a charged state indefinitely. You can change the capacitance by right-clicking the top and bottom with a wand.
+botanicalworkshop.page.lightningCapacitor1=Storage for DAYZ

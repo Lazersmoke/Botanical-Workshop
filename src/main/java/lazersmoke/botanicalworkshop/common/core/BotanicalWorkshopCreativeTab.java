@@ -43,6 +43,5 @@ public final class BotanicalWorkshopCreativeTab extends CreativeTabs{
 	@Override
 	public void displayAllReleventItems(List list){
 		this.list = list;
-
 	}
 }

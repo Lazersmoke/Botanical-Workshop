@@ -39,4 +39,8 @@ public class TileLightningCore extends TileModLightning implements IBotanicalLig
 	public int getOverflowThreshold() {
 		return 1000;
 	}
+	@Override
+	public int getLightningPushRange(){
+		return 2;
+	}
 }

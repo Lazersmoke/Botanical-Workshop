@@ -1,8 +1,7 @@
 package lazersmoke.botanicalworkshop.client.render.tile;
 
 import lazersmoke.botanicalworkshop.client.lib.LibResources;
-import lazersmoke.botanicalworkshop.client.model.ModelLightningRod;
-import lazersmoke.botanicalworkshop.common.block.tile.mana.lightning.TileLightningRod;
+import lazersmoke.botanicalworkshop.client.model.ModelLightningTransformer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.RenderItem;
@@ -14,12 +13,10 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
-public class RenderTileLightningRod extends TileEntitySpecialRenderer {
+public class RenderTileLightningTransformer extends TileEntitySpecialRenderer {
 
-	private static final ResourceLocation texture = new ResourceLocation(LibResources.MODEL_LIGHTNING_ROD);
-	private static final ResourceLocation textureGrounded = new ResourceLocation(LibResources.MODEL_LIGHTNING_ROD_GROUNDED);
-
-	ModelLightningRod model = new ModelLightningRod();
+	private static final ResourceLocation texture = new ResourceLocation(LibResources.MODEL_LIGHTNING_TRANSFORMER);
+	ModelLightningTransformer model = new ModelLightningTransformer();
 	RenderItem renderItem = new RenderItem();
 	public static int forceMeta = -1;
 
@@ -28,7 +25,7 @@ public class RenderTileLightningRod extends TileEntitySpecialRenderer {
 		GL11.glPushMatrix();
 		GL11.glEnable(GL12.GL_RESCALE_NORMAL);
 		GL11.glColor4f(1F, 1F, 1F, 1F);
-		Minecraft.getMinecraft().renderEngine.bindTexture(((TileLightningRod) tileentity).isGrounded() ? textureGrounded : texture);
+		Minecraft.getMinecraft().renderEngine.bindTexture(texture);
 		GL11.glTranslated(d0 + 0.5, d1 + 1.5, d2 + 0.5);
 		GL11.glScalef(1F, -1F, -1F);
 		model.render();

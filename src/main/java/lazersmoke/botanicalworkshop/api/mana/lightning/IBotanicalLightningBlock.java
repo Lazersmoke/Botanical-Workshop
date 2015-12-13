@@ -1,19 +1,18 @@
 package lazersmoke.botanicalworkshop.api.mana.lightning;
 
-import vazkii.botania.common.core.helper.Vector3;
 import net.minecraft.util.ChunkCoordinates;
-import net.minecraft.util.Vec3;
+import vazkii.botania.common.core.helper.Vector3;
 
 
 /**
  * Any class implementing this interface will be considered a Lightning Block and will be updated and connected to the lightning network. Lightning Blocks with less conductivity give lightning to Lightning Blocks with more conductivity.
- * 
- * @author Lazersmoke
  *
  * <b>Implementation Instructions:</b><br>
  * - Override invalidate() and onChunkUnload(), calling <i>LightningNetworkEvent.removeBlock(this);</i> on both.<br>
  * - On the first tick of onUpdate(), call <i>LightningNetworkEvent.addBlock(this);</i>
  * - On every tick of onUpdate(), call <i>LightningNetworkEvent.tickBlock(this);</i> in order to make this block work with the network (Don't *not* call it ever)
+ * 
+ * @author Lazersmoke
  */
 public interface IBotanicalLightningBlock{
 	/**
@@ -88,4 +87,11 @@ public interface IBotanicalLightningBlock{
 	 * lightning render offset as a 3 element float array
 	 */
 	Vector3 getLightningRenderOffset();
+	/**
+	 * Returns maximum range to disperse lightning to.
+	 * When in doubt, use 7
+	 * @return
+	 * Lightning Push Range
+	 */
+	int getLightningPushRange();
 }

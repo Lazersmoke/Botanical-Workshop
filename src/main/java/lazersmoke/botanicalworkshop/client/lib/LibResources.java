@@ -10,6 +10,8 @@ public final class LibResources {
 	public static final String GUI_NEI_BLANK = PREFIX_GUI + "neiBlank.png";
 
 	public static final String MODEL_LIGHTNING_ROD = PREFIX_MODEL + "lightningRod.png";
+	public static final String MODEL_LIGHTNING_ROD_GROUNDED = PREFIX_MODEL + "lightningRodGrounded.png";
+	public static final String MODEL_LIGHTNING_TRANSFORMER = PREFIX_MODEL + "lightningTransformer.png";
 	public static final String MODEL_ELVEN_POOL = PREFIX_MODEL + "elvenPool.png";
 	public static final String MODEL_SHIFTED_0 = PREFIX_MODEL + "shifted0.png";
 	public static final String MODEL_SHIFTED_1 = PREFIX_MODEL + "shifted1.png";
@@ -24,4 +26,6 @@ public final class LibResources {
 	public static final String ENTRY_GATEWAY = PREFIX_ENTRIES + "gateway.png";
 	public static final String ENTRY_THAUMICCORE = PREFIX_ENTRIES + "thaumicCore.png";
 	public static final String[] ENTRIES_GATEWAY = { "gateway0.png", "gateway1.png", "gateway2.png", "gateway3.png", "gateway4.png", };
+	
+	
 }

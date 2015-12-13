@@ -8,8 +8,11 @@ import lazersmoke.botanicalworkshop.common.block.subtile.functional.SubTileLogic
 import lazersmoke.botanicalworkshop.common.block.tile.TileGatewayCore;
 import lazersmoke.botanicalworkshop.common.block.tile.TileThaumicCore;
 import lazersmoke.botanicalworkshop.common.block.tile.mana.TileElvenPool;
+import lazersmoke.botanicalworkshop.common.block.tile.mana.lightning.TileCreativeLightningBlock;
+import lazersmoke.botanicalworkshop.common.block.tile.mana.lightning.TileLightningCapacitor;
 import lazersmoke.botanicalworkshop.common.block.tile.mana.lightning.TileLightningCore;
 import lazersmoke.botanicalworkshop.common.block.tile.mana.lightning.TileLightningRod;
+import lazersmoke.botanicalworkshop.common.block.tile.mana.lightning.TileLightningTransformer;
 import lazersmoke.botanicalworkshop.common.block.tile.mana.lightning.TileThaumtanicalTransposer;
 import lazersmoke.botanicalworkshop.common.lib.LibBlockNames;
 import net.minecraft.block.Block;
@@ -27,6 +30,9 @@ public final class ModBlocks{
 	public static Block thaumtanicalTransposer;
 	public static Block lightningRod;
 	public static Block lightningCore;
+	public static Block lightningTransformer;
+	public static Block creativeLightningBlock;
+	public static Block lightningCapacitor;
 	
 	public static void init(){
 
@@ -37,6 +43,9 @@ public final class ModBlocks{
 		thaumtanicalTransposer = new BlockThaumtanicalTransposer();
 		lightningRod = new BlockLightningRod();
 		lightningCore = new BlockLightningCore();
+		lightningTransformer = new BlockLightningTransformer();
+		creativeLightningBlock = new BlockCreativeLightningBlock();
+		lightningCapacitor = new BlockLightningCapacitor();
 		
 		initTileEntities();
 	}
@@ -48,6 +57,9 @@ public final class ModBlocks{
 		registerTile(TileThaumtanicalTransposer.class, LibBlockNames.THAUMTANICAL_TRANSPOSER);
 		registerTile(TileLightningRod.class, LibBlockNames.LIGHTNING_ROD);
 		registerTile(TileLightningCore.class, LibBlockNames.LIGHTNING_CORE);
+		registerTile(TileLightningTransformer.class, LibBlockNames.LIGHTNING_TRANSFORMER);
+		registerTile(TileCreativeLightningBlock.class, LibBlockNames.LIGHTNING_CREATIVE);
+		registerTile(TileLightningCapacitor.class, LibBlockNames.LIGHTNING_CAPACITOR);
 		
 		registerSubTile(SubTileExAquainas.class, LibBlockNames.SUBTILE_EXAQUAINAS);
 		registerSubTile(SubTileLogicalSound.class, LibBlockNames.SUBTILE_LOGICALSOUND);
