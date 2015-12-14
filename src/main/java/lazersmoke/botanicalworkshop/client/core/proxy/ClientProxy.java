@@ -27,11 +27,11 @@ public class ClientProxy extends CommonProxy{
 		LibRenderIDs.idPool = RenderingRegistry.getNextAvailableRenderId();
 		RenderingRegistry.registerBlockHandler(new RenderElvenPool());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileElvenPool.class, new RenderTileElvenPool());
-		
+
 		LibRenderIDs.idRod = RenderingRegistry.getNextAvailableRenderId();
 		RenderingRegistry.registerBlockHandler(new RenderLightningRod());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileLightningRod.class, new RenderTileLightningRod());
-		
+
 		LibRenderIDs.idTransformer = RenderingRegistry.getNextAvailableRenderId();
 		RenderingRegistry.registerBlockHandler(new RenderLightningTransformer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileLightningTransformer.class, new RenderTileLightningTransformer());

@@ -39,8 +39,7 @@ public class ItemBindingCrystal extends ItemCatalyst{
 	}
 
 	@Override
-	public void getSubItems(Item item, CreativeTabs creativeTab,
-			List subItemList){
+	public void getSubItems(Item item, CreativeTabs creativeTab, List subItemList){
 		for(int i = 0; i < icons.length; i++)
 			subItemList.add(new ItemStack(item, 1, i));
 	}

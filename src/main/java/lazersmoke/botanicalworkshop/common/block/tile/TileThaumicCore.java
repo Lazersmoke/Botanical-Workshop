@@ -7,8 +7,7 @@ import cpw.mods.fml.common.Optional;
 
 @Optional.InterfaceList({
 		@Optional.Interface(modid = "Thaumcraft", iface = "thaumcraft.api.aspects.IEssentiaTransport", striprefs = true),
-		@Optional.Interface(modid = "Thaumcraft", iface = "thaumcraft.api.aspects.Aspect", striprefs = true)
-})
+		@Optional.Interface(modid = "Thaumcraft", iface = "thaumcraft.api.aspects.Aspect", striprefs = true)})
 public class TileThaumicCore extends TileMod implements IEssentiaTransport{
 
 	private int essentiaCount = 0;

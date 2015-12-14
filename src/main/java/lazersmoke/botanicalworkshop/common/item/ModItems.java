@@ -2,10 +2,10 @@ package lazersmoke.botanicalworkshop.common.item;
 
 import lazersmoke.botanicalworkshop.api.BotanicalWorkshopAPI;
 import lazersmoke.botanicalworkshop.api.shifted.IShiftedArmorUpgrade;
+import lazersmoke.botanicalworkshop.common.item.catalyst.ItemCraftingAutomationCatalyst;
 import lazersmoke.botanicalworkshop.common.item.catalyst.ItemEmptyCatalyst;
 import lazersmoke.botanicalworkshop.common.item.catalyst.ItemLightningConsumingCatalyst;
 import lazersmoke.botanicalworkshop.common.item.catalyst.ItemLightningGenerationCatalyst;
-import lazersmoke.botanicalworkshop.common.item.catalyst.ItemTransferCatalyst;
 import lazersmoke.botanicalworkshop.common.item.catalyst.ItemSimpleCatalyst;
 import lazersmoke.botanicalworkshop.common.item.catalyst.ItemThaumicCatalyst;
 import lazersmoke.botanicalworkshop.common.item.equipment.armor.shifted.ItemShiftedBoots;
@@ -23,7 +23,6 @@ public final class ModItems{
 	public static Item bindingCrystal;
 	public static Item simpleCatalyst;
 	public static Item emptyCatalyst;
-	public static Item manaCatalyst;
 	public static Item shiftedHelmet;
 	public static Item shiftedChestplate;
 	public static Item shiftedLeggings;
@@ -38,13 +37,13 @@ public final class ModItems{
 	public static Item voltmeter;
 	public static Item lightningGenerationCatalyst;
 	public static Item lightningConsumingCatalyst;
+	public static Item craftingAutomationCatalyst;
 
 	public static void init(){
 
 		bindingCrystal = new ItemBindingCrystal();
 		simpleCatalyst = new ItemSimpleCatalyst();
 		emptyCatalyst = new ItemEmptyCatalyst();
-		manaCatalyst = new ItemTransferCatalyst();
 		shiftedHelmet = new ItemShiftedHelmet();
 		shiftedChestplate = new ItemShiftedChestplate();
 		shiftedLeggings = new ItemShiftedLeggings();
@@ -59,6 +58,7 @@ public final class ModItems{
 		voltmeter = new ItemVoltmeter();
 		lightningGenerationCatalyst = new ItemLightningGenerationCatalyst();
 		lightningConsumingCatalyst = new ItemLightningConsumingCatalyst();
+		craftingAutomationCatalyst = new ItemCraftingAutomationCatalyst();
 
 		BotanicalWorkshopAPI.registerShiftedArmorUpgrade((IShiftedArmorUpgrade) shiftedPhaseUpgrade);
 		BotanicalWorkshopAPI.registerShiftedArmorUpgrade((IShiftedArmorUpgrade) shiftedRevealingUpgrade);

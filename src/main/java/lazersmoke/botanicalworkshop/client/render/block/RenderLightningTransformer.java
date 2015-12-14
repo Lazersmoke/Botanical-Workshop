@@ -12,10 +12,10 @@ import org.lwjgl.opengl.GL11;
 
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
-public class RenderLightningTransformer implements ISimpleBlockRenderingHandler {
+public class RenderLightningTransformer implements ISimpleBlockRenderingHandler{
 
 	@Override
-	public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer) {
+	public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer){
 		GL11.glPushMatrix();
 		GL11.glTranslatef(-0.5F, -0.6F, -0.5F);
 		GL11.glScalef(0.9F, 0.9F, 0.9F);
@@ -25,17 +25,17 @@ public class RenderLightningTransformer implements ISimpleBlockRenderingHandler 
 	}
 
 	@Override
-	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer) {
+	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer){
 		return false;
 	}
 
 	@Override
-	public int getRenderId() {
+	public int getRenderId(){
 		return LibRenderIDs.idTransformer;
 	}
 
 	@Override
-	public boolean shouldRender3DInInventory(int modelId) {
+	public boolean shouldRender3DInInventory(int modelId){
 		return true;
 	}
 }

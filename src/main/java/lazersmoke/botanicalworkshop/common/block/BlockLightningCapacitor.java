@@ -25,7 +25,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockLightningCapacitor extends BlockContainer implements ILexiconable, IWandable{
 	public static IIcon iconCharged, iconUncharged;
-	
+
 	public BlockLightningCapacitor(){
 		super(Material.rock);
 		setHardness(2.0F);
@@ -35,6 +35,7 @@ public class BlockLightningCapacitor extends BlockContainer implements ILexicona
 		setCreativeTab(BotanicalWorkshop.creativeTab);
 		setBlockBounds(0F, 0F, 0F, 1F, 1F, 1F);
 	}
+
 	@Override
 	public Block setBlockName(String name){
 		GameRegistry.registerBlock(this, ItemBlockLightningCapacitor.class, name);
@@ -45,21 +46,23 @@ public class BlockLightningCapacitor extends BlockContainer implements ILexicona
 	public TileEntity createNewTileEntity(World arg0, int arg1){
 		return new TileLightningCapacitor();
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister iconRegister){
 		iconCharged = iconRegister.registerIcon(LibResources.PREFIX_MOD + getUnlocalizedName().replaceAll("tile\\.", "") + "Charged");
 		iconUncharged = iconRegister.registerIcon(LibResources.PREFIX_MOD + getUnlocalizedName().replaceAll("tile\\.", "") + "Uncharged");
 	}
-	
-	@SideOnly(Side.CLIENT) 
+
+	@SideOnly(Side.CLIENT)
 	@Override
 	public IIcon getIcon(int side, int meta){
-		switch (meta) {
-			case 0:	return iconCharged;
-			case 1: return iconUncharged;
-	    }
+		switch(meta){
+			case 0:
+				return iconCharged;
+			case 1:
+				return iconUncharged;
+		}
 		return iconUncharged;
 	}
 
@@ -67,9 +70,10 @@ public class BlockLightningCapacitor extends BlockContainer implements ILexicona
 	public LexiconEntry getEntry(World world, int x, int y, int z, EntityPlayer player, ItemStack lexicon){
 		return LexiconData.lightningCapacitor;
 	}
+
 	@Override
-	public boolean onUsedByWand(EntityPlayer player, ItemStack wand, World world, int x, int y, int z, int side) {
-		((TileLightningCapacitor)world.getTileEntity(x, y, z)).interpretClick(ForgeDirection.getOrientation(side));
+	public boolean onUsedByWand(EntityPlayer player, ItemStack wand, World world, int x, int y, int z, int side){
+		((TileLightningCapacitor) world.getTileEntity(x, y, z)).interpretClick(ForgeDirection.getOrientation(side));
 		return true;
 	}
 }

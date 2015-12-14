@@ -16,8 +16,7 @@ import thaumcraft.api.aspects.AspectSourceHelper;
 
 @Optional.InterfaceList({
 		@Optional.Interface(modid = "Thaumcraft", iface = "thaumcraft.api.aspects.AspectSourceHelper", striprefs = true),
-		@Optional.Interface(modid = "Thaumcraft", iface = "thaumcraft.api.aspects.Aspect", striprefs = true)
-})
+		@Optional.Interface(modid = "Thaumcraft", iface = "thaumcraft.api.aspects.Aspect", striprefs = true)})
 public class ItemThaumicCatalyst extends ItemActiveCatalyst{
 
 	public ItemThaumicCatalyst(){

@@ -12,7 +12,7 @@ import vazkii.botania.api.mana.IManaItem;
 import vazkii.botania.api.wand.IWandBindable;
 import vazkii.botania.common.core.helper.MathHelper;
 
-public class TileThaumtanicalTransposer extends TileModLightning implements IWandBindable{
+public class TileLightningFurnace extends TileModLightning implements IWandBindable{
 	protected int powerThreshold = 100;
 	protected int bufferThreshold = 150;
 	protected int overflowThreshold = 300;

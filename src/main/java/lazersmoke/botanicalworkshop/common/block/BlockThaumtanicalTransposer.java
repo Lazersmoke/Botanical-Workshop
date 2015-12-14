@@ -27,9 +27,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 // This class is all Lazersmoke
 public class BlockThaumtanicalTransposer extends BlockContainer implements IWandable, IWandHUD, ILexiconable{
-	
+
 	public static IIcon iconOff, iconOn;
-	
+
 	public BlockThaumtanicalTransposer(){
 		super(Material.rock);
 		setHardness(2.0F);
@@ -46,12 +46,12 @@ public class BlockThaumtanicalTransposer extends BlockContainer implements IWand
 		iconOff = par1IconRegister.registerIcon(LibResources.PREFIX_MOD + getUnlocalizedName().replaceAll("tile\\.", "") + "Off");
 		iconOn = par1IconRegister.registerIcon(LibResources.PREFIX_MOD + getUnlocalizedName().replaceAll("tile\\.", "") + "On");
 	}
-	
+
 	@Override
 	public IIcon getIcon(int side, int meta){
 		return meta == 0 ? iconOff : iconOn;
 	}
-	
+
 	@Override
 	public Block setBlockName(String name){
 		GameRegistry.registerBlock(this, ItemBlockThaumtanicalTransposer.class, name);

@@ -26,23 +26,23 @@ public class BlockLightningRod extends BlockContainer implements ILexiconable, I
 		setStepSound(soundTypeMetal);
 		setBlockName(LibBlockNames.LIGHTNING_ROD);
 		setCreativeTab(BotanicalWorkshop.creativeTab);
-		
+
 		float f = 1F / 16F * 4F;
 		setBlockBounds(f, 0F, f, 1F - f, 1F, 1F - f);
 	}
-	
+
 	@Override
-	public boolean isOpaqueCube() {
+	public boolean isOpaqueCube(){
 		return false;
 	}
 
 	@Override
-	public boolean renderAsNormalBlock() {
+	public boolean renderAsNormalBlock(){
 		return false;
 	}
 
 	@Override
-	public int getRenderType() {
+	public int getRenderType(){
 		return LibRenderIDs.idRod;
 	}
 
@@ -63,7 +63,7 @@ public class BlockLightningRod extends BlockContainer implements ILexiconable, I
 	}
 
 	@Override
-	public boolean onUsedByWand(EntityPlayer player, ItemStack wand, World world, int x, int y, int z, int side) {
+	public boolean onUsedByWand(EntityPlayer player, ItemStack wand, World world, int x, int y, int z, int side){
 		((TileLightningRod) world.getTileEntity(x, y, z)).onWanded();
 		return true;
 	}

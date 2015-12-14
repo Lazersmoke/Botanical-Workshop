@@ -33,7 +33,7 @@ public final class ModBlocks{
 	public static Block lightningTransformer;
 	public static Block creativeLightningBlock;
 	public static Block lightningCapacitor;
-	
+
 	public static void init(){
 
 		gatewayCore = new BlockGatewayCore();
@@ -46,7 +46,7 @@ public final class ModBlocks{
 		lightningTransformer = new BlockLightningTransformer();
 		creativeLightningBlock = new BlockCreativeLightningBlock();
 		lightningCapacitor = new BlockLightningCapacitor();
-		
+
 		initTileEntities();
 	}
 
@@ -60,7 +60,7 @@ public final class ModBlocks{
 		registerTile(TileLightningTransformer.class, LibBlockNames.LIGHTNING_TRANSFORMER);
 		registerTile(TileCreativeLightningBlock.class, LibBlockNames.LIGHTNING_CREATIVE);
 		registerTile(TileLightningCapacitor.class, LibBlockNames.LIGHTNING_CAPACITOR);
-		
+
 		registerSubTile(SubTileExAquainas.class, LibBlockNames.SUBTILE_EXAQUAINAS);
 		registerSubTile(SubTileLogicalSound.class, LibBlockNames.SUBTILE_LOGICALSOUND);
 	}

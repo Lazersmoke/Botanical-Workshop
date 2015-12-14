@@ -25,7 +25,7 @@ public class LibLexicon{
 	public static final String WORKSHOP_SHIFTEDARMORUPGRADE = "shiftedArmorUpgrade";
 	public static final String WORKSHOP_EXAQUAINAS = "exAquainas";
 	public static final String WORKSHOP_RESOURCES = "botanicalResources";
-	
+
 	public static final String THAUMIC_INTRO = "thaumicIntro";
 	public static final String THAUMIC_THAUMICCORE = "thaumicCore";
 	public static final String THAUMIC_THAUMICCATALYST = "thaumicCatalyst";

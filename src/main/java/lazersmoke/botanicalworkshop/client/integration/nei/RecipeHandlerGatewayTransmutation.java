@@ -21,15 +21,15 @@ import codechicken.nei.NEIServerUtils;
 import codechicken.nei.PositionedStack;
 import codechicken.nei.recipe.TemplateRecipeHandler;
 
-public class RecipeHandlerGatewayTransmutation extends TemplateRecipeHandler {
+public class RecipeHandlerGatewayTransmutation extends TemplateRecipeHandler{
 
-	public class CachedElvenTradeRecipe extends CachedRecipe {
+	public class CachedElvenTradeRecipe extends CachedRecipe{
 
 		public List<PositionedStack> inputs = new ArrayList<PositionedStack>();
 		public PositionedStack output;
 		public PositionedStack catalyst;
 
-		public CachedElvenTradeRecipe(RecipeGatewayTransmutation recipe) {
+		public CachedElvenTradeRecipe(RecipeGatewayTransmutation recipe){
 			if(recipe == null)
 				return;
 
@@ -38,51 +38,52 @@ public class RecipeHandlerGatewayTransmutation extends TemplateRecipeHandler {
 			catalyst = new PositionedStack(recipe.getCatalyst(), 60, 46);
 		}
 
-		public void setIngredients(List<ItemStack> list) {
+		public void setIngredients(List<ItemStack> list){
 			int i = 0;
-			for(Object o : list) {
+			for(Object o : list){
 				if(o instanceof String)
 					this.inputs.add(new PositionedStack(OreDictionary.getOres((String) o), 60 + i * 18, 6));
-				else this.inputs.add(new PositionedStack(o, 60 + i * 18, 6));
+				else
+					this.inputs.add(new PositionedStack(o, 60 + i * 18, 6));
 
 				i++;
 			}
 		}
 
 		@Override
-		public List<PositionedStack> getIngredients() {
+		public List<PositionedStack> getIngredients(){
 			return getCycledIngredients(cycleticks / 20, inputs);
 		}
 
 		@Override
-		public PositionedStack getResult() {
+		public PositionedStack getResult(){
 			return output;
 		}
 
 	}
 
 	@Override
-	public String getRecipeName() {
+	public String getRecipeName(){
 		return StatCollector.translateToLocal("botanicalworkshop.nei.gateway");
 	}
 
 	@Override
-	public String getGuiTexture() {
+	public String getGuiTexture(){
 		return LibResources.GUI_NEI_BLANK;
 	}
 
 	@Override
-	public void loadTransferRects() {
+	public void loadTransferRects(){
 		transferRects.add(new RecipeTransferRect(new Rectangle(35, 30, 48, 48), "botanicalworkshop.gatewayTransmutation"));
 	}
 
 	@Override
-	public int recipiesPerPage() {
+	public int recipiesPerPage(){
 		return 1;
 	}
 
 	@Override
-	public void drawBackground(int recipe) {
+	public void drawBackground(int recipe){
 		super.drawBackground(recipe);
 		GL11.glEnable(GL11.GL_BLEND);
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 0.7F);
@@ -94,20 +95,21 @@ public class RecipeHandlerGatewayTransmutation extends TemplateRecipeHandler {
 	}
 
 	@Override
-	public void loadCraftingRecipes(String outputId, Object... results) {
-		if(outputId.equals("botanicalworkshop.gatewayTransmutation")) {
-			for(RecipeGatewayTransmutation recipe : BotanicalWorkshopAPI.gatewayRecipes) {
+	public void loadCraftingRecipes(String outputId, Object... results){
+		if(outputId.equals("botanicalworkshop.gatewayTransmutation")){
+			for(RecipeGatewayTransmutation recipe : BotanicalWorkshopAPI.gatewayRecipes){
 				if(recipe == null)
 					continue;
 
 				arecipes.add(new CachedElvenTradeRecipe(recipe));
 			}
-		} else super.loadCraftingRecipes(outputId, results);
+		}else
+			super.loadCraftingRecipes(outputId, results);
 	}
 
 	@Override
-	public void loadCraftingRecipes(ItemStack result) {
-		for(RecipeGatewayTransmutation recipe : BotanicalWorkshopAPI.gatewayRecipes) {
+	public void loadCraftingRecipes(ItemStack result){
+		for(RecipeGatewayTransmutation recipe : BotanicalWorkshopAPI.gatewayRecipes){
 			if(recipe == null)
 				continue;
 
@@ -117,8 +119,8 @@ public class RecipeHandlerGatewayTransmutation extends TemplateRecipeHandler {
 	}
 
 	@Override
-	public void loadUsageRecipes(ItemStack ingredient) {
-		for(RecipeGatewayTransmutation recipe : BotanicalWorkshopAPI.gatewayRecipes) {
+	public void loadUsageRecipes(ItemStack ingredient){
+		for(RecipeGatewayTransmutation recipe : BotanicalWorkshopAPI.gatewayRecipes){
 			if(recipe == null)
 				continue;
 

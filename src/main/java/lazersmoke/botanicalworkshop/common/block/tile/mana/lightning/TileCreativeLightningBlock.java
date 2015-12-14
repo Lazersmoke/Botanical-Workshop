@@ -6,14 +6,17 @@ public class TileCreativeLightningBlock extends TileModLightning{
 	private int power = 0;
 	private int buffer = 0;
 	private int overflow = 100;
+
 	@Override
 	public int getConductivity(){
 		return getState() ? 0 : 1;
 	}
+
 	@Override
 	public void overflow(){
 		blindAddLightning(-getCurrentLightning());
 	}
+
 	public void interpretClick(ForgeDirection side){
 		if(side == ForgeDirection.UP)
 			buffer += 10;
@@ -28,16 +31,19 @@ public class TileCreativeLightningBlock extends TileModLightning{
 		if(side == ForgeDirection.WEST)
 			overflow -= 10;
 	}
+
 	@Override
-	public int getPowerThreshold() {
+	public int getPowerThreshold(){
 		return power;
 	}
+
 	@Override
-	public int getBufferThreshold() {
+	public int getBufferThreshold(){
 		return buffer;
 	}
+
 	@Override
-	public int getOverflowThreshold() {
+	public int getOverflowThreshold(){
 		return overflow;
 	}
 }

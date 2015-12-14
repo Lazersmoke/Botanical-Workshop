@@ -14,12 +14,9 @@ public class ItemBlockWeakGatewayCore extends ItemBlockWithMetadataAndName{
 	}
 
 	@Override
-	public void addInformation(ItemStack stack, EntityPlayer player,
-			List loreLineList, boolean par4){
+	public void addInformation(ItemStack stack, EntityPlayer player, List loreLineList, boolean par4){
 		for(int i = 0; i < 4; i++)
-			loreLineList.add(StatCollector
-					.translateToLocal("botanicalworkshopmisc.weakGatewayCore"
-							+ i));
+			loreLineList.add(StatCollector.translateToLocal("botanicalworkshopmisc.weakGatewayCore" + i));
 	}
 
 }

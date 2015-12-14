@@ -53,15 +53,14 @@ public class BlockThaumicCore extends BlockContainer implements ILexiconable{
 		iconOff = par1IconRegister.registerIcon(LibResources.PREFIX_MOD + getUnlocalizedName().replaceAll("tile\\.", "") + "Off");
 		iconOn = par1IconRegister.registerIcon(LibResources.PREFIX_MOD + getUnlocalizedName().replaceAll("tile\\.", "") + "On");
 	}
-	
+
 	@Override
 	public IIcon getIcon(int side, int meta){
 		return meta == 0 ? iconOff : iconOn;
 	}
 
 	@Override
-	public LexiconEntry getEntry(World world, int x, int y, int z,
-			EntityPlayer player, ItemStack lexicon){
+	public LexiconEntry getEntry(World world, int x, int y, int z, EntityPlayer player, ItemStack lexicon){
 		return LexiconData.thaumicCore;
 	}
 }

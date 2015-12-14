@@ -2,9 +2,9 @@ package lazersmoke.botanicalworkshop.common.block.tile.mana.lightning;
 
 import lazersmoke.botanicalworkshop.api.mana.lightning.IBotanicalLightningBlock;
 
-
 public class TileLightningCore extends TileModLightning implements IBotanicalLightningBlock{
 	private int ticks = 0;
+
 	@Override
 	public void updateEntity(){
 		super.updateEntity();
@@ -12,33 +12,40 @@ public class TileLightningCore extends TileModLightning implements IBotanicalLig
 			worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, 0, 1);
 			ticks = 2;
 		}
-		ticks --;
+		ticks--;
 	}
+
 	@Override
-	public int getConductivity() {
-		return blockMetadata == 1 ? 1 : -1;//NOTE: -1 reserved for generator-only blocks
+	public int getConductivity(){
+		return blockMetadata == 1 ? 1 : -1;// NOTE: -1 reserved for generator-only blocks
 	}
-	//Stops metadata from reset for another 2 ticks
+
+	// Stops metadata from reset for another 2 ticks
 	public void poke(){
 		ticks = 2;
 	}
+
 	@Override
 	public void overflow(){
 		blindAddLightning(-getCurrentLightning());
 		ticks = 0;
 	}
+
 	@Override
-	public int getPowerThreshold() {
+	public int getPowerThreshold(){
 		return 0;
 	}
+
 	@Override
-	public int getBufferThreshold() {
+	public int getBufferThreshold(){
 		return 0;
 	}
+
 	@Override
-	public int getOverflowThreshold() {
+	public int getOverflowThreshold(){
 		return 1000;
 	}
+
 	@Override
 	public int getLightningPushRange(){
 		return 2;

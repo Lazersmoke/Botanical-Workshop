@@ -39,8 +39,9 @@ public class ModGatewayTransmutationRecipes{
 	public static RecipeGatewayTransmutation elvenKnottingRecipe = defaultRecipe;
 	public static RecipeGatewayTransmutation lightningTransformerRecipe = defaultRecipe;
 	public static RecipeGatewayTransmutation lightningCapacitorRecipe = defaultRecipe;
-	
+
 	public static void init(){
+		//@formatter:off
 		if(LibConfigs.GATEWAY_CRAFT_MANA_BINDING_CRYSTAL)
 			manaBindingCrystalRecipe = BotanicalWorkshopAPI.registerGatewayRecipe(
 				new ItemStack(ModItems.bindingCrystal, 1, 0), // Mana Binding Crystal //Result
@@ -67,19 +68,10 @@ public class ModGatewayTransmutationRecipes{
 				);
 		if(LibConfigs.GATEWAY_CRAFT_LIGHTNING_BINDING_CRYSTAL)
 			lightningBindingCrystalRecipe = BotanicalWorkshopAPI.registerGatewayRecipe(
-					new ItemStack(ModItems.bindingCrystal, 1, 3), //Lightning Binding Crystal 
-					new ItemStack(ModItems.simpleCatalyst), //Simple Catalyst 
-					new ItemStack(ModItems.voltmeter),
-					new ItemStack(ModItems.botanicalResource, 2, 3) //2x Scrap Metal
-					);
-		if(LibConfigs.GATEWAY_CRAFT_MANA_CATALYST)
-			manaCatalystRecipe = BotanicalWorkshopAPI.registerGatewayRecipe(
-				new ItemStack(ModItems.manaCatalyst, 1, 0), //Result
-				new ItemStack(ModItems.bindingCrystal, 1, 0), // Mana Binding Crystal
-				new ItemStack(ModItems.botanicalResource, 1, 0), // elven crystal
-				new ItemStack(vazkii.botania.common.item.ModItems.manaResource, 1, 2), // mana pearl
-				new ItemStack(Items.diamond), // diamond
-				new ItemStack(Items.blaze_powder) // blaze power
+				new ItemStack(ModItems.bindingCrystal, 1, 3), //Lightning Binding Crystal
+				new ItemStack(ModItems.simpleCatalyst), //Simple Catalyst
+				new ItemStack(ModItems.voltmeter),
+				new ItemStack(ModItems.botanicalResource, 2, 3) //2x Scrap Metal
 				);
 		if(LibConfigs.GATEWAY_CRAFT_THAUMIC_CORE && BotanicalWorkshop.thaumcraftLoaded)
 			thaumicCoreRecipe = BotanicalWorkshopAPI.registerGatewayRecipe(
@@ -97,16 +89,16 @@ public class ModGatewayTransmutationRecipes{
 				new ItemStack((Item) Item.itemRegistry.getObject("Thaumcraft:FocusPortableHole")), // Portable Hole Focus
 				new ItemStack((Item) Item.itemRegistry.getObject("Thaumcraft:ItemShard"), 1, 6) // Balanced Shard
 				);
-		
+
 		if(LibConfigs.GATEWAY_CRAFT_SHIFTED_MATTER)
 			shiftedMatterRecipe = BotanicalWorkshopAPI.registerGatewayRecipe(
 				new ItemStack(ModItems.shiftedMatter),//Result
-				new ItemStack(ModItems.bindingCrystal, 1, 0), // Mana Binding Crystal 
+				new ItemStack(ModItems.bindingCrystal, 1, 0), // Mana Binding Crystal
 				new ItemStack(ModItems.botanicalResource, 1, 0), // Elven Crystal
 				new ItemStack(vazkii.botania.common.item.ModItems.manaResource, 1, 2), // Mana Pearl
 				new ItemStack(vazkii.botania.common.item.ModItems.manaResource, 1, 23) // Mana Powder
 				);
-		
+
 		if(LibConfigs.GATEWAY_CRAFT_SHIFTED_ARMOR){
 			shiftedBootsRecipe = BotanicalWorkshopAPI.registerGatewayRecipe(
 				new ItemStack(ModItems.shiftedBoots),//Result

@@ -49,8 +49,6 @@ public class BotanicalWorkshop{
 		thaumcraftLoaded = Loader.isModLoaded("Thaumcraft");
 		bloodMagicLoaded = Loader.isModLoaded("AWWayofTime"); // Psh, noob
 
-		QuakeConfig.init(event.getSuggestedConfigurationFile());
-
 		proxy.preInit(event);
 	}
 

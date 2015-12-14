@@ -11,6 +11,7 @@ import lazersmoke.botanicalworkshop.common.crafting.ModGatewayTransmutationRecip
 import lazersmoke.botanicalworkshop.common.crafting.ModPetalRecipes;
 import lazersmoke.botanicalworkshop.common.item.ModItems;
 import lazersmoke.botanicalworkshop.common.lexicon.LexiconData;
+import lazersmoke.botanicalworkshop.common.quakemovement.QuakeConfig;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
@@ -33,6 +34,7 @@ public class CommonProxy{
 		};
 
 		ConfigHandler.loadConfig(event.getSuggestedConfigurationFile());
+		QuakeConfig.init();// Uses ConfigHandler static configuration variable instead of getting file name from forge
 
 		ModBlocks.init();
 		ModItems.init();

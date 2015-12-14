@@ -6,6 +6,7 @@ import lazersmoke.botanicalworkshop.common.block.tile.mana.lightning.TileLightni
 import lazersmoke.botanicalworkshop.common.lib.LibItemNames;
 import net.minecraft.block.Block;
 import net.minecraft.entity.item.EntityItem;
+
 public class ItemLightningConsumingCatalyst extends ItemActiveCatalyst{
 
 	public ItemLightningConsumingCatalyst(){
@@ -19,9 +20,8 @@ public class ItemLightningConsumingCatalyst extends ItemActiveCatalyst{
 			gateway.getWorldObj().setBlockMetadataWithNotify(gateway.xCoord, gateway.yCoord + 6, gateway.zCoord, 1, 1);
 			TileLightningCore tileLightningCore = (TileLightningCore) catalyst.worldObj.getTileEntity(gateway.xCoord, gateway.yCoord + 6, gateway.zCoord);
 			tileLightningCore.poke();// *POKE*
-			if(!gateway.isFull() && gateway.getAvailableSpaceForMana() >= 50000){
+			if(!gateway.isFull() && gateway.getAvailableSpaceForMana() >= 50000 && tileLightningCore.addLightning(-50)){
 				gateway.recieveMana(50000);
-				tileLightningCore.addLightning(-50);
 			}
 		}
 	}

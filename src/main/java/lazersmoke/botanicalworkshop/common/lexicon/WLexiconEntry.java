@@ -16,7 +16,7 @@ public class WLexiconEntry extends LexiconEntry implements IAddonEntry{
 	}
 
 	@Override
-	public LexiconEntry setLexiconPages(LexiconPage ... pages){
+	public LexiconEntry setLexiconPages(LexiconPage... pages){
 		for(LexiconPage page : pages){
 			page.unlocalizedName = "botanicalworkshop.page." + getLazyUnlocalizedName() + page.unlocalizedName;
 			if(page instanceof ITwoNamedPage){
@@ -34,10 +34,10 @@ public class WLexiconEntry extends LexiconEntry implements IAddonEntry{
 	}
 
 	@Override
-	public String getTagline() {
+	public String getTagline(){
 		return "botanicalworkshop.tagline." + super.getUnlocalizedName();
 	}
-	
+
 	public String getLazyUnlocalizedName(){
 		return super.getUnlocalizedName();
 	}

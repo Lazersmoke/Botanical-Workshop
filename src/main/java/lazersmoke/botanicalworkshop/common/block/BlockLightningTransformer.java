@@ -25,26 +25,26 @@ public class BlockLightningTransformer extends BlockContainer implements ILexico
 		setStepSound(soundTypeMetal);
 		setBlockName(LibBlockNames.LIGHTNING_TRANSFORMER);
 		setCreativeTab(BotanicalWorkshop.creativeTab);
-		
+
 		float f = 1F / 16F;
 		setBlockBounds(f, 0F, f, 1F - f, 1F - (2F * f), 1F - f);
 	}
-	
+
 	@Override
-	public boolean isOpaqueCube() {
+	public boolean isOpaqueCube(){
 		return false;
 	}
 
 	@Override
-	public boolean renderAsNormalBlock() {
+	public boolean renderAsNormalBlock(){
 		return false;
 	}
 
 	@Override
-	public int getRenderType() {
+	public int getRenderType(){
 		return LibRenderIDs.idTransformer;
 	}
-	
+
 	@Override
 	public Block setBlockName(String name){
 		GameRegistry.registerBlock(this, ItemBlockLightningTransformer.class, name);

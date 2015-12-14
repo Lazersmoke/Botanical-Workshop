@@ -5,8 +5,8 @@ import lazersmoke.botanicalworkshop.common.block.tile.TileGatewayCore;
 
 /**
  * Any class implementing the interface will be considered an Active Gateway Catalyst on top of being a regular catalyst, and will have its onGatewayUpdate function called on every gateway update.
+ * 
  * @author Lazersmoke
- *
  */
 public interface IGatewayMod extends IGatewayCatalyst{
 

@@ -22,10 +22,8 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 // This class is all Lazersmoke
-/**Metadata guide:
- * 0 = disabled,
- * 1 = consuming,
- * 2 = generating 
+/**
+ * Metadata guide: 0 = disabled, 1 = consuming, 2 = generating
  */
 public class BlockLightningCore extends BlockContainer implements ILexiconable{
 
@@ -59,6 +57,7 @@ public class BlockLightningCore extends BlockContainer implements ILexiconable{
 		iconConsuming = par1IconRegister.registerIcon(LibResources.PREFIX_MOD + getUnlocalizedName().replaceAll("tile\\.", "") + "Consuming");
 		iconDisabled = par1IconRegister.registerIcon(LibResources.PREFIX_MOD + getUnlocalizedName().replaceAll("tile\\.", "") + "Disabled");
 	}
+
 	@Override
 	public IIcon getIcon(int side, int meta){
 		return meta == 0 ? iconDisabled : meta == 1 ? iconConsuming : meta == 2 ? iconGenerating : iconDisabled;

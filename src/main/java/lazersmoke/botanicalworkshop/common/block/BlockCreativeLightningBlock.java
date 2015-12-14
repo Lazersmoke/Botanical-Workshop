@@ -19,10 +19,11 @@ import vazkii.botania.api.wand.IWandable;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+
 public class BlockCreativeLightningBlock extends BlockContainer implements IWandable{
-	
+
 	public static IIcon iconNorth, iconSouth, iconEast, iconWest, iconUp, iconDown;
-	
+
 	public BlockCreativeLightningBlock(){
 		super(Material.rock);
 		setHardness(2.0F);
@@ -32,12 +33,13 @@ public class BlockCreativeLightningBlock extends BlockContainer implements IWand
 		setCreativeTab(BotanicalWorkshop.creativeTab);
 		setBlockBounds(0F, 0F, 0F, 1F, 1F, 1F);
 	}
+
 	@Override
 	public Block setBlockName(String name){
 		GameRegistry.registerBlock(this, ItemBlockCreativeLightningBlock.class, name);
 		return super.setBlockName(name);
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister iconRegister){
@@ -48,18 +50,24 @@ public class BlockCreativeLightningBlock extends BlockContainer implements IWand
 		iconUp = iconRegister.registerIcon(LibResources.PREFIX_MOD + getUnlocalizedName().replaceAll("tile\\.", "") + "Up");
 		iconDown = iconRegister.registerIcon(LibResources.PREFIX_MOD + getUnlocalizedName().replaceAll("tile\\.", "") + "Down");
 	}
-	
-	@SideOnly(Side.CLIENT) 
+
+	@SideOnly(Side.CLIENT)
 	@Override
 	public IIcon getIcon(int side, int meta){
-		switch (side) {
-			case 0:	return iconDown;
-			case 1: return iconUp;
-			case 2: return iconNorth;
-			case 3: return iconSouth;
-			case 4: return iconWest;
-			case 5: return iconEast;
-	    }
+		switch(side){
+			case 0:
+				return iconDown;
+			case 1:
+				return iconUp;
+			case 2:
+				return iconNorth;
+			case 3:
+				return iconSouth;
+			case 4:
+				return iconWest;
+			case 5:
+				return iconEast;
+		}
 		return iconUp;
 	}
 
@@ -67,9 +75,10 @@ public class BlockCreativeLightningBlock extends BlockContainer implements IWand
 	public TileEntity createNewTileEntity(World arg0, int arg1){
 		return new TileCreativeLightningBlock();
 	}
+
 	@Override
-	public boolean onUsedByWand(EntityPlayer player, ItemStack wand, World world, int x, int y, int z, int side) {
-		((TileCreativeLightningBlock)world.getTileEntity(x, y, z)).interpretClick(ForgeDirection.getOrientation(side));
+	public boolean onUsedByWand(EntityPlayer player, ItemStack wand, World world, int x, int y, int z, int side){
+		((TileCreativeLightningBlock) world.getTileEntity(x, y, z)).interpretClick(ForgeDirection.getOrientation(side));
 		return true;
 	}
 }

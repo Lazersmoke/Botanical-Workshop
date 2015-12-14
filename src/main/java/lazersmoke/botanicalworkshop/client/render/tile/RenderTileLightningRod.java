@@ -14,7 +14,7 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
-public class RenderTileLightningRod extends TileEntitySpecialRenderer {
+public class RenderTileLightningRod extends TileEntitySpecialRenderer{
 
 	private static final ResourceLocation texture = new ResourceLocation(LibResources.MODEL_LIGHTNING_ROD);
 	private static final ResourceLocation textureGrounded = new ResourceLocation(LibResources.MODEL_LIGHTNING_ROD_GROUNDED);
@@ -24,7 +24,7 @@ public class RenderTileLightningRod extends TileEntitySpecialRenderer {
 	public static int forceMeta = -1;
 
 	@Override
-	public void renderTileEntityAt(TileEntity tileentity, double d0, double d1, double d2, float pticks) {
+	public void renderTileEntityAt(TileEntity tileentity, double d0, double d1, double d2, float pticks){
 		GL11.glPushMatrix();
 		GL11.glEnable(GL12.GL_RESCALE_NORMAL);
 		GL11.glColor4f(1F, 1F, 1F, 1F);
@@ -39,7 +39,7 @@ public class RenderTileLightningRod extends TileEntitySpecialRenderer {
 		forceMeta = -1;
 	}
 
-	public void renderIcon(int par1, int par2, IIcon par3Icon, int par4, int par5, int brightness) {
+	public void renderIcon(int par1, int par2, IIcon par3Icon, int par4, int par5, int brightness){
 		Tessellator tessellator = Tessellator.instance;
 		tessellator.startDrawingQuads();
 		if(brightness != -1)

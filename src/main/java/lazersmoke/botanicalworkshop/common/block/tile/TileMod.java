@@ -6,39 +6,39 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 
-public class TileMod extends TileEntity {
+public class TileMod extends TileEntity{
 
 	@Override
-	public void writeToNBT(NBTTagCompound par1nbtTagCompound) {
+	public void writeToNBT(NBTTagCompound par1nbtTagCompound){
 		super.writeToNBT(par1nbtTagCompound);
 
 		writeCustomNBT(par1nbtTagCompound);
 	}
 
 	@Override
-	public void readFromNBT(NBTTagCompound par1nbtTagCompound) {
+	public void readFromNBT(NBTTagCompound par1nbtTagCompound){
 		super.readFromNBT(par1nbtTagCompound);
 
 		readCustomNBT(par1nbtTagCompound);
 	}
 
 	public void writeCustomNBT(NBTTagCompound cmp){
-		//NO-OP
+		// NO-OP
 	}
 
 	public void readCustomNBT(NBTTagCompound cmp){
-		//NO-OP
+		// NO-OP
 	}
 
 	@Override
-	public Packet getDescriptionPacket() {
+	public Packet getDescriptionPacket(){
 		NBTTagCompound nbttagcompound = new NBTTagCompound();
 		writeCustomNBT(nbttagcompound);
 		return new S35PacketUpdateTileEntity(xCoord, yCoord, zCoord, -999, nbttagcompound);
 	}
 
 	@Override
-	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity packet) {
+	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity packet){
 		super.onDataPacket(net, packet);
 		readCustomNBT(packet.func_148857_g());
 	}

@@ -19,12 +19,9 @@ public final class LibMisc{
 	public static final String PROXY_CLIENT = "lazersmoke.botanicalworkshop.client.core.proxy.ClientProxy";
 
 	// Misc Constants
-	public static final ForgeDirection[] CARDINAL_DIRECTIONS = new ForgeDirection[] {
-			ForgeDirection.NORTH, ForgeDirection.SOUTH, ForgeDirection.EAST,
-			ForgeDirection.WEST
-	};
-	
-	public static final ForgeDirection[] ALL_DIRECTIONS = new ForgeDirection[] {
-		ForgeDirection.NORTH, ForgeDirection.SOUTH, ForgeDirection.EAST, ForgeDirection.WEST, ForgeDirection.UP, ForgeDirection.DOWN
-	};
+	public static final ForgeDirection[] CARDINAL_DIRECTIONS = new ForgeDirection[] {ForgeDirection.NORTH, ForgeDirection.SOUTH,
+			ForgeDirection.EAST, ForgeDirection.WEST};
+
+	public static final ForgeDirection[] ALL_DIRECTIONS = new ForgeDirection[] {ForgeDirection.NORTH, ForgeDirection.SOUTH,
+			ForgeDirection.EAST, ForgeDirection.WEST, ForgeDirection.UP, ForgeDirection.DOWN};
 }

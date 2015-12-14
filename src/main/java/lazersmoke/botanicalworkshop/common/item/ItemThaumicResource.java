@@ -36,15 +36,12 @@ public class ItemThaumicResource extends ItemMod{
 	public void registerIcons(IIconRegister register){
 		icons = new IIcon[types];
 		for(int i = 0; i < icons.length; i++)
-			icons[i] = register.registerIcon(LibResources.PREFIX_MOD
-					+ LibItemNames.THAUMIC_RESOURCE_NAMES[i]);
+			icons[i] = register.registerIcon(LibResources.PREFIX_MOD + LibItemNames.THAUMIC_RESOURCE_NAMES[i]);
 	}
 
 	@Override
 	public String getUnlocalizedName(ItemStack stack){
-		return "item."
-				+ LibItemNames.THAUMIC_RESOURCE_NAMES[Math.min(types - 1,
-						stack.getItemDamage())];
+		return "item." + LibItemNames.THAUMIC_RESOURCE_NAMES[Math.min(types - 1, stack.getItemDamage())];
 	}
 
 	@Override

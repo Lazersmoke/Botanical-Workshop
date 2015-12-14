@@ -7,8 +7,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class ItemShiftedRevealingUpgrade extends ItemMod implements
-		IShiftedArmorUpgrade{
+public class ItemShiftedRevealingUpgrade extends ItemMod implements IShiftedArmorUpgrade{
 
 	public ItemShiftedRevealingUpgrade(){
 		super(LibItemNames.REVEALING_UPGRADE);

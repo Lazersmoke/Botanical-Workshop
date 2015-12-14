@@ -24,7 +24,7 @@ import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.lexicon.LexiconRecipeMappings;
 import vazkii.botania.common.lexicon.page.PageRecipe;
 
-public class PageGatewayTransmutationRecipe extends PageRecipe {
+public class PageGatewayTransmutationRecipe extends PageRecipe{
 
 	private static final ResourceLocation gatewayRecipeOverlay = new ResourceLocation(LibResources.GUI_GATEWAY_TRANSMUTATION_OVERLAY);
 
@@ -32,24 +32,24 @@ public class PageGatewayTransmutationRecipe extends PageRecipe {
 	int ticksElapsed = 0;
 	int recipeAt = 0;
 
-	public PageGatewayTransmutationRecipe(String unlocalizedName, List<RecipeGatewayTransmutation> recipes) {
+	public PageGatewayTransmutationRecipe(String unlocalizedName, List<RecipeGatewayTransmutation> recipes){
 		super(unlocalizedName);
 		this.recipes = recipes;
 	}
 
-	public PageGatewayTransmutationRecipe(String unlocalizedName, RecipeGatewayTransmutation recipe) {
+	public PageGatewayTransmutationRecipe(String unlocalizedName, RecipeGatewayTransmutation recipe){
 		this(unlocalizedName, Arrays.asList(recipe));
 	}
 
 	@Override
-	public void onPageAdded(LexiconEntry entry, int index) {
-		for (RecipeGatewayTransmutation recipe : recipes)
+	public void onPageAdded(LexiconEntry entry, int index){
+		for(RecipeGatewayTransmutation recipe : recipes)
 			LexiconRecipeMappings.map(recipe.getOutput(), entry, index);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void renderRecipe(IGuiLexiconEntry gui, int mx, int my) {
+	public void renderRecipe(IGuiLexiconEntry gui, int mx, int my){
 		RecipeGatewayTransmutation recipe = recipes.get(recipeAt);
 		TextureManager render = Minecraft.getMinecraft().renderEngine;
 		render.bindTexture(gatewayRecipeOverlay);
@@ -65,7 +65,7 @@ public class PageGatewayTransmutationRecipe extends PageRecipe {
 
 		List<ItemStack> inputs = recipe.getInputs();
 		int i = 0;
-		for (Object obj : inputs) {
+		for(Object obj : inputs){
 			Object input = obj;
 
 			renderItemAtInputPos(gui, i, (ItemStack) input);
@@ -78,18 +78,18 @@ public class PageGatewayTransmutationRecipe extends PageRecipe {
 	}
 
 	@SideOnly(Side.CLIENT)
-	public void renderItemAtInputPos(IGuiLexiconEntry gui, int x, ItemStack stack) {
-		if (stack == null || stack.getItem() == null)
+	public void renderItemAtInputPos(IGuiLexiconEntry gui, int x, ItemStack stack){
+		if(stack == null || stack.getItem() == null)
 			return;
 		stack = stack.copy();
 
-		if (stack.getItemDamage() == Short.MAX_VALUE)
+		if(stack.getItemDamage() == Short.MAX_VALUE)
 			stack.setItemDamage(0);
 
 		int xPos = gui.getLeft() + x * 20 + 45;
 		int yPos = gui.getTop() + 14;
 		ItemStack stack1 = stack.copy();
-		if (stack1.getItemDamage() == -1)
+		if(stack1.getItemDamage() == -1)
 			stack1.setItemDamage(0);
 
 		renderItem(gui, xPos, yPos, stack1, false);
@@ -97,11 +97,11 @@ public class PageGatewayTransmutationRecipe extends PageRecipe {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void updateScreen() {
-		if (ticksElapsed % 20 == 0) {
+	public void updateScreen(){
+		if(ticksElapsed % 20 == 0){
 			recipeAt++;
 
-			if (recipeAt == recipes.size())
+			if(recipeAt == recipes.size())
 				recipeAt = 0;
 		}
 		++ticksElapsed;

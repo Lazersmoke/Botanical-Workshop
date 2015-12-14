@@ -24,8 +24,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class RenderTileElvenPool extends TileEntitySpecialRenderer{
 
-	public static final ResourceLocation texture = new ResourceLocation(
-			LibResources.MODEL_ELVEN_POOL);
+	public static final ResourceLocation texture = new ResourceLocation(LibResources.MODEL_ELVEN_POOL);
 
 	private static final ModelPool model = new ModelPool();
 	RenderItem renderItem = new RenderItem();
@@ -35,8 +34,7 @@ public class RenderTileElvenPool extends TileEntitySpecialRenderer{
 	public static int forceManaNumber = -1;
 
 	@Override
-	public void renderTileEntityAt(TileEntity tileentity, double d0, double d1,
-			double d2, float f){
+	public void renderTileEntityAt(TileEntity tileentity, double d0, double d1, double d2, float f){
 		TileElvenPool pool = (TileElvenPool) tileentity;
 
 		GL11.glPushMatrix();
@@ -56,8 +54,7 @@ public class RenderTileElvenPool extends TileEntitySpecialRenderer{
 		GL11.glScalef(1F, -1F, -1F);
 		GL11.glEnable(GL12.GL_RESCALE_NORMAL);
 
-		Minecraft.getMinecraft().renderEngine
-				.bindTexture(TextureMap.locationBlocksTexture);
+		Minecraft.getMinecraft().renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 
 		int mana = pool.getCurrentMana();
 		if(forceManaNumber > -1)
@@ -75,24 +72,15 @@ public class RenderTileElvenPool extends TileEntitySpecialRenderer{
 		float w = -v * 3.5F;
 
 		if(pool.getWorldObj() != null){
-			Block below = pool.getWorldObj().getBlock(pool.xCoord,
-					pool.yCoord - 1, pool.zCoord);
+			Block below = pool.getWorldObj().getBlock(pool.xCoord, pool.yCoord - 1, pool.zCoord);
 			if(below instanceof IPoolOverlayProvider){
-				IIcon overlay = ( (IPoolOverlayProvider) below ).getIcon(
-						pool.getWorldObj(), pool.xCoord, pool.yCoord - 1,
-						pool.zCoord);
+				IIcon overlay = ((IPoolOverlayProvider) below).getIcon(pool.getWorldObj(), pool.xCoord, pool.yCoord - 1, pool.zCoord);
 				if(overlay != null){
 					GL11.glPushMatrix();
 					GL11.glEnable(GL11.GL_BLEND);
-					GL11.glBlendFunc(GL11.GL_SRC_ALPHA,
-							GL11.GL_ONE_MINUS_SRC_ALPHA);
+					GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 					GL11.glDisable(GL11.GL_ALPHA_TEST);
-					GL11.glColor4f(
-							1F,
-							1F,
-							1F,
-							(float) ( ( Math
-									.sin( ( ClientTickHandler.ticksInGame + f ) / 20.0) + 1 ) * 0.3 + 0.2 ));
+					GL11.glColor4f(1F, 1F, 1F, (float) ((Math.sin((ClientTickHandler.ticksInGame + f) / 20.0) + 1) * 0.3 + 0.2));
 					GL11.glTranslatef(-0.5F, -1F - 0.43F, -0.5F);
 					GL11.glRotatef(90F, 1F, 0F, 0F);
 					GL11.glScalef(s, s, s);
@@ -113,7 +101,7 @@ public class RenderTileElvenPool extends TileEntitySpecialRenderer{
 			GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 			GL11.glDisable(GL11.GL_ALPHA_TEST);
 			GL11.glColor4f(1F, 1F, 1F, 1F);
-			GL11.glTranslatef(w, -1F - ( 0.43F - waterLevel ), w);
+			GL11.glTranslatef(w, -1F - (0.43F - waterLevel), w);
 			GL11.glRotatef(90F, 1F, 0F, 0F);
 			GL11.glScalef(s, s, s);
 

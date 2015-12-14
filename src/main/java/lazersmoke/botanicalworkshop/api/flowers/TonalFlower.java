@@ -6,13 +6,9 @@ import lazersmoke.botanicalworkshop.common.lib.LibConfigs;
 import vazkii.botania.api.subtile.SubTileEntity;
 
 /**
- * Generic Tonal Flower
- * Makes music!
- * 
- * MAKE SURE TO INITIALIZE PITCHES, TIMES, VOLUMES BEFORE CALLING `super.onUpdate();`!!!
+ * Generic Tonal Flower Makes music! MAKE SURE TO INITIALIZE PITCHES, TIMES, VOLUMES BEFORE CALLING `super.onUpdate();`!!!
  * 
  * @author Sam
- *
  */
 public class TonalFlower extends SubTileEntity{
 
@@ -34,7 +30,7 @@ public class TonalFlower extends SubTileEntity{
 			Arrays.fill(lastTicks, 0);
 		}
 		for(int i = 0; i < pitches.length; i++)
-			if(ticksExisted - lastTicks[i] == ( firstTick ? ticksExisted - lastTicks[i] : times[i][note[i]] * tempo )){
+			if(ticksExisted - lastTicks[i] == (firstTick ? ticksExisted - lastTicks[i] : times[i][note[i]] * tempo)){
 				lastTicks[i] = ticksExisted;
 				if(LibConfigs.TONAL_FLORA)
 					playSound(soundEffect[i][note[i]], volumes[i][note[i]], pitches[i][note[i]]);

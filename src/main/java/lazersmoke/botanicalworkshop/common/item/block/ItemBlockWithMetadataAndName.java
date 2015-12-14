@@ -12,8 +12,7 @@ import lazersmoke.botanicalworkshop.client.lib.LibResources;// Need my names :)
 import vazkii.botania.common.achievement.ICraftAchievement;
 import vazkii.botania.common.achievement.IPickupAchievement;
 
-public class ItemBlockWithMetadataAndName extends ItemBlockWithMetadata
-		implements IPickupAchievement, ICraftAchievement{
+public class ItemBlockWithMetadataAndName extends ItemBlockWithMetadata implements IPickupAchievement, ICraftAchievement{
 
 	public ItemBlockWithMetadataAndName(Block block){
 		super(block, block);
@@ -21,28 +20,22 @@ public class ItemBlockWithMetadataAndName extends ItemBlockWithMetadata
 
 	@Override
 	public String getUnlocalizedNameInefficiently(ItemStack par1ItemStack){
-		return super.getUnlocalizedNameInefficiently(par1ItemStack).replaceAll(
-				"tile.", "tile." + LibResources.PREFIX_MOD);
+		return super.getUnlocalizedNameInefficiently(par1ItemStack).replaceAll("tile.", "tile." + LibResources.PREFIX_MOD);
 	}
 
 	@Override
 	public String getUnlocalizedName(ItemStack par1ItemStack){
-		return super.getUnlocalizedName(par1ItemStack)
-				+ par1ItemStack.getItemDamage();
+		return super.getUnlocalizedName(par1ItemStack) + par1ItemStack.getItemDamage();
 	}
 
 	@Override
-	public Achievement getAchievementOnCraft(ItemStack stack,
-			EntityPlayer player, IInventory matrix){
-		return field_150939_a instanceof ICraftAchievement ? ( (ICraftAchievement) field_150939_a )
-				.getAchievementOnCraft(stack, player, matrix) : null;
+	public Achievement getAchievementOnCraft(ItemStack stack, EntityPlayer player, IInventory matrix){
+		return field_150939_a instanceof ICraftAchievement ? ((ICraftAchievement) field_150939_a).getAchievementOnCraft(stack, player, matrix) : null;
 	}
 
 	@Override
-	public Achievement getAchievementOnPickup(ItemStack stack,
-			EntityPlayer player, EntityItem item){
-		return field_150939_a instanceof IPickupAchievement ? ( (IPickupAchievement) field_150939_a )
-				.getAchievementOnPickup(stack, player, item) : null;
+	public Achievement getAchievementOnPickup(ItemStack stack, EntityPlayer player, EntityItem item){
+		return field_150939_a instanceof IPickupAchievement ? ((IPickupAchievement) field_150939_a).getAchievementOnPickup(stack, player, item) : null;
 	}
 
 }

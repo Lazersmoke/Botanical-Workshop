@@ -4,20 +4,20 @@ import lazersmoke.botanicalworkshop.common.lib.LibMisc;
 import codechicken.nei.api.API;
 import codechicken.nei.api.IConfigureNEI;
 
-public class NEIBotanicalWorkshopConfig implements IConfigureNEI {
+public class NEIBotanicalWorkshopConfig implements IConfigureNEI{
 
 	@Override
-	public String getName() {
+	public String getName(){
 		return LibMisc.MOD_NAME;
 	}
 
 	@Override
-	public String getVersion() {
+	public String getVersion(){
 		return LibMisc.VERSION;
 	}
 
 	@Override
-	public void loadConfig() {
+	public void loadConfig(){
 		API.registerRecipeHandler(new RecipeHandlerGatewayTransmutation());
 		API.registerUsageHandler(new RecipeHandlerGatewayTransmutation());
 	}

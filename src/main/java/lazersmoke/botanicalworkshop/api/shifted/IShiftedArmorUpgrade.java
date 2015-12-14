@@ -7,8 +7,7 @@ import net.minecraft.world.World;
 public interface IShiftedArmorUpgrade{
 
 	/**
-	 * Returns the key for this upgrade, for it to be found in the map in the API. This should ALWAYS return the same result. Looks like "PhaseUpgrade" start
-	 * with caps
+	 * Returns the key for this upgrade, for it to be found in the map in the API. This should ALWAYS return the same result. Looks like "PhaseUpgrade" start with caps
 	 */
 	public String getKey();
 
