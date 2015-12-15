@@ -1,19 +1,27 @@
 package lazersmoke.botanicalworkshop.common.block;
 
 import lazersmoke.botanicalworkshop.client.lib.LibResources;
+import lazersmoke.botanicalworkshop.common.block.lightning.BlockCreativeLightningBlock;
+import lazersmoke.botanicalworkshop.common.block.lightning.BlockLightningCapacitor;
+import lazersmoke.botanicalworkshop.common.block.lightning.BlockLightningCore;
+import lazersmoke.botanicalworkshop.common.block.lightning.BlockLightningFurnace;
+import lazersmoke.botanicalworkshop.common.block.lightning.BlockLightningRod;
+import lazersmoke.botanicalworkshop.common.block.lightning.BlockLightningTransformer;
+import lazersmoke.botanicalworkshop.common.block.lightning.BlockThaumtanicalTransposer;
 import lazersmoke.botanicalworkshop.common.block.mana.BlockElvenPool;
 import lazersmoke.botanicalworkshop.common.block.subtile.BotanicalWorkshopSignature;
 import lazersmoke.botanicalworkshop.common.block.subtile.functional.SubTileExAquainas;
 import lazersmoke.botanicalworkshop.common.block.subtile.functional.SubTileLogicalSound;
 import lazersmoke.botanicalworkshop.common.block.tile.TileGatewayCore;
 import lazersmoke.botanicalworkshop.common.block.tile.TileThaumicCore;
+import lazersmoke.botanicalworkshop.common.block.tile.lightning.TileCreativeLightningBlock;
+import lazersmoke.botanicalworkshop.common.block.tile.lightning.TileLightningCapacitor;
+import lazersmoke.botanicalworkshop.common.block.tile.lightning.TileLightningCore;
+import lazersmoke.botanicalworkshop.common.block.tile.lightning.TileLightningFurnace;
+import lazersmoke.botanicalworkshop.common.block.tile.lightning.TileLightningRod;
+import lazersmoke.botanicalworkshop.common.block.tile.lightning.TileLightningTransformer;
+import lazersmoke.botanicalworkshop.common.block.tile.lightning.TileThaumtanicalTransposer;
 import lazersmoke.botanicalworkshop.common.block.tile.mana.TileElvenPool;
-import lazersmoke.botanicalworkshop.common.block.tile.mana.lightning.TileCreativeLightningBlock;
-import lazersmoke.botanicalworkshop.common.block.tile.mana.lightning.TileLightningCapacitor;
-import lazersmoke.botanicalworkshop.common.block.tile.mana.lightning.TileLightningCore;
-import lazersmoke.botanicalworkshop.common.block.tile.mana.lightning.TileLightningRod;
-import lazersmoke.botanicalworkshop.common.block.tile.mana.lightning.TileLightningTransformer;
-import lazersmoke.botanicalworkshop.common.block.tile.mana.lightning.TileThaumtanicalTransposer;
 import lazersmoke.botanicalworkshop.common.lib.LibBlockNames;
 import net.minecraft.block.Block;
 import net.minecraft.tileentity.TileEntity;
@@ -33,6 +41,7 @@ public final class ModBlocks{
 	public static Block lightningTransformer;
 	public static Block creativeLightningBlock;
 	public static Block lightningCapacitor;
+	public static Block lightningFurnace;
 
 	public static void init(){
 
@@ -46,6 +55,7 @@ public final class ModBlocks{
 		lightningTransformer = new BlockLightningTransformer();
 		creativeLightningBlock = new BlockCreativeLightningBlock();
 		lightningCapacitor = new BlockLightningCapacitor();
+		lightningFurnace = new BlockLightningFurnace();
 
 		initTileEntities();
 	}
@@ -60,6 +70,7 @@ public final class ModBlocks{
 		registerTile(TileLightningTransformer.class, LibBlockNames.LIGHTNING_TRANSFORMER);
 		registerTile(TileCreativeLightningBlock.class, LibBlockNames.LIGHTNING_CREATIVE);
 		registerTile(TileLightningCapacitor.class, LibBlockNames.LIGHTNING_CAPACITOR);
+		registerTile(TileLightningFurnace.class, LibBlockNames.LIGHTNING_FURNACE);
 
 		registerSubTile(SubTileExAquainas.class, LibBlockNames.SUBTILE_EXAQUAINAS);
 		registerSubTile(SubTileLogicalSound.class, LibBlockNames.SUBTILE_LOGICALSOUND);

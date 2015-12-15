@@ -1,8 +1,8 @@
 package lazersmoke.botanicalworkshop.common.item.catalyst;
 
-import lazersmoke.botanicalworkshop.common.block.BlockLightningCore;
+import lazersmoke.botanicalworkshop.common.block.lightning.BlockLightningCore;
 import lazersmoke.botanicalworkshop.common.block.tile.TileGatewayCore;
-import lazersmoke.botanicalworkshop.common.block.tile.mana.lightning.TileLightningCore;
+import lazersmoke.botanicalworkshop.common.block.tile.lightning.TileLightningCore;
 import lazersmoke.botanicalworkshop.common.lib.LibItemNames;
 import net.minecraft.block.Block;
 import net.minecraft.entity.item.EntityItem;

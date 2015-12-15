@@ -1,9 +1,9 @@
-package lazersmoke.botanicalworkshop.common.block;
+package lazersmoke.botanicalworkshop.common.block.lightning;
 
 import lazersmoke.botanicalworkshop.client.lib.LibResources;
 import lazersmoke.botanicalworkshop.common.BotanicalWorkshop;
-import lazersmoke.botanicalworkshop.common.block.tile.mana.lightning.TileCreativeLightningBlock;
-import lazersmoke.botanicalworkshop.common.item.block.ItemBlockCreativeLightningBlock;
+import lazersmoke.botanicalworkshop.common.block.tile.lightning.TileCreativeLightningBlock;
+import lazersmoke.botanicalworkshop.common.item.block.lightning.ItemBlockCreativeLightningBlock;
 import lazersmoke.botanicalworkshop.common.lib.LibBlockNames;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;

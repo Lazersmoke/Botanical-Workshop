@@ -4,14 +4,12 @@ package lazersmoke.botanicalworkshop.common.block.mana;
 import java.util.ArrayList;
 import java.util.List;
 
-import vazkii.botania.api.internal.VanillaPacketDispatcher;
-import vazkii.botania.api.lexicon.ILexiconable;
-import vazkii.botania.api.lexicon.LexiconEntry;
-import vazkii.botania.api.wand.IWandHUD;
-import vazkii.botania.api.wand.IWandable;
+import lazersmoke.botanicalworkshop.client.lib.LibRenderIDs;
 import lazersmoke.botanicalworkshop.common.BotanicalWorkshop;
+import lazersmoke.botanicalworkshop.common.block.tile.mana.TileElvenPool;
+import lazersmoke.botanicalworkshop.common.item.block.mana.ItemBlockElvenPool;
 import lazersmoke.botanicalworkshop.common.lexicon.LexiconData;
-import cpw.mods.fml.common.registry.GameRegistry;
+import lazersmoke.botanicalworkshop.common.lib.LibBlockNames;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -27,10 +25,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-import lazersmoke.botanicalworkshop.client.lib.LibRenderIDs;
-import lazersmoke.botanicalworkshop.common.block.tile.mana.TileElvenPool;
-import lazersmoke.botanicalworkshop.common.item.block.ItemBlockElvenPool;
-import lazersmoke.botanicalworkshop.common.lib.LibBlockNames;
+import vazkii.botania.api.internal.VanillaPacketDispatcher;
+import vazkii.botania.api.lexicon.ILexiconable;
+import vazkii.botania.api.lexicon.LexiconEntry;
+import vazkii.botania.api.wand.IWandHUD;
+import vazkii.botania.api.wand.IWandable;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 public class BlockElvenPool extends BlockContainer implements IWandHUD, IWandable, ILexiconable{
 
@@ -69,14 +69,14 @@ public class BlockElvenPool extends BlockContainer implements IWandHUD, IWandabl
 
 	@Override
 	public void breakBlock(World par1World, int par2, int par3, int par4, Block par5, int par6){
-		TileElvenPool pool = (TileElvenPool) par1World.getTileEntity(par2, par3, par4);
+		final TileElvenPool pool = (TileElvenPool) par1World.getTileEntity(par2, par3, par4);
 		lastFragile = pool.fragile;
 		super.breakBlock(par1World, par2, par3, par4, par5, par6);
 	}
 
 	@Override
 	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune){
-		ArrayList<ItemStack> drops = new ArrayList<ItemStack>();
+		final ArrayList<ItemStack> drops = new ArrayList<ItemStack>();
 
 		if(!lastFragile)
 			drops.add(new ItemStack(this, 1, metadata));
@@ -84,17 +84,18 @@ public class BlockElvenPool extends BlockContainer implements IWandHUD, IWandabl
 		return drops;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public void getSubBlocks(Item par1, CreativeTabs par2, List par3){
-		par3.add(new ItemStack(par1, 1, 0));
+	public void getSubBlocks(Item item, CreativeTabs creativeTab, @SuppressWarnings("rawtypes") List subblocks){
+		subblocks.add(new ItemStack(item, 1, 0));
 	}
 
 	@Override
-	public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity){
-		if(par5Entity instanceof EntityItem){
-			TileElvenPool tile = (TileElvenPool) par1World.getTileEntity(par2, par3, par4);
-			if(tile.collideEntityItem((EntityItem) par5Entity))
-				VanillaPacketDispatcher.dispatchTEToNearbyPlayers(par1World, par2, par3, par4);
+	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity){
+		if(entity instanceof EntityItem){
+			final TileElvenPool tile = (TileElvenPool) world.getTileEntity(x, y, z);
+			if(tile.collideEntityItem((EntityItem) entity))
+				VanillaPacketDispatcher.dispatchTEToNearbyPlayers(world, x, y, z);
 		}
 	}
 
@@ -125,7 +126,7 @@ public class BlockElvenPool extends BlockContainer implements IWandHUD, IWandabl
 
 	@Override
 	public int getComparatorInputOverride(World par1World, int par2, int par3, int par4, int par5){
-		TileElvenPool pool = (TileElvenPool) par1World.getTileEntity(par2, par3, par4);
+		final TileElvenPool pool = (TileElvenPool) par1World.getTileEntity(par2, par3, par4);
 		int val = (int) ((double) pool.getCurrentMana() / (double) pool.manaCap * 15.0);
 		if(pool.getCurrentMana() > 0)
 			val = Math.max(val, 1);

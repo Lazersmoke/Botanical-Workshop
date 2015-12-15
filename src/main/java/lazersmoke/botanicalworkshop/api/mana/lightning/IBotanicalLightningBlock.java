@@ -27,7 +27,7 @@ public interface IBotanicalLightningBlock{
 	int getCurrentLightning();
 
 	/**
-	 * Adds lightning to the block. Given negative values, will remove that much if possible. If it can't it returns false. Example implementation: boolean addLightning(int amount){ return blindAddLightning(amount) == amount; }
+	 * Adds lightning to the block. Given negative values, will remove that much if possible. If it can't it returns false.
 	 *
 	 * @param amount
 	 * Amount to add
@@ -36,7 +36,13 @@ public interface IBotanicalLightningBlock{
 	boolean addLightning(int amount);
 
 	/**
-	 * Blindly adds lightning to the block. Given negative values, will remove that much, and returns acutual net change. Do something like this in here after updating lightning: worldObj.func_147453_f(xCoord, yCoord, zCoord, worldObj.getBlock(xCoord, yCoord, zCoord)); worldObj.markBlockForUpdate(xCoord, yCoord, zCoord); markDirty();
+	 * Blindly adds lightning to the block. Given negative values, will remove that much, and returns acutual net change. Do something like this in here after updating lightning:<br>
+	 *
+	 * <pre>
+	 * worldObj.func_147453_f(xCoord, yCoord, zCoord, worldObj.getBlock(xCoord, yCoord, zCoord));
+	 * worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+	 * markDirty();
+	 * </pre>
 	 *
 	 * @param amount
 	 * Amount to add
@@ -45,7 +51,7 @@ public interface IBotanicalLightningBlock{
 	int blindAddLightning(int amount);
 
 	/**
-	 * Makes the block "overflow" somehow. Make sure you set lightning to 0.
+	 * Makes the block "overflow" somehow. Make sure you set lightning to 0 if you don't blow up the block.
 	 */
 	void overflow();
 
@@ -80,7 +86,7 @@ public interface IBotanicalLightningBlock{
 	/**
 	 * Gets the offset of the point to render lightning effects at.
 	 *
-	 * @return lightning render offset as a 3 element float array
+	 * @return lightning render offset as a Vector3
 	 */
 	Vector3 getLightningRenderOffset();
 

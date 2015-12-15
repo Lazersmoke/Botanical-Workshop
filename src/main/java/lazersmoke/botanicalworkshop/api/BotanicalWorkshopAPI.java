@@ -1,6 +1,7 @@
 package lazersmoke.botanicalworkshop.api;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -25,14 +26,32 @@ public class BotanicalWorkshopAPI{
 	 *
 	 * @param output
 	 * The ItemStack to return.
+	 * @param catalyst
+	 * The catalyst required to craft this recipe
 	 * @param inputs
-	 * The items required, must be List<ItemStack>
+	 * The items required
 	 * @return The recipe created.
 	 */
 	public static RecipeGatewayTransmutation registerGatewayRecipe(ItemStack output, ItemStack catalyst, ItemStack... inputs){
 		final RecipeGatewayTransmutation recipe = new RecipeGatewayTransmutation(output, catalyst, inputs);
 		gatewayRecipes.add(recipe);
 		return recipe;
+	}
+
+	/**
+	 * Registers a Gateway recipe (throw some items in a Gateway).
+	 *
+	 * @param output
+	 * The ItemStack to return.
+	 * @param catalyst
+	 * The catalyst required to craft this recipe
+	 * @param inputs
+	 * The items required, must be List<ItemStack>
+	 * @return The recipe created.
+	 */
+	public static RecipeGatewayTransmutation registerGatewayRecipe(ItemStack output, ItemStack catalyst, List<ItemStack> inputs){
+		inputs.removeAll(Collections.singleton(null));// Remove nulls
+		return registerGatewayRecipe(output, catalyst, inputs.toArray(new ItemStack[inputs.size()]));
 	}
 
 	/**

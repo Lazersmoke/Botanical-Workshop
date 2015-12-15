@@ -16,4 +16,5 @@ public final class LibBlockNames{
 	public static final String LIGHTNING_TRANSFORMER = "lightningTransformer";
 	public static final String LIGHTNING_CREATIVE = "creativeLightningBlock";
 	public static final String LIGHTNING_CAPACITOR = "lightningCapacitor";
+	public static final String LIGHTNING_FURNACE = "lightningFurnace";
 }

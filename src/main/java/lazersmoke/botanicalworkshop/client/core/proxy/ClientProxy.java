@@ -10,9 +10,9 @@ import lazersmoke.botanicalworkshop.client.render.tile.RenderTileLightningTransf
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import lazersmoke.botanicalworkshop.common.block.tile.lightning.TileLightningRod;
+import lazersmoke.botanicalworkshop.common.block.tile.lightning.TileLightningTransformer;
 import lazersmoke.botanicalworkshop.common.block.tile.mana.TileElvenPool;
-import lazersmoke.botanicalworkshop.common.block.tile.mana.lightning.TileLightningRod;
-import lazersmoke.botanicalworkshop.common.block.tile.mana.lightning.TileLightningTransformer;
 import lazersmoke.botanicalworkshop.common.core.proxy.CommonProxy;
 
 public class ClientProxy extends CommonProxy{

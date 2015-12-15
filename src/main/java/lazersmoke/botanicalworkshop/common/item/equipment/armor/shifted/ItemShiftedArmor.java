@@ -4,7 +4,6 @@ import java.util.List;
 
 import lazersmoke.botanicalworkshop.api.BotanicalWorkshopAPI;
 import lazersmoke.botanicalworkshop.api.mana.IGatewayBindingItem;
-import lazersmoke.botanicalworkshop.api.shifted.IShiftedArmorUpgrade;
 import lazersmoke.botanicalworkshop.client.lib.LibResources;
 import lazersmoke.botanicalworkshop.common.BotanicalWorkshop;
 import lazersmoke.botanicalworkshop.common.block.tile.TileGatewayCore;
@@ -101,13 +100,13 @@ public class ItemShiftedArmor extends ItemArmor implements ISpecialArmor, IPhant
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack stack){
 		boolean isInArmorSlot = false;
-		for(ItemStack testStack : player.inventory.armorInventory)
+		for(final ItemStack testStack : player.inventory.armorInventory)
 			if(testStack != null && testStack.equals(stack))
 				isInArmorSlot = true;
 		if(isInArmorSlot){
-			for(String key : BotanicalWorkshopAPI.shiftedUpgrades.keySet())
+			for(final String key : BotanicalWorkshopAPI.shiftedUpgrades.keySet())
 				if(ItemNBTHelper.getBoolean(stack, TAG_UPGRADE_BASE + key, false) && !ItemTemperanceStone.hasTemperanceActive(player))
-					((IShiftedArmorUpgrade) BotanicalWorkshopAPI.shiftedUpgrades.get(key)).onArmorTick(world, player, stack);
+					BotanicalWorkshopAPI.shiftedUpgrades.get(key).onArmorTick(world, player, stack);
 
 			if(getCore(stack, world) != null)
 				if(getCore(stack, world).getCurrentMana() >= 1000 && stack.getItemDamage() > 0){
@@ -126,16 +125,17 @@ public class ItemShiftedArmor extends ItemArmor implements ISpecialArmor, IPhant
 		return (TileGatewayCore) worldObj.getTileEntity(ItemNBTHelper.getInt(stack, "boundGatewayX", 0), ItemNBTHelper.getInt(stack, "boundGatewayY", -1), ItemNBTHelper.getInt(stack, "boundGatewayZ", 0));
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public void addInformation(ItemStack stack, EntityPlayer player, List loreLineList, boolean par4){
+	public void addInformation(ItemStack stack, EntityPlayer player, @SuppressWarnings("rawtypes") List loreLineList, boolean par4){
 		if(ItemTemperanceStone.hasTemperanceActive(player))
 			loreLineList.add("Temperance Stone Active!");
 
 		if(ItemNBTHelper.getInt(stack, "boundGatewayY", -1) != -1)
 			loreLineList.add("Gateway: [" + ItemNBTHelper.getInt(stack, "boundGatewayX", -1) + ", " + ItemNBTHelper.getInt(stack, "boundGatewayY", -1) + ", " + ItemNBTHelper.getInt(stack, "boundGatewayZ", -1) + "]");
 
-		for(String key : BotanicalWorkshopAPI.shiftedUpgrades.keySet())
+		for(final String key : BotanicalWorkshopAPI.shiftedUpgrades.keySet())
 			if(ItemNBTHelper.getBoolean(stack, TAG_UPGRADE_BASE + key, false))
-				loreLineList.add(((IShiftedArmorUpgrade) BotanicalWorkshopAPI.shiftedUpgrades.get(key)).getDisplayName());
+				loreLineList.add(BotanicalWorkshopAPI.shiftedUpgrades.get(key).getDisplayName());
 	}
 }

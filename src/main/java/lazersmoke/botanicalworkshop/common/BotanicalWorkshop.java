@@ -3,7 +3,6 @@ package lazersmoke.botanicalworkshop.common;
 import lazersmoke.botanicalworkshop.common.core.proxy.CommonProxy;
 import lazersmoke.botanicalworkshop.common.lib.LibMisc;
 import lazersmoke.botanicalworkshop.common.quakemovement.QuakeClientPlayer;
-import lazersmoke.botanicalworkshop.common.quakemovement.QuakeConfig;
 import lazersmoke.botanicalworkshop.common.quakemovement.QuakeServerPlayer;
 import net.minecraft.creativetab.CreativeTabs;
 

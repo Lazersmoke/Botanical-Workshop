@@ -1,8 +1,8 @@
-package lazersmoke.botanicalworkshop.common.block;
+package lazersmoke.botanicalworkshop.common.block.lightning;
 
 import lazersmoke.botanicalworkshop.client.lib.LibResources;
 import lazersmoke.botanicalworkshop.common.BotanicalWorkshop;
-import lazersmoke.botanicalworkshop.common.block.tile.mana.lightning.TileLightningCore;
+import lazersmoke.botanicalworkshop.common.block.tile.lightning.TileLightningCore;
 import lazersmoke.botanicalworkshop.common.item.block.ItemBlockThaumicCore;
 import lazersmoke.botanicalworkshop.common.lexicon.LexiconData;
 import lazersmoke.botanicalworkshop.common.lib.LibBlockNames;

@@ -52,6 +52,7 @@ public class SubTileExAquainas extends TonalFunctionalFlower{
 			activeTile = supertile.getWorldObj().getTileEntity(supertile.xCoord, supertile.yCoord - 1, supertile.zCoord);
 
 		boolean hasBucket = false;
+		@SuppressWarnings("unchecked")
 		final List<EntityItem> items = supertile.getWorldObj().getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.getBoundingBox(supertile.xCoord - 1, supertile.yCoord, supertile.zCoord - 1, supertile.xCoord + 2, supertile.yCoord + 1, supertile.zCoord + 2));
 		for(final EntityItem item : items)
 			if(item.getEntityItem().getItem() == Items.bucket)

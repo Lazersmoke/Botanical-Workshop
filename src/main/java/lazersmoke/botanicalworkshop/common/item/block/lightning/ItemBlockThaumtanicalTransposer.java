@@ -1,5 +1,6 @@
-package lazersmoke.botanicalworkshop.common.item.block;
+package lazersmoke.botanicalworkshop.common.item.block.lightning;
 
+import lazersmoke.botanicalworkshop.common.item.block.ItemBlockWithMetadataAndName;
 import net.minecraft.block.Block;
 
 public class ItemBlockThaumtanicalTransposer extends ItemBlockWithMetadataAndName{

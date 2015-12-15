@@ -1,9 +1,9 @@
-package lazersmoke.botanicalworkshop.common.block;
+package lazersmoke.botanicalworkshop.common.block.lightning;
 
 import lazersmoke.botanicalworkshop.client.lib.LibResources;
 import lazersmoke.botanicalworkshop.common.BotanicalWorkshop;
-import lazersmoke.botanicalworkshop.common.block.tile.mana.lightning.TileThaumtanicalTransposer;
-import lazersmoke.botanicalworkshop.common.item.block.ItemBlockThaumtanicalTransposer;
+import lazersmoke.botanicalworkshop.common.block.tile.lightning.TileThaumtanicalTransposer;
+import lazersmoke.botanicalworkshop.common.item.block.lightning.ItemBlockThaumtanicalTransposer;
 import lazersmoke.botanicalworkshop.common.lexicon.LexiconData;
 import lazersmoke.botanicalworkshop.common.lib.LibBlockNames;
 import net.minecraft.block.Block;
@@ -26,11 +26,11 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 // This class is all Lazersmoke
-public class BlockLightningFurnace extends BlockContainer implements IWandable, IWandHUD, ILexiconable{
+public class BlockThaumtanicalTransposer extends BlockContainer implements IWandable, IWandHUD, ILexiconable{
 
 	public static IIcon iconOff, iconOn;
 
-	public BlockLightningFurnace(){
+	public BlockThaumtanicalTransposer(){
 		super(Material.rock);
 		setHardness(2.0F);
 		setResistance(10.0F);

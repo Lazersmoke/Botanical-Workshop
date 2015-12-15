@@ -7,6 +7,7 @@ import java.util.List;
 import lazersmoke.botanicalworkshop.api.BotanicalWorkshopAPI;
 import lazersmoke.botanicalworkshop.api.recipe.RecipeGatewayTransmutation;
 import lazersmoke.botanicalworkshop.client.lib.LibResources;
+import lazersmoke.botanicalworkshop.common.BotanicalWorkshop;
 import lazersmoke.botanicalworkshop.common.block.BlockGatewayCore;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.client.renderer.texture.TextureMap;
@@ -14,6 +15,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.oredict.OreDictionary;
 
+import org.apache.logging.log4j.Level;
 import org.lwjgl.opengl.GL11;
 
 import codechicken.lib.gui.GuiDraw;
@@ -32,7 +34,7 @@ public class RecipeHandlerGatewayTransmutation extends TemplateRecipeHandler{
 		public CachedElvenTradeRecipe(RecipeGatewayTransmutation recipe){
 			if(recipe == null)
 				return;
-
+			BotanicalWorkshop.logger.log(Level.INFO, recipe.getInputs().toString());
 			setIngredients(recipe.getInputs());
 			output = new PositionedStack(recipe.getOutput(), 107, 46);
 			catalyst = new PositionedStack(recipe.getCatalyst(), 60, 46);
@@ -40,7 +42,7 @@ public class RecipeHandlerGatewayTransmutation extends TemplateRecipeHandler{
 
 		public void setIngredients(List<ItemStack> list){
 			int i = 0;
-			for(Object o : list){
+			for(final Object o : list){
 				if(o instanceof String)
 					this.inputs.add(new PositionedStack(OreDictionary.getOres((String) o), 60 + i * 18, 6));
 				else
@@ -96,20 +98,20 @@ public class RecipeHandlerGatewayTransmutation extends TemplateRecipeHandler{
 
 	@Override
 	public void loadCraftingRecipes(String outputId, Object... results){
-		if(outputId.equals("botanicalworkshop.gatewayTransmutation")){
-			for(RecipeGatewayTransmutation recipe : BotanicalWorkshopAPI.gatewayRecipes){
+		if(outputId.equals("botanicalworkshop.gatewayTransmutation"))
+			for(final RecipeGatewayTransmutation recipe : BotanicalWorkshopAPI.gatewayRecipes){
 				if(recipe == null)
 					continue;
 
 				arecipes.add(new CachedElvenTradeRecipe(recipe));
 			}
-		}else
+		else
 			super.loadCraftingRecipes(outputId, results);
 	}
 
 	@Override
 	public void loadCraftingRecipes(ItemStack result){
-		for(RecipeGatewayTransmutation recipe : BotanicalWorkshopAPI.gatewayRecipes){
+		for(final RecipeGatewayTransmutation recipe : BotanicalWorkshopAPI.gatewayRecipes){
 			if(recipe == null)
 				continue;
 
@@ -120,11 +122,11 @@ public class RecipeHandlerGatewayTransmutation extends TemplateRecipeHandler{
 
 	@Override
 	public void loadUsageRecipes(ItemStack ingredient){
-		for(RecipeGatewayTransmutation recipe : BotanicalWorkshopAPI.gatewayRecipes){
+		for(final RecipeGatewayTransmutation recipe : BotanicalWorkshopAPI.gatewayRecipes){
 			if(recipe == null)
 				continue;
 
-			CachedElvenTradeRecipe crecipe = new CachedElvenTradeRecipe(recipe);
+			final CachedElvenTradeRecipe crecipe = new CachedElvenTradeRecipe(recipe);
 			if(crecipe.contains(crecipe.inputs, ingredient) || NEIServerUtils.areStacksSameTypeCrafting(recipe.getCatalyst(), ingredient))
 				arecipes.add(crecipe);
 		}

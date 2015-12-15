@@ -1,15 +1,17 @@
-package lazersmoke.botanicalworkshop.common.block.tile.mana.lightning;
+package lazersmoke.botanicalworkshop.common.block.tile.lightning;
 
-import vazkii.botania.common.core.helper.Vector3;
 import lazersmoke.botanicalworkshop.api.mana.LightningNetworkEvent;
 import lazersmoke.botanicalworkshop.api.mana.lightning.IBotanicalLightningBlock;
 import lazersmoke.botanicalworkshop.client.core.handler.HUDHandler;
+import lazersmoke.botanicalworkshop.client.lib.LibResources;
 import lazersmoke.botanicalworkshop.common.block.tile.TileMod;
 import lazersmoke.botanicalworkshop.common.core.handler.LightningNetworkHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ChunkCoordinates;
+import net.minecraft.util.StatCollector;
+import vazkii.botania.common.core.helper.Vector3;
 
 public abstract class TileModLightning extends TileMod implements IBotanicalLightningBlock{
 	protected static final String TAG_LIGHTNING = "botanicalLightning";
@@ -28,7 +30,7 @@ public abstract class TileModLightning extends TileMod implements IBotanicalLigh
 	}
 
 	public void renderHUD(Minecraft mc, ScaledResolution res){
-		HUDHandler.drawSimpleLightningHUD(0xFF00AE, getCurrentLightning(), getPowerThreshold(), getBufferThreshold(), getOverflowThreshold(), "meow", res);
+		HUDHandler.drawSimpleLightningHUD(0xFF00AE, getCurrentLightning(), getPowerThreshold(), getBufferThreshold(), getOverflowThreshold(), StatCollector.translateToLocal(worldObj.getBlock(xCoord, yCoord, zCoord).getUnlocalizedName().replaceAll("tile.", "tile." + LibResources.PREFIX_MOD) + ".name"), res);
 	}
 
 	@Override
@@ -76,7 +78,7 @@ public abstract class TileModLightning extends TileMod implements IBotanicalLigh
 			markDirty();
 			return amount;
 		}else{
-			int change = -lightning;
+			final int change = -lightning;
 			lightning = 0;
 			worldObj.func_147453_f(xCoord, yCoord, zCoord, worldObj.getBlock(xCoord, yCoord, zCoord));
 			worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);

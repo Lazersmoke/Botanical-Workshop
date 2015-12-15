@@ -1,13 +1,11 @@
 /**
  * This class was created by <Vazkii>. It's distributed as part of the Botania Mod. Get the Source Code in github: https://github.com/Vazkii/Botania
- * 
+ *
  * Botania is Open Source and distributed under the Botania License: http://botaniamod.net/license.php
- * 
+ *
  * File Created @ [Jan 14, 2014, 5:20:53 PM (GMT)]
  */
 package lazersmoke.botanicalworkshop.common.core;
-
-import java.util.List;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -17,7 +15,6 @@ import vazkii.botania.client.lib.LibResources;
 public final class BotanicalWorkshopCreativeTab extends CreativeTabs{
 
 	public static BotanicalWorkshopCreativeTab INSTANCE = new BotanicalWorkshopCreativeTab();
-	private List list;
 
 	public BotanicalWorkshopCreativeTab(){
 		super("BotanicalWorkshop");
@@ -40,8 +37,4 @@ public final class BotanicalWorkshopCreativeTab extends CreativeTabs{
 		return true;
 	}
 
-	@Override
-	public void displayAllReleventItems(List list){
-		this.list = list;
-	}
 }

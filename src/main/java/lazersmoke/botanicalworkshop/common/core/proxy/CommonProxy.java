@@ -34,14 +34,14 @@ public class CommonProxy{
 		};
 
 		ConfigHandler.loadConfig(event.getSuggestedConfigurationFile());
-		QuakeConfig.init();// Uses ConfigHandler static configuration variable instead of getting file name from forge
+		QuakeConfig.init(event.getSuggestedConfigurationFile());// Uses ConfigHandler static configuration variable instead of getting file name from forge
 
 		ModBlocks.init();
 		ModItems.init();
 
 		ModCraftingRecipes.init();
 		ModElvenTradeRecipes.init();
-		ModGatewayTransmutationRecipes.init();
+		ModGatewayTransmutationRecipes.init();// We need to load the crafting recipes (if enabled) after everything else, so post-init
 		ModPetalRecipes.init();
 
 		LexiconData.init();
@@ -54,6 +54,7 @@ public class CommonProxy{
 
 	public void postInit(FMLPostInitializationEvent event){
 		BotanicalWorkshop.logger.info("Botanical workshop dev Lazersmoke expresses his sincere gratitude to Vazkii and SoundLogic");
+		ModGatewayTransmutationRecipes.initVanilla();// Grabs recipes from other mods so post init (config check handled within)
 	}
 
 	public void serverStarting(FMLServerStartingEvent event){

@@ -26,6 +26,8 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
@@ -179,10 +181,12 @@ public class TileGatewayCore extends TileMod{
 				if(vazkii.botania.common.core.handler.ConfigHandler.elfPortalParticlesEnabled)// import configs
 					blockParticle(meta);
 
+			@SuppressWarnings("unchecked")
 			final List<EntityPlayer> players = worldObj.getEntitiesWithinAABB(EntityPlayer.class, aabb);
 			for(final EntityPlayer player : players)
 				player.addPotionEffect(new PotionEffect(Potion.jump.id, 10, 5, true));// Allows player to jump out of pit
 
+			@SuppressWarnings("unchecked")
 			final List<EntityItem> items = worldObj.getEntitiesWithinAABB(EntityItem.class, aabb);
 			for(final EntityItem item : items){
 				if(!(item.getEntityItem().getItem() instanceof IGatewayCatalyst) && !(item.getEntityData().getBoolean(TAG_PORTAL_KEEP))){
@@ -208,6 +212,37 @@ public class TileGatewayCore extends TileMod{
 		}
 
 		hasUnloadedParts = false;
+	}
+
+	@Override
+	public void readCustomNBT(NBTTagCompound cmp){
+		super.readCustomNBT(cmp);
+		final NBTTagList nbttaglist = cmp.getTagList("Items", 10);
+
+		currentInventory.clear();
+		for(int i = 0; i < nbttaglist.tagCount(); ++i){
+			final NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
+			final int j = nbttagcompound1.getByte("Slot") & 255;
+
+			if(j >= 0 && j < currentInventory.size())
+				currentInventory.add(ItemStack.loadItemStackFromNBT(nbttagcompound1));
+		}
+	}
+
+	@Override
+	public void writeCustomNBT(NBTTagCompound cmp){
+		super.writeCustomNBT(cmp);
+		final NBTTagList nbttaglist = new NBTTagList();
+
+		for(int i = 0; i < currentInventory.size(); ++i)
+			if(currentInventory.get(i) != null){
+				final NBTTagCompound nbttagcompound1 = new NBTTagCompound();
+				nbttagcompound1.setByte("Slot", (byte) i);
+				currentInventory.get(i).writeToNBT(nbttagcompound1);
+				nbttaglist.appendTag(nbttagcompound1);
+			}
+
+		cmp.setTag("Items", nbttaglist);
 	}
 
 	private void blockParticle(int meta){
@@ -326,16 +361,29 @@ public class TileGatewayCore extends TileMod{
 	}
 
 	private boolean resolveRecipes(){
+		@SuppressWarnings("unchecked")
 		final List<EntityItem> items = worldObj.getEntitiesWithinAABB(EntityItem.class, getPortalAABB());
 		for(final EntityItem item : items)
 			if(item.getEntityItem().getItem() instanceof IGatewayCatalyst){
-				for(final RecipeGatewayTransmutation recipe : BotanicalWorkshopAPI.gatewayRecipes)
-					if(recipe.getCatalyst().isItemEqual(item.getEntityItem()))
-						if(recipe.matches(currentInventory, false) && !worldObj.isRemote){
-							recipe.matches(currentInventory, true);
-							summonItem(recipe.getOutput().copy());
-							return true;
+				RecipeGatewayTransmutation bestRecipe = null;
+				if(!currentInventory.isEmpty() && !worldObj.isRemote){// Optimization; dont check if we literally cant craft anything
+					for(final RecipeGatewayTransmutation recipe : BotanicalWorkshopAPI.gatewayRecipes)
+						if(recipe.getCatalyst().isItemEqual(item.getEntityItem())){
+							if(recipe.matches(currentInventory, false) == 1){
+								bestRecipe = recipe;
+								continue;
+							}
+							if(recipe.matches(currentInventory, false) == 2){
+								bestRecipe = recipe;
+								break;
+							}
 						}
+					if(bestRecipe != null){
+						bestRecipe.matches(currentInventory, true);// Consume items
+						summonItem(bestRecipe.getOutput().copy());
+						return true;
+					}
+				}
 				if(item.getEntityItem().getItem() instanceof IGatewayMod && !(item.getEntityData().getBoolean(TAG_PORTAL_KEEP)))
 					((IGatewayMod) item.getEntityItem().getItem()).onGatewayUpdate(this, item);
 
@@ -405,6 +453,7 @@ public class TileGatewayCore extends TileMod{
 		HUDHandler.drawSimpleManaHUD(color, getCurrentMana(), TileElvenPool.MAX_MANA * (additionalPools ? ELVEN_POOL_POSITIONS.length + ADDITIONAL_ELVEN_POOL_POSITIONS.length : ELVEN_POOL_POSITIONS.length), name, res);
 		String catalysts = "";
 
+		@SuppressWarnings("unchecked")
 		final List<EntityItem> items = worldObj.getEntitiesWithinAABB(EntityItem.class, getPortalAABB());
 		for(final EntityItem item : items)
 			if(item.getEntityItem().getItem() instanceof IGatewayCatalyst)

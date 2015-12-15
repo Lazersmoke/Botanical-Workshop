@@ -2,6 +2,7 @@ package lazersmoke.botanicalworkshop.api.recipe;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -10,7 +11,7 @@ import net.minecraft.item.ItemStack;
 
 /**
  * Gateway Transumtation Recipe.
- * 
+ *
  * @author Sam
  */
 public class RecipeGatewayTransmutation{
@@ -20,7 +21,7 @@ public class RecipeGatewayTransmutation{
 
 	/**
 	 * Creates a gateway transumatation recipe
-	 * 
+	 *
 	 * @param output
 	 * Output ItemStack
 	 * @param catalyst
@@ -31,12 +32,14 @@ public class RecipeGatewayTransmutation{
 	public RecipeGatewayTransmutation(ItemStack output, ItemStack catalyst, ItemStack... inputs){
 		this.output = output;
 		this.catalyst = catalyst;
+		final List<ItemStack> localToReduce = new ArrayList<ItemStack>(Arrays.asList(inputs));
+		localToReduce.removeAll(Collections.singleton(null));// Remove nulls
 		this.inputs = /* reduceStacks( */Arrays.asList(inputs)/* ) */;// Don't reduce inputs or it shows up seperate in lexicon
 	}
 
 	/**
 	 * Creates a predefined, named gateway transumatation recipe
-	 * 
+	 *
 	 * @param name
 	 * The recipe to retrieve
 	 */
@@ -50,20 +53,20 @@ public class RecipeGatewayTransmutation{
 
 	/**
 	 * Checks if given ItemStacks's match any gateway recipe
-	 * 
+	 *
 	 * @param stacks
 	 * Stacks to check
 	 * @param noGhost
 	 * If true, removes items used to satisfy recipe
-	 * @return Does it match a recipe?
+	 * @return 0 means no match, 1 means partial match, 2 means full match
 	 */
-	public boolean matches(List<ItemStack> stacks, boolean noGhost){
-		List<ItemStack> remainingInputs = new CopyOnWriteArrayList<ItemStack>(reduceStacks(inputs));
-		List<ItemStack> toKill = new ArrayList<ItemStack>();
-		List<ItemStack> reducedStacks = reduceStacks(stacks);
+	public int matches(List<ItemStack> stacks, boolean noGhost){
+		final List<ItemStack> remainingInputs = new CopyOnWriteArrayList<ItemStack>(reduceStacks(inputs));
+		final List<ItemStack> toKill = new ArrayList<ItemStack>();
+		final List<ItemStack> reducedStacks = reduceStacks(stacks);
 
-		for(ItemStack stack : reducedStacks)
-			for(ItemStack input : remainingInputs)
+		for(final ItemStack stack : reducedStacks)
+			for(final ItemStack input : remainingInputs)
 				if(simpleAreStacksEqual(stack, input)){
 					remainingInputs.remove(input);
 					if(noGhost)
@@ -71,17 +74,17 @@ public class RecipeGatewayTransmutation{
 					break;
 				}
 		if(noGhost)
-			for(ItemStack curr : toKill)
+			for(final ItemStack curr : toKill)
 				reducedStacks.remove(curr);
 		stacks.clear();
 		stacks.addAll(reducedStacks);
-		return remainingInputs.isEmpty();
+		return remainingInputs.isEmpty() ? (inputs.size() == stacks.size() ? 2 : 1) : 0;
 	}
 
 	// Getters
 	/**
 	 * Returns the list of input ItemStacks
-	 * 
+	 *
 	 * @return List of input ItemStacks
 	 */
 	public List<ItemStack> getInputs(){
@@ -90,20 +93,20 @@ public class RecipeGatewayTransmutation{
 
 	/**
 	 * Returns the output ItemStack
-	 * 
+	 *
 	 * @return Output ItemStack
 	 */
 	public ItemStack getOutput(){
-		return output == null ? new ItemStack(ModItems.botanicalResource, 1, 0) : output;
+		return output == null ? new ItemStack(ModItems.botanicalResource, 1, 0) : output.copy();
 	}
 
 	/**
 	 * Returns the catalyst ItemStack
-	 * 
+	 *
 	 * @return Catalyst ItemStack
 	 */
 	public ItemStack getCatalyst(){
-		return catalyst == null ? new ItemStack(ModItems.botanicalResource, 1, 0) : catalyst;
+		return catalyst == null ? new ItemStack(ModItems.botanicalResource, 1, 0) : catalyst.copy();
 	}
 
 	// Helper Methods
@@ -112,17 +115,18 @@ public class RecipeGatewayTransmutation{
 	}
 
 	private List<ItemStack> reduceStacks(List<ItemStack> toReduce){
-		List<ItemStack> reduced = new ArrayList<ItemStack>();
-		for(ItemStack curr : toReduce){
+		final List<ItemStack> reduced = new ArrayList<ItemStack>();
+		final List<ItemStack> localToReduce = new ArrayList<ItemStack>(toReduce);
+		localToReduce.removeAll(Collections.singleton(null));// Remove nulls
+		for(final ItemStack curr : localToReduce)
 			if(curr.stackSize == 1)
 				reduced.add(curr.copy());
 			else
 				for(int i = 0; i < curr.stackSize; i++){
-					ItemStack newCurr = curr.copy();
+					final ItemStack newCurr = curr.copy();
 					newCurr.stackSize = 1;
 					reduced.add(newCurr);
 				}
-		}
 		return reduced;
 	}
 }

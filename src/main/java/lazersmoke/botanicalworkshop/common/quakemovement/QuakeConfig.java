@@ -2,7 +2,6 @@ package lazersmoke.botanicalworkshop.common.quakemovement;
 
 import java.io.File;
 
-import lazersmoke.botanicalworkshop.common.core.handler.ConfigHandler;
 import net.minecraftforge.common.config.Configuration;
 
 public class QuakeConfig{
@@ -43,7 +42,7 @@ public class QuakeConfig{
 
 	public static double AIR_ACCELERATE;
 	private static final String AIR_ACCELERATE_NAME = "airAccelerate";
-	private static final double AIR_ACCELERATE_DEFAULT = 14.0D;
+	private static final double AIR_ACCELERATE_DEFAULT = 100.0D;
 
 	public static boolean UNCAPPED_BUNNYHOP_ENABLED;
 	private static final String UNCAPPED_BUNNYHOP_ENABLED_NAME = "uncappedBunnyhopEnabled";
@@ -55,17 +54,16 @@ public class QuakeConfig{
 
 	public static double INCREASED_FALL_DISTANCE;
 	private static final String INCREASED_FALL_DISTANCE_NAME = "fallDistanceThresholdIncrease";
-	private static final double INCREASED_FALL_DISTANCE_DEFAULT = 0.0D;
+	private static final double INCREASED_FALL_DISTANCE_DEFAULT = 5.0D;
 
 	public static double MAX_AIR_ACCEL_PER_TICK;
 	private static final String MAX_AIR_ACCEL_PER_TICK_NAME = "maxAirAccelerationPerTick";
 	private static final double MAX_AIR_ACCEL_PER_TICK_DEFAULT = 0.045D;
 
-	private static Configuration config = ConfigHandler.config;
+	private static Configuration config;
 
-	public static void init(){
-
-		load();
+	public static void init(File file){
+		config = new Configuration(file);
 
 		UNCAPPED_BUNNYHOP_ENABLED = config.get(CATEGORY_MOVEMENT, UNCAPPED_BUNNYHOP_ENABLED_NAME, UNCAPPED_BUNNYHOP_ENABLED_DEFAULT, "if enabled, the soft and hard caps will not be applied at all").getBoolean(UNCAPPED_BUNNYHOP_ENABLED_DEFAULT);
 		AIR_ACCELERATE = config.get(CATEGORY_MOVEMENT, AIR_ACCELERATE_NAME, AIR_ACCELERATE_DEFAULT, "a higher value means you can turn more sharply in the air without losing speed").getDouble(AIR_ACCELERATE_DEFAULT);

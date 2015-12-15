@@ -1,4 +1,4 @@
-package lazersmoke.botanicalworkshop.common.block.tile.mana.lightning;
+package lazersmoke.botanicalworkshop.common.block.tile.lightning;
 
 import net.minecraftforge.common.util.ForgeDirection;
 

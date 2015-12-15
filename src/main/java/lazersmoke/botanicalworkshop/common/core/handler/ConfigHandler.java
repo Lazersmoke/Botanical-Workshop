@@ -136,6 +136,9 @@ public final class ConfigHandler{
 		desc = "Set this to false to disable the crafting of Lightning Capacitors using the Gateway.";
 		LibConfigs.GATEWAY_CRAFT_LIGHTNING_CAPACITOR = loadPropBool("crafting.gateway.lightningCapacitor", desc, true);
 
+		desc = "Set this to false to disable the crafting of vanilla recipes and recipes from mods loaded before Botanical Workshop using the Gateway.";
+		LibConfigs.GATEWAY_CRAFT_VANILLA_RECIPES = loadPropBool("crafting.gateway.vanillaRecipes", desc, true);
+
 		// Gameplay Settings
 		desc = "Set this to change the mana cost of opening a Gateway.";
 		LibConfigs.GATEWAY_OPENING_MANA_COST = loadPropInt("gameplay.gateway.openingManaCost", desc, 1000000);
@@ -160,17 +163,17 @@ public final class ConfigHandler{
 	}
 
 	public static int loadPropInt(String propName, String desc, int default_){
-		Property prop = config.get(Configuration.CATEGORY_GENERAL, propName, default_, desc);
+		final Property prop = config.get(Configuration.CATEGORY_GENERAL, propName, default_, desc);
 		return prop.getInt(default_);
 	}
 
 	public static double loadPropDouble(String propName, String desc, double default_){
-		Property prop = config.get(Configuration.CATEGORY_GENERAL, propName, default_, desc);
+		final Property prop = config.get(Configuration.CATEGORY_GENERAL, propName, default_, desc);
 		return prop.getDouble(default_);
 	}
 
 	public static boolean loadPropBool(String propName, String desc, boolean default_){
-		Property prop = config.get(Configuration.CATEGORY_GENERAL, propName, default_, desc);
+		final Property prop = config.get(Configuration.CATEGORY_GENERAL, propName, default_, desc);
 		return prop.getBoolean(default_);
 	}
 

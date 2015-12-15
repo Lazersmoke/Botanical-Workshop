@@ -161,10 +161,12 @@ public class ModCraftingRecipes{
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	private static void addOreDictRecipe(ItemStack output, Object... recipe){
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(output, recipe));
 	}
 
+	@SuppressWarnings("unchecked")
 	private static void addShapelessOreDictRecipe(ItemStack output, Object... recipe){
 		CraftingManager.getInstance().getRecipeList().add(new ShapelessOreRecipe(output, recipe));
 	}

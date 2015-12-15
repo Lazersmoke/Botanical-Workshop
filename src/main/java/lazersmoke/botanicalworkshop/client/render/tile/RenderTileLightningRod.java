@@ -2,7 +2,7 @@ package lazersmoke.botanicalworkshop.client.render.tile;
 
 import lazersmoke.botanicalworkshop.client.lib.LibResources;
 import lazersmoke.botanicalworkshop.client.model.ModelLightningRod;
-import lazersmoke.botanicalworkshop.common.block.tile.mana.lightning.TileLightningRod;
+import lazersmoke.botanicalworkshop.common.block.tile.lightning.TileLightningRod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.RenderItem;

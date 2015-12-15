@@ -24,9 +24,10 @@ public class ItemThaumicResource extends ItemMod{
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubItems(Item item, CreativeTabs tabs, List subItemList){
+	public void getSubItems(Item item, CreativeTabs tabs, @SuppressWarnings("rawtypes") List subItemList){
 		for(int i = 0; i < types; i++)
 			subItemList.add(new ItemStack(item, 1, i));
 	}

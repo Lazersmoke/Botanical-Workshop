@@ -1,4 +1,4 @@
-package lazersmoke.botanicalworkshop.common.block.tile.mana.lightning;
+package lazersmoke.botanicalworkshop.common.block.tile.lightning;
 
 import lazersmoke.botanicalworkshop.api.mana.lightning.IBotanicalLightningBlock;
 import vazkii.botania.common.core.helper.Vector3;

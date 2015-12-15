@@ -1,4 +1,4 @@
-package lazersmoke.botanicalworkshop.common.block.tile.mana.lightning;
+package lazersmoke.botanicalworkshop.common.block.tile.lightning;
 
 import java.util.List;
 
@@ -28,9 +28,10 @@ public class TileThaumtanicalTransposer extends TileModLightning implements IWan
 	public void updateEntity(){
 		super.updateEntity();
 		if(getState()){
-			List<EntityItem> items = (List<EntityItem>) worldObj.getEntitiesWithinAABB(EntityItem.class, getActiveAABB());
+			@SuppressWarnings("unchecked")
+			final List<EntityItem> items = worldObj.getEntitiesWithinAABB(EntityItem.class, getActiveAABB());
 			// Don't tp if: nothing to tp OR its a IManaItem OR we dont have enough lightning
-			if(!items.isEmpty() && !(items.get(0).getEntityItem().getItem() instanceof IManaItem) && addLightning(-getDistanceToBind())){
+			if(!items.isEmpty() && items.get(0).getEntityItem().stackSize == 1 && !(items.get(0).getEntityItem().getItem() instanceof IManaItem) && addLightning(-getDistanceToBind())){
 				items.get(0).setPosition(bindX + 0.5F, bindY + 1.5F, bindZ + 0.5F);
 				items.get(0).motionX = 0;
 				items.get(0).motionY = 0;

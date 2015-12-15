@@ -38,8 +38,9 @@ public class ItemBindingCrystal extends ItemCatalyst{
 		return icons[Math.min(icons.length - 1, par1)];
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public void getSubItems(Item item, CreativeTabs creativeTab, List subItemList){
+	public void getSubItems(Item item, CreativeTabs creativeTab, @SuppressWarnings("rawtypes") List subItemList){
 		for(int i = 0; i < icons.length; i++)
 			subItemList.add(new ItemStack(item, 1, i));
 	}
