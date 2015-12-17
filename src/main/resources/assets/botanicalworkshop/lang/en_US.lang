@@ -26,6 +26,8 @@ botanicalworkshopmisc.manaTransferCatalyst3=containing this catalyst
 item.botanicalworkshop:thaumicCatalyst.name=Thaumic Catalyst
 item.botanicalworkshop:manaEssentiaCrystal.name=Mana Essentia Crystal
 
+item.botanicalworkshop:craftingAutomationCatalyst.name=Crafting Automation Catalyst
+
 #BINDING CRYSTALS
 item.botanicalworkshop:bindingCrystal0.name=Mana Binding Crystal
 item.botanicalworkshop:bindingCrystal1.name=Blood Binding Crystal
@@ -37,6 +39,7 @@ item.botanicalworkshop:elvenCrystal.name=Elven Crystal
 item.botanicalworkshop:recipeDisabled.name=Recipe Disabled!
 item.botanicalworkshop:elvenKnotting.name=Elven Knotting
 item.botanicalworkshop:scrapMetal.name=Scrap Metal
+item.botanicalworkshop:vanillaReagent.name=Vanilla Reagent
 
 #THAUMIC RESOURCES
 item.botanicalworkshop:thaumicResource0.name=Mana Essentia Crystal
@@ -50,6 +53,7 @@ item.botanicalworkshop:shiftedHelmet.name=Shifted Helmet
 item.botanicalworkshop:shiftedPhaseUpgrade.name=Shifted Phase Upgrade
 item.botanicalworkshop:shiftedHopsUpgrade.name=Shifted Hops Upgrade
 item.botanicalworkshop:shiftedRevealingUpgrade.name=Shifted Revealing Upgrade
+item.botanicalworkshop:shiftedHypervelocitySkewer.name=Shifted Hypervelocity Skewer
 
 #LIGHTNING
 item.botanicalworkshop:voltmeter.name=Voltmeter
@@ -83,16 +87,28 @@ tile.botanicalworkshop:flower.exAquainas.name=Ex Aquainas
 tile.botanicalworkshop:flower.logicalSound.name=Logical Sound
 
 tile.botanicalworkshop:thaumtanicalTransposer0.name=Thaumtanical Transposer
+tile.botanicalworkshop:thaumtanicalTransposer.name=Thaumtanical Transposer
 
 tile.botanicalworkshop:lightningRod0.name=Lightning Rod
+tile.botanicalworkshop:lightningRod.name=Lightning Rod
 
 tile.botanicalworkshop:lightningCore0.name=Lightning Core
+tile.botanicalworkshop:lightningCore.name=Lightning Core
 
 tile.botanicalworkshop:lightningTransformer0.name=Lightning Transformer
+tile.botanicalworkshop:lightningTransformer.name=Lightning Transformer
 
 tile.botanicalworkshop:lightningCapacitor0.name=Lightning Capacitor 
+tile.botanicalworkshop:lightningCapacitor.name=Lightning Capacitor 
+
+tile.botanicalworkshop:lightningFurnace0.name=Lightning Furnace
+tile.botanicalworkshop:lightningFurnace.name=Lightning Furnace
 
 tile.botanicalworkshop:creativeLightningBlock0.name=Creative Lightning Block
+tile.botanicalworkshop:creativeLightningBlock.name=Creative Lightning Block
+
+tile.botanicalworkshop:creativeLightningBlock0.name=Creative Lightning Block
+tile.botanicalworkshop:creativeLightningBlock.name=Creative Lightning Block
 
 #NEI INTEGRATION
 botanicalworkshop.nei.gateway=Elven Gateway
@@ -198,6 +214,18 @@ botanicalworkshop.tagline.thaumtanicalTransposer=Neither thaumic nor a transpose
 botanicalworkshop.page.thaumtanicalTransposer0=This block can teleport items to a given target location at the cost of lightning energy. To use, simply place, bind like a spreader, power, then chuck an item on it! The item will be teleported to directly above the bound spot! This is useful to put stuff in gateways remotely. The cost is related to the distance teleported.
 botanicalworkshop.page.thaumtanicalTransposer1=Has nothing to do with Thaumcraft.
 
+botanicalworkshop.entry.craftingAutomationCatalyst=Crafting Automation Catalyst
+botanicalworkshop.tagline.craftingAutomationCatalyst=mineCRAFT
+botanicalworkshop.page.craftingAutomationCatalyst0=Arguably the most useful item in this addon, the crafting automation catalyst modifies a gateway's behavior to enable autocrafting setups. Specifically, it makes the items that the gateway summons pop out the bottom instead of inside the gateway.
+botanicalworkshop.page.craftingAutomationCatalyst1=If you have Thaumcraft and you put a runic matrix crafting setup on top of the gateway, with the middle pedestal on top of a thaumic core installed in the gateway, the matrix will be automatically used on items inside the gateway (only on the center pedestal, though).
+botanicalworkshop.page.craftingAutomationCatalyst2=Crafting made EZ!
+
+botanicalworkshop.entry.shiftedHypervelocitySkewer=Shifted Hypervelocity Skewer
+botanicalworkshop.tagline.shiftedHypervelocitySkewer=Stabby, stabby!
+botanicalworkshop.page.shiftedHypervelocitySkewer0=Now that you can almost fly using your shifted hops upgrade, you want to attack things. Lucky for you, this weapon is just the thing! It does more damage the faster you move.
+botanicalworkshop.page.shiftedHypervelocitySkewer1=WOOSH! STAB! Repeat
+botanicalworkshop.page.shiftedHypervelocitySkewer2=WOOSH! STAB! Repeat
+
 #BOTANICAL THAUMATURGY
 botanicalworkshop.category.thaumic=Botanical Thaumaturgy
 
@@ -255,3 +283,8 @@ botanicalworkshop.entry.lightningCapacitor=Lightning Capacitor
 botanicalworkshop.tagline.lightningCapacitor=Captain Capacitance!
 botanicalworkshop.page.lightningCapacitor0=Although you could use power on demand from a gateway, you can also stockpile it using lightning capacitors. Capacitors charge up until they light up, then send out lightning until the run out, then repeat the cycle. Note that it can stay in a charged state indefinitely. You can change the capacitance by right-clicking the top and bottom with a wand.
 botanicalworkshop.page.lightningCapacitor1=Storage for DAYZ
+
+botanicalworkshop.entry.lightningFurnace=Lightning Furnace
+botanicalworkshop.tagline.lightningFurnace=Cooking with lightning!
+botanicalworkshop.page.lightningFurnace0=This is exactly what it sounds like: A lightning powered furnace! Simply add lightning, drop an item on top, and wait for it to pop out the bottom.
+botanicalworkshop.page.lightningFurnace1=Cooking with lightning!

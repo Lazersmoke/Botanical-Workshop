@@ -8,8 +8,6 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.tileentity.TileEntity;
 import vazkii.botania.client.core.handler.ClientTickHandler;
 
-//TODO lang file this
-
 public class ItemCraftingAutomationCatalyst extends ItemActiveCatalyst{
 
 	public ItemCraftingAutomationCatalyst(){

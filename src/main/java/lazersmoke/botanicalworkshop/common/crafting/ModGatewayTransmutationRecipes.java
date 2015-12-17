@@ -49,8 +49,9 @@ public class ModGatewayTransmutationRecipes{
 	public static RecipeGatewayTransmutation elvenKnottingRecipe = defaultRecipe;
 	public static RecipeGatewayTransmutation lightningTransformerRecipe = defaultRecipe;
 	public static RecipeGatewayTransmutation lightningCapacitorRecipe = defaultRecipe;
-	public static RecipeGatewayTransmutation lightningFurnaceRecipe = defaultRecipe;// TODO
-	public static RecipeGatewayTransmutation shiftedHypervelocitySkewer = defaultRecipe;// TODO
+	public static RecipeGatewayTransmutation lightningFurnaceRecipe = defaultRecipe;
+	public static RecipeGatewayTransmutation shiftedHypervelocitySkewerRecipe = defaultRecipe;
+	public static RecipeGatewayTransmutation craftingAutomationCatalystRecipe = defaultRecipe;
 
 	@SuppressWarnings("unchecked")
 	public static void initVanilla(){
@@ -181,6 +182,13 @@ public class ModGatewayTransmutationRecipes{
 				new ItemStack(vazkii.botania.common.block.ModBlocks.elfGlass, 2, 0),
 				new ItemStack((Item) Item.itemRegistry.getObject("Thaumcraft:ItemGoggles"))
 				);
+		if(LibConfigs.GATEWAY_CRAFT_SHIFTED_HYPERVELOCITY_SKEWER)
+			shiftedHypervelocitySkewerRecipe = BotanicalWorkshopAPI.registerGatewayRecipe(
+				new ItemStack(ModItems.shiftedHypervelocitySkewer),// Result
+				new ItemStack(ModItems.bindingCrystal, 1, 0), // Mana Binding Crystal
+				new ItemStack(vazkii.botania.common.item.ModItems.manasteelSword),
+				new ItemStack(ModItems.shiftedMatter, 1, 0)
+				);
 		if(LibConfigs.GATEWAY_CRAFT_SCRAP_METAL)
 			scrapMetalRecipe = BotanicalWorkshopAPI.registerGatewayRecipe(
 				new ItemStack(ModItems.botanicalResource, 1, 3),//Scrap Metal Result
@@ -249,8 +257,16 @@ public class ModGatewayTransmutationRecipes{
 				new ItemStack(ModBlocks.lightningFurnace),// Result
 				new ItemStack(ModItems.bindingCrystal, 1, 3), // Lightning Binding Crystal
 				new ItemStack(ModBlocks.lightningRod),
-				new ItemStack(ModBlocks.elvenPool),
+				new ItemStack(Blocks.furnace),
 				new ItemStack(ModItems.botanicalResource, 3, 2) // 2x scrap metal
+				);
+		if(LibConfigs.GATEWAY_CRAFT_CRAFTING_AUTOMATION_CATALYST)
+			craftingAutomationCatalystRecipe = BotanicalWorkshopAPI.registerGatewayRecipe(
+				new ItemStack(ModItems.craftingAutomationCatalyst),// Result
+				new ItemStack(ModItems.bindingCrystal, 1, 0), // Mana Binding Crystal
+				new ItemStack(Blocks.crafting_table, 5, 0),// 5x Crafting Table
+				new ItemStack(Items.iron_axe), // Iron Axe
+				new ItemStack(Items.glowstone_dust)// Glowstone
 				);
 	}
 }

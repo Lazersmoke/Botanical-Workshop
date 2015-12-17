@@ -168,18 +168,17 @@ public final class LexiconData{
 				);
 
 		craftingAutomationCatalyst = new WLexiconEntry(LibLexicon.WORKSHOP_CRAFTING_AUTOMATION_CATALYST, categoryWorkshop);
-		thaumtanicalTransposer.setLexiconPages(
-				new PageText("0"),//TODO
+		craftingAutomationCatalyst.setLexiconPages(
+				new PageText("0"),
 				new PageText("1"),
-				new PageGatewayTransmutationRecipe("2", ModGatewayTransmutationRecipes.thaumtanicalTransposerRecipe)
+				new PageGatewayTransmutationRecipe("2", ModGatewayTransmutationRecipes.craftingAutomationCatalystRecipe)
 				);
 
 		shiftedHypervelocitySkewer = new WLexiconEntry(LibLexicon.WORKSHOP_SHIFTED_HYPERVELOCITY_SKEWER, categoryWorkshop);
 		shiftedHypervelocitySkewer.setLexiconPages(
-				new PageText("0"),//TODO
-				new PageText("1"),
-				new PageGatewayTransmutationRecipe("2", ModGatewayTransmutationRecipes.shiftedHypervelocitySkewer),
-				new PageCraftingRecipe("3", ModCraftingRecipes.recipeShiftedHypervelocitySkewer)
+				new PageText("0"),
+				new PageGatewayTransmutationRecipe("1", ModGatewayTransmutationRecipes.shiftedHypervelocitySkewerRecipe),
+				new PageCraftingRecipe("2", ModCraftingRecipes.recipeShiftedHypervelocitySkewer)
 				);
 
 		// THAUMIC ENTRIES
@@ -226,7 +225,7 @@ public final class LexiconData{
 
 		lightningRod = new LLexiconEntry(LibLexicon.LIGHTNING_ROD, categoryLightning);
 		lightningRod.setPriority().setLexiconPages(
-				new PageText("0"), //TODO better describe grounding
+				new PageText("0"),
 				new PageCraftingRecipe("1", ModCraftingRecipes.recipeLightningRod)
 				);
 
@@ -243,7 +242,7 @@ public final class LexiconData{
 				);
 		lightningFurnace = new LLexiconEntry(LibLexicon.LIGHTNING_FURNACE, categoryLightning);
 		lightningFurnace.setLexiconPages(
-				new PageText("0"),//TODO
+				new PageText("0"),
 				new PageGatewayTransmutationRecipe("1", ModGatewayTransmutationRecipes.lightningFurnaceRecipe)
 				);
 	}

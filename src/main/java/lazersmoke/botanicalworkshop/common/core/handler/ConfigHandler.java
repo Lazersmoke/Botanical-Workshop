@@ -60,6 +60,9 @@ public final class ConfigHandler{
 		desc = "Set this to false to disable the crafting of Lightning Rods.";
 		LibConfigs.CRAFT_LIGHTNING_ROD = loadPropBool("crafting.table.lightningRod", desc, true);
 
+		desc = "Set this to false to disable the crafting of Shifted Hypervelocity Skewers.";
+		LibConfigs.CRAFT_SHIFTED_HYPERVELOCITY_SKEWER = loadPropBool("crafting.table.shiftedHypervelocitySkewer", desc, true);
+
 		// Elven Portal Craftinghis to false to disable the crafting of Elven Mana Pools using alfheim portals.";
 		LibConfigs.PORTAL_CRAFT_ELVEN_POOL = loadPropBool("crafting.portal.elvenPool", desc, true);
 
@@ -141,6 +144,12 @@ public final class ConfigHandler{
 
 		desc = "Set this to false to disable the crafting of Lightning Furni using the Gateway.";
 		LibConfigs.GATEWAY_CRAFT_LIGHTNING_FURNACE = loadPropBool("crafting.gateway.lightningFurnace", desc, true);
+
+		desc = "Set this to false to disable the crafting of Shifted Hypervelocity Skewer using the Gateway.";
+		LibConfigs.GATEWAY_CRAFT_SHIFTED_HYPERVELOCITY_SKEWER = loadPropBool("crafting.gateway.shiftedHypervelocitySkewer", desc, true);
+
+		desc = "Set this to false to disable the crafting of Crafting Automation Catalyst using the Gateway.";
+		LibConfigs.GATEWAY_CRAFT_CRAFTING_AUTOMATION_CATALYST = loadPropBool("crafting.gateway.craftingAutomationCatalyst", desc, true);
 
 		// Gameplay Settings
 		desc = "Set this to change the mana cost of opening a Gateway.";

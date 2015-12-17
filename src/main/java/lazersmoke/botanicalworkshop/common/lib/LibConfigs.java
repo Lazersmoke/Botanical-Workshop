@@ -14,6 +14,7 @@ public class LibConfigs{
 	public static boolean CRAFT_SHIFTED_REVEALING_UPGRADE;
 	public static boolean CRAFT_VOLTMETER;
 	public static boolean CRAFT_LIGHTNING_ROD;
+	public static boolean CRAFT_SHIFTED_HYPERVELOCITY_SKEWER;
 
 	// Elven Portal Crafting
 	public static boolean PORTAL_CRAFT_ELVEN_POOL;
@@ -45,6 +46,8 @@ public class LibConfigs{
 	public static boolean GATEWAY_CRAFT_LIGHTNING_CAPACITOR;
 	public static boolean GATEWAY_CRAFT_VANILLA_RECIPES;
 	public static boolean GATEWAY_CRAFT_LIGHTNING_FURNACE;
+	public static boolean GATEWAY_CRAFT_SHIFTED_HYPERVELOCITY_SKEWER;
+	public static boolean GATEWAY_CRAFT_CRAFTING_AUTOMATION_CATALYST;
 
 	// Gameplay Settings
 	public static int GATEWAY_TICK_MANA_COST;

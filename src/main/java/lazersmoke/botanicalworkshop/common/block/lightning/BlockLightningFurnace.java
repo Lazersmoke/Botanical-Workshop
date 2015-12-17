@@ -24,7 +24,6 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-// TODO lang file this
 public class BlockLightningFurnace extends BlockContainer implements IWandHUD, ILexiconable{
 
 	public static IIcon iconOff, iconOn, iconVert;

@@ -51,6 +51,11 @@ public class ItemShiftedHypervelocitySkewer extends Item implements IGatewayBind
 	}
 
 	@Override
+	public String getUnlocalizedNameInefficiently(ItemStack stack){
+		return super.getUnlocalizedNameInefficiently(stack).replaceAll("item\\.", "item." + LibResources.PREFIX_MOD);
+	}
+
+	@Override
 	public void onUpdate(ItemStack stack, World world, Entity playerMaybe, int p_77663_4_, boolean p_77663_5_){
 		boolean isInHand = false;
 		holdingPlayerSpeed = 0;
