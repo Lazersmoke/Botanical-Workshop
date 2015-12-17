@@ -139,6 +139,9 @@ public final class ConfigHandler{
 		desc = "Set this to false to disable the crafting of vanilla recipes and recipes from mods loaded before Botanical Workshop using the Gateway.";
 		LibConfigs.GATEWAY_CRAFT_VANILLA_RECIPES = loadPropBool("crafting.gateway.vanillaRecipes", desc, true);
 
+		desc = "Set this to false to disable the crafting of Lightning Furni using the Gateway.";
+		LibConfigs.GATEWAY_CRAFT_LIGHTNING_FURNACE = loadPropBool("crafting.gateway.lightningFurnace", desc, true);
+
 		// Gameplay Settings
 		desc = "Set this to change the mana cost of opening a Gateway.";
 		LibConfigs.GATEWAY_OPENING_MANA_COST = loadPropInt("gameplay.gateway.openingManaCost", desc, 1000000);

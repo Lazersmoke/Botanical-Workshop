@@ -370,15 +370,20 @@ public class TileGatewayCore extends TileMod{
 					for(final RecipeGatewayTransmutation recipe : BotanicalWorkshopAPI.gatewayRecipes)
 						if(recipe.getCatalyst().isItemEqual(item.getEntityItem())){
 							if(recipe.matches(currentInventory, false) == 1){
+								// BotanicalWorkshop.logger.log(Level.INFO, "Checking recipe: " + recipe.getOutput().toString() + " for " + recipe.getInputs().toString() + " with catalyst " + recipe.getCatalyst().toString());
+								// BotanicalWorkshop.logger.log(Level.INFO, "Partial Match!");
 								bestRecipe = recipe;
 								continue;
 							}
 							if(recipe.matches(currentInventory, false) == 2){
+								// BotanicalWorkshop.logger.log(Level.INFO, "Checking recipe: " + recipe.getOutput().toString() + " for " + recipe.getInputs().toString() + " with catalyst " + recipe.getCatalyst().toString());
+								// BotanicalWorkshop.logger.log(Level.INFO, "Exact Match!");
 								bestRecipe = recipe;
 								break;
 							}
 						}
 					if(bestRecipe != null){
+						// BotanicalWorkshop.logger.log(Level.INFO, "Found a recipe, using " + bestRecipe.getOutput().toString() + " for " + bestRecipe.getInputs().toString() + " with catalyst " + bestRecipe.getCatalyst().toString());
 						bestRecipe.matches(currentInventory, true);// Consume items
 						summonItem(bestRecipe.getOutput().copy());
 						return true;

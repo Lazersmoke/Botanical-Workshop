@@ -3,7 +3,9 @@ package lazersmoke.botanicalworkshop.api.recipe;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import lazersmoke.botanicalworkshop.common.item.ModItems;
@@ -12,7 +14,7 @@ import net.minecraft.item.ItemStack;
 /**
  * Gateway Transumtation Recipe.
  *
- * @author Sam
+ * @author Lazersmoke
  */
 public class RecipeGatewayTransmutation{
 	private ItemStack output;
@@ -34,7 +36,7 @@ public class RecipeGatewayTransmutation{
 		this.catalyst = catalyst;
 		final List<ItemStack> localToReduce = new ArrayList<ItemStack>(Arrays.asList(inputs));
 		localToReduce.removeAll(Collections.singleton(null));// Remove nulls
-		this.inputs = /* reduceStacks( */Arrays.asList(inputs)/* ) */;// Don't reduce inputs or it shows up seperate in lexicon
+		this.inputs = compressStacks(Arrays.asList(inputs));// Don't reduce inputs or it shows up seperate in lexicon; compress them so they show nicely!
 	}
 
 	/**
@@ -56,11 +58,11 @@ public class RecipeGatewayTransmutation{
 	 *
 	 * @param stacks
 	 * Stacks to check
-	 * @param noGhost
+	 * @param comsumeInputs
 	 * If true, removes items used to satisfy recipe
 	 * @return 0 means no match, 1 means partial match, 2 means full match
 	 */
-	public int matches(List<ItemStack> stacks, boolean noGhost){
+	public int matches(List<ItemStack> stacks, boolean comsumeInputs){
 		final List<ItemStack> remainingInputs = new CopyOnWriteArrayList<ItemStack>(reduceStacks(inputs));
 		final List<ItemStack> toKill = new ArrayList<ItemStack>();
 		final List<ItemStack> reducedStacks = reduceStacks(stacks);
@@ -69,15 +71,16 @@ public class RecipeGatewayTransmutation{
 			for(final ItemStack input : remainingInputs)
 				if(simpleAreStacksEqual(stack, input)){
 					remainingInputs.remove(input);
-					if(noGhost)
+					if(comsumeInputs)
 						toKill.add(stack);
 					break;
 				}
-		if(noGhost)
-			for(final ItemStack curr : toKill)
+		if(comsumeInputs)
+			for(final ItemStack curr : toKill){
 				reducedStacks.remove(curr);
-		stacks.clear();
-		stacks.addAll(reducedStacks);
+				stacks.clear();
+				stacks.addAll(reducedStacks);
+			}
 		return remainingInputs.isEmpty() ? (inputs.size() == stacks.size() ? 2 : 1) : 0;
 	}
 
@@ -114,7 +117,7 @@ public class RecipeGatewayTransmutation{
 		return stack.getItem() == stack2.getItem() && stack.getItemDamage() == stack2.getItemDamage();
 	}
 
-	private List<ItemStack> reduceStacks(List<ItemStack> toReduce){
+	public List<ItemStack> reduceStacks(List<ItemStack> toReduce){
 		final List<ItemStack> reduced = new ArrayList<ItemStack>();
 		final List<ItemStack> localToReduce = new ArrayList<ItemStack>(toReduce);
 		localToReduce.removeAll(Collections.singleton(null));// Remove nulls
@@ -128,5 +131,17 @@ public class RecipeGatewayTransmutation{
 					reduced.add(newCurr);
 				}
 		return reduced;
+	}
+
+	public List<ItemStack> compressStacks(List<ItemStack> toCompress){
+		final List<ItemStack> reduced = reduceStacks(toCompress);
+		final Map<ItemStack, Integer> items = new HashMap<ItemStack, Integer>();
+		final List<ItemStack> compressed = new ArrayList<ItemStack>();
+		for(final ItemStack curr : reduced)
+			items.put(curr, items.get(curr.getItem()) == null ? 1 : items.get(curr.getItem()));
+		for(final Map.Entry<ItemStack, Integer> entry : items.entrySet())
+			for(int x = 0; x < entry.getValue(); x++)
+				compressed.add(entry.getKey());
+		return compressed;
 	}
 }

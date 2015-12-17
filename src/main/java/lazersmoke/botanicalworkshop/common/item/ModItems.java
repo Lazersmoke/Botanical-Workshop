@@ -12,6 +12,7 @@ import lazersmoke.botanicalworkshop.common.item.equipment.armor.shifted.ItemShif
 import lazersmoke.botanicalworkshop.common.item.equipment.armor.shifted.ItemShiftedChestplate;
 import lazersmoke.botanicalworkshop.common.item.equipment.armor.shifted.ItemShiftedHelmet;
 import lazersmoke.botanicalworkshop.common.item.equipment.armor.shifted.ItemShiftedLeggings;
+import lazersmoke.botanicalworkshop.common.item.equipment.tool.shifted.ItemShiftedHypervelocitySkewer;
 import lazersmoke.botanicalworkshop.common.item.shifted.ItemShiftedHopsUpgrade;
 import lazersmoke.botanicalworkshop.common.item.shifted.ItemShiftedMatter;
 import lazersmoke.botanicalworkshop.common.item.shifted.ItemShiftedPhaseUpgrade;
@@ -38,6 +39,7 @@ public final class ModItems{
 	public static Item lightningGenerationCatalyst;
 	public static Item lightningConsumingCatalyst;
 	public static Item craftingAutomationCatalyst;
+	public static Item shiftedHypervelocitySkewer;
 
 	public static void init(){
 
@@ -59,6 +61,7 @@ public final class ModItems{
 		lightningGenerationCatalyst = new ItemLightningGenerationCatalyst();
 		lightningConsumingCatalyst = new ItemLightningConsumingCatalyst();
 		craftingAutomationCatalyst = new ItemCraftingAutomationCatalyst();
+		shiftedHypervelocitySkewer = new ItemShiftedHypervelocitySkewer();
 
 		BotanicalWorkshopAPI.registerShiftedArmorUpgrade((IShiftedArmorUpgrade) shiftedPhaseUpgrade);
 		BotanicalWorkshopAPI.registerShiftedArmorUpgrade((IShiftedArmorUpgrade) shiftedRevealingUpgrade);

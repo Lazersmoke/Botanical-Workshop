@@ -44,6 +44,7 @@ public class LibConfigs{
 	public static boolean GATEWAY_CRAFT_LIGHTNING_TRANSFORMER;
 	public static boolean GATEWAY_CRAFT_LIGHTNING_CAPACITOR;
 	public static boolean GATEWAY_CRAFT_VANILLA_RECIPES;
+	public static boolean GATEWAY_CRAFT_LIGHTNING_FURNACE;
 
 	// Gameplay Settings
 	public static int GATEWAY_TICK_MANA_COST;

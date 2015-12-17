@@ -31,6 +31,7 @@ public class ModCraftingRecipes{
 	public static IRecipe recipeShiftedRevealingUpgrade = defaultRecipe;
 	public static IRecipe recipeVoltmeter = defaultRecipe;
 	public static IRecipe recipeLightningRod = defaultRecipe;
+	public static IRecipe recipeShiftedHypervelocitySkewer = defaultRecipe;//TODO
 
 	public static void init(){
 		if(LibConfigs.CRAFT_ELVEN_POOL){

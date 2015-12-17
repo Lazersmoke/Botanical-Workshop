@@ -7,8 +7,8 @@ import vazkii.botania.api.subtile.SubTileEntity;
 
 /**
  * Generic Tonal Flower Makes music! MAKE SURE TO INITIALIZE PITCHES, TIMES, VOLUMES BEFORE CALLING `super.onUpdate();`!!!
- * 
- * @author Sam
+ *
+ * @author Lazersmoke
  */
 public class TonalFlower extends SubTileEntity{
 

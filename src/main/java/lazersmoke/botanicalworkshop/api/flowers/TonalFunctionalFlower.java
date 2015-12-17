@@ -2,13 +2,13 @@ package lazersmoke.botanicalworkshop.api.flowers;
 
 import java.util.Arrays;
 
-import vazkii.botania.api.subtile.SubTileFunctional;
 import lazersmoke.botanicalworkshop.common.lib.LibConfigs;
+import vazkii.botania.api.subtile.SubTileFunctional;
 
 /**
  * Functioning Tonal Flower MAKE SURE TO INITIALIZE PITCHES, TIMES, VOLUMES BEFORE CALLING `super.onUpdate();`!!! If acceptsRedstone is specified, redstone is required to stop music
- * 
- * @author Sam
+ *
+ * @author Lazersmoke
  */
 public class TonalFunctionalFlower extends SubTileFunctional{
 

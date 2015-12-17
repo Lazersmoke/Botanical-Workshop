@@ -2,13 +2,13 @@ package lazersmoke.botanicalworkshop.api.flowers;
 
 import java.util.Arrays;
 
-import vazkii.botania.api.subtile.SubTileGenerating;
 import lazersmoke.botanicalworkshop.common.lib.LibConfigs;
+import vazkii.botania.api.subtile.SubTileGenerating;
 
 /**
  * Generating Tonal Flower MAKE SURE TO INITIALIZE PITCHES, TIMES, VOLUMES BEFORE CALLING `super.onUpdate();`!!!
- * 
- * @author Sam
+ *
+ * @author Lazersmoke
  */
 public class TonalGeneratingFlower extends SubTileGenerating{
 

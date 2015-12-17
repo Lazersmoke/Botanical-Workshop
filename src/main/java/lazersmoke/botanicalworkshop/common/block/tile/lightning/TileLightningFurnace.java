@@ -21,7 +21,7 @@ public class TileLightningFurnace extends TileModLightning{
 		if(worldObj.isRemote)
 			return;
 		// If we are on, have an item, that item is smeltable, we have lightning and our cookingProgress (BTW increment dat shit sometime) is at least 200, do the thing!
-		if(getState() && itemIn != null && FurnaceRecipes.smelting().getSmeltingResult(itemIn) != null && addLightning(-2) && cookingProgress++ >= 200){
+		if(getState() && itemIn != null && FurnaceRecipes.smelting().getSmeltingResult(itemIn) != null && addLightning(-2) && worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, getState() ? 1 : 0, 1) && /* Update texture */cookingProgress++ >= 200){
 			final EntityItem theItem = new EntityItem(worldObj, xCoord + 0.5F, yCoord - 0.5F, zCoord + 0.5F, FurnaceRecipes.smelting().getSmeltingResult(itemIn));
 			theItem.delayBeforeCanPickup = 0;
 			itemIn = null;
@@ -30,12 +30,11 @@ public class TileLightningFurnace extends TileModLightning{
 		}
 		@SuppressWarnings("unchecked")
 		final List<EntityItem> items = worldObj.getEntitiesWithinAABB(EntityItem.class, getActiveAABB());
-		if(itemIn == null && !items.isEmpty() && !items.get(0).isDead && items.get(0).getEntityItem() != null)
+		if(itemIn == null && !items.isEmpty() && !items.get(0).isDead && items.get(0).getEntityItem() != null && FurnaceRecipes.smelting().getSmeltingResult(items.get(0).getEntityItem()) != null)
 			if(items.get(0).getEntityItem().stackSize == 1){
 				itemIn = items.get(0).getEntityItem().copy();
 				items.get(0).setDead();
 			}
-		worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, getState() ? 1 : 0, 1);// Update texture
 	}
 
 	private AxisAlignedBB getActiveAABB(){

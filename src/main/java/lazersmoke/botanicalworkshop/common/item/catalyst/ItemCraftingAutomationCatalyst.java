@@ -7,9 +7,8 @@ import lazersmoke.botanicalworkshop.common.lib.LibItemNames;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.tileentity.TileEntity;
 import vazkii.botania.client.core.handler.ClientTickHandler;
-//TODO texture this
+
 //TODO lang file this
-//TODO lexicon this
 
 public class ItemCraftingAutomationCatalyst extends ItemActiveCatalyst{
 

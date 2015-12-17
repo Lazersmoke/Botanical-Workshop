@@ -24,11 +24,10 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-// TODO texture this
 // TODO lang file this
 public class BlockLightningFurnace extends BlockContainer implements IWandHUD, ILexiconable{
 
-	public static IIcon iconOff, iconOn;
+	public static IIcon iconOff, iconOn, iconVert;
 
 	public BlockLightningFurnace(){
 		super(Material.rock);
@@ -42,14 +41,15 @@ public class BlockLightningFurnace extends BlockContainer implements IWandHUD, I
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister par1IconRegister){
-		iconOff = par1IconRegister.registerIcon(LibResources.PREFIX_MOD + getUnlocalizedName().replaceAll("tile\\.", "") + "Off");
-		iconOn = par1IconRegister.registerIcon(LibResources.PREFIX_MOD + getUnlocalizedName().replaceAll("tile\\.", "") + "On");
+	public void registerBlockIcons(IIconRegister iconRegister){
+		iconOff = iconRegister.registerIcon(LibResources.PREFIX_MOD + getUnlocalizedName().replaceAll("tile\\.", "") + "Off");
+		iconOn = iconRegister.registerIcon(LibResources.PREFIX_MOD + getUnlocalizedName().replaceAll("tile\\.", "") + "On");
+		iconVert = iconRegister.registerIcon(LibResources.PREFIX_MOD + getUnlocalizedName().replaceAll("tile\\.", "") + "Vert");
 	}
 
 	@Override
 	public IIcon getIcon(int side, int meta){
-		return meta == 0 ? iconOff : iconOn;
+		return side > 1 ? (meta == 0 ? iconOff : iconOn) : iconVert;// Side > 1 means its a horizontal side
 	}
 
 	@Override
@@ -70,7 +70,7 @@ public class BlockLightningFurnace extends BlockContainer implements IWandHUD, I
 
 	@Override
 	public LexiconEntry getEntry(World world, int x, int y, int z, EntityPlayer player, ItemStack lexicon){
-		return LexiconData.thaumtanicalTransposer;// TODO lexicon this
+		return LexiconData.lightningFurnace;
 	}
 
 }

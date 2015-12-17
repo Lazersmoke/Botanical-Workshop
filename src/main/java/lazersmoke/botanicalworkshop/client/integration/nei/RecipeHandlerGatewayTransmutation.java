@@ -7,7 +7,6 @@ import java.util.List;
 import lazersmoke.botanicalworkshop.api.BotanicalWorkshopAPI;
 import lazersmoke.botanicalworkshop.api.recipe.RecipeGatewayTransmutation;
 import lazersmoke.botanicalworkshop.client.lib.LibResources;
-import lazersmoke.botanicalworkshop.common.BotanicalWorkshop;
 import lazersmoke.botanicalworkshop.common.block.BlockGatewayCore;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.client.renderer.texture.TextureMap;
@@ -15,7 +14,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.oredict.OreDictionary;
 
-import org.apache.logging.log4j.Level;
 import org.lwjgl.opengl.GL11;
 
 import codechicken.lib.gui.GuiDraw;
@@ -34,7 +32,6 @@ public class RecipeHandlerGatewayTransmutation extends TemplateRecipeHandler{
 		public CachedElvenTradeRecipe(RecipeGatewayTransmutation recipe){
 			if(recipe == null)
 				return;
-			BotanicalWorkshop.logger.log(Level.INFO, recipe.getInputs().toString());
 			setIngredients(recipe.getInputs());
 			output = new PositionedStack(recipe.getOutput(), 107, 46);
 			catalyst = new PositionedStack(recipe.getCatalyst(), 60, 46);
