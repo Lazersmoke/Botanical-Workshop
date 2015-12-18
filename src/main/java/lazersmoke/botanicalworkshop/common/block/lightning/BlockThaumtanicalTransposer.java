@@ -70,8 +70,8 @@ public class BlockThaumtanicalTransposer extends BlockContainer implements IWand
 
 	@Override
 	public boolean onUsedByWand(EntityPlayer player, ItemStack stack, World world, int x, int y, int z, int side){
-		boolean did = ((TileThaumtanicalTransposer) world.getTileEntity(x, y, z)).onWanded(player);
-		return did;
+		((TileThaumtanicalTransposer) world.getTileEntity(x, y, z)).onWanded(side);
+		return true;
 	}
 
 	@Override

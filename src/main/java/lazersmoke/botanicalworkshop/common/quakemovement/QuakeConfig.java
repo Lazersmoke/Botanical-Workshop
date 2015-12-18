@@ -10,7 +10,7 @@ public class QuakeConfig{
 
 	public static float TRIMP_MULTIPLIER;
 	private static final String TRIMP_MULTIPLIER_NAME = "trimpMultiplier";
-	private static final double TRIMP_MULTIPLIER_DEFAULT = 1.4D;
+	private static final double TRIMP_MULTIPLIER_DEFAULT = 0.7D;
 
 	public static float HARD_CAP;
 	private static final String HARD_CAP_NAME = "hardCapThreshold";
@@ -54,7 +54,7 @@ public class QuakeConfig{
 
 	public static double INCREASED_FALL_DISTANCE;
 	private static final String INCREASED_FALL_DISTANCE_NAME = "fallDistanceThresholdIncrease";
-	private static final double INCREASED_FALL_DISTANCE_DEFAULT = 5.0D;
+	private static final double INCREASED_FALL_DISTANCE_DEFAULT = 10.0D;
 
 	public static double MAX_AIR_ACCEL_PER_TICK;
 	private static final String MAX_AIR_ACCEL_PER_TICK_NAME = "maxAirAccelerationPerTick";

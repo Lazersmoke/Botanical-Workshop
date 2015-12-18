@@ -2,12 +2,16 @@ package lazersmoke.botanicalworkshop.common.block.tile.lightning;
 
 import java.util.List;
 
+import lazersmoke.botanicalworkshop.common.BotanicalWorkshop;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChunkCoordinates;
+
+import org.apache.logging.log4j.Level;
+
 import vazkii.botania.api.mana.IManaItem;
 import vazkii.botania.api.wand.IWandBindable;
 import vazkii.botania.common.core.helper.MathHelper;
@@ -17,19 +21,38 @@ public class TileThaumtanicalTransposer extends TileModLightning implements IWan
 	protected int bufferThreshold = 150;
 	protected int overflowThreshold = 300;
 
-	private int bindX = xCoord;
-	private int bindY = yCoord + 10;
-	private int bindZ = zCoord;
+	private final AxisAlignedBB[] possibleInputAABBs = new AxisAlignedBB[6];
+	private int AABBIndex = 1;
+
+	private int bindX;
+	private int bindY;
+	private int bindZ;
 	private static final String TAG_BIND_X = "bindGatewayX";
 	private static final String TAG_BIND_Y = "bindGatewayY";
 	private static final String TAG_BIND_Z = "bindGatewayZ";
+	private static final String TAG_INPUT_SIDE = "inputSide";
+
+	private boolean firstTick = true;
 
 	@Override
 	public void updateEntity(){
 		super.updateEntity();
+		if(firstTick){
+			firstTick = false;// Run once
+			bindX = bindX == 0 ? xCoord : bindX;
+			bindY = bindY == 0 ? yCoord + 10 : bindY;
+			bindZ = bindY == 0 ? yCoord : bindZ;
+			possibleInputAABBs[0] = AxisAlignedBB.getBoundingBox(xCoord + 0, yCoord - 1, zCoord + 0, xCoord + 1, yCoord + 0, zCoord + 1);// B
+			possibleInputAABBs[1] = AxisAlignedBB.getBoundingBox(xCoord + 0, yCoord + 1, zCoord + 0, xCoord + 1, yCoord + 2, zCoord + 1);// T
+			possibleInputAABBs[2] = AxisAlignedBB.getBoundingBox(xCoord + 0, yCoord + 0, zCoord - 1, xCoord + 1, yCoord + 1, zCoord + 0);// N
+			possibleInputAABBs[3] = AxisAlignedBB.getBoundingBox(xCoord + 0, yCoord + 0, zCoord + 1, xCoord + 1, yCoord + 1, zCoord + 2);// S
+			possibleInputAABBs[4] = AxisAlignedBB.getBoundingBox(xCoord - 1, yCoord + 0, zCoord + 0, xCoord + 0, yCoord + 1, zCoord + 1);// W
+			possibleInputAABBs[5] = AxisAlignedBB.getBoundingBox(xCoord + 1, yCoord + 0, zCoord + 0, xCoord + 2, yCoord + 1, zCoord + 1);// E
+		}
 		if(getState()){
 			@SuppressWarnings("unchecked")
 			final List<EntityItem> items = worldObj.getEntitiesWithinAABB(EntityItem.class, getActiveAABB());
+			// BotanicalWorkshop.logger.log(Level.INFO, "Box is " + getActiveAABB().minX + ", " + getActiveAABB().minY + ", " + getActiveAABB().minZ + " to " + getActiveAABB().maxX + ", " + getActiveAABB().maxY + ", " + getActiveAABB().maxZ);
 			// Don't tp if: nothing to tp OR its a IManaItem OR we dont have enough lightning
 			if(!items.isEmpty() && items.get(0).getEntityItem().stackSize == 1 && !(items.get(0).getEntityItem().getItem() instanceof IManaItem) && addLightning(-getDistanceToBind())){
 				items.get(0).setPosition(bindX + 0.5F, bindY + 1.5F, bindZ + 0.5F);
@@ -53,6 +76,7 @@ public class TileThaumtanicalTransposer extends TileModLightning implements IWan
 		cmp.setInteger(TAG_BIND_X, bindX);
 		cmp.setInteger(TAG_BIND_Y, bindY);
 		cmp.setInteger(TAG_BIND_Z, bindZ);
+		cmp.setInteger(TAG_INPUT_SIDE, AABBIndex);
 	}
 
 	@Override
@@ -61,14 +85,16 @@ public class TileThaumtanicalTransposer extends TileModLightning implements IWan
 		bindX = cmp.getInteger(TAG_BIND_X);
 		bindY = cmp.getInteger(TAG_BIND_Y);
 		bindZ = cmp.getInteger(TAG_BIND_Z);
+		AABBIndex = cmp.getInteger(TAG_INPUT_SIDE);
 	}
 
-	public boolean onWanded(EntityPlayer player){
-		return addLightning(50);
+	public void onWanded(int side){
+		BotanicalWorkshop.logger.log(Level.INFO, "Side is " + side);
+		AABBIndex = side;
 	}
 
 	private AxisAlignedBB getActiveAABB(){
-		return AxisAlignedBB.getBoundingBox(xCoord, yCoord + 1, zCoord, xCoord + 1, yCoord + 2, zCoord + 1);
+		return possibleInputAABBs[AABBIndex];
 	}
 
 	@Override

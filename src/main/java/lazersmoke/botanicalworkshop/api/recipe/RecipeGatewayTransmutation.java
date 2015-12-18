@@ -114,7 +114,7 @@ public class RecipeGatewayTransmutation{
 
 	// Helper Methods
 	private boolean simpleAreStacksEqual(ItemStack stack, ItemStack stack2){
-		return stack.getItem() == stack2.getItem() && stack.getItemDamage() == stack2.getItemDamage();
+		return stack.getItem() == stack2.getItem() && (stack.getItemDamage() == stack2.getItemDamage() || (stack.getItemDamage() == 32767 || stack2.getItemDamage() == 32767));
 	}
 
 	public List<ItemStack> reduceStacks(List<ItemStack> toReduce){
