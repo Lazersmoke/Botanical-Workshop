@@ -15,14 +15,13 @@ public class ItemLightningConsumingCatalyst extends ItemActiveCatalyst{
 
 	@Override
 	public void onGatewayUpdate(TileGatewayCore gateway, EntityItem catalyst){
-		Block powerCore = catalyst.worldObj.getBlock(gateway.xCoord, gateway.yCoord + 6, gateway.zCoord);
+		final Block powerCore = catalyst.worldObj.getBlock(gateway.xCoord, gateway.yCoord + 6, gateway.zCoord);
 		if(powerCore instanceof BlockLightningCore){
-			gateway.getWorldObj().setBlockMetadataWithNotify(gateway.xCoord, gateway.yCoord + 6, gateway.zCoord, 1, 1);
-			TileLightningCore tileLightningCore = (TileLightningCore) catalyst.worldObj.getTileEntity(gateway.xCoord, gateway.yCoord + 6, gateway.zCoord);
+			gateway.getWorldObj().setBlockMetadataWithNotify(gateway.xCoord, gateway.yCoord + 6, gateway.zCoord, 1, 3);
+			final TileLightningCore tileLightningCore = (TileLightningCore) catalyst.worldObj.getTileEntity(gateway.xCoord, gateway.yCoord + 6, gateway.zCoord);
 			tileLightningCore.poke();// *POKE*
-			if(!gateway.isFull() && gateway.getAvailableSpaceForMana() >= 50000 && tileLightningCore.addLightning(-50)){
+			if(!gateway.isFull() && gateway.getAvailableSpaceForMana() >= 50000 && tileLightningCore.addLightning(-50))
 				gateway.recieveMana(50000);
-			}
 		}
 	}
 }

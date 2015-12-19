@@ -391,7 +391,7 @@ public class TileGatewayCore extends TileMod{
 						return true;
 					}
 				}
-				if(item.getEntityItem().getItem() instanceof IGatewayMod && !(item.getEntityData().getBoolean(TAG_PORTAL_KEEP)))
+				if(item.getEntityItem().getItem() instanceof IGatewayMod && !(item.getEntityData().getBoolean(TAG_PORTAL_KEEP)) && !item.isDead)
 					((IGatewayMod) item.getEntityItem().getItem()).onGatewayUpdate(this, item);
 
 				for(final ItemStack possibleLexicon : currentInventory)

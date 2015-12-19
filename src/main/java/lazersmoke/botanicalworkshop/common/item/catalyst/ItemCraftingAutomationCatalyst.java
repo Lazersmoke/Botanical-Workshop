@@ -22,6 +22,7 @@ public class ItemCraftingAutomationCatalyst extends ItemActiveCatalyst{
 	public void onGatewayUpdate(TileGatewayCore gateway, EntityItem catalyst){
 		gateway.pokeSummonOffset(new float[] {0.5F, -0.5F, 0.5F});// Make items summon under gateway
 
+		@SuppressWarnings("unchecked")
 		final List<EntityItem> otherCatalysts = catalyst.worldObj.getEntitiesWithinAABB(EntityItem.class, gateway.getPortalAABB());
 		for(final EntityItem otherCatalyst : otherCatalysts)
 			if(otherCatalyst.getEntityItem().getItem() == ModItems.emptyCatalyst){

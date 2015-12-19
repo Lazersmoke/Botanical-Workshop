@@ -9,7 +9,7 @@ public class TileLightningCore extends TileModLightning implements IBotanicalLig
 	public void updateEntity(){
 		super.updateEntity();
 		if(ticks <= 0){
-			worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, 0, 1);
+			worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, 0, 3);
 			ticks = 2;
 		}
 		ticks--;

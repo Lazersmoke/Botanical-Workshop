@@ -40,6 +40,7 @@ public final class ModItems{
 	public static Item lightningConsumingCatalyst;
 	public static Item craftingAutomationCatalyst;
 	public static Item shiftedHypervelocitySkewer;
+	public static Item lightningCell;
 
 	public static void init(){
 
@@ -62,6 +63,7 @@ public final class ModItems{
 		lightningConsumingCatalyst = new ItemLightningConsumingCatalyst();
 		craftingAutomationCatalyst = new ItemCraftingAutomationCatalyst();
 		shiftedHypervelocitySkewer = new ItemShiftedHypervelocitySkewer();
+		lightningCell = new ItemLightningCell();
 
 		BotanicalWorkshopAPI.registerShiftedArmorUpgrade((IShiftedArmorUpgrade) shiftedPhaseUpgrade);
 		BotanicalWorkshopAPI.registerShiftedArmorUpgrade((IShiftedArmorUpgrade) shiftedRevealingUpgrade);

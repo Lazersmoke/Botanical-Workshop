@@ -40,7 +40,8 @@ public class ItemMod extends Item{
 
 	@Override
 	public String getUnlocalizedNameInefficiently(ItemStack stack){
-		if(namedMetadata){ return super.getUnlocalizedNameInefficiently(stack).replaceAll("item\\.", "item." + LibResources.PREFIX_MOD) + "." + stack.getItemDamage(); }
+		if(namedMetadata)
+			return super.getUnlocalizedNameInefficiently(stack).replaceAll("item\\.", "item." + LibResources.PREFIX_MOD) + "." + stack.getItemDamage();
 		return super.getUnlocalizedNameInefficiently(stack).replaceAll("item\\.", "item." + LibResources.PREFIX_MOD);
 	}
 
@@ -51,7 +52,7 @@ public class ItemMod extends Item{
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister register){
-		String resourceName = LibResources.PREFIX_MOD + this.getUnlocalizedName().replaceAll("item\\.", "");
+		final String resourceName = LibResources.PREFIX_MOD + this.getUnlocalizedName().replaceAll("item\\.", "");
 		itemIcon = register.registerIcon(resourceName);
 	}
 }

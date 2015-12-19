@@ -1,14 +1,17 @@
 package lazersmoke.botanicalworkshop.common.block.tile.lightning;
 
+import lazersmoke.botanicalworkshop.api.mana.lightning.IBotanicalLightningCellAcceptor;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.util.ForgeDirection;
 
-public class TileLightningCapacitor extends TileModLightning{
+public class TileLightningCapacitor extends TileModLightning implements IBotanicalLightningCellAcceptor{
 	private int buffer = 500;
+	private final String TAG_BUFFER = "botanicalCapacitance";
 
 	@Override
 	public void updateEntity(){
 		super.updateEntity();
-		worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, getState() ? 0 : 1, 1);
+		worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, getState() ? 0 : 1, 2);
 	}
 
 	@Override
@@ -19,6 +22,18 @@ public class TileLightningCapacitor extends TileModLightning{
 	@Override
 	public void overflow(){
 		blindAddLightning(-getCurrentLightning());
+	}
+
+	@Override
+	public void writeCustomNBT(NBTTagCompound cmp){
+		super.writeCustomNBT(cmp);
+		cmp.setInteger(TAG_BUFFER, buffer);
+	}
+
+	@Override
+	public void readCustomNBT(NBTTagCompound cmp){
+		super.readCustomNBT(cmp);
+		buffer = cmp.getInteger(TAG_BUFFER);
 	}
 
 	public void interpretClick(ForgeDirection side){

@@ -37,6 +37,7 @@ public class TileThaumtanicalTransposer extends TileModLightning implements IWan
 	@Override
 	public void updateEntity(){
 		super.updateEntity();
+		worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, (AABBIndex << 1) | (getState() ? 1 : 0), 2);
 		if(firstTick){
 			firstTick = false;// Run once
 			bindX = bindX == 0 ? xCoord : bindX;
@@ -54,16 +55,20 @@ public class TileThaumtanicalTransposer extends TileModLightning implements IWan
 			final List<EntityItem> items = worldObj.getEntitiesWithinAABB(EntityItem.class, getActiveAABB());
 			// BotanicalWorkshop.logger.log(Level.INFO, "Box is " + getActiveAABB().minX + ", " + getActiveAABB().minY + ", " + getActiveAABB().minZ + " to " + getActiveAABB().maxX + ", " + getActiveAABB().maxY + ", " + getActiveAABB().maxZ);
 			// Don't tp if: nothing to tp OR its a IManaItem OR we dont have enough lightning
-			if(!items.isEmpty() && items.get(0).getEntityItem().stackSize == 1 && !(items.get(0).getEntityItem().getItem() instanceof IManaItem) && addLightning(-getDistanceToBind())){
-				items.get(0).setPosition(bindX + 0.5F, bindY + 1.5F, bindZ + 0.5F);
-				items.get(0).motionX = 0;
-				items.get(0).motionY = 0;
-				items.get(0).motionZ = 0;
+			if(!items.isEmpty() && (!items.get(0).getEntityItem().hasTagCompound() || (items.get(0).getEntityItem().getTagCompound().hasNoTags())) && items.get(0).getEntityItem().stackSize == 1 && !(items.get(0).getEntityItem().getItem() instanceof IManaItem) && addLightning(-getDistanceToBind())){
+				final EntityItem theItem = items.get(0);
+				BotanicalWorkshop.logger.log(Level.INFO, "begin");
+				theItem.getEntityItem().func_135074_t();// IDK
+				if(theItem.getEntityItem().hasTagCompound())
+					theItem.getEntityItem().setTagCompound(null);// Can do because we check for empty above
+				theItem.setPosition(bindX + 0.5F, bindY + 1.5F, bindZ + 0.5F);
+				theItem.setVelocity(0, 0, 0);
+				if(theItem.getEntityItem().hasTagCompound())
+					theItem.getEntityItem().setTagCompound(null);// Can do because we check for empty above
 				worldObj.playSoundEffect(xCoord + 0.5F, yCoord + 0.5F, zCoord + 0.5F, "mob.endermen.portal", 0.5F, (float) ((Math.random() / 2) + 0.25F));
 				worldObj.playSoundEffect(bindX + 0.5F, bindY + 1.5F, bindZ + 0.5F, "mob.endermen.portal", 0.5F, (float) ((Math.random() / 2) + 0.25F));
 			}
 		}
-		worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, getState() ? 1 : 0, 1);
 	}
 
 	private int getDistanceToBind(){
@@ -89,7 +94,6 @@ public class TileThaumtanicalTransposer extends TileModLightning implements IWan
 	}
 
 	public void onWanded(int side){
-		BotanicalWorkshop.logger.log(Level.INFO, "Side is " + side);
 		AABBIndex = side;
 	}
 

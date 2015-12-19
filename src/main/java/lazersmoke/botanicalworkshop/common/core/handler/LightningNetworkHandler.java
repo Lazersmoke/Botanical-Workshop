@@ -56,7 +56,7 @@ public class LightningNetworkHandler implements ILightningNetwork{
 							) - 1
 						)
 					);
-					if(Math.abs(amountExchanged) > MAX_LIGHTNING_TRANSFER_RATE - 1)
+					if(Math.abs(amountExchanged) > MAX_LIGHTNING_TRANSFER_RATE - 2)
 						makeFancies((TileEntity) theBlock, (TileEntity) currBlock);
 				}
 			//@formatter:on
