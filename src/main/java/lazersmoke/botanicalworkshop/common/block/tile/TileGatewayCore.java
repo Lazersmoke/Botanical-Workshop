@@ -26,8 +26,6 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
@@ -63,8 +61,8 @@ public class TileGatewayCore extends TileMod{
 		UUIDMap.put(freshUuid, this);
 		this.uuid = freshUuid;
 		if(BotanicalWorkshop.bloodMagicLoaded){
-			acceptableAlternativeMaterialsQuartz.add(WayofTime.alchemicalWizardry.ModBlocks.bloodRune);
-			acceptableAlternativeMaterialsLivingwood.add(WayofTime.alchemicalWizardry.ModBlocks.bloodRune);
+			acceptableAlternativeMaterialsQuartz.add((Block) Block.blockRegistry.getObject("AWWayofTime:AlchemicalWizardrybloodRune"));
+			acceptableAlternativeMaterialsLivingwood.add((Block) Block.blockRegistry.getObject("AWWayofTime:AlchemicalWizardrybloodRune"));
 		}
 	}
 
@@ -214,6 +212,8 @@ public class TileGatewayCore extends TileMod{
 		hasUnloadedParts = false;
 	}
 
+	//@formatter:off
+/*
 	@Override
 	public void readCustomNBT(NBTTagCompound cmp){
 		super.readCustomNBT(cmp);
@@ -244,7 +244,8 @@ public class TileGatewayCore extends TileMod{
 
 		cmp.setTag("Items", nbttaglist);
 	}
-
+*/
+	//@formatter:on
 	private void blockParticle(int meta){
 		int i = worldObj.rand.nextInt(AIR_POSITIONS.length);
 		final double[] pos = new double[] {AIR_POSITIONS[i][0] + 0.5F, AIR_POSITIONS[i][1] + 0.5F, AIR_POSITIONS[i][2] + 0.5F};
@@ -369,6 +370,7 @@ public class TileGatewayCore extends TileMod{
 				if(!currentInventory.isEmpty() && !worldObj.isRemote){// Optimization; dont check if we literally cant craft anything
 					for(final RecipeGatewayTransmutation recipe : BotanicalWorkshopAPI.gatewayRecipes)
 						if(recipe.getCatalyst().isItemEqual(item.getEntityItem())){
+							// BotanicalWorkshop.logger.log(Level.INFO, "Checking recipe: " + recipe.getOutput().toString() + " for " + recipe.getInputs().toString() + " with catalyst " + recipe.getCatalyst().toString());
 							if(recipe.matches(currentInventory, false) == 1){
 								// BotanicalWorkshop.logger.log(Level.INFO, "Checking recipe: " + recipe.getOutput().toString() + " for " + recipe.getInputs().toString() + " with catalyst " + recipe.getCatalyst().toString());
 								// BotanicalWorkshop.logger.log(Level.INFO, "Partial Match!");
@@ -389,7 +391,7 @@ public class TileGatewayCore extends TileMod{
 						return true;
 					}
 				}
-				if(item.getEntityItem().getItem() instanceof IGatewayMod && !(item.getEntityData().getBoolean(TAG_PORTAL_KEEP)))
+				if(item.getEntityItem().getItem() instanceof IGatewayMod && !(item.getEntityData().getBoolean(TAG_PORTAL_KEEP)) && !item.isDead)
 					((IGatewayMod) item.getEntityItem().getItem()).onGatewayUpdate(this, item);
 
 				for(final ItemStack possibleLexicon : currentInventory)

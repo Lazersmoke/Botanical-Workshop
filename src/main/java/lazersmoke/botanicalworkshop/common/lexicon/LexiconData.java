@@ -57,6 +57,7 @@ public final class LexiconData{
 	public static LexiconEntry lightningTransformer;
 	public static LexiconEntry lightningCapacitor;
 	public static LexiconEntry lightningFurnace;
+	public static LexiconEntry lightningCell;
 
 	public static void init(){
 		//@formatter:off
@@ -110,6 +111,16 @@ public final class LexiconData{
 				new PageImage("6", LibResources.PREFIX_ENTRIES + LibResources.ENTRIES_GATEWAY[3]),
 				new PageImage("7", LibResources.PREFIX_ENTRIES + LibResources.ENTRIES_GATEWAY[4]),
 				new PageText("8"), new PageText("9"), new PageText("10")
+				);
+
+		basicCatalyst = new WLexiconEntry(LibLexicon.WORKSHOP_BASICCATALYST, categoryWorkshop);
+		basicCatalyst.setPriority().setLexiconPages(
+				new PageText("0"),
+				new PageText("1"),
+				new PageCraftingRecipe("2", ModCraftingRecipes.recipeSimpleCatalyst),
+				new PageText("3"),
+				new PageCraftingRecipe("4", ModCraftingRecipes.recipeEmptyCatalyst),
+				new PageText("5")
 				);
 
 		bindingCrystal = new WLexiconEntry(LibLexicon.WORKSHOP_BINDINGCRYSTAL, categoryWorkshop);
@@ -244,6 +255,11 @@ public final class LexiconData{
 		lightningFurnace.setLexiconPages(
 				new PageText("0"),
 				new PageGatewayTransmutationRecipe("1", ModGatewayTransmutationRecipes.lightningFurnaceRecipe)
+				);
+		lightningCell = new LLexiconEntry(LibLexicon.LIGHTNING_CELL, categoryLightning);
+		lightningCell.setLexiconPages(
+				new PageText("0"),
+				new PageCraftingRecipe("1", ModCraftingRecipes.recipeLightningCell)
 				);
 	}
 }

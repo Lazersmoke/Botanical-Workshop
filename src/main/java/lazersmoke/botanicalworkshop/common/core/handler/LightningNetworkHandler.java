@@ -44,16 +44,22 @@ public class LightningNetworkHandler implements ILightningNetwork{
 
 			final List<IBotanicalLightningBlock> blocksAround = getClosestLightningBlocks(theBlock.getPos(), event.tile.getWorldObj(), theBlock.getLightningPushRange());
 			Collections.shuffle(blocksAround);// To ensure no shenanigans!
-
+			//@formatter:off
 			for(final IBotanicalLightningBlock currBlock : blocksAround)
 				if(currBlock != theBlock && currBlock.getConductivity() > theBlock.getConductivity() && currBlock.getConductivity() != -1){// -1 is special case for generators which should never take in lightning, even from other generators.
-					final int amountExchanged = theBlock.blindAddLightning(// subtract from source
-					-currBlock.blindAddLightning(// add to target
-					Math.min(// The actual amount to move
-					MAX_LIGHTNING_TRANSFER_RATE, theBlock.getCurrentLightning())));
-					if(Math.abs(amountExchanged) > MAX_LIGHTNING_TRANSFER_RATE - 1)
+					final int amountExchanged =
+					theBlock.blindAddLightning(// subtract from source
+						1 - currBlock.blindAddLightning(// add to target
+							Math.min(// The actual amount to move
+								MAX_LIGHTNING_TRANSFER_RATE,
+								theBlock.getCurrentLightning()
+							) - 1
+						)
+					);
+					if(Math.abs(amountExchanged) > MAX_LIGHTNING_TRANSFER_RATE - 2)
 						makeFancies((TileEntity) theBlock, (TileEntity) currBlock);
 				}
+			//@formatter:on
 		}
 	}
 

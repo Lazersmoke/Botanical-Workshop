@@ -32,6 +32,7 @@ public class ModCraftingRecipes{
 	public static IRecipe recipeVoltmeter = defaultRecipe;
 	public static IRecipe recipeLightningRod = defaultRecipe;
 	public static IRecipe recipeShiftedHypervelocitySkewer = defaultRecipe;
+	public static IRecipe recipeLightningCell = defaultRecipe;
 
 	public static void init(){
 		if(LibConfigs.CRAFT_ELVEN_POOL){
@@ -167,6 +168,16 @@ public class ModCraftingRecipes{
 					new ItemStack(vazkii.botania.common.item.ModItems.manasteelSword)
 					);
 			recipeShiftedHypervelocitySkewer = BotaniaAPI.getLatestAddedRecipe();
+		}
+		if(LibConfigs.CRAFT_LIGHTNING_CELL){
+			addOreDictRecipe(new ItemStack(ModItems.lightningCell),
+					" G ",
+					"GSG",
+					" G ",
+					'G', new ItemStack(Items.gold_nugget),
+					'S', new ItemStack(ModItems.botanicalResource, 1, 3)//Scrap Metal
+					);
+			recipeLightningCell = BotaniaAPI.getLatestAddedRecipe();
 		}
 	}
 

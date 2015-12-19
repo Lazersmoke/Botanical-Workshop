@@ -15,6 +15,7 @@ public class LibConfigs{
 	public static boolean CRAFT_VOLTMETER;
 	public static boolean CRAFT_LIGHTNING_ROD;
 	public static boolean CRAFT_SHIFTED_HYPERVELOCITY_SKEWER;
+	public static boolean CRAFT_LIGHTNING_CELL;
 
 	// Elven Portal Crafting
 	public static boolean PORTAL_CRAFT_ELVEN_POOL;

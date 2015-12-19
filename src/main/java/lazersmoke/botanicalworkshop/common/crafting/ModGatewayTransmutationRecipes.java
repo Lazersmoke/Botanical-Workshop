@@ -234,7 +234,7 @@ public class ModGatewayTransmutationRecipes{
 				new ItemStack(ModBlocks.thaumtanicalTransposer),// Result
 				new ItemStack(ModItems.bindingCrystal, 1, 3), // Lightning Binding Crystal
 				ItemBlockSpecialFlower.ofType(vazkii.botania.common.lib.LibBlockNames.SUBTILE_SPECTRANTHEMUM),//Item TP flower
-				new ItemStack(ModItems.botanicalResource, 2, 4) // 2x scrap metal
+				new ItemStack(ModItems.botanicalResource, 2, 3) // 2x scrap metal
 				);
 		if(LibConfigs.GATEWAY_CRAFT_LIGHTNING_TRANSFORMER)
 			lightningTransformerRecipe = BotanicalWorkshopAPI.registerGatewayRecipe(
@@ -250,15 +250,15 @@ public class ModGatewayTransmutationRecipes{
 				new ItemStack(ModItems.bindingCrystal, 1, 3), // Lightning Binding Crystal
 				new ItemStack(ModBlocks.lightningRod),
 				new ItemStack(ModBlocks.elvenPool),
-				new ItemStack(ModItems.botanicalResource, 3, 2) // 2x scrap metal
+				new ItemStack(ModItems.botanicalResource, 2, 3) // 2x scrap metal
 				);
 		if(LibConfigs.GATEWAY_CRAFT_LIGHTNING_FURNACE)
-			lightningCapacitorRecipe = BotanicalWorkshopAPI.registerGatewayRecipe(
+			lightningFurnaceRecipe = BotanicalWorkshopAPI.registerGatewayRecipe(
 				new ItemStack(ModBlocks.lightningFurnace),// Result
 				new ItemStack(ModItems.bindingCrystal, 1, 3), // Lightning Binding Crystal
 				new ItemStack(ModBlocks.lightningRod),
 				new ItemStack(Blocks.furnace),
-				new ItemStack(ModItems.botanicalResource, 3, 2) // 2x scrap metal
+				new ItemStack(ModItems.botanicalResource, 2, 3) // 2x scrap metal
 				);
 		if(LibConfigs.GATEWAY_CRAFT_CRAFTING_AUTOMATION_CATALYST)
 			craftingAutomationCatalystRecipe = BotanicalWorkshopAPI.registerGatewayRecipe(
@@ -268,5 +268,5 @@ public class ModGatewayTransmutationRecipes{
 				new ItemStack(Items.iron_axe), // Iron Axe
 				new ItemStack(Items.glowstone_dust)// Glowstone
 				);
-	}
+		}
 }

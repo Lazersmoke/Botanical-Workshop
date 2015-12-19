@@ -26,4 +26,5 @@ public final class LibItemNames{
 	public static final String LIGHTNING_CONSUMING_CATALYST = "lightningConsumingCatalyst";
 	public static final String CRAFTING_AUTOMATION_CATALYST = "craftingAutomationCatalyst";
 	public static final String SHIFTED_HYPERVELOCITY_SKEWER = "shiftedHypervelocitySkewer";
+	public static final String LIGHTNING_CELL = "lightningCell";
 }

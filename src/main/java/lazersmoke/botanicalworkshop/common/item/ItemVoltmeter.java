@@ -11,6 +11,7 @@ import net.minecraft.world.World;
 public class ItemVoltmeter extends ItemMod{
 	public ItemVoltmeter(){
 		super(LibItemNames.VOLTMETER);
+		this.maxStackSize = 1;
 	}
 
 	/**
@@ -18,32 +19,30 @@ public class ItemVoltmeter extends ItemMod{
 	 */
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player){
-		MovingObjectPosition movingobjectposition = getMovingObjectPositionFromPlayer(world, player, true);
+		final MovingObjectPosition movingobjectposition = getMovingObjectPositionFromPlayer(world, player, true);
 
 		if(movingobjectposition == null)
 			return stack;
-		else{
-			if(movingobjectposition.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK){
-				int i = movingobjectposition.blockX;
-				int j = movingobjectposition.blockY;
-				int k = movingobjectposition.blockZ;
-				if(world.getTileEntity(i, j, k) instanceof IBotanicalLightningBlock){
-					IBotanicalLightningBlock theBlock = (IBotanicalLightningBlock) world.getTileEntity(i, j, k);
-					world.playSoundEffect(i, j, k, "note.harp", 0.3F, 1.0F);
-					if(world.isRemote){
-						player.addChatMessage(new ChatComponentText("Client says:"));
-						player.addChatMessage(new ChatComponentText(" " + theBlock.getPowerThreshold() + "/" + theBlock.getBufferThreshold() + "/" + theBlock.getOverflowThreshold()));
-						player.addChatMessage(new ChatComponentText(" Current Push Radius: " + theBlock.getLightningPushRange()));
-						player.addChatMessage(new ChatComponentText(" Current Lightning: " + theBlock.getCurrentLightning()));
-						player.addChatMessage(new ChatComponentText(" Current Conductivity: " + theBlock.getConductivity()));
-					}
-					if(!world.isRemote){
-						player.addChatMessage(new ChatComponentText("Server says:"));
-						player.addChatMessage(new ChatComponentText(" " + theBlock.getPowerThreshold() + "/" + theBlock.getBufferThreshold() + "/" + theBlock.getOverflowThreshold()));
-						player.addChatMessage(new ChatComponentText(" Current Push Radius: " + theBlock.getLightningPushRange()));
-						player.addChatMessage(new ChatComponentText(" Current Lightning: " + theBlock.getCurrentLightning()));
-						player.addChatMessage(new ChatComponentText(" Current Conductivity: " + theBlock.getConductivity()));
-					}
+		else if(movingobjectposition.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK){
+			final int i = movingobjectposition.blockX;
+			final int j = movingobjectposition.blockY;
+			final int k = movingobjectposition.blockZ;
+			if(world.getTileEntity(i, j, k) instanceof IBotanicalLightningBlock){
+				final IBotanicalLightningBlock theBlock = (IBotanicalLightningBlock) world.getTileEntity(i, j, k);
+				world.playSoundEffect(i, j, k, "note.harp", 0.3F, 1.0F);
+				if(world.isRemote){
+					player.addChatMessage(new ChatComponentText("Client says:"));
+					player.addChatMessage(new ChatComponentText(" " + theBlock.getPowerThreshold() + "/" + theBlock.getBufferThreshold() + "/" + theBlock.getOverflowThreshold()));
+					player.addChatMessage(new ChatComponentText(" Current Push Radius: " + theBlock.getLightningPushRange()));
+					player.addChatMessage(new ChatComponentText(" Current Lightning: " + theBlock.getCurrentLightning()));
+					player.addChatMessage(new ChatComponentText(" Current Conductivity: " + theBlock.getConductivity()));
+				}
+				if(!world.isRemote){
+					player.addChatMessage(new ChatComponentText("Server says:"));
+					player.addChatMessage(new ChatComponentText(" " + theBlock.getPowerThreshold() + "/" + theBlock.getBufferThreshold() + "/" + theBlock.getOverflowThreshold()));
+					player.addChatMessage(new ChatComponentText(" Current Push Radius: " + theBlock.getLightningPushRange()));
+					player.addChatMessage(new ChatComponentText(" Current Lightning: " + theBlock.getCurrentLightning()));
+					player.addChatMessage(new ChatComponentText(" Current Conductivity: " + theBlock.getConductivity()));
 				}
 			}
 		}

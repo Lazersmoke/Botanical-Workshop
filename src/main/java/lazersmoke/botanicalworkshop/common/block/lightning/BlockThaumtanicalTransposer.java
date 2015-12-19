@@ -28,7 +28,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 // This class is all Lazersmoke
 public class BlockThaumtanicalTransposer extends BlockContainer implements IWandable, IWandHUD, ILexiconable{
 
-	public static IIcon iconOff, iconOn;
+	public static IIcon iconOff, iconOn, iconOffInput, iconOnInput;
 
 	public BlockThaumtanicalTransposer(){
 		super(Material.rock);
@@ -42,14 +42,17 @@ public class BlockThaumtanicalTransposer extends BlockContainer implements IWand
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister par1IconRegister){
-		iconOff = par1IconRegister.registerIcon(LibResources.PREFIX_MOD + getUnlocalizedName().replaceAll("tile\\.", "") + "Off");
-		iconOn = par1IconRegister.registerIcon(LibResources.PREFIX_MOD + getUnlocalizedName().replaceAll("tile\\.", "") + "On");
+	public void registerBlockIcons(IIconRegister iconRegister){
+		iconOff = iconRegister.registerIcon(LibResources.PREFIX_MOD + getUnlocalizedName().replaceAll("tile\\.", "") + "Off");
+		iconOn = iconRegister.registerIcon(LibResources.PREFIX_MOD + getUnlocalizedName().replaceAll("tile\\.", "") + "On");
+
+		iconOffInput = iconRegister.registerIcon(LibResources.PREFIX_MOD + getUnlocalizedName().replaceAll("tile\\.", "") + "OffInput");
+		iconOnInput = iconRegister.registerIcon(LibResources.PREFIX_MOD + getUnlocalizedName().replaceAll("tile\\.", "") + "OnInput");
 	}
 
 	@Override
 	public IIcon getIcon(int side, int meta){
-		return meta == 0 ? iconOff : iconOn;
+		return (meta >> 1) == side ? ((meta & 1) == 1 ? iconOnInput : iconOffInput) : ((meta & 1) == 1 ? iconOn : iconOff);
 	}
 
 	@Override
@@ -70,8 +73,9 @@ public class BlockThaumtanicalTransposer extends BlockContainer implements IWand
 
 	@Override
 	public boolean onUsedByWand(EntityPlayer player, ItemStack stack, World world, int x, int y, int z, int side){
-		boolean did = ((TileThaumtanicalTransposer) world.getTileEntity(x, y, z)).onWanded(player);
-		return did;
+		((TileThaumtanicalTransposer) world.getTileEntity(x, y, z)).onWanded(side);
+		world.playSoundEffect(x, y, z, "note.harp", 0.3F, 1.0F);
+		return true;
 	}
 
 	@Override

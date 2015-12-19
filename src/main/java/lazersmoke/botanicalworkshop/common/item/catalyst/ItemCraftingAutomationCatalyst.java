@@ -1,10 +1,14 @@
 package lazersmoke.botanicalworkshop.common.item.catalyst;
 
+import java.util.List;
+
 import lazersmoke.botanicalworkshop.common.BotanicalWorkshop;
 import lazersmoke.botanicalworkshop.common.block.tile.TileGatewayCore;
 import lazersmoke.botanicalworkshop.common.block.tile.TileThaumicCore;
+import lazersmoke.botanicalworkshop.common.item.ModItems;
 import lazersmoke.botanicalworkshop.common.lib.LibItemNames;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import vazkii.botania.client.core.handler.ClientTickHandler;
 
@@ -17,6 +21,15 @@ public class ItemCraftingAutomationCatalyst extends ItemActiveCatalyst{
 	@Override
 	public void onGatewayUpdate(TileGatewayCore gateway, EntityItem catalyst){
 		gateway.pokeSummonOffset(new float[] {0.5F, -0.5F, 0.5F});// Make items summon under gateway
+
+		@SuppressWarnings("unchecked")
+		final List<EntityItem> otherCatalysts = catalyst.worldObj.getEntitiesWithinAABB(EntityItem.class, gateway.getPortalAABB());
+		for(final EntityItem otherCatalyst : otherCatalysts)
+			if(otherCatalyst.getEntityItem().getItem() == ModItems.emptyCatalyst){
+				otherCatalyst.setDead();
+				gateway.summonItem(new ItemStack(ModItems.emptyCatalyst));
+			}
+
 		final TileEntity currentCore = catalyst.worldObj.getTileEntity(gateway.xCoord, gateway.yCoord + 6, gateway.zCoord);
 		if(BotanicalWorkshop.thaumcraftLoaded && currentCore instanceof TileThaumicCore && ClientTickHandler.ticksInGame % 20 == 0)
 			if(catalyst.worldObj.getTileEntity(gateway.xCoord, gateway.yCoord + 7, gateway.zCoord) instanceof thaumcraft.common.tiles.TilePedestal)

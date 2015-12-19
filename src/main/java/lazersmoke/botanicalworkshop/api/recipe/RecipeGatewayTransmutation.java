@@ -3,9 +3,7 @@ package lazersmoke.botanicalworkshop.api.recipe;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import lazersmoke.botanicalworkshop.common.item.ModItems;
@@ -36,7 +34,7 @@ public class RecipeGatewayTransmutation{
 		this.catalyst = catalyst;
 		final List<ItemStack> localToReduce = new ArrayList<ItemStack>(Arrays.asList(inputs));
 		localToReduce.removeAll(Collections.singleton(null));// Remove nulls
-		this.inputs = compressStacks(Arrays.asList(inputs));// Don't reduce inputs or it shows up seperate in lexicon; compress them so they show nicely!
+		this.inputs = Arrays.asList(inputs);// Don't reduce inputs or it shows up seperate in lexicon; compress them so they show nicely!
 	}
 
 	/**
@@ -113,11 +111,11 @@ public class RecipeGatewayTransmutation{
 	}
 
 	// Helper Methods
-	private boolean simpleAreStacksEqual(ItemStack stack, ItemStack stack2){
-		return stack.getItem() == stack2.getItem() && stack.getItemDamage() == stack2.getItemDamage();
+	private static boolean simpleAreStacksEqual(ItemStack stack, ItemStack stack2){
+		return stack.getItem() == stack2.getItem() && (stack.getItemDamage() == stack2.getItemDamage() || (stack.getItemDamage() == 32767 || stack2.getItemDamage() == 32767));
 	}
 
-	public List<ItemStack> reduceStacks(List<ItemStack> toReduce){
+	public static List<ItemStack> reduceStacks(List<ItemStack> toReduce){
 		final List<ItemStack> reduced = new ArrayList<ItemStack>();
 		final List<ItemStack> localToReduce = new ArrayList<ItemStack>(toReduce);
 		localToReduce.removeAll(Collections.singleton(null));// Remove nulls
@@ -131,17 +129,5 @@ public class RecipeGatewayTransmutation{
 					reduced.add(newCurr);
 				}
 		return reduced;
-	}
-
-	public List<ItemStack> compressStacks(List<ItemStack> toCompress){
-		final List<ItemStack> reduced = reduceStacks(toCompress);
-		final Map<ItemStack, Integer> items = new HashMap<ItemStack, Integer>();
-		final List<ItemStack> compressed = new ArrayList<ItemStack>();
-		for(final ItemStack curr : reduced)
-			items.put(curr, items.get(curr.getItem()) == null ? 1 : items.get(curr.getItem()));
-		for(final Map.Entry<ItemStack, Integer> entry : items.entrySet())
-			for(int x = 0; x < entry.getValue(); x++)
-				compressed.add(entry.getKey());
-		return compressed;
 	}
 }
