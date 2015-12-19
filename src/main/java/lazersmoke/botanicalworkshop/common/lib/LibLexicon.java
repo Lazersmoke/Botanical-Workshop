@@ -41,5 +41,6 @@ public class LibLexicon{
 	public static final String LIGHTNING_TRANSFORMER = "lightningTransformer";
 	public static final String LIGHTNING_CAPACITOR = "lightningCapacitor";
 	public static final String LIGHTNING_FURNACE = "lightningFurnace";
+	public static final String LIGHTNING_CELL = "lightningCell";
 
 }

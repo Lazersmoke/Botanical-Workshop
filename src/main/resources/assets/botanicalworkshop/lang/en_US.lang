@@ -60,6 +60,10 @@ item.botanicalworkshop:voltmeter.name=Voltmeter
 item.botanicalworkshop:lightningGenerationCatalyst.name=Lightning Generation Catalyst
 item.botanicalworkshop:lightningConsumingCatalyst.name=Lightning Consuming Catalyst
 
+item.botanicalworkshop:lightningCell.empty.name=Empty Lightning Cell
+item.botanicalworkshop:lightningCell.dispensing.name=Dispensing Lightning Cell
+item.botanicalworkshop:lightningCell.accepting.name=Accepting Lightning Cell
+
 #TILE ENTITIES
 tile.botanicalworkshop:elvenPool0.name=Elven Mana Pool
 botanicalworkshopmisc.elvenPool0=Pool of the Elves
@@ -132,7 +136,7 @@ botanicalworkshop.page.workshopIntro1=There are some quirks that go along with t
 botanicalworkshop.entry.basicCatalyst=Basic Catalysts
 botanicalworkshop.tagline.basicCatalyst=Gotta start somewhere
 botanicalworkshop.page.basicCatalyst0=On its own, the &1Gateway&0 is not very useful, but if you throw a &4catalyst&0 inside of one, it will augment its abilities beyond just looking fancy and allow you to enlist the elves to craft various blocks and items that could not be sent through the original &2Alfheim Portal&0. Some &4catalysts&0 go beyond even that, and add entirely new functionality to the &1Gateway&0.
-botanicalworkshop.page.basicCatalyst1=The first catalyst you will make is the &1Simple Catalyst&0. It will allow you to create &1Binding Crystals&0, which will serve as more advanced catalysts for more advanced recipes. It is simple in nature, and so can be made on a normal crafting table.
+botanicalworkshop.page.basicCatalyst1=The first catalyst you will make is the &1Simple Catalyst&0. It will allow you to create &1Binding Crystals&0, which will serve as more advanced catalysts for more advanced recipes, as well as any vanilla recipe if you add a vanilla reagent. It is simple in nature, and so can be made on a normal crafting table.
 botanicalworkshop.page.basicCatalyst2=Divide by Pixie Dust
 botanicalworkshop.page.basicCatalyst3=Often times you will find yourself accidentally depositing items in a &1Gateway&0 that you did not mean to deposit. For that reason, you have created the &1Empty Catalyst&0, which, when thrown into a &1Gateway&0, will cause it to drop all of the items it contains on top of the &1Gateway&0 Core.
 botanicalworkshop.page.basicCatalyst4=Accidents happen!
@@ -288,3 +292,8 @@ botanicalworkshop.entry.lightningFurnace=Lightning Furnace
 botanicalworkshop.tagline.lightningFurnace=Cooking with lightning!
 botanicalworkshop.page.lightningFurnace0=This is exactly what it sounds like: A lightning powered furnace! Simply add lightning, drop an item on top, and wait for it to pop out the bottom.
 botanicalworkshop.page.lightningFurnace1=Cooking with lightning!
+
+botanicalworkshop.entry.lightningCell=Lightning Cell
+botanicalworkshop.tagline.lightningCell=Moving lightning!
+botanicalworkshop.page.lightningCell0=You can manually transport lightning by using this cell. Shift-right click to change the mode, then right click a capacitor to add or remove lightning from it.
+botanicalworkshop.page.lightningCell1=Store and retrieve!

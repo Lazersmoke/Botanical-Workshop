@@ -47,6 +47,11 @@ public class ItemLightningCell extends ItemMod{
 	}
 
 	@Override
+	public String getUnlocalizedNameInefficiently(ItemStack stack){
+		return super.getUnlocalizedNameInefficiently(stack) + "." + (ItemNBTHelper.getInt(stack, TAG_LIGHTNING, 0) == 0 ? "empty" : ItemNBTHelper.getBoolean(stack, TAG_EJECTING, false) ? "dispensing" : "accepting");
+	}
+
+	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player){
 		final MovingObjectPosition daMOP = getMovingObjectPositionFromPlayer(world, player, true);
 

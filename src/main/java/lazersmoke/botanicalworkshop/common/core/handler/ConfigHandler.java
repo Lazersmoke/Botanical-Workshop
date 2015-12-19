@@ -63,6 +63,9 @@ public final class ConfigHandler{
 		desc = "Set this to false to disable the crafting of Shifted Hypervelocity Skewers.";
 		LibConfigs.CRAFT_SHIFTED_HYPERVELOCITY_SKEWER = loadPropBool("crafting.table.shiftedHypervelocitySkewer", desc, true);
 
+		desc = "Set this to false to disable the crafting of Lightning Cells.";
+		LibConfigs.CRAFT_LIGHTNING_CELL = loadPropBool("crafting.table.lightningCell", desc, true);
+
 		// Elven Portal Craftinghis to false to disable the crafting of Elven Mana Pools using alfheim portals.";
 		LibConfigs.PORTAL_CRAFT_ELVEN_POOL = loadPropBool("crafting.portal.elvenPool", desc, true);
 

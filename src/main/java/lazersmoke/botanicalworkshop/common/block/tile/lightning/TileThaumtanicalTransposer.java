@@ -2,16 +2,12 @@ package lazersmoke.botanicalworkshop.common.block.tile.lightning;
 
 import java.util.List;
 
-import lazersmoke.botanicalworkshop.common.BotanicalWorkshop;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChunkCoordinates;
-
-import org.apache.logging.log4j.Level;
-
 import vazkii.botania.api.mana.IManaItem;
 import vazkii.botania.api.wand.IWandBindable;
 import vazkii.botania.common.core.helper.MathHelper;
@@ -57,7 +53,7 @@ public class TileThaumtanicalTransposer extends TileModLightning implements IWan
 			// Don't tp if: nothing to tp OR its a IManaItem OR we dont have enough lightning
 			if(!items.isEmpty() && (!items.get(0).getEntityItem().hasTagCompound() || (items.get(0).getEntityItem().getTagCompound().hasNoTags())) && items.get(0).getEntityItem().stackSize == 1 && !(items.get(0).getEntityItem().getItem() instanceof IManaItem) && addLightning(-getDistanceToBind())){
 				final EntityItem theItem = items.get(0);
-				BotanicalWorkshop.logger.log(Level.INFO, "begin");
+				// BotanicalWorkshop.logger.log(Level.INFO, "begin");
 				theItem.getEntityItem().func_135074_t();// IDK
 				if(theItem.getEntityItem().hasTagCompound())
 					theItem.getEntityItem().setTagCompound(null);// Can do because we check for empty above
