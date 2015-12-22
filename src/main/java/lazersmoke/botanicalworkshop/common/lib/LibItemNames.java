@@ -20,11 +20,13 @@ public final class LibItemNames{
 	public static final String PHASE_UPGRADE = "shiftedPhaseUpgrade";
 	public static final String HOPS_UPGRADE = "shiftedHopsUpgrade";
 	public static final String REVEALING_UPGRADE = "shiftedRevealingUpgrade";
+	public static final String FIREPROOF_UPGRADE = "shiftedFireImmunityUpgrade";
 	public static final String SHIFTED_MATTER = "shiftedMatter";
 	public static final String VOLTMETER = "voltmeter";
 	public static final String LIGHTNING_GENERATION_CATALYST = "lightningGenerationCatalyst";
 	public static final String LIGHTNING_CONSUMING_CATALYST = "lightningConsumingCatalyst";
 	public static final String CRAFTING_AUTOMATION_CATALYST = "craftingAutomationCatalyst";
 	public static final String SHIFTED_HYPERVELOCITY_SKEWER = "shiftedHypervelocitySkewer";
+	public static final String SHIFTED_WORLDSHAPERS_STAFF = "shiftedWorldshapersStaff";
 	public static final String LIGHTNING_CELL = "lightningCell";
 }

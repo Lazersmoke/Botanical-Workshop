@@ -5,6 +5,7 @@ import lazersmoke.botanicalworkshop.common.block.lightning.BlockCreativeLightnin
 import lazersmoke.botanicalworkshop.common.block.lightning.BlockLightningCapacitor;
 import lazersmoke.botanicalworkshop.common.block.lightning.BlockLightningCore;
 import lazersmoke.botanicalworkshop.common.block.lightning.BlockLightningFurnace;
+import lazersmoke.botanicalworkshop.common.block.lightning.BlockLightningLavaFabricator;
 import lazersmoke.botanicalworkshop.common.block.lightning.BlockLightningRod;
 import lazersmoke.botanicalworkshop.common.block.lightning.BlockLightningTransformer;
 import lazersmoke.botanicalworkshop.common.block.lightning.BlockThaumtanicalTransposer;
@@ -42,6 +43,7 @@ public final class ModBlocks{
 	public static Block creativeLightningBlock;
 	public static Block lightningCapacitor;
 	public static Block lightningFurnace;
+	public static Block lightningLavaFabricator;
 
 	public static void init(){
 
@@ -56,6 +58,7 @@ public final class ModBlocks{
 		creativeLightningBlock = new BlockCreativeLightningBlock();
 		lightningCapacitor = new BlockLightningCapacitor();
 		lightningFurnace = new BlockLightningFurnace();
+		lightningLavaFabricator = new BlockLightningLavaFabricator();
 
 		initTileEntities();
 	}
@@ -71,6 +74,7 @@ public final class ModBlocks{
 		registerTile(TileCreativeLightningBlock.class, LibBlockNames.LIGHTNING_CREATIVE);
 		registerTile(TileLightningCapacitor.class, LibBlockNames.LIGHTNING_CAPACITOR);
 		registerTile(TileLightningFurnace.class, LibBlockNames.LIGHTNING_FURNACE);
+		registerTile(TileLightningFurnace.class, LibBlockNames.LIGHTNING_LAVA_FABRICATOR);
 
 		registerSubTile(SubTileExAquainas.class, LibBlockNames.SUBTILE_EXAQUAINAS);
 		registerSubTile(SubTileLogicalSound.class, LibBlockNames.SUBTILE_LOGICALSOUND);
