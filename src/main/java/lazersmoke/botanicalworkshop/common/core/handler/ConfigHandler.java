@@ -66,6 +66,9 @@ public final class ConfigHandler{
 		desc = "Set this to false to disable the crafting of Lightning Cells.";
 		LibConfigs.CRAFT_LIGHTNING_CELL = loadPropBool("crafting.table.lightningCell", desc, true);
 
+		desc = "Set this to false to disable the crafting of Worldshaper Staves.";
+		LibConfigs.CRAFT_WORLDSHAPER_STAFF = loadPropBool("crafting.table.worldshaperStaff", desc, true);
+
 		// Elven Portal Craftinghis to false to disable the crafting of Elven Mana Pools using alfheim portals.";
 		LibConfigs.PORTAL_CRAFT_ELVEN_POOL = loadPropBool("crafting.portal.elvenPool", desc, true);
 
@@ -159,10 +162,31 @@ public final class ConfigHandler{
 		LibConfigs.GATEWAY_OPENING_MANA_COST = loadPropInt("gameplay.gateway.openingManaCost", desc, 1000000);
 
 		desc = "Set this to change the mana cost of keeping a gateway open per tick.";
-		LibConfigs.GATEWAY_TICK_MANA_COST = loadPropInt("gameplay.gateway.perTickManaCost", desc, 1000);
+		LibConfigs.GATEWAY_TICK_MANA_COST = loadPropInt("gameplay.gateway.perTickManaCost", desc, 10);
 
 		desc = "Set this to false to disable the songs of the flowers.";
 		LibConfigs.TONAL_FLORA = loadPropBool("gameplay.flowers.tonalFlora", desc, true);
+
+		desc = "Cost per tick of getting fire resist from shifted upgrade.";
+		LibConfigs.SHIFTED_FIRE_IMMUNITY_COST = loadPropInt("gameplay.shifted.fireImmune", desc, 1000);
+
+		desc = "Cost per tick of becoming invisible from shifted upgrade.";
+		LibConfigs.SHIFTED_PHASE_COST = loadPropInt("gameplay.shifted.phase", desc, 100);
+
+		desc = "Cost per tick of seeing aura nodes etc from shifted upgrade.";
+		LibConfigs.SHIFTED_REVEALING_COST = loadPropInt("gameplay.shifted.revealing", desc, 10);
+
+		desc = "Cost per tick of getting mad hops from shifted upgrade.";
+		LibConfigs.SHIFTED_HOPS_COST = loadPropInt("gameplay.shifted.hops", desc, 10);
+
+		desc = "Cost of teleposing a block with worldshaper staff.";
+		LibConfigs.WORLDSHAPER_TELEPOSE_COST = loadPropInt("gameplay.shifted.worldshaper.telepose", desc, 100);
+
+		desc = "Cost of repairing a point of damage on a shifted item.";
+		LibConfigs.SHIFTED_REPAIR_COST = loadPropInt("gameplay.shifted.repair", desc, 10);
+
+		desc = "Conversion rate from lightning to mana.";
+		LibConfigs.LIGHTNING_MANA_RATE = loadPropInt("gameplay.lightning.conversionrate", desc, 10);
 
 		// Performance Settings
 		desc = "Set this to change the particle density of Botanical Workshop effects. Default is 1";

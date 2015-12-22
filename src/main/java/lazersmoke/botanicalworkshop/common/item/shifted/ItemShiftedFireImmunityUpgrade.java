@@ -11,27 +11,27 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
-public class ItemShiftedHopsUpgrade extends ItemMod implements IShiftedArmorUpgrade{
+public class ItemShiftedFireImmunityUpgrade extends ItemMod implements IShiftedArmorUpgrade{
 
-	public ItemShiftedHopsUpgrade(){
-		super(LibItemNames.HOPS_UPGRADE);
+	public ItemShiftedFireImmunityUpgrade(){
+		super(LibItemNames.FIREPROOF_UPGRADE);
 	}
 
 	@Override
 	public String getKey(){
-		return "HopsUpgrade";
+		return "FireProofUpgrade";
 	}
 
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack stack){
-		if(ItemShiftedArmor.getCore(stack, world) != null && ItemShiftedArmor.getCore(stack, world).getCurrentMana() >= LibConfigs.SHIFTED_HOPS_COST){
-			player.addPotionEffect(new PotionEffect(Potion.jump.id, 10, 2, true));// true sets ambient; no or reduced particles
-			ItemShiftedArmor.getCore(stack, world).recieveMana(-LibConfigs.SHIFTED_HOPS_COST);
+		if(ItemShiftedArmor.getCore(stack, world) != null && ItemShiftedArmor.getCore(stack, world).getCurrentMana() >= LibConfigs.SHIFTED_FIRE_IMMUNITY_COST && player.isBurning()){
+			player.addPotionEffect(new PotionEffect(Potion.fireResistance.id, 10, 1, true));// true sets ambient; no or reduced particles
+			ItemShiftedArmor.getCore(stack, world).recieveMana(-LibConfigs.SHIFTED_FIRE_IMMUNITY_COST);
 		}
 	}
 
 	@Override
 	public String getDisplayName(){
-		return "Shifted Hops Upgrade";
+		return "Shifted Fire Immunity Upgrade";
 	}
 }

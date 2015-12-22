@@ -8,6 +8,7 @@ import lazersmoke.botanicalworkshop.client.lib.LibResources;
 import lazersmoke.botanicalworkshop.common.BotanicalWorkshop;
 import lazersmoke.botanicalworkshop.common.block.tile.TileGatewayCore;
 import lazersmoke.botanicalworkshop.common.crafting.recipe.ShiftedArmorUpgradeRecipe;
+import lazersmoke.botanicalworkshop.common.lib.LibConfigs;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -109,9 +110,9 @@ public class ItemShiftedArmor extends ItemArmor implements ISpecialArmor, IPhant
 					BotanicalWorkshopAPI.shiftedUpgrades.get(key).onArmorTick(world, player, stack);
 
 			if(getCore(stack, world) != null)
-				if(getCore(stack, world).getCurrentMana() >= 1000 && stack.getItemDamage() > 0){
+				if(getCore(stack, world).getCurrentMana() >= LibConfigs.SHIFTED_REPAIR_COST && stack.getItemDamage() > 0){
 					stack.setItemDamage(stack.getItemDamage() - 1);
-					getCore(stack, world).recieveMana(-1000);
+					getCore(stack, world).recieveMana(-LibConfigs.SHIFTED_REPAIR_COST);
 				}
 		}
 	}

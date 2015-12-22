@@ -16,6 +16,7 @@ public class LibConfigs{
 	public static boolean CRAFT_LIGHTNING_ROD;
 	public static boolean CRAFT_SHIFTED_HYPERVELOCITY_SKEWER;
 	public static boolean CRAFT_LIGHTNING_CELL;
+	public static boolean CRAFT_WORLDSHAPER_STAFF;
 
 	// Elven Portal Crafting
 	public static boolean PORTAL_CRAFT_ELVEN_POOL;
@@ -54,6 +55,13 @@ public class LibConfigs{
 	public static int GATEWAY_TICK_MANA_COST;
 	public static int GATEWAY_OPENING_MANA_COST;
 	public static boolean TONAL_FLORA;
+	public static int SHIFTED_PHASE_COST;
+	public static int SHIFTED_REVEALING_COST;
+	public static int SHIFTED_HOPS_COST;
+	public static int SHIFTED_FIRE_IMMUNITY_COST;
+	public static int WORLDSHAPER_TELEPOSE_COST;
+	public static int SHIFTED_REPAIR_COST;
+	public static int LIGHTNING_MANA_RATE;
 
 	// Performance Settings
 	public static int PARTICLE_DENSITY;

@@ -47,7 +47,6 @@ public class LightningNetworkHandler implements ILightningNetwork{
 			//@formatter:off
 			for(final IBotanicalLightningBlock currBlock : blocksAround)
 				if(currBlock != theBlock && currBlock.getConductivity() > theBlock.getConductivity() && currBlock.getConductivity() != -1){// -1 is special case for generators which should never take in lightning, even from other generators.
-					final int amountExchanged =
 					theBlock.blindAddLightning(// subtract from source
 						1 - currBlock.blindAddLightning(// add to target
 							Math.min(// The actual amount to move
@@ -56,8 +55,7 @@ public class LightningNetworkHandler implements ILightningNetwork{
 							) - 1
 						)
 					);
-					if(Math.abs(amountExchanged) > MAX_LIGHTNING_TRANSFER_RATE - 2)
-						makeFancies((TileEntity) theBlock, (TileEntity) currBlock);
+					makeFancies((TileEntity) theBlock, (TileEntity) currBlock);
 				}
 			//@formatter:on
 		}

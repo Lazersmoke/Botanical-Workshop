@@ -33,6 +33,7 @@ public class ModCraftingRecipes{
 	public static IRecipe recipeLightningRod = defaultRecipe;
 	public static IRecipe recipeShiftedHypervelocitySkewer = defaultRecipe;
 	public static IRecipe recipeLightningCell = defaultRecipe;
+	public static IRecipe recipeWorldshaperStaff = defaultRecipe;
 
 	public static void init(){
 		if(LibConfigs.CRAFT_ELVEN_POOL){
@@ -178,6 +179,16 @@ public class ModCraftingRecipes{
 					'S', new ItemStack(ModItems.botanicalResource, 1, 3)//Scrap Metal
 					);
 			recipeLightningCell = BotaniaAPI.getLatestAddedRecipe();
+		}
+		if(LibConfigs.CRAFT_WORLDSHAPER_STAFF){
+			addOreDictRecipe(new ItemStack(ModItems.lightningCell),
+					" SM",
+					" SS",
+					"S  ",
+					'S', new ItemStack(vazkii.botania.common.item.ModItems.manaResource, 1, 3),//Livingwood twig
+					'M', new ItemStack(ModItems.botanicalResource, 1, 3)//Scrap Metal
+					);
+			recipeWorldshaperStaff  = BotaniaAPI.getLatestAddedRecipe();
 		}
 	}
 

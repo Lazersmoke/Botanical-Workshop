@@ -8,6 +8,7 @@ import lazersmoke.botanicalworkshop.client.lib.LibResources;
 import lazersmoke.botanicalworkshop.common.BotanicalWorkshop;
 import lazersmoke.botanicalworkshop.common.block.tile.TileGatewayCore;
 import lazersmoke.botanicalworkshop.common.lexicon.LexiconData;
+import lazersmoke.botanicalworkshop.common.lib.LibConfigs;
 import lazersmoke.botanicalworkshop.common.lib.LibItemNames;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
@@ -70,9 +71,9 @@ public class ItemShiftedHypervelocitySkewer extends Item implements IGatewayBind
 			}
 		if(isInHand)
 			if(getCore(stack, world) != null)
-				if(getCore(stack, world).getCurrentMana() >= 1000 && stack.getItemDamage() > 0){
+				if(getCore(stack, world).getCurrentMana() >= LibConfigs.SHIFTED_REPAIR_COST && stack.getItemDamage() > 0){
 					stack.setItemDamage(stack.getItemDamage() - 1);
-					getCore(stack, world).recieveMana(-1000);
+					getCore(stack, world).recieveMana(-LibConfigs.SHIFTED_REPAIR_COST);
 				}
 	}
 
